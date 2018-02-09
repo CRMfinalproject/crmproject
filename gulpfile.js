@@ -19,7 +19,7 @@ const path = {
     scss: "src/scss/*.scss",
     js: "src/js/*.js",
     img: "src/images/**/*.+(png|jpg|gif|svg)",
-    fonts: "src/fonts/**/ *.*"
+    fonts: "src/fonts/**/*.*"
   },
   dist: {
     html: "dist/html",
@@ -61,7 +61,7 @@ gulp.task('css', () => {
       log: false
     }))
     // Минифицируем css
-    .pipe(cssnano())
+    //.pipe(cssnano())
     // Выкидываем css в папку dist
     .pipe(gulp.dest(path.dist.css))
     // Говорим browser-sync о том что пора перезагрузить барузер так как файл изменился
@@ -158,5 +158,7 @@ gulp.task('start', ['del:dist', 'build', 'server', 'watch']);
 
 
 
+// Создать таск 'js' для обработки JavaScript файлов.Добавить обработку файлов пакетом gulp- babel.
+// Для таска 'js' добавить конкатенацию и минификацию JavaScript файлов c пакетами gulp- concat и gulp- uglify.
 
 
