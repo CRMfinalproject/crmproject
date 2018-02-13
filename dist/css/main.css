@@ -137,7 +137,7 @@ body {
 	margin: 0 10px;
 }
 
-.menu__email {
+.menu__text {
 	color: #7a9bd1;
 	margin: 0 5px;
 	font-size: 12px;
@@ -315,5 +315,63 @@ body {
 
 .content {
 	padding: 10px;
+}
+
+@media screen and (max-width: 414px) {
+
+.burger {
+	width: 49px;
+	min-width: 49px;
+}
+
+.burger__button {
+	width: 49px;
+	min-width: 49px;
+}
+
+.burger--open {
+	width: 220px;
+	min-width: 220px;
+}
+
+.burger-menu {
+	width: 49px;
+	min-width: 49px;
+}
+
+.burger-menu__item {
+	height: 49px;
+}
+
+.burger-menu__container {
+	min-height: 100%;
+}
+
+.burger-menu__container--closed {
+	width: 49px;
+}
+
+.burger-menu #orders-img {
+	width: 30px;
+	margin: 0 10.5px;
+}
+
+.burger-menu #products-img {
+	width: 20.5px;
+	margin: 0px 16.5px;
+}
+
+.burger-menu #settings-img,
+.burger-menu #statistics-img,
+.burger-menu #integration-img,
+.burger-menu #team-img {
+	width: 24px;
+	margin: 0px 14.5px;
+}
+
+.menu__text {
+	display: none;
+}
+
 }
 

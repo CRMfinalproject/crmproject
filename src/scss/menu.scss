@@ -89,11 +89,16 @@ body {
     align-items: stretch;
     margin: 0 10px;
 
-    &__email {
+    &__text {
         color: #7a9bd1;
         margin: 0 5px;
         font-size: 12px;
+
+        @media screen and (max-width: 414px) {
+            display: none;
+        }
     }
+
 
     &__icon {
         border-radius: 50%;
