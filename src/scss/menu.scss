@@ -93,10 +93,6 @@ body {
         color: #7a9bd1;
         margin: 0 5px;
         font-size: 12px;
-
-        @media screen and (max-width: 414px) {
-            display: none;
-        }
     }
 
 
@@ -128,18 +124,16 @@ body {
         align-items: center;
         position: relative;
         cursor: pointer;
-    }
 
-    &__item:hover {
-        .menu__submenu {
-            display: block;
+        &--open {
+            .menu__submenu {
+                display: block;
+            }
         }
     }
+    
 
     &__submenu {
-        // display: flex;
-        // justify-content: center;
-        // align-items: center;
         position: absolute;
         right: 0;
         top: 100%;

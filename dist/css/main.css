@@ -184,7 +184,7 @@ body {
 	cursor: pointer;
 }
 
-.menu__item:hover .menu__submenu {
+.menu__item--open .menu__submenu {
 	display: block;
 }
 
@@ -319,6 +319,10 @@ body {
 
 @media screen and (max-width: 414px) {
 
+.menu__text {
+	display: none;
+}
+
 .burger {
 	width: 49px;
 	min-width: 49px;
@@ -367,10 +371,6 @@ body {
 .burger-menu #team-img {
 	width: 24px;
 	margin: 0px 14.5px;
-}
-
-.menu__text {
-	display: none;
 }
 
 }

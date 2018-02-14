@@ -17,10 +17,10 @@ window.addEventListener('load', () => {
 
     let burgerBtn = document.getElementsByClassName('burger')[0];
     let burgerMenuContainer = document.getElementsByClassName('burger-menu__container')[0];
+    let closedClass = 'burger-menu__container--closed';
     
     burgerBtn.addEventListener('click', event => {
         event.preventDefault();
-        let closedClass = 'burger-menu__container--closed';
 
         if (hasClass(burgerMenuContainer, closedClass)) {
             removeClass(burgerMenuContainer, closedClass);
@@ -35,4 +35,39 @@ window.addEventListener('load', () => {
         }
         
     });
+
+    let menuItemBtn = document.getElementsByClassName('menu__item')[0];
+
+    menuItemBtn.addEventListener('click', event => {
+        event.preventDefault();
+
+        if(hasClass(menuItemBtn, 'menu__item--closed')) {
+            removeClass(menuItemBtn, 'menu__item--closed');
+        } else {
+            addClass(menuItemBtn, 'menu__item--closed');
+        }
+
+        if(hasClass(menuItemBtn, 'menu__item--open')) {
+            removeClass(menuItemBtn, 'menu__item--open');
+        } else {
+            addClass(menuItemBtn, 'menu__item--open');
+        }
+    });
+
+    let input = document.getElementsByClassName('search__input')[0];
+
+    input.addEventListener('click', event => {
+        event.preventDefault();
+
+        if(hasClass(menuItemBtn, 'menu__item--open')) {
+            removeClass(menuItemBtn, 'menu__item--open');
+            addClass(menuItemBtn, 'menu__item--closed');
+        } 
+
+        if (hasClass(burgerBtn, 'burger--open')) {  
+            removeClass(burgerBtn, 'burger--open');          
+            addClass(burgerMenuContainer, closedClass);
+            }
+    });
+        
 })
