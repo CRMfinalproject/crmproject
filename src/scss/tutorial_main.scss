@@ -1,0 +1,144 @@
+.tutorial {
+	position: absolute;
+	top: 50px;
+	left: 80px;
+	max-width: 1286px;
+	min-width: 300px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	background-color: #eeeeee;
+	line-height: 1.71em;	
+	font-family: "AvenirNext", sans-serif;
+	font-size: 14px;
+	color: #333333;
+}
+
+.tutorial-main {
+  	width: 66.25%;
+  	margin: 34px auto 45px 42px;
+  	border-radius: 5px;
+  	background-color: #ffffff;
+}
+
+.tutorial-main__heading {
+	margin: 60px auto 30px;
+	text-align: center;
+	line-height: 2em;
+	letter-spacing: -1px;
+	font-size: 1.7em;
+	font-weight: bold;
+	&::after {
+		content: " ";
+		display: block;
+		width: 34px;
+		height: 4px;
+		margin: 28px auto 31px;
+		border-radius: 1px;
+		background-color: #6fb7e9;
+	}
+}
+
+.tutorial-main__text {
+	width: 78%;
+	margin: 30px auto 48px;
+}
+
+.tutorial-main__link, .tutorial-sidebar__item__link {
+	color: #6fb7ea;
+	text-decoration: none;
+}
+
+.tutorial-main__link--underlined {
+	color: #6fb7ea;
+	text-decoration: underline;
+	font-weight: normal;
+}
+
+.tutorial-main__video {
+	display: block;
+	width: 46.13%;
+	height: 240px;
+	margin: 46px auto 50px;
+	border-radius: 10px;
+	border: none;
+}
+
+.tutorial-main__section-heading {
+	margin: 50px auto 18px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.28em;
+	&::after {
+		content: " ";
+		display: block;
+		width: 25px;
+		height: 3px;
+		margin: 28px auto 27px;
+		border-radius: 1px;
+		background-color: #6fb7e9;
+	}
+}
+
+.tutorial-main__list {
+	color: #6fb7e9;
+	font-weight: bold;
+}
+
+.tutorial-main__list__item {
+	width: 78%;
+	margin: 27px auto;
+}
+
+.tutorial-main__list__item__text {
+	color: #333333;
+	font-weight: normal;
+}
+
+.tutorial-main__separator {
+	width: 78%;
+	height: 1px;
+	margin: auto;
+	background-color: #6fb7e9; 
+}
+
+.tutorial-main__icons-block {
+	display: flex;
+	width: 78%;
+	margin: 17px auto 45px;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.tutorial-main__icons-block__item {
+	font-size: 0.86em;
+	line-height: 2em;
+	font-weight: 600;
+}
+
+.tutorial-main__icons-block__item__text {
+	display: inline-block;
+	margin: auto 1em;
+}
+
+@font-face {
+    font-family: "AvenirNext";
+    src: url(../fonts/Avenir/AvenirNext-Regular.ttf);
+}
+
+@media screen and (max-width: 780px) {
+  	.tutorial {
+    	font-size: 12px;
+    	top: 43px;
+    	left: 49px;
+  	}
+  	.tutorial-main {
+    	width: 89.22%;
+    	margin: 13px auto 0;
+    	border-radius: 10px 10px 0 0;
+  	}
+  	.tutorial-main__video {
+    	width: 84.17%;
+  	}
+}
