@@ -4,6 +4,10 @@
         display: none;
     }
     
+    .header {
+        height: 43px;
+        min-height: 43px;
+    }
     .burger {
         width: 49px;
         min-width: 49px;
@@ -29,9 +33,10 @@
 
         &__container {
             min-height: 100%;
+            width: 49px;
 
-            &--closed {
-                width: 49px;
+            &--open {
+                width: 220px;
             }
         }
 

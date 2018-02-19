@@ -1,9 +1,13 @@
-$burger-width: 80px;
+* {
+    box-sizing: border-box;
+}
+
+$burger-width: 70px;
 $burger-background: #f5f5f5;
 $burger-background-hover: #ffffff;
 $burger-background-selected: #eeeeee;
 $burger-icon-size: 28px;
-$burger-menu-item-height: 62px;
+$burger-menu-item-height: 60px;
 $burger-width-open: 220px;
 
 html, body {
@@ -21,7 +25,8 @@ body {
 }
 
 .header {
-    height: 53px;
+    height: 50px;
+    min-height: 50px;
     display: flex;
     background-color: #ffffff;
 }
@@ -64,8 +69,8 @@ body {
     padding: 0 10px;
 
     &__icon {
-        width: 17px;
-        height: 17px;
+        width: 16px;
+        height: 16px;
     }
 
     &__input {
@@ -73,7 +78,7 @@ body {
         outline: none;
         width: 100%;
         margin: 0 10px;
-        font-size: 12px;
+        font-size: 13px;
     }
 }
 
@@ -139,19 +144,19 @@ body {
         top: 100%;
         display: none;
         padding-top: 10px;
-
-        ul {
-            list-style: none;
-            border: solid 1px #d3d3d3;
-            border-radius: 5px;
-            padding-left: 20px;
-            padding-right: 20px;
-            background-color: #ffffff;
-            text-align: right;
-        }
     }
 
-    &__drop-list {
+    &__sublist {
+        list-style: none;
+        border: solid 1px #d3d3d3;
+        border-radius: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
+        background-color: #ffffff;
+        text-align: right;
+    }
+
+    &__subitem {
         padding-bottom: 15px;
         padding-top: 15px;      
         border-bottom: solid 1px #d3d3d3;
@@ -159,18 +164,18 @@ body {
         &:last-child {
             border-bottom-width: 0;
         }
+    }
 
-            &__link {
-                color: #83abd9;
-                text-decoration: none;
-                font-size: 12px;
-                cursor: pointer;
-                white-space: nowrap;
+    &__link {
+        color: #83abd9;
+        text-decoration: none;
+        font-size: 12px;
+        cursor: pointer;
+        white-space: nowrap;
 
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }
 
@@ -183,14 +188,14 @@ body {
     &__container {
         padding: 0;
         margin: 0;
-        width: $burger-width-open;
+        width: 70px;
         min-height: 100%;
         background: $burger-background;
-        overflow-y: hidden;
+        overflow: hidden;
         transition: width 300ms, min-width 300ms;
 
-        &--closed {
-            width: 80px;
+        &--open {
+            width: $burger-width-open;
             transition: width 300ms;
         }
     }
@@ -221,21 +226,21 @@ body {
 
     #orders-img {
         width: 40px;
-        margin: 0 19.5px;
+        margin: 0 15.5px;
     }
 
     #products-img {
         width: 25px;
-        margin: 0 27.5px;
+        margin: 0 22.5px;
     }
     #settings-img, #statistics-img, #integration-img {
         width: 26px;
-        margin: 0 27.5px;
+        margin: 0 22.5px;
     }
 
     #team-img {
         width: 29px;
-        margin: 0 26.5px;
+        margin: 0 20.5px;
     }
 }
 
