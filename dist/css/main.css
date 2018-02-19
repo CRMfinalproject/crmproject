@@ -144,22 +144,22 @@ body {
 }
 
 .menu__text {
-	color: #7a9bd1;
+	color: #83abd9;
 	margin: 0 5px;
 	font-size: 12px;
 }
 
 .menu__icon {
 	border-radius: 50%;
-	width: 28px;
-	height: 28px;
+	width: 32px;
+	height: 32px;
 	margin: 0 5px;
 }
 
 .menu__arrow {
-	margin: 0 10px;
-	width: 0px;
-	height: 0px;
+	margin: 0 7px;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -169,14 +169,13 @@ body {
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
-	font-size: 20px;
+	font-size: 14px;
 	font-weight: bold;
-	color: #7a9bd1;
-}
-
-.menu__arrow__symbol {
-	-webkit-transform: rotate(90deg);
-	transform: rotate(90deg);
+	border: 2px solid #83abd9;
+	border-top-width: 0;
+	border-left-width: 0;
+	width: 7px;
+	height: 7px;
 }
 
 .menu__item {
