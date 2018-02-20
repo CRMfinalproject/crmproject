@@ -1,50 +1,62 @@
 "use strict";
 'use strict';
 
-var hasClass = function hasClass(element, cls) {
-    var classes = element.getAttribute('class') || '';
-    return classes.indexOf(cls) !== -1;
-};
-var removeClass = function removeClass(element, cls) {
-    var classes = element.getAttribute('class') || '';
-    classes = classes.replace(cls, '');
-    element.setAttribute('class', classes);
-};
-var addClass = function addClass(element, cls) {
-    var classes = element.getAttribute('class') || '';
-    classes = classes += ' ' + cls;
-    element.setAttribute('class', classes);
-};
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var burgerBtn = document.getElementsByClassName('burger')[0];
-var burgerMenuContainer = document.getElementsByClassName('burger-menu__container')[0];
-var openClass = 'burger-menu__container--open';
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-burgerBtn.addEventListener('click', function (event) {
-    event.preventDefault();
+var burgerBtn = '.burger';
+var burgerMenuContainer = '.burger-menu__container';
+var menuItemBtn = '.menu__item';
+var openClassBurgerCont = 'burger-menu__container--open';
+var openClassBurgerBtn = 'burger--open';
+var openClassMenuItemBtn = 'menu__item--open';
+var classBurgerCont = 'burger-menu__container';
+var classBurger = 'burger';
+var classMenu = 'menu';
 
-    if (hasClass(burgerMenuContainer, openClass)) {
-        removeClass(burgerMenuContainer, openClass);
-    } else {
-        addClass(burgerMenuContainer, openClass);
+var Menu = function () {
+    function Menu(selector, options) {
+        _classCallCheck(this, Menu);
+
+        this.element = document.querySelector(selector);
+        this.options = options;
     }
 
-    if (hasClass(burgerBtn, 'burger--open')) {
-        removeClass(burgerBtn, 'burger--open');
-    } else {
-        addClass(burgerBtn, 'burger--open');
-    }
+    _createClass(Menu, [{
+        key: 'toggle',
+        value: function toggle() {
+            this.element.classList.toggle(this.options.openStateClass);
+        }
+    }, {
+        key: 'close',
+        value: function close() {
+            this.element.classList.remove(this.options.openStateClass);
+        }
+    }]);
+
+    return Menu;
+}();
+
+var userCabinetMenu = new Menu(menuItemBtn, {
+    openStateClass: openClassMenuItemBtn
+});
+var burgerMenu = new Menu(burgerBtn, {
+    openStateClass: openClassBurgerBtn
+});
+var burgerContMenu = new Menu(burgerMenuContainer, {
+    openStateClass: openClassBurgerCont
 });
 
-var menuItemBtn = document.getElementsByClassName('menu__item')[0];
+userCabinetMenu.element.addEventListener('click', function () {
+    return userCabinetMenu.toggle();
+});
 
-menuItemBtn.addEventListener('click', function (event) {
+burgerMenu.element.addEventListener('click', function (event) {
+    event.preventDefault();
 
-    if (hasClass(menuItemBtn, 'menu__item--open')) {
-        removeClass(menuItemBtn, 'menu__item--open');
-    } else {
-        addClass(menuItemBtn, 'menu__item--open');
-    }
+    burgerContMenu.toggle();
+    burgerMenu.toggle();
 });
 
 document.body.addEventListener('click', function (event) {
@@ -52,9 +64,9 @@ document.body.addEventListener('click', function (event) {
     var shouldMenuClose = true;
 
     while (el != document.body) {
-        var hasBurger = el.classList.contains("burger");
-        var hasBurgerMenu = el.classList.contains("burger-menu__container");
-        var hasMenu = el.classList.contains("menu");
+        var hasBurger = el.classList.contains(classBurger);
+        var hasBurgerMenu = el.classList.contains(classBurgerCont);
+        var hasMenu = el.classList.contains(classMenu);
 
         if (hasBurger || hasBurgerMenu || hasMenu) {
             shouldMenuClose = false;
@@ -65,9 +77,9 @@ document.body.addEventListener('click', function (event) {
     }
 
     if (shouldMenuClose) {
-        removeClass(burgerBtn, 'burger--open');
-        removeClass(menuItemBtn, 'menu__item--open');
-        removeClass(burgerMenuContainer, 'burger-menu__container--open');
+        burgerMenu.close();
+        userCabinetMenu.close();
+        burgerContMenu.close();
         event.preventDefault();
     }
 });

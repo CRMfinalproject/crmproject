@@ -1,49 +1,47 @@
-let hasClass = (element, cls) => {
-    let classes = element.getAttribute('class') || '';
-    return classes.indexOf(cls) !== -1;
-}
-let removeClass = (element, cls) => {
-    let classes = element.getAttribute('class') || '';
-    classes = classes.replace(cls, '')
-    element.setAttribute('class', classes);
-}
-let addClass = (element, cls) => {
-    let classes = element.getAttribute('class') || '';
-    classes = classes += ' ' + cls;
-    element.setAttribute('class', classes);
-}
- 
 
-let burgerBtn = document.getElementsByClassName('burger')[0];
-let burgerMenuContainer = document.getElementsByClassName('burger-menu__container')[0];
-let openClass = 'burger-menu__container--open';
+const burgerBtn = '.burger';
+const burgerMenuContainer = '.burger-menu__container';
+const menuItemBtn = '.menu__item';
+const openClassBurgerCont = 'burger-menu__container--open';
+const openClassBurgerBtn = 'burger--open';
+const openClassMenuItemBtn = 'menu__item--open';
+const classBurgerCont = 'burger-menu__container';
+const classBurger = 'burger';
+const classMenu = 'menu';
 
-burgerBtn.addEventListener('click', event => {
-    event.preventDefault();
-
-    if (hasClass(burgerMenuContainer, openClass)) {
-        removeClass(burgerMenuContainer, openClass);
-    } else {
-        addClass(burgerMenuContainer, openClass);
+class Menu {
+    constructor(selector, options) {
+        this.element = document.querySelector(selector);
+        this.options = options;
     }
-    
-    if (hasClass(burgerBtn, 'burger--open')) {
-        removeClass(burgerBtn, 'burger--open');
-    } else {
-        addClass(burgerBtn, 'burger--open');
+
+    toggle() {
+        this.element.classList.toggle(this.options.openStateClass);
     }
-    
+
+    close() {
+        this.element.classList.remove(this.options.openStateClass);
+    }
+}
+
+
+const userCabinetMenu = new Menu(menuItemBtn, {
+    openStateClass: openClassMenuItemBtn
+});
+const burgerMenu = new Menu(burgerBtn, {
+    openStateClass: openClassBurgerBtn
+});
+const burgerContMenu = new Menu(burgerMenuContainer, {
+    openStateClass: openClassBurgerCont
 });
 
-let menuItemBtn = document.getElementsByClassName('menu__item')[0];
+userCabinetMenu.element.addEventListener('click', () => userCabinetMenu.toggle());
 
-menuItemBtn.addEventListener('click', event => {
+burgerMenu.element.addEventListener('click', event => {
+    event.preventDefault();
 
-    if(hasClass(menuItemBtn, 'menu__item--open')) {
-        removeClass(menuItemBtn, 'menu__item--open');
-    } else {
-        addClass(menuItemBtn, 'menu__item--open');
-    }
+    burgerContMenu.toggle();
+    burgerMenu.toggle();
 });
 
 
@@ -52,9 +50,9 @@ document.body.addEventListener('click', (event) => {
     let shouldMenuClose = true;
 
     while( el != document.body) {
-        let hasBurger = el.classList.contains("burger");
-        let hasBurgerMenu = el.classList.contains("burger-menu__container");
-        let hasMenu = el.classList.contains("menu");
+        let hasBurger = el.classList.contains(classBurger);
+        let hasBurgerMenu = el.classList.contains(classBurgerCont);
+        let hasMenu = el.classList.contains(classMenu);
 
         if (hasBurger || hasBurgerMenu || hasMenu) {
             shouldMenuClose = false;
@@ -65,9 +63,9 @@ document.body.addEventListener('click', (event) => {
     }
 
     if (shouldMenuClose) {
-        removeClass(burgerBtn, 'burger--open');
-        removeClass(menuItemBtn, 'menu__item--open');
-        removeClass(burgerMenuContainer, 'burger-menu__container--open');
+        burgerMenu.close();
+        userCabinetMenu.close();
+        burgerContMenu.close();
         event.preventDefault();
     }
 });
