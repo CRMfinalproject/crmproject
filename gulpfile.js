@@ -61,7 +61,7 @@ gulp.task('css', () => {
       log: false
     }))
     // Минифицируем css
-    //.pipe(cssnano())
+    .pipe(cssnano())
     // Выкидываем css в папку dist
     .pipe(gulp.dest(path.dist.css))
     // Говорим browser-sync о том что пора перезагрузить барузер так как файл изменился
@@ -155,7 +155,6 @@ gulp.task('build', ['html', 'css', 'img', 'fonts', 'js']);
 // и затем запускает слежение за файлами
 // Запускается из корня проекта командой npm start
 gulp.task('start', ['del:dist', 'build', 'server', 'watch']);
-
 
 
 // Создать таск 'js' для обработки JavaScript файлов.Добавить обработку файлов пакетом gulp- babel.
