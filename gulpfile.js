@@ -19,7 +19,7 @@ const path = {
     scss: "src/scss/*.scss",
     js: "src/js/*.js",
     img: "src/images/**/*.+(png|jpg|gif|svg)",
-    fonts: "src/fonts/**/ *.*"
+    fonts: "src/fonts/**/*.*"
   },
   dist: {
     html: "dist/html",
@@ -159,5 +159,6 @@ gulp.task('start', ['del:dist', 'build', 'server', 'watch']);
 
 // Создать таск 'js' для обработки JavaScript файлов.Добавить обработку файлов пакетом gulp- babel.
 // Для таска 'js' добавить конкатенацию и минификацию JavaScript файлов c пакетами gulp- concat и gulp- uglify.
+
 
 
