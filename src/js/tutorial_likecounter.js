@@ -1,19 +1,32 @@
+//const PAGE_API_URL = 'http://feathy.online/main/tutorials/rest';
+const likeImg = document.querySelector('#js-likeImg');
+if (localStorage.getItem('liked') === 'true') {
+	likeImg.setAttribute('src', '../images/tutorial/icon_liked.png');
+} else {
+	likeImg.setAttribute('src', '../images/tutorial/icon_like.png');
+}
 let likeCounter = 0;
-
-//нужно добавить скрипт для записи количества лайков на сервере?
+/*fetch(PAGE_API_URL, {method: "GET"})
+.then((response) => response.ok ? response.json : throw new Error('Error fetching data')
+.then((data) => likeCounter = data.likeCounter)
+.catch(error) => throw new Error('Error fetching data');*/
 const tutorialLikeBtn = document.querySelector('#js-likeBtn');
 const tutorialLikeBtnCounter = document.querySelector('#js-likeBtnCounter');
 tutorialLikeBtnCounter.textContent = likeCounter;
 tutorialLikeBtn.addEventListener('click', function() {
 	event.preventDefault();
-	likeCounter++;
+	if (localStorage.getItem("liked") === "true") {
+		likeCounter--;
+   		localStorage.setItem("liked", "false");
+   		likeImg.setAttribute('src', '../images/tutorial/icon_like.png');
+   	} else {
+   		likeCounter++;
+   		localStorage.setItem("liked", "true");
+   		likeImg.setAttribute('src', '../images/tutorial/icon_liked.png');
+   	}
   tutorialLikeBtnCounter.textContent = likeCounter;
+  /*fetch(PAGE_API_URL, {method:"PUT"})
+  .then(response) => response.ok ? "likeCounter update" : "failed to update likeCounter"
+  .catch(error) => throw new Error ('Error fetching data');*/
   return likeCounter;
 })
-
-/* Уточняется:
-1. в каком виде и где хранится информация по лайкам страниц туториалов (т.е. куда ее записывать и откуда подтягивать)
-2. есть два альтернативных предложения по реализации с LocalStorage:
-	a.хранить, поставил ли этот конкретный пользователь лайк, если да – при повторном клике не увеличивать кол-во лайков на странице
-	b.ИЛИ, если он поставил, закрашивать значок, а если кликнет еще раз - снимать и уменьшать кол-во лайков на 1
-*/
