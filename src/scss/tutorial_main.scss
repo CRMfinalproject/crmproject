@@ -142,23 +142,46 @@
   	.tutorial-main {
     	position: initial;
     	width: 74.84%;
-    	margin: 13px 0 0 auto;
-    	border-radius: 10px 10px 0 0;
+    	margin: 13px 14px 0 auto;
+    	border-radius: 5px 5px 0 0;
     	font-size: 12px;
   	}
   	.tutorial-main__video {
     	width: 202px;
     	height: 123px;
+		margin-top: 10px;
+		margin-bottom: 30px;
   	}
 
   	.tutorial-main__heading {
-  		font-size: 16px;
+  		width: 70%;
+		margin-bottom: 12px;
+		padding-top: 30px;
+		font-size: 16px;
   		font-weight: 600;
+		line-height: 1.5em;
   		letter-spacing: 0;
+		&::after {
+			width: 18px;
+			height: 3px;
+			margin: 12px auto;
+		}
   	}
+
+	.tutorial-main__text {
+		width: 83.61%;
+		margin-top: 12px;
+		margin-bottom: 25px;
+	}
 
   	.tutorial-main__section-heading {
   		font-size: 14px;
+		margin-bottom: 10px;
+		&::after{
+			margin: 10px auto 28px;
+			width: 20px;
+			height: 3px;
+		}
   	}
 
   	.tutorial-main__icons-block__item {

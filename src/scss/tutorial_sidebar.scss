@@ -43,20 +43,25 @@
 
 @media screen and (max-width: 1024px) {
   	.tutorial-sidebar {
-		  position: relative;
-      top: -50px;
-      width: 74.84%;
-    	margin: 0 0 63px auto;
-      padding: 20px 0 17px;
-    	border-radius: 0 0 10px 10px;
+		position: relative;
+        top: -50px;
+        width: 74.84%;
+    	margin: 0 14px 63px auto;
+        padding: 15px 0 17px;
+    	border-radius: 0 0 5px 5px;
   	}
+
+    .tutorial-sidebar__heading {
+        margin: 20px auto;
+    }
 
   	.tutorial-sidebar__item {
     	width: 81.70%;
+        margin: 5px auto;
     }
 
-  .tutorial-sidebar__item__image {
-    height: auto;
-    margin: auto;
-  }
+    .tutorial-sidebar__item__image {
+      height: auto;
+      margin: auto;
+    }
 }
