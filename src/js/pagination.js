@@ -4,7 +4,8 @@ class Pagination {
         this.render();
     }
     setSettings(data = {}) {
-        this.totalPages = data.totalPages || 17;
+        // от сервера мы получаем data.currentPage и data.totalrows
+        this.totalPages = Math.round(data.totalrows/10) || 17;
         this.currentPage = data.currentPage || 6;
         this.arrPages = Array.from({ length: (this.totalPages + 1) }, (v, i) => i);
         this.arrPages.splice(0, 1);
@@ -75,7 +76,24 @@ class Pagination {
             if (this.currentPage != this.totalPages) { this.currentPage++ }
         }
         else { this.currentPage = Number(event.target.innerHTML); }
-        this.render(this.pagesToShow());
+        
+        //делаем запрос на сервер о новой странице и вызываем changedata, которая перерисовывает таблицу
+        let apiUrlRequest = "http://fecore.net.ua/rest/";
+            fetch(apiUrlRequest)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error("Error fetching data");
+                })
+
+                .then(response => {changeData(response)})
+
+                .catch(err => {
+                    console.error("Error: ", err);
+                    result.innerHTML = `Error getting data`;
+                })
+        this.render(this.pagesToShow());   
     }
     controlSize(event) {
         if (screen.width < 780 && !this.mobile) {
