@@ -1,0 +1,79 @@
+// здесь подставить класс таблицы
+.products-list {
+    border: 1px solid gray;
+    border-collapse: collapse;
+    width: 350px;
+
+    // здесь подставить класс tr
+    &__row {
+        height: 50px;
+        background-color: #fff;
+        border-bottom: 1px solid #d0d0d0;
+        font-size: 13px;
+        width: 100%;
+        
+        &:hover {
+            background-color: #f9f9f9;
+            
+            .products-list__cell-actions--open {
+                display: none;
+            }    
+            .products-list__cell-actions--close {
+                display: block;
+            }   
+    }
+
+    &__cell {
+            width: 100%;
+            border: 1px solid red;
+        }
+    }
+
+    &__cell-actions {
+        // border: 1px solid green;
+        width: 70px;
+        text-align: right;
+        padding-right: 7px;
+        line-height: 100%;
+        border: 1px solid red;
+        // display: none;
+    
+            &__dots {
+                height: 5px;
+                text-align: right;
+            }
+            &__copy {
+                // здесь уточнить размеры картинок
+                width: 14px;
+                cursor: pointer;
+            }
+            &__edit {
+                // здесь уточнить размеры картинок
+                width: 14px;
+                cursor: pointer;
+            }
+            &__delete {
+                // здесь уточнить размеры картинок
+                height: 16px;
+                cursor: pointer;
+            }
+
+            &--open {
+                display: block;
+            }
+
+            &--close {
+                display: none;
+            }
+    }
+    
+}
+
+.button__ok {
+    width: 50px;
+    height: 25px;
+    color: white;
+    background-color: green;
+    box-shadow: 0 1px 2px #f9f9f9;
+    display: none;
+}
