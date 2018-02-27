@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="crm-css.css">
+	<title>CRM Table</title>
+</head>
+<body>
+	<div class="table-wrapper">
+	<table class="products-table table">
+	  <thead>
+		<tr>
+			<th><input type="checkbox" name="checkAll" value="checkAll"></th>
+			<th><a href="#" data-sort="product-name">Название товара<span class="dropdown-arrow"></span></a></th>
+			<th><a href="#" data-sort="product-category">Категория<span class="dropdown-arrow"></span></a></th>
+			<th><a href="#" data-sort="product-count">Кол-во на складе<span class="dropdown-arrow"></span></a></th>
+			<th><a href="#" data-sort="product-price">Цена<span class="dropdown-arrow"></span></a></th>
+			<th><a href="#" data-sort="product-date">Дата создания<span class="dropdown-arrow"></span></a></th>
+			<th><a href="#" data-sort="product-weight">Вес<span class="dropdown-arrow"></span></a></th>
+			<th><a href="#" data-sort="product-size">Размеры(ШхВхД)<span class="dropdown-arrow"></span></a></th>
+		</tr>
+	  </thead>
+	  <tbody id="js-tbody"></tbody>
+	</table>
+	</div>
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
