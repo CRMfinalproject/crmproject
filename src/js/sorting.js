@@ -13,15 +13,15 @@ const updateView = products => {
   let htmlString = "";
   products.map(product => {
     htmlString += `<tr class="row">
-						<td><input type="checkbox" name="checkbox"></td>
-						<td>${product.name}</td>
-						<td>${product.category}</td>
-						<td>${product.count}</td>
-						<td>${product.price}</td>
-						<td>${product.creationDate}</td>
-						<td>${product.weight}</td>
-						<td>${product.size}</td>
-					</tr>`;
+			<td><input type="checkbox" name="checkbox"></td>
+			<td>${product.name}</td>
+			<td>${product.category}</td>
+			<td>${product.count}</td>
+			<td>${product.price}</td>
+			<td>${product.creationDate}</td>
+			<td>${product.weight}</td>
+			<td>${product.size}</td>
+		</tr>`;
   });
   tBody.innerHTML = htmlString;
 };
@@ -180,13 +180,21 @@ const sortBySize = () =>
 		if(getBySize.classList.contains("asc")){
 			getBySize.classList.remove("asc");
 			data.sort(function(obj1, obj2) {
-				return obj2.size - obj1.size;
+				let size1 = obj1.size.split("x");
+				let size2 = obj2.size.split("x");
+				let volume1 = size1[0] * size1[1] * size1[2];
+				let volume2 = size2[0] * size2[1] * size2[2];
+				return (volume2 - volume1);
 			});
 			updateView(data);
 		} else {
 			getBySize.classList.add("asc");
 			data.sort(function(obj1, obj2) {
-				return obj1.size - obj2.size;
+				let size1 = obj1.size.split("x");
+				let size2 = obj2.size.split("x");
+				let volume1 = size1[0] * size1[1] * size1[2];
+				let volume2 = size2[0] * size2[1] * size2[2];
+				return volume1 - volume2;
 			});
 			updateView(data);
 		}
