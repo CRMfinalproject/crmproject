@@ -1,12 +1,19 @@
 class Pagination {
-    constructor(data = {}) {
+    constructor(data) {
+    //  debugger;       
+        this.container = document.body.querySelector(".pagination");
+
         this.setSettings(data);
         this.render();
+
+        this.container.addEventListener('click', this.switchPages.bind(this));
+
+        window.addEventListener('resize', this.controlSize.bind(this));
     }
-    setSettings(data = {}) {
-        // от сервера мы получаем data.currentPage и data.totalrows
-        this.totalPages = Math.round(data.totalrows/10) || 17;
-        this.currentPage = data.currentPage || 6;
+    setSettings(data) {
+        // от сервера мы получаем общее количество ТОВАРОВ
+        this.totalPages = Math.ceil(data.length/10) || 17;
+        this.currentPage = 1;
         this.arrPages = Array.from({ length: (this.totalPages + 1) }, (v, i) => i);
         this.arrPages.splice(0, 1);
         this.mobile = (screen.width < 780) ? true : false;
@@ -35,39 +42,38 @@ class Pagination {
     }
     render() {
         // debugger;
-        let container = document.body.querySelector(".pagination");
-        container.innerHTML = ``;
+        this.container.innerHTML = ``;
         if (this.currentPage != 1) {
-            container.innerHTML = `
+            this.container.innerHTML = `
                 <div class="pagination__item">
                     <a link="#" class="pagination__link pagination__link__arrow pagination__link__arrow--left"></a>
                 </div>`
         };
         this.arrPagesToShow.map(elem => {
             if (elem == this.currentPage) {
-                container.innerHTML += `
+                this.container.innerHTML += `
                 <div class="pagination__item pagination__item--active">
                     <a link="#" class="pagination__link pagination__link--active">${elem}</a>
                 </div>`}
             else {
-                container.innerHTML += `
+                this.container.innerHTML += `
                         <div class="pagination__item">
                             <a link="#" class="pagination__link">${elem}</a>
                         </div>`
             }
         });
         if (this.currentPage != this.totalPages) {
-            container.innerHTML += `
+            this.container.innerHTML += `
                 <div class="pagination__item">
                     <a link="#" class="pagination__link pagination__link__arrow pagination__link__arrow--right"></a>
                 </div>`;
         }
-        //    container.addEventListener('click', this.switchPages.bind(this));
     }
     switchPages(event) {
         // debugger;
         event.preventDefault();
-        if (event.target.innerHTML == "...") { return };
+        if (event.target.innerHTML == "..." || event.target == this.container || 
+            event.target.classList.contains("pagination__item")) { return };
         
         if (event.target.classList.contains("pagination__link__arrow--left")) {
             if (this.currentPage != 1) { this.currentPage-- }
@@ -77,23 +83,14 @@ class Pagination {
         }
         else { this.currentPage = Number(event.target.innerHTML); }
         
-        //делаем запрос на сервер о новой странице и вызываем changedata, которая перерисовывает таблицу
-        let apiUrlRequest = "http://fecore.net.ua/rest/";
-            fetch(apiUrlRequest)
-                .then(response => {
-                    if (response.ok) {
-                        return response.json();
-                    }
-                    throw new Error("Error fetching data");
-                })
-
-                .then(response => {changeData(response)})
-
-                .catch(err => {
-                    console.error("Error: ", err);
-                    result.innerHTML = `Error getting data`;
-                })
-        this.render(this.pagesToShow());   
+        // вызываем renderTable класса Table с записи номер startRow по запись номер endRow (включительно)
+        let startRow = (this.currentPage-1) *10;
+        let endRow = this.currentPage * 10 - 1;
+        if (endRow >= data.length) {
+            endRow = data.length-1};
+        table.renderTable(data, startRow, endRow);
+        this.render(this.pagesToShow()); 
+  
     }
     controlSize(event) {
         if (screen.width < 780 && !this.mobile) {
@@ -108,8 +105,385 @@ class Pagination {
     }
 }
 
-let page = new Pagination;
-let container = document.body.querySelector(".pagination");
-container.addEventListener('click', page.switchPages.bind(page));
-
-window.addEventListener('resize', page.controlSize.bind(page));
+let data = [
+    {
+        name: "Помада Kylie",
+        category: "Косметика",
+        count: 259,
+        price: 299,
+        creationDate: "21/02/2018"
+    },
+    {
+        name: "Обезьянка",
+        category: "Игрушки",
+        count: 24,
+        price: 359,
+        creationDate: "20/02/2018"
+    },
+    {
+        name: "Кофта",
+        category: "Одежда",
+        count: 52,
+        price: 300,
+        creationDate: "13/02/2018"
+    },
+    {
+        name: "Кроссовки",
+        category: "Обувь",
+        count: 100,
+        price: 999,
+        creationDate: "12/02/2018"
+    },
+    {
+        name: "Библия",
+        category: "Книги",
+        count: 500,
+        price: 55,
+        creationDate: "19/02/2018"
+    },
+    {
+        name: "Мыло",
+        category: "Хоз.товары",
+        count: 500,
+        price: 15,
+        creationDate: "18/01/2018"
+    },
+    {
+        name: "Куртка",
+        category: "Кожа",
+        count: 5,
+        price: 5000,
+        creationDate: "21/02/2018"
+    },
+    {
+        name: "Ремень брючной",
+        category: "Ремни",
+        count: 10,
+        price: 199,
+        creationDate: "21/12/2017"
+    },
+    {
+        name: "Энциклопедия",
+        category: "Книги",
+        count: 200,
+        price: 150,
+        creationDate: "21/02/2018"
+    },
+    {
+        name: "Джинсы",
+        category: "Одежда",
+        count: 100,
+        price: 699,
+        creationDate: "01/02/2018"
+    },
+    {
+        name: "Лак",
+        category: "Косметика",
+        count: 1000,
+        price: 99,
+        creationDate: "21/02/2018"
+    },
+    {
+        name: "Кеды",
+        category: "Обувь",
+        count: 155,
+        price: 499,
+        creationDate: "11/02/2018"
+    },
+    {
+        name: "Шампунь",
+        category: "Хоз.товары",
+        count: 50,
+        price: 79,
+        creationDate: "21/02/2018"
+    },
+    {
+        name: "Помада Kylie",
+        category: "Косметика",
+        count: 259,
+        price: 299,
+        creationDate: "21/02/2018"
+    },
+    {
+        name: "Обезьянка",
+        category: "Игрушки",
+        count: 24,
+        price: 359,
+        creationDate: "20/02/2018"
+    },
+    {
+        name: "Кофта",
+        category: "Одежда",
+        count: 52,
+        price: 300,
+        creationDate: "13/02/2018"
+    },
+    {
+        name: "Кроссовки",
+        category: "Обувь",
+        count: 100,
+        price: 999,
+        creationDate: "12/02/2018"
+    },
+    {
+        name: "Библия",
+        category: "Книги",
+        count: 500,
+        price: 55,
+        creationDate: "19/02/2018"
+    },
+    {
+        name: "Мыло",
+        category: "Хоз.товары",
+        count: 500,
+        price: 15,
+        creationDate: "18/01/2018"
+    },
+    {
+        name: "Куртка",
+        category: "Кожа",
+        count: 5,
+        price: 5000,
+        creationDate: "21/02/2018"
+    },
+    {
+        name: "Ремень брючной",
+        category: "Ремни",
+        count: 10,
+        price: 199,
+        creationDate: "21/12/2017"
+    },
+    {
+        name: "Энциклопедия",
+        category: "Книги",
+        count: 200,
+        price: 150,
+        creationDate: "21/02/2018"
+    },
+    {
+        name: "Джинсы",
+        category: "Одежда",
+        count: 100,
+        price: 699,
+        creationDate: "01/02/2018"
+    },
+    {
+        name: "Лак",
+        category: "Косметика",
+        count: 1000,
+        price: 99,
+        creationDate: "21/02/2018"
+    },
+    {
+        name: "Кеды",
+        category: "Обувь",
+        count: 155,
+        price: 499,
+        creationDate: "11/02/2018"
+    },
+    {
+        name: "Шампунь",
+        category: "Хоз.товары",
+        count: 50,
+        price: 79,
+        creationDate: "21/02/2018"
+    },
+    {
+        name: "Помада Kylie",
+        category: "Косметика",
+        count: 259,
+        price: 299,
+        creationDate: "21/02/2018"
+    },
+    {
+        name: "Обезьянка",
+        category: "Игрушки",
+        count: 24,
+        price: 359,
+        creationDate: "20/02/2018"
+    },
+    {
+        name: "Кофта",
+        category: "Одежда",
+        count: 52,
+        price: 300,
+        creationDate: "13/02/2018"
+    },
+    {
+        name: "Кроссовки",
+        category: "Обувь",
+        count: 100,
+        price: 999,
+        creationDate: "12/02/2018"
+    },
+    {
+        name: "Библия",
+        category: "Книги",
+        count: 500,
+        price: 55,
+        creationDate: "19/02/2018"
+    },
+    {
+        name: "Мыло",
+        category: "Хоз.товары",
+        count: 500,
+        price: 15,
+        creationDate: "18/01/2018"
+    },
+    {
+        name: "Куртка",
+        category: "Кожа",
+        count: 5,
+        price: 5000,
+        creationDate: "21/02/2018"
+    },
+    {
+        name: "Ремень брючной",
+        category: "Ремни",
+        count: 10,
+        price: 199,
+        creationDate: "21/12/2017"
+    },
+    {
+        name: "Энциклопедия",
+        category: "Книги",
+        count: 200,
+        price: 150,
+        creationDate: "21/02/2018"
+    },
+    {
+        name: "Джинсы",
+        category: "Одежда",
+        count: 100,
+        price: 699,
+        creationDate: "01/02/2018"
+    },
+    {
+        name: "Лак",
+        category: "Косметика",
+        count: 1000,
+        price: 99,
+        creationDate: "21/02/2018"
+    },
+    {
+        name: "Кеды",
+        category: "Обувь",
+        count: 155,
+        price: 499,
+        creationDate: "11/02/2018"
+    },
+    {
+        name: "Шампунь",
+        category: "Хоз.товары",
+        count: 50,
+        price: 79,
+        creationDate: "21/02/2018"
+    },
+    {
+        name: "Обезьянка",
+        category: "Игрушки",
+        count: 24,
+        price: 359,
+        creationDate: "20/02/2018"
+    },
+    {
+        name: "Кофта",
+        category: "Одежда",
+        count: 52,
+        price: 300,
+        creationDate: "13/02/2018"
+    },
+    {
+        name: "Помада Kylie",
+        category: "Косметика",
+        count: 259,
+        price: 299,
+        creationDate: "21/02/2018"
+    },
+    {
+        name: "Обезьянка",
+        category: "Игрушки",
+        count: 24,
+        price: 359,
+        creationDate: "20/02/2018"
+    },
+    {
+        name: "Кофта",
+        category: "Одежда",
+        count: 52,
+        price: 300,
+        creationDate: "13/02/2018"
+    },
+    {
+        name: "Кроссовки",
+        category: "Обувь",
+        count: 100,
+        price: 999,
+        creationDate: "12/02/2018"
+    },
+    {
+        name: "Библия",
+        category: "Книги",
+        count: 500,
+        price: 55,
+        creationDate: "19/02/2018"
+    },
+    {
+        name: "Мыло",
+        category: "Хоз.товары",
+        count: 500,
+        price: 15,
+        creationDate: "18/01/2018"
+    },
+    {
+        name: "Куртка",
+        category: "Кожа",
+        count: 5,
+        price: 5000,
+        creationDate: "21/02/2018"
+    },
+    {
+        name: "Ремень брючной",
+        category: "Ремни",
+        count: 10,
+        price: 199,
+        creationDate: "21/12/2017"
+    },
+    {
+        name: "Энциклопедия",
+        category: "Книги",
+        count: 200,
+        price: 150,
+        creationDate: "21/02/2018"
+    },
+    {
+        name: "Джинсы",
+        category: "Одежда",
+        count: 100,
+        price: 699,
+        creationDate: "01/02/2018"
+    },
+    {
+        name: "Лак",
+        category: "Косметика",
+        count: 1000,
+        price: 99,
+        creationDate: "21/02/2018"
+    },
+    {
+        name: "Кеды",
+        category: "Обувь",
+        count: 155,
+        price: 499,
+        creationDate: "11/02/2018"
+    },
+    {
+        name: "Шампунь",
+        category: "Хоз.товары",
+        count: 50,
+        price: 79,
+        creationDate: "21/02/2018"
+    }
+];
+let table = new Table(data);
+let page = new Pagination(data);
