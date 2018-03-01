@@ -201,7 +201,7 @@ function filterMinMaxPrice() {
             filterNamePrice.push(data[i].id);
         }
     }
-    console.log(`RESULT by PRICE ${filterNamePrice}`);
+    // console.log(`RESULT by PRICE ${filterNamePrice}`);
     resultID();
 }
 
@@ -214,7 +214,7 @@ function filterMinMaxCount() {
             filterNameCount.push(data[i].id);
         }
     }
-    console.log(`RESULT by COUNT ${filterNameCount}`);
+    // console.log(`RESULT by COUNT ${filterNameCount}`);
     resultID();
 
 }
@@ -277,7 +277,7 @@ function checkControl() {
             filterNameChecked[i] = list[i].value;
         }
     }
-    console.log(`${filterNameChecked}`);
+    // console.log(`${filterNameChecked}`);
     filterNameCategory = [];
     for (let j = 0; j < filterNameChecked.length; j++) {
         for (let h = 0; h < data.length; h++) {
@@ -286,7 +286,7 @@ function checkControl() {
             }
         }
     }
-    console.log(`RESULT by CATEGORY ${filterNameCategory}`);
+    // console.log(`RESULT by CATEGORY ${filterNameCategory}`);
     resultID();
 }
 
@@ -306,7 +306,7 @@ function filterMimMaxDate() {
             filterNameDate.push(data[i].id);
         }
     }
-    console.log(`RESULT by DATE ${filterNameDate}`);
+    // console.log(`RESULT by DATE ${filterNameDate}`);
     resultID();
 }
 
@@ -362,9 +362,10 @@ function resultID() {
             break;
         default:
             break;
+        //Here must be case 5: SearchingByName
     }
-
-    console.log("УРА" + "  " + finalResults);
+     //Here must be fetch request...
+    console.log("Список ID для fetch" + "  " + finalResults);
 }
 
 
