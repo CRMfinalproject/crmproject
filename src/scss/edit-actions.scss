@@ -2,7 +2,7 @@
 .products-list {
     border: 1px solid gray;
     border-collapse: collapse;
-    width: 350px;
+    width: 700px;
 
     // здесь подставить класс tr
     &__row {
@@ -11,28 +11,28 @@
         border-bottom: 1px solid #d0d0d0;
         font-size: 13px;
         width: 100%;
+        text-align: center;
         
         &:hover {
             background-color: #f9f9f9;  
-    }
+        }
 
-    &__cell {
-            width: 100%;
-            border: 1px solid red;
+        &__cell {
+            width: 100px;
         }
     }
 
     &__cell-actions {
-        width: 70px;
-        text-align: right;
-        padding-right: 7px;
+        width: 100%;
+        text-align: center;
         line-height: 100%;
-        border: 1px solid red;
+        //border: 1px solid red;
     
             &__dots {
                 height: 5px;
                 text-align: right;
                 cursor: pointer;
+                margin: 10px;
             }
             &__copy {
                 // здесь уточнить размеры картинок
@@ -43,6 +43,8 @@
                 // здесь уточнить размеры картинок
                 width: 14px;
                 cursor: pointer;
+                margin-left: 5px;
+                margin-right: 5px;
             }
             &__delete {
                 // здесь уточнить размеры картинок
@@ -54,11 +56,13 @@
 }
 
 .button__ok {
-    width: 50px;
+    width: 100%;
     height: 25px;
     color: white;
     background-color: green;
     box-shadow: 0 1px 2px #f9f9f9;
+    cursor: pointer;
+
 }
 
             
@@ -68,3 +72,13 @@
 .close {
     display: none;
 } 
+
+.checkbox {
+    border: 1px solid #d3d3d3;
+    box-shadow: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    transition: .2s;
+    cursor: pointer;
+}

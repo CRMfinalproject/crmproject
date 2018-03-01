@@ -1,6 +1,7 @@
 // const dataUrl = `https://trello-attachments.s3.amazonaws.com/5a7d77d8cb4876903b093cff/5a8d42f1e53d84d1cfc3dc11/74acb4c8bf49732b088038b596fb269e/data.json`;
 
-// class table {
+
+// class Table {
 //     constructor(data = {}) {
 //         this.fields =
 //             [
@@ -15,7 +16,7 @@
 //         this.renderTable(data);
 //     }
 
-    
+
 
 //     renderTable(data) {
 
@@ -24,19 +25,6 @@
 //         this.fields.forEach(field => {
 //             containerTbl += `<th>${field.view}</th>`;
 //         });
-//         /* просьба добавить в код Олега
-//         containerTbl += `
-        // <th class="products-list__cell">
-        //     <div class="products-list__cell-actions products-list__cell-actions--open">
-        //         <img src="../images/three-dots.png" class="products-list__cell-actions__dots">
-        //     </div>
-        //     <div class="products-list__cell-actions products-list__cell-actions--close">
-        //         <img src="../images/copy-icon.svg" title="переместить" class="products-list__cell-actions__copy">
-        //         <img src="../images/edit-icon.svg" title="редактировать" class="products-list__cell-actions__edit">
-        //         <img src="../images/delete-icon.svg" title="удалить" class="products-list__cell-actions__delete">
-        //     </div>
-        // </th>`;
-//         */
 //         containerTbl += `</tr>`;
 
 //         // data
@@ -49,27 +37,61 @@
 //         });
 
 //         containerTbl += `</tr></table></div>`;
-
+//         document.body.innerHTML = containerTbl;
 //     }
 
 
 // }
 
-// function get() {
+// // function get() {
 
-//     fetch(dataUrl, { mode: 'no-cors', header: {'Access-Control-Allow-Origin': '*'} })
-//         .then(response => {
-//             if (response.ok) return response.json();
-//             throw new Error("Error fetching data");
-//         })
-//         .then(data => {
-//             new table(data);
-//         })
-//         .catch(error => {
-//             console.error("Error: ", error);
-//         });
+// //     fetch(dataUrl, { mode: 'no-cors', header: {'Access-Control-Allow-Origin': '*'} })
+// //         .then(response => {
+// //             if (response.ok) return response.json();
+// //             throw new Error("Error fetching data");
+// //         })
+// //         .then(data => {
+// //             new table(data);
+// //         })
+// //         .catch(error => {
+// //             console.error("Error: ", error);
+// //         });
 
-// }
-// get();
+// // }
+// // //get();
 
+let data = [
+    {
+		"id": 1,
+		"name": "Помада Kylie",
+		"category": "Косметика",
+		"count": 259,
+		"price": 299,
+		"creationDate": "02/21/2018",
+		"weight": 10,
+		"size": "1x1x5"
+	},
+	{
+		"id": 2,
+		"name": "Обезьянка",
+		"category": "Игрушки",
+		"count": 24,
+		"price": 359,
+		"creationDate": "02/20/2018",
+		"weight": 250,
+		"size": "40x40x30"
+	},
+	{
+		"id": 3,
+		"name": "Кофта",
+		"category": "Одежда",
+		"count": 52,
+		"price": 300,
+		"creationDate": "02/13/2018",
+		"weight": 500,
+		"size": "40x40x50"
+	},
+];
+
+// new table(data);
 
