@@ -8,6 +8,7 @@ let btnOk = document.querySelectorAll('.button__ok');
 let dotsBtn = document.querySelectorAll('.products-list__cell-actions__dots');
 let copyBtn = document.querySelectorAll('.products-list__cell-actions__copy');
 let delBtn = document.querySelectorAll('.products-list__cell-actions__delete');
+let uId = 0;
 
 function dotsHandler(event) {
         th = event.target.parentElement.parentElement;
@@ -38,20 +39,21 @@ function copyHandler(event) {
     th.children[0].classList.toggle("close");
     let cloneTr = currentTr.cloneNode(true);
     let id = cloneTr.id;
-    ///!!!!!////
-    let newId = id + 'c1';//не знаю как сделать уникальный идентификатор
+    let newId = id + 'c' + ++uId;
+
     cloneTr.id = newId;
     currentTr.insertAdjacentElement('afterend', cloneTr);
     
     removeEventClickOnCopyButtons();
-    addEventClickOnCopyButtons();
     removeEventClickOnEditButtons();
-    addEventClickOnEditButtons();
     removeEventClickOnDelButtons();
-    addEventClickOnDelButtons();
     removeEventClickOnDotsButtons();
-    addEventClickOnDotsButtons();
     removeEventClickOnConfirmButtons();
+
+    addEventClickOnCopyButtons();
+    addEventClickOnEditButtons();
+    addEventClickOnDelButtons();
+    addEventClickOnDotsButtons();
     addEventClickOnConfirmButtons();
 };
 
@@ -78,8 +80,21 @@ function editHandler(event) {
     th.children[1].classList.toggle("close");
     th.children[2].classList.toggle("close");
     th.children[2].classList.toggle("edit");
-    for(let i = 1; i < currentTh.length-2; i++ ){
-        currentTh[i].innerHTML = `<input type="text" value="${currentTh[i].textContent}" class="products-list__cell__input">`;
+    for(let i = 1; i < currentTh.length-1; i++ ){
+        if(currentTh[i].classList.contains('creationDate')) {
+            currentTh[i].innerHTML = `<input type="date" value="${currentTh[i].textContent}" class="products-list__cell__input">`;
+        } else if(currentTh[i].classList.contains('category')) {
+            currentTh[i].innerHTML = `
+                <select name="category">
+                    <option>Volvo</option>
+                    <option>Saab</option>
+                    <option>Fiat</option>
+                    <option>Audi</option>
+                </select>`
+        } else {
+            currentTh[i].innerHTML = `<input type="text" value="${currentTh[i].textContent}" class="products-list__cell__input">`;
+
+        };
     };
 };
 
@@ -99,29 +114,32 @@ function addEventClickOnEditButtons() {
 addEventClickOnEditButtons();
 
 function delHandler(event) {
-    currentTr = event.target.parentElement.parentElement.parentElement; // current tr with class = row
-    th = event.target.parentElement.parentElement; // current th with class = cell
-    currentTh = currentTr.children; // all th in this tr with class = cell
+    // current tr with class = row
+    currentTr = event.target.parentElement.parentElement.parentElement; 
+    let id = currentTr.id;
+    let originId = id.replace('row-', '');
+    let buttonOk = document.querySelector(`#${id} .button__ok`);
+    //current btnOk
+    buttonOk.innerHTML = 'Восстановить'; 
+    
+    // current th with class = cell
+    th = event.target.parentElement.parentElement; 
+    // all th in this tr with class = cell
+    currentTh = currentTr.children; 
     th.children[1].classList.toggle("close");
     th.children[2].classList.toggle("close");
     th.children[2].classList.toggle("recover");
-    //! не работает!!!! 
-    let btn = event.target;
-    btn.innerHTML = 'Восстановить'; //current btnOk
-/////!!!!//////
+    
     let timerId = setTimeout( () => {
         if(th.children[2].classList.contains("recover")) {
-            let id = currentTr.id;
             let toDel = document.querySelector(`#${id}`);
             toDel.remove();
-            data.map(obj => {
-                for(let value of obj) {
-                    if(value === id) {
-                        let i = data.indexOf(value);
-                        data.splice(i, 1);
-                    };
-                };
-            });
+            for(let i = 0; i< data.length; i++) {
+                if(data[i].id == originId) {
+                    data.splice(i, 1);
+                    break;
+                }
+            }
         };
     }, 5000);
 };
@@ -149,15 +167,20 @@ function confirmHandler(event) {
         const inpValue = [];
 
         for(let i = 0; i < currentTh.length; i++ ) {
-            const el = currentTh[i].children[0];
-            if (el.tagName == 'INPUT') {
-                inpValue.push(el.value); 
+            let el = currentTh[i];
+            if (el.classList.contains('th-checkbox'))
+                continue;
+                
+            const child = currentTh[i].children[0];
+            if (child.tagName == 'INPUT') {
+                if ( el.classList.contains('name')) {
+                    el.innerHTML = `<a href="" class="products-list__link">` + child.value + '</a>';
+                } else {
+                    el.innerHTML = child.value;
+                };
             };
         };
         
-        for(let i = 0; i < currentTh.length-1; i++ ){
-            currentTh[i].innerHTML = inpValue[i];
-        };    
         th.children[2].classList.toggle("edit"); 
         th.children[0].classList.toggle("close");
         th.children[2].classList.toggle("close");
@@ -166,18 +189,19 @@ function confirmHandler(event) {
     if(divConfirm.classList.contains("recover")) {
         th.children[2].classList.toggle("recover");
         th.children[2].classList.toggle("close");
-         //! не работает!!!! event.target.innerHTML = 'ОК';
         th.children[0].classList.toggle("close");
     };
 };
 
 function removeEventClickOnConfirmButtons() {
+    divOk = document.querySelectorAll('.products-list__cell-actions__btn');
     for(let i = 0; i < divOk.length; i++) {
         divOk[i].removeEventListener('click', confirmHandler);
     };
 };
 
 function addEventClickOnConfirmButtons() {
+    divOk = document.querySelectorAll('.products-list__cell-actions__btn');
     for(let i = 0; i < divOk.length; i++) {
         divOk[i].addEventListener('click', confirmHandler);
     };
