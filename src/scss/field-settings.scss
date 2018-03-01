@@ -1,0 +1,59 @@
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../fonts/AvenirNextCyr/AvenirNextCyr-Regular.ttf") format("truetype");
+  font-weight: normal;
+}
+
+.table__fieldsettings {
+  position: absolute;
+  top: 100px;
+  right: 100px;
+  width: 24px;
+  height: 24px;
+  margin-top: 20px;
+  padding-top: 24px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.table__fieldsettings--active {
+  width: 20%;
+  height: auto;
+  transition: left -500ms;
+  border: 1px solid #8a8a8a;
+  border-radius: 4px;
+  background-color: #ffffff;
+  font-family: "AvenirNext", sans-serif;
+  font-size: 14px;
+}
+
+.table__fieldsettings_heading {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  width: 90%;
+  margin: 0 auto 1em;
+  height: 25px;
+  color: #8a8a8a;
+}
+
+.table__fieldsettings_heading__text{
+    padding-top: 3px;
+}
+
+.table__fieldsettings__form {
+  display: block;
+  width: 90%;
+  margin: auto;
+}
+
+.table__fieldsettings__item {
+    margin: 1em auto;
+}
+
+
+@media screen and (max-width: 800px) {
+  .table__fieldsettings--active {
+    width: 60%;
+  }
+}
