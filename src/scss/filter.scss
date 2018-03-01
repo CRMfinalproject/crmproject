@@ -1,0 +1,392 @@
+$blue:#ADD8E6;
+$grey:#eaeaea;
+$darkblue:#1E90FF;
+
+$checked-color: #1E90FF;
+$unchecked-color: #000;
+$checkbox-height: 14px;
+$background-color:#667788;
+$light:#CDC9C9;
+$font-color:#efefef;
+$duration: .4s;
+
+.filter_container {
+  padding-top: 90px;
+  max-width: 1156px;
+  width:100%;
+}
+
+@font-face {
+  font-family: "HelveticaNeue";
+  src: url('../fonts/HelveticaNeueCyr-Medium.woff');
+}
+
+#modalFilter {
+
+  display: inline-block;
+  margin-left: 134px;
+  visibility: hidden;
+  background-color: #f5f5f5;
+  /*animation-name: slideIn;*/
+  z-index: 1;
+  animation-duration: 1s;
+  width: 986px;
+  height: 306px;
+  padding: 30px 40px 30px 40px;
+}
+
+#btnFilter {
+  background-color: $grey;
+  float: right;
+  width: 180px;
+  height: 40px;
+  color: #333;
+  font-weight: bold;
+  transition: .3s;
+  margin-right:38px;
+  margin-top: 38px;
+  border: none;
+  animation-duration: 2s;
+  font-size:11px;
+
+  &:active{
+  background-color:$blue;
+  }
+}
+
+.filter_btn__dropdown-arrow {
+  margin-left:10px;
+  margin-top:5px;
+  cursor: pointer;
+  border-radius: 2px;
+  border: 2px solid #0d71bb;
+  border-top-width: 0;
+  border-left-width: 0;
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  vertical-align: top;
+  transform: rotate(45deg);
+  animation-duration: 0.5s;
+
+}
+
+
+.filter_checkboxes {
+  display: flex;
+  list-style: none;
+  margin-bottom:20px;
+
+  li {
+    margin-top: 33px;
+  }
+  label {
+    margin-left: 30px;
+  }
+  .filter_checkboxes__name{
+    margin-left:10px;
+  }
+}
+
+.filter_priceDateBlock {
+  display: flex;
+}
+.filter_block-by-date{
+
+  h6{
+    margin-bottom:20px;
+    margin-right:30px;
+  }
+  input{
+    width:100px;
+  }
+  .filter_dateSpace{
+    margin-left:25px;
+
+  }
+  #linkdate1, #linkdate2 {
+    position: absolute;
+    text-decoration: underline;
+
+    font-style: italic;
+    background-color: #eaeaea;
+    border: none;
+
+  }
+
+  #linkdate2 {
+    left: 431px;
+    top: 365px;
+    color:$darkblue;
+  }
+  #linkdate1 {
+    left: 295px;
+    top: 365px;
+    color:$darkblue;
+  }
+
+
+}
+.filter_block-by-price {
+  margin-left: 10px;
+  h6 {
+    margin-bottom: 20px;
+    margin-left: -22px;
+  }
+  #minRangePrice{
+    margin-right:65px;
+  }
+
+
+}
+
+.filter_block-by-quantity {
+  margin-left: 50px;
+  h6{
+    margin-bottom: 20px;
+    margin-left: -22px
+  }
+  #maxRangeQuantity{
+    margin-left:121px;
+  }
+}
+  .filter_block-by-product {
+    margin-top: 35px;
+    input {
+      margin-top: 16px;
+      height: 30px;
+      margin-left:30px;
+      width: 185px;
+    }
+  }
+
+  #minRangePrice, #maxRangePrice, #minRangeQuantity, #maxRangeQuantity {
+    width: 40px;
+    height: 20px;
+  }
+#minRangePrice{
+  margin-right:8px;
+}
+#maxRangePrice,#maxRangeNumber {
+  margin-left:55px;
+}
+
+  //input RANGE style
+
+@mixin filter_range-slider($width, $height, $input-top, $input-bg-color, $input-thumb-color, $float:none, $input-height:7px, $input-border-radius:14px) {
+  position: relative;
+  width: $width;
+  height: $height;
+  float: $float;
+  text-align: center;
+
+  input[type="range"] {
+    pointer-events: none;
+    position: absolute;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-radius: $input-border-radius;
+    background: #CEE3F6;
+    left:48px;
+    top:-14px;
+    width: 110px;
+    outline: none;
+    height: $input-height;
+    margin: 0;
+    padding: 0;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 1;
+    outline: 0;
+    -webkit-appearance: none;
+    width: 11px;
+    height: 11px;
+    border: solid $checked-color 2.7px;
+    border-radius: $input-border-radius;
+
+
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, lighten($light, 10%)), color-stop(100%, white)); /* android <= 2.2 */
+    background-image: -webkit-linear-gradient(top, lighten($light, 10%) 0, white 100%); /* older mobile safari and android > 2.2 */
+  ;
+    background-image: linear-gradient(to bottom, lighten($light, 10%) 0, white 100%); /* W3C */
+  }
+
+  input[type="range"]::-moz-range-thumb {
+
+    pointer-events: all;
+    position: relative;
+    z-index: 10;
+    -moz-appearance: none;
+    width: $input-height;
+    height: $input-height;
+    border: none;
+    border-radius: $input-border-radius;
+
+  }
+
+  input[type="range"]::-ms-thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 10;
+    -ms-appearance: none;
+    width: $input-height;
+    height: $input-height;
+    border-radius: $input-border-radius;
+    border: 0;
+
+    input[type=range]::-moz-range-track {
+      position: relative;
+      z-index: -1;
+      background-color: rgba(0, 0, 0, 1);
+      border: 0;
+    }
+
+    input[type=range]:last-of-type::-moz-range-track {
+      -moz-appearance: none;
+      background: none transparent;
+      border: 0;
+    }
+
+    input[type=range]::-moz-focus-outer {
+      border: 0;
+    }
+  }
+}
+
+
+
+  section.filter_range-slider {
+    @include filter_range-slider(230px, 5px, #F1EFEF, #413F41, left);
+  }
+
+
+//checkboxes style
+
+@-moz-keyframes dothabottomcheck{
+  0% { height: 0; }
+  100% { height: $checkbox-height/2; }
+}
+
+@-webkit-keyframes dothabottomcheck{
+  0% { height: 0; }
+  100% { height: $checkbox-height/2; }
+}
+
+@keyframes dothabottomcheck{
+  0% { height: 0; }
+  100% { height: $checkbox-height/2;  }
+}
+
+@keyframes dothatopcheck{
+  0% { height: 0; }
+  50% { height: 0; }
+  100% { height: $checkbox-height * 1.2; }
+}
+@-webkit-keyframes dothatopcheck{
+  0% { height: 0; }
+  50% { height: 0; }
+  100% { height: $checkbox-height * 1.2; }
+}
+@-moz-keyframes dothatopcheck{
+  0% { height: 0; }
+  50% { height: 0; }
+  100% { height: $checkbox-height * 1.2; }
+}
+
+input[type=checkbox]{
+  display:none;
+}
+
+.filter_checkboxes__check-item {
+  height: $checkbox-height;
+  width: $checkbox-height;
+  background-color:white;
+
+  border: $checkbox-height * .1 solid $light;
+  border-radius: 3px;
+  position: relative;
+  display: inline-block;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-transition: border-color ease $duration/2;
+  -o-transition: border-color ease $duration/2;
+  -webkit-transition: border-color ease $duration/2;
+  transition: border-color ease $duration/2;
+  cursor:pointer;
+
+  &::before, &::after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: absolute;
+    height: 0;
+    width: $checkbox-height * .14;
+    background-color: $checked-color;
+    display: inline-block;
+    -moz-transform-origin: left top;
+    -ms-transform-origin: left top;
+    -o-transform-origin: left top;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    border-radius: 3px;
+    content: ' ';
+    -webkit-transition: opacity ease .5;
+    -moz-transition: opacity ease .5;
+    transition: opacity ease .5;
+  }
+
+  &::before {
+    top:$checkbox-height * .72;
+    left: $checkbox-height * .41;
+    box-shadow: 0 0 0  $background-color;
+    -moz-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+  }
+
+  &::after {
+    top: $checkbox-height * .37;
+    left: $checkbox-height * .06;
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+}
+
+input[type=checkbox]:checked + .filter_checkboxes__check-item,
+.filter_checkboxes__check-itemx.checked{
+  border-color:$checked-color;
+
+  &::after{
+    height: $checkbox-height * .5;
+    -moz-animation: dothabottomcheck $duration/2 ease 0s forwards;
+    -o-animation: dothabottomcheck $duration/2 ease 0s forwards;
+    -webkit-animation: dothabottomcheck $duration/2 ease 0s forwards;
+    animation: dothabottomcheck $duration/2 ease 0s forwards;
+  }
+
+  &::before{
+    height: $checkbox-height * 1.2;
+    -moz-animation: dothatopcheck $duration ease 0s forwards;
+    -o-animation: dothatopcheck $duration ease 0s forwards;
+    -webkit-animation: dothatopcheck $duration ease 0s forwards;
+    animation: dothatopcheck $duration ease 0s forwards;
+  }
+}
+
+//Animation arrow in button
+@keyframes arrowFilter{
+  from {transform:rotate(45deg)} to {transform:rotate(225deg)}
+}
+@keyframes arrowFilterback{
+  from {transform:rotate(225deg)} to {transform:rotate(45deg)}
+}

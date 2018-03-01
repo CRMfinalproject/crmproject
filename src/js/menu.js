@@ -45,11 +45,11 @@ burgerMenu.element.addEventListener('click', event => {
 });
 
 
-document.body.addEventListener('click', (event) => {
+burger.addEventListener('click', (event) => {
     let el = event.target;
     let shouldMenuClose = true;
 
-    while( el != document.body) {
+    while( el !== document.body) {
         let hasBurger = el.classList.contains(classBurger);
         let hasBurgerMenu = el.classList.contains(classBurgerCont);
         let hasMenu = el.classList.contains(classMenu);
@@ -58,7 +58,6 @@ document.body.addEventListener('click', (event) => {
             shouldMenuClose = false;
             break;
         }
-
         el = el.parentNode;
     }
 
