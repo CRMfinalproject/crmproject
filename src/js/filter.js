@@ -225,6 +225,7 @@ function getVals() {
     let parent = this.parentNode;
     let slides = parent.getElementsByTagName("input");
     let slide1 = parseFloat(slides[0].value);
+    
     let slide2 = parseFloat(slides[1].value);
     if (slide1 > slide2) {
         let tmp = slide2;
@@ -236,6 +237,7 @@ function getVals() {
         case 'filter-block-by-price':
             document.getElementById("minRangePrice").value = slide1;
             document.getElementById("maxRangePrice").value = slide2;
+
             Tablefilter.priceMin = slide1;
             Tablefilter.priceMax = slide2;
             filterMinMaxPrice();
@@ -266,6 +268,8 @@ window.onload = function () {
         }
     }
 };
+
+
 
 //FILTER CHECKBOX BY CATEGORY
 
