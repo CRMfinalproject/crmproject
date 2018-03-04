@@ -19,7 +19,7 @@ const path = {
     scss: "src/scss/*.scss",
     js: "src/js/*.js",
     img: "src/images/**/*.+(png|jpg|gif|svg)",
-    fonts: "src/fonts/**/*.*"
+    fonts: "src/fonts/*.*"
   },
   dist: {
     html: "dist/html",

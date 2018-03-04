@@ -1,0 +1,71 @@
+<div class="filter_container">
+    <div id="filter_btnBlock">
+        <button id="btnFilter" class="filter_btn" onclick="openModal()"><span id="openCloseFilter">ОТКРЫТЬ</span>
+            ФИЛЬТРЫ<span class="filter_btn__dropdown-arrow"></span></button>
+    </div>
+    <div class="filter_modal" id="modalFilter">
+        <div class="filter_block_by-status" id = "filter_block_by-status">
+            <h6>ФИЛЬР ПО КАТЕГОРИИ:</h6>
+            <ul class="filter_checkboxes">
+                <li><input type="checkbox" id = "checkbox1" class = "filter_checkboxes__input" onclick = "checkControl()" name="status" value = "1">
+                    <label for="checkbox1"  class="filter_checkboxes__check-item"></label><span class = "filter_checkboxes__name">Обувь</span></li>
+                <li><input type="checkbox" id = "checkbox2"  class = "filter_checkboxes__input" onclick = "checkControl()" name="status" value="2">
+                    <label for="checkbox2" class="filter_checkboxes__check-item" ></label><span class = "filter_checkboxes__name">Для животных</span></li>
+                <li><input type="checkbox" id = "checkbox3"  class = "filter_checkboxes__input" onclick = "checkControl()" name="status" value="3">
+                    <label for="checkbox3" class="filter_checkboxes__check-item" ></label><span class = "filter_checkboxes__name">Ремни</span></li>
+                <li><input type="checkbox" id = "checkbox4"  class = "filter_checkboxes__input" onclick = "checkControl()" name="status" value="4">
+                    <label for="checkbox4" class="filter_checkboxes__check-item" ></label><span class = "filter_checkboxes__name">Косметика</span></li>
+                <li><input type="checkbox" id = "checkbox5"  class = "filter_checkboxes__input" onclick = "checkControl()" name="status" value="5">
+                    <label for="checkbox5" class="filter_checkboxes__check-item" ></label><span class = "filter_checkboxes__name">Кожа</span></li>
+                <li> <input type="checkbox" id = "checkbox6"  name="status" class = "filter_checkboxes__input" onclick = "checkControl()"  value="6">
+                    <label for="checkbox6" class="filter_checkboxes__check-item"></label><span class = "filter_checkboxes__name">Книги</span></li>
+            </ul>
+        </div>
+
+        <div class="filter_priceDateBlock">
+
+            <div class="filter_block-by-date">
+                <h6>ФИЛЬТР ПО ДАТЕ:</h6>
+                <span class="filter_dateSpace">oт</span>
+                <button id="linkdate1" onclick="linkdate1()">Выбрать</button>
+                <input id="inputdateMin" onfocusout = "filterMimMaxDate()" type="date" value="" placeholder="Выбрать" class="">
+                <span>- до </span>
+                <button id="linkdate2" onclick="linkdate2()">Выбрать</button>
+                <input id="inputdateMax" onfocusout = "filterMimMaxDate()" type="date" value="" placeholder="Выбрать" class="">
+            </div>
+
+            <div class = "filter_block-by-price" id="filter-block-by-price">
+                <h6>ФИЛЬТР ПО ЦЕНЕ:</h6>
+                <input id="minRangePrice" class = "minRangePrice"  type="number" onkeyup = "inputRangePrice()" value = "65">
+                <input id="maxRangePrice" class = "maxRangePrice" type="number"  onkeyup = "inputRangePrice()" value = "9999"> грн.
+                <section class="filter_range-slider" id = "filter_range-slider">
+                    <span class="rangeValues"></span>
+                    <input class = "filter_range-slider__slide-price" id ="minPrice"  value="65" min="65" max="9999" step="10" type="range" data-price = "price">
+                    <input  class = "filter_range-slider__slide-price" id ="maxPrice"  value="9999" min="65" max="9999" step="10" type="range" data-price = "price">
+                </section>
+            </div>
+
+            <div class="filter_block-by-quantity" id="filter-block-by-quantity">
+                <h6>ФИЛЬТР ПО КОЛИЧЕСТВУ:</h6>
+                <input id="minRangeQuantity" class = "minRangeNumber" onkeyup = "inputRangeCount()" type="number" value = "10">
+                <input id="maxRangeQuantity" class = "maxRangeNumber" onkeyup = "inputRangeCount()" type="number"  value = "999"> шт.
+                <section class="filter_range-slider">
+                    <span class="rangeValues"></span>
+                    <input class = "filter_range-slider__slide-quantity" id = "minCount" value="10" min="10" max="999" step="1" type="range">
+                    <input class = "filter_range-slider__slide-quantity" id = "maxCount" value="999" min="10" max="999" step="1" type="range">
+                </section>
+            </div>
+        </div>
+
+        <div class="filter_block-by-product">
+            <h6>ФИЛЬТР ПО НАЗВАНИЮ:</h6>
+            <div class="filter_block-by-product__search-select-by-name">
+                <input type="text" id = "searchSelectByname" onkeyup="searchSelectByName()"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
