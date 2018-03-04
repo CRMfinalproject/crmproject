@@ -12,6 +12,7 @@ const rigger = require('gulp-rigger');
 const babel = require("gulp-babel");
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
+const order = require("gulp-order");
 
 const path = {
   src: {
@@ -105,6 +106,10 @@ gulp.task('js', () => {
     .pipe(babel({
       presets: ['env']
     }))
+    .pipe(order([
+      'table.js',
+      '*.js'
+    ]))
     .pipe(concat('index.js'))
     // .pipe(uglify())
     .pipe(gulp.dest(path.dist.js))
