@@ -85,11 +85,11 @@ function editHandler(event) {
             currentTh[i].innerHTML = `<input type="date" value="${currentTh[i].textContent}" class="products-list__cell__input">`;
         } else if(currentTh[i].classList.contains('category')) {
             currentTh[i].innerHTML = `
-                <select name="category">
-                    <option>Volvo</option>
-                    <option>Saab</option>
-                    <option>Fiat</option>
-                    <option>Audi</option>
+                <select name="category" class="category">
+                    <option>Игрушки</option>
+                    <option>Косметика</option>
+                    <option>Сумки</option>
+                    <option>Обувь</option>
                 </select>`
         } else {
             currentTh[i].innerHTML = `<input type="text" value="${currentTh[i].textContent}" class="products-list__cell__input">`;
@@ -163,6 +163,7 @@ function confirmHandler(event) {
     currentTh = currentTr.children;
     th = event.target.parentElement.parentElement;
     let divConfirm = event.target.parentElement;
+
     if(divConfirm.classList.contains("edit")) {
         const inpValue = [];
 
@@ -179,6 +180,9 @@ function confirmHandler(event) {
                     el.innerHTML = child.value;
                 };
             };
+            if (child.tagName == 'SELECT') {
+                el.innerHTML = child.value;;
+            }
         };
         
         th.children[2].classList.toggle("edit"); 
