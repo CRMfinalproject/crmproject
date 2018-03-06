@@ -1,0 +1,90 @@
+.table-control {
+    padding: 30px 41px 13px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+
+    &__button {
+        text-transform: uppercase;
+        color: #fff;
+        font-size: 10px;
+        font-family: "AvenirNext", sans-serif;
+        font-weight: 600;
+        border-radius: 3px;
+        padding: 0;
+        padding-left: 18px;
+        height: 36px;
+        margin-right: 15px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+
+        &--actions {
+            width: 195px;
+            background-color: #6897dc;
+        }
+
+        &--add-new {
+            width: 145px;
+            background-color: #73cc83;
+        }
+
+        &__icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+        }
+
+        &__arrow {
+            margin-left: 10px;
+            margin-top: -5px;
+            transform: rotate(45deg);
+            border: 2px solid #fff;
+            border-top-width: 0;
+            border-left-width: 0;
+            width: 7px;
+            height: 7px;
+        }
+
+        &__title {
+            line-height: 36px;
+        }
+    }
+
+    &__submenu {
+        position: absolute;
+        width: 195px;
+        height: 46px;
+        z-index: 1;
+        top: 150%;
+        left: 0%;
+        color: #7a9ad0;
+        font-size: 13px;
+        font-family: "AvenirNext", sans-serif;
+        font-weight: normal;
+        background-color: white;
+        border: 1px solid #d0d0d0;
+        border-radius: 5px;
+        text-transform: none;
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        display: none;
+
+        &--opened &{
+            display: flex;
+        }
+        &--opened .table-control__button__arrow {
+            // transform: rotate(225deg);
+            // margin-top: 0;
+        }
+
+        &__icon {
+            width: 15px;
+            height: 15px;
+            margin: 10px;
+        }
+    }
+}
