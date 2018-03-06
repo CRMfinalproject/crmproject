@@ -7,7 +7,7 @@ class Table {
 
         //open table
         let containerTbl = `
-        <div><table class="data-table" >`;
+        <table class="data-table" >`;
 
         // header
         containerTbl += `<tr class = "row-table">`;
@@ -41,8 +41,8 @@ class Table {
 
 
         // close table
-        containerTbl += `</table></div>`;
-        document.body.innerHTML = containerTbl;
+        containerTbl += `</table>`;
+        document.querySelector(".content").innerHTML += containerTbl;
     }
 
 
