@@ -32,17 +32,13 @@ class TableControlBlock {
 
     showActionSubmenu() {
         this.actionSubmenu.classList.toggle("table-control__submenu--opened");
-                debugger;
+                // debugger;
         let arrow = this.container.querySelector(".table-control__button__arrow");
         // console.log(arrow.style.transform.substring(7,10));
+        let angle;
         if (this.actionSubmenu.classList.contains("table-control__submenu--opened")) {
-
-        } else {
-            let angle = 45;
-            let id = setInterval(animation, 10);
-        }
-
-            function animation(angle) {
+            angle = 45;
+            let id = setInterval(() => {
                 // debugger;
                 if (angle == 225) {
                     clearInterval(id);
@@ -50,7 +46,38 @@ class TableControlBlock {
                     angle = angle + 10;
                     arrow.style.transform = `rotate(${angle}deg)`;
                 }
-            }
+            }, 10);
+        } else {
+            angle = 225;
+            let id = setInterval(() => {
+                // debugger;
+                if (angle == 45) {
+                    clearInterval(id);
+                } else {
+                    angle = angle - 10;
+                    arrow.style.transform = `rotate(${angle}deg)`;
+                }
+            }, 10);
+        };
+        // let id = setInterval( () => {
+        //         // debugger;
+        //         if (angle == 225 || angle == 45) {
+        //             clearInterval(id);
+        //         } else {
+        //             angle = angle + 10;
+        //             arrow.style.transform = `rotate(${angle}deg)`;
+        //         }
+        //     }, 10);
+
+            // function arrowAnimation(angle) {
+            //     debugger;
+            //     if (angle == 225) {
+            //         clearInterval(id);
+            //     } else {
+            //         angle = angle + 10;
+            //         arrow.style.transform = `rotate(${angle}deg)`;
+            //     }
+            // }
     }
 }
 
