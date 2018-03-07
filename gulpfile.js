@@ -107,6 +107,7 @@ gulp.task('js', () => {
       presets: ['env']
     }))
     .pipe(order([
+      'data.js',
       'table.js',
       '*.js'
     ]))
