@@ -1,6 +1,6 @@
 class Pagination {
     constructor(data) {
-     debugger;       
+    //  debugger;       
         document.body.querySelector(".content").innerHTML += `<div class="pagination"></div>`;    
         this.container = document.body.querySelector(".pagination");
 
@@ -89,12 +89,6 @@ class Pagination {
         let endRow = this.currentPage * 10 - 1;
         if (endRow >= data.length) {
             endRow = data.length-1};
-        // for (let i = startRow; i <= endRow; i++) {
-        //     data.forEach(field => {
-        //         containerTbl += `<td>${data[i][field.name]}</td>`;
-        //     });
-        //     containerTbl += `</tr>`;
-        // }
         table.renderTable(data.slice(startRow, endRow));
         this.render(this.pagesToShow()); 
   

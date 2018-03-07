@@ -1,18 +1,14 @@
 class Tabs {
     constructor () {
-        debugger;
+        // debugger;
         document.body.querySelector(".content").innerHTML += `<div class="tabs"></div>`;
         this.tabsContainer = document.body.querySelector(".tabs");
         this.render();
-        this.tabsContainer.addEventListener('click', this.toggle.bind(this));
-        // this.container.addEventListener('click', this.switchPages.bind(this));
-        // this.tabsContainer.addEventListener('click', this.test.bind(this));
+        document.body.querySelector(".content").addEventListener('click', this.toggle.bind(this));
     }
-    // test () {
-    //     console.log(`test`);
-    // }
+
     toggle (event) {
-        debugger;
+        // debugger;
         if (!event.target.classList.contains("tabs__item--active") && event.target.classList.contains("tabs__item")) {
             document.body.querySelector(".tabs__item--active").classList.remove("tabs__item--active");    
             event.target.classList.add("tabs__item--active");
