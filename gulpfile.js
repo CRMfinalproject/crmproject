@@ -109,6 +109,7 @@ gulp.task('js', () => {
     .pipe(order([
       'data.js',
       'tabs.js',
+      'table-control-block.js',
       'table.js',
       '*.js'
     ]))
@@ -142,7 +143,7 @@ gulp.task('server', () => {
       baseDir: "./dist",
       index: '/html/index.html'
     },
-    // browser: 'google chrome',
+    browser: 'google chrome',
     // Говорим спрятать надоедливое окошко обновления в браузере
     notify: false
   });
