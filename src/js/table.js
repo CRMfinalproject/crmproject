@@ -49,5 +49,5 @@ class Table {
     }
 }
 
-let table = new Table(data.slice(0,10));
+let table = new Table(data.slice(0, ROWS_PER_PAGE));
 
