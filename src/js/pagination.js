@@ -1,6 +1,6 @@
 class Pagination {
     constructor(data) {
-    //  debugger;       
+     debugger;       
         document.body.querySelector(".content").innerHTML += `<div class="pagination"></div>`;    
         this.container = document.body.querySelector(".pagination");
 
