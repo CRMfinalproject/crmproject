@@ -89,7 +89,7 @@ class Pagination {
         let endRow = this.currentPage * ROWS_PER_PAGE - 1;
         if (endRow >= data.length) {
             endRow = data.length-1};
-        table.renderTable(data.slice(startRow, endRow));
+        table.renderData(data.slice(startRow, endRow));
         this.render(this.pagesToShow()); 
   
     }

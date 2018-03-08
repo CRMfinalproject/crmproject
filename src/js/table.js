@@ -1,50 +1,55 @@
 class Table {
     constructor(data = {}) {
-        document.body.querySelector(".content").innerHTML += `<table class="data-table"></table>`;
-        this.containerTbl = document.body.querySelector(".data-table");
-        this.renderTable(data);
+        document.body.querySelector(".content").innerHTML += 
+        `<table class="data-table">
+            <thead class="data-table-header"></thead>
+            <tbody class="data-table-body"></tbody>
+        </table>`;
+
+      
+        this.renderHeader();
+        this.renderData(data);
     }
 
-    renderTable(data) {
-        // debugger;
-        //open table
-        // let containerTbl = `
-        // <table class="data-table" >`;
-
+    renderHeader() {
         // header
-        this.containerTbl = `<tr class = "row-table">`;
-        this.containerTbl += `<th class = "order-ctrl"><input type = "checkbox" class ="checkbox"></input></th>`
-        this.containerTbl += `<th class = "order-ctrl">Название товара</th>`;
-        this.containerTbl += `<th class = "order-ctrl">Категория</th>`;
-        this.containerTbl += `<th class = "order-ctrl">Количество на складе</th>`;
-        this.containerTbl += `<th class = "order-ctrl">Цена</th>`;
-        this.containerTbl += `<th class = "order-ctrl">Дата создания</th>`;
-        this.containerTbl += `<th class = "order-ctrl">Вес</th>`;
-        this.containerTbl += `<th class = "order-ctrl">Размеры(ШхВхД)</th>`;
-        this.containerTbl += `<th class = "order-ctrl"></th>`; // for settings
-        this.containerTbl += `</tr>`;
+        let headerContent = "";
+        headerContent = `<tr class = "row-table">`;
+        headerContent += `<th class = "order-ctrl"><input type = "checkbox" class ="checkbox"></input></th>`
+        headerContent += `<th class = "order-ctrl">Название товара</th>`;
+        headerContent += `<th class = "order-ctrl">Категория</th>`;
+        headerContent += `<th class = "order-ctrl">Количество на складе</th>`;
+        headerContent += `<th class = "order-ctrl">Цена</th>`;
+        headerContent += `<th class = "order-ctrl">Дата создания</th>`;
+        headerContent += `<th class = "order-ctrl">Вес</th>`;
+        headerContent += `<th class = "order-ctrl">Размеры(ШхВхД)</th>`;
+        headerContent += `<th class = "order-ctrl"></th>`; // for settings
+        headerContent += `</tr>`;
 
-        
-        // data
+        document.querySelector(".data-table-header").innerHTML = headerContent;
+    }
+
+
+    // data
+    renderData(data) {
+        let bodyContent = "";
         data.map(row => {
-            
-            this.containerTbl += `<tr class = "row-table">`;
-            this.containerTbl += `<td class="table-column-checkbox"><input type="checkbox" class ="checkbox row-table"></input></td>`;
-            this.containerTbl += `<td class="table-column-name"><a href = "Ссылка на товар/${row.id}" class = "table-column-name">${row.name}</a></td>`;
-            this.containerTbl += `<td class="table-column-category"><span>${row.category}</span></td>`;
-            this.containerTbl += `<td class="table-column-count"><span>${row.count} шт</span></td>`;
-            this.containerTbl += `<td class="table-column-price"><span>${row.price} грн</span></td>`;
-            this.containerTbl += `<td class="table-column-creationDate"><span>${row.creationDate}</span><span></span></td>`;
-            this.containerTbl += `<td class="table-column-weight"><span>${row.weight} грамм</span></td>`;
-            this.containerTbl += `<td class="table-column-size"><span>${row.size} см </span></td>`;
-            this.containerTbl += `<td class="table-column-settings"><span>...</span></td>`; // for settings
-            this.containerTbl += `</tr>`;
+            bodyContent += `<tr class = "row-table">`;
+            bodyContent += `<td class="table-column-checkbox"><input type="checkbox" class ="checkbox row-table"></input></td>`;
+            bodyContent += `<td class="table-column-name"><a href = "Ссылка на товар/${row.id}" class = "table-column-name">${row.name}</a></td>`;
+            bodyContent += `<td class="table-column-category"><span>${row.category}</span></td>`;
+            bodyContent += `<td class="table-column-count"><span>${row.count} шт</span></td>`;
+            bodyContent += `<td class="table-column-price"><span>${row.price} грн</span></td>`;
+            bodyContent += `<td class="table-column-creationDate"><span>${row.creationDate}</span><span></span></td>`;
+            bodyContent += `<td class="table-column-weight"><span>${row.weight} грамм</span></td>`;
+            bodyContent += `<td class="table-column-size"><span>${row.size} см </span></td>`;
+            bodyContent += `<td class="table-column-settings"><span>...</span></td>`; // for settings
+            bodyContent += `</tr>`;
         });
 
 
-        // close table
-        // containerTbl += `</table>`;
-        document.querySelector(".data-table").innerHTML = this.containerTbl;
+        
+        document.querySelector(".data-table-body").innerHTML = bodyContent;
 
     }
 }
