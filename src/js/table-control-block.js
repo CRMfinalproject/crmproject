@@ -1,7 +1,9 @@
 class TableControlBlock {
     constructor(addText) {
         //  debugger;  
-        document.body.querySelector(".content").innerHTML += `<div class="table-control"></div>`;     
+        if (!document.body.querySelector(".table-control")) {
+            document.body.querySelector(".content").innerHTML += `<div class="table-control"></div>`;     
+        };
         this.container = document.body.querySelector(".table-control");
         this.addText = addText;
         this.render();
