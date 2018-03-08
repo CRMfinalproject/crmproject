@@ -1,9 +1,3 @@
-const FIELD_SETTINGS = document.querySelector('#js-field-settings');
-const FIELD_SETTINGS_BTN = document.querySelector('#js-field-settings-btn');
-const FIELD_SETTINGS_HEADING = document.querySelector('#js-field-settings-heading');
-let fieldSettingsHeadingText = null;
-let fieldSettingsForm = null;
-
 let table = {
     fields: [
         { name: "name", view: "Название товара", hidden: false },
@@ -18,54 +12,47 @@ let table = {
 
 class Fieldsettings {
     constructor() {
+        this.container = document.querySelector('.table__fieldsettings');
+        this.triggerBtn = document.querySelector('.table__fieldsettings__btn');
+        this.headingText = document.querySelector('.table__fieldsettings_heading__text');
+        this.form = {};
+        this.selectedField = {};
+        this.selectedCheckbox = {};
+        this.container.addEventListener('click', () => this.container.classList.contains('table__fieldsettings--active') ? (event.target.classList.contains('table__fieldsettings__item') || event.target.classList.contains('table__fieldsettings__checkbox') ? this.updateField() : this.hide()) : this.render());
+        document.body.addEventListener('click', () => {
+            if (this.container.classList.contains('table__fieldsettings--active')) {
+                if (event.target !== this.triggerBtn && event.target.classList.contains('table__fieldsettings__item') === false && event.target.classList.contains('table__fieldsettings__checkbox') === false) {
+                    this.hide();
+                }
+            }
+        })
     }
     render() {
-            FIELD_SETTINGS.classList.add('table__fieldsettings--active');
-            FIELD_SETTINGS_BTN.setAttribute('src', '../images/settings_active.png');
-            fieldSettingsHeadingText = document.createElement('span');
-            FIELD_SETTINGS_HEADING.insertBefore(fieldSettingsHeadingText, FIELD_SETTINGS_BTN);
-            FIELD_SETTINGS_HEADING.classList.add("table__fieldsettings_heading__text");
-            fieldSettingsHeadingText.textContent = "Настройка полей";
-            fieldSettingsForm = document.createElement('form');
-            FIELD_SETTINGS.appendChild(fieldSettingsForm);
-            fieldSettingsForm.classList.add("table__fieldsettings__form");
-            fieldSettingsForm.innerHTML = table.fields.map((elem) => elem.hidden === false ? `<p class="table__fieldsettings__item"><input type="checkbox" class="table__fieldsettings__checkbox" name='${elem.name}' checked> ${elem.view}</p>` : `<p class="table__fieldsettings__item"><input type="checkbox" class="table__fieldsettings__checkbox" name='${elem.name}'> ${elem.view}</p>`).reduce((accum, elem) => accum + elem);
+            this.container.classList.add('table__fieldsettings--active');
+            this.triggerBtn.setAttribute('src', '../images/field_settings_active.png');
+            this.headingText.textContent = "Настройка полей";
+            this.form = document.createElement('form');
+            this.container.appendChild(this.form);
+            this.form.classList.add("table__fieldsettings__form");
+            this.form.innerHTML = table.fields.map((elem) => elem.hidden === false ? `<label class="table__fieldsettings__item"><input type="checkbox" class="table__fieldsettings__checkbox" name='${elem.name}' checked> ${elem.view}</label>` : `<label class="table__fieldsettings__item"><input type="checkbox" class="table__fieldsettings__checkbox" name='${elem.name}'> ${elem.view}</label>`).reduce((accum, elem) => accum + elem);
         };
     hide() {
-        FIELD_SETTINGS.classList.remove('table__fieldsettings--active');
-        FIELD_SETTINGS_BTN.setAttribute('src', '../images/settings.png');
-        FIELD_SETTINGS_HEADING.removeChild(fieldSettingsHeadingText);
-        FIELD_SETTINGS.removeChild(fieldSettingsForm);
-    };
-    selectFields() {
-        let selectedField = event.target;
-        let selectedFieldCheckbox = selectedField.querySelector('.table__fieldsettings__checkbox');
-        if (selectedFieldCheckbox.hasAttribute('checked')) {
-            selectedFieldCheckbox.removeAttribute('checked');
-            table.fields.find((el) => el.name === selectedFieldCheckbox.name).hidden = true;
-        } else {
-            selectedFieldCheckbox.setAttribute('checked', true);
-            table.fields.find((el) => el.name === selectedFieldCheckbox.name).hidden = false;
+        if (event.target.classList.contains('table__fieldsettings__item') === false && event.target.classList.contains('table__fieldsettings__checkbox') === false) {
+            this.container.classList.remove('table__fieldsettings--active');
+            this.triggerBtn.setAttribute('src', '../images/field_settings.png');
+            this.headingText.textContent = '';
+            this.container.removeChild(this.form);
         }
-        //table.render(); --таблица перерисовывается после изменения каждого чекбокса или после закрытия формы?
+    };
+    updateField() {
+        if(event.target.classList.contains('table__fieldsettings__item')) {
+            this.selectedField = event.target;
+            this.selectedFieldCheckbox = this.selectedField.querySelector('.table__fieldsettings__checkbox');
+        } else {
+            this.selectedFieldCheckbox = event.target;
+        }
+        this.selectedFieldCheckbox.checked ? table.fields.find((el) => el.name === this.selectedFieldCheckbox.name).hidden = false : table.fields.find((el) => el.name === this.selectedFieldCheckbox.name).hidden = true;
+        //table.render();
     }
 }
-let fieldSettings = new Fieldsettings();
-
-FIELD_SETTINGS.addEventListener('click', function(){
-    if (FIELD_SETTINGS.classList.contains('table__fieldsettings--active') === false) {
-        fieldSettings.render();
-    } else if (FIELD_SETTINGS.classList.contains('table__fieldsettings--active') && event.target !== FIELD_SETTINGS_BTN) {
-        fieldSettings.selectFields();
-    } else {
-        fieldSettings.hide();
-    }
-});
-
-document.body.addEventListener('click', function() {
-    if (FIELD_SETTINGS.classList.contains('table__fieldsettings--active')) {
-        if (event.target.parentNode !== fieldSettingsForm && event.target.parentNode !== FIELD_SETTINGS_HEADING) {
-            fieldSettings.hide();
-        }
-    }
-});
+let productFieldSettings = new Fieldsettings();

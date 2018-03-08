@@ -11,13 +11,20 @@
   width: 24px;
   height: 24px;
   margin-top: 20px;
+  margin-right: 10px;
   padding-top: 24px;
   border: 1px solid transparent;
   cursor: pointer;
 }
 
+.table__fieldsettings_btn {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+}
+
 .table__fieldsettings--active {
-  width: 20%;
+  width: 17%;
   height: auto;
   transition: left -500ms;
   border: 1px solid #8a8a8a;
@@ -31,8 +38,8 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
-  width: 90%;
-  margin: 0 auto 1em;
+  width: 85%;
+  margin: 0 10px 0.5em auto;
   height: 25px;
   color: #8a8a8a;
 }
@@ -43,14 +50,15 @@
 
 .table__fieldsettings__form {
   display: block;
-  width: 90%;
+  width: 80%;
   margin: auto;
 }
 
 .table__fieldsettings__item {
-    margin: 1em auto;
+  display: block;
+  padding: 0.5em 0;
+  cursor: pointer;
 }
-
 
 @media screen and (max-width: 800px) {
   .table__fieldsettings--active {
