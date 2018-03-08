@@ -59,7 +59,7 @@
     &__submenu {
         position: absolute;
         width: 195px;
-        height: 46px;
+        height: 40px;
         z-index: 1;
         top: 150%;
         left: 0%;
@@ -76,7 +76,7 @@
         align-items: baseline;
         display: none;
 
-        &--opened &{
+        &--opened & {
             display: flex;
         }
         &--opened .table-control__button__arrow {

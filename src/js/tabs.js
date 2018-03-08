@@ -5,6 +5,7 @@ class Tabs {
         this.tabsContainer = document.body.querySelector(".tabs");
         this.render();
         document.body.querySelector(".content").addEventListener('click', this.toggle.bind(this));
+        // document.body.querySelector(".tabs").addEventListener('click', this.toggle.bind(this));
     }
 
     toggle (event) {
