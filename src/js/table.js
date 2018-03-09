@@ -1,12 +1,12 @@
 class Table {
     constructor(data = {}) {
-        document.body.querySelector(".content").innerHTML += 
+        document.body.querySelector(".content").innerHTML +=
         `<table class="data-table">
             <thead class="data-table-header"></thead>
             <tbody class="data-table-body"></tbody>
         </table>`;
 
-      
+
         this.renderHeader();
         this.renderData(data);
     }
@@ -48,7 +48,7 @@ class Table {
         });
 
 
-        
+
         document.querySelector(".data-table-body").innerHTML = bodyContent;
 
     }

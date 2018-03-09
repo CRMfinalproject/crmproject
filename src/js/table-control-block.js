@@ -1,8 +1,8 @@
 class TableControlBlock {
     constructor(addText) {
-        //  debugger;  
+        //  debugger;
         if (!document.body.querySelector(".table-control")) {
-            document.body.querySelector(".content").innerHTML += `<div class="table-control"></div>`;     
+            document.body.querySelector(".content").innerHTML += `<div class="table-control"></div>`;
         };
         this.container = document.body.querySelector(".table-control");
         this.addText = addText;
@@ -20,10 +20,15 @@ class TableControlBlock {
             <div class="table-control__button__title">Действия с выбранными</div>
             <div class="table-control__button__arrow"></div>
         </div>
+        
         <div class="table-control__button table-control__button--add-new">
             <img src="../images/round-add-button.svg" alt="+" class="table-control__button__icon">
             <div class="table-control__button__title">${this.addText}</div>
-        </div> `;
+        </div> 
+        
+        
+        
+        `;
     }
 
     renderActionSubmenu() {
@@ -32,12 +37,13 @@ class TableControlBlock {
         <div class="table-control__submenu">
             <img src="../images/garbage.svg" alt="+" class="table-control__submenu__icon">
             <div class="table-control__button__title">Удалить</div>
-        </div>`;
+        </div>
+        `;
     }
 
     showActionSubmenu(event) {
         // debugger;
-        if (event.target.classList.contains("table-control__button--actions") || 
+        if (event.target.classList.contains("table-control__button--actions") ||
             event.target.parentElement.classList.contains("table-control__button--actions")) {
             let actionsButton = document.body.querySelector(".table-control__button--actions");
             actionsButton.classList.toggle("table-control__submenu--opened");
@@ -52,7 +58,7 @@ class TableControlBlock {
                         angle = angle + 10;
                         arrow.style.transform = `rotate(${angle}deg)`;
                     }
-                }, 10);
+                }, 25);
             } else {
                 angle = 225;
                 let id = setInterval(() => {
@@ -62,10 +68,10 @@ class TableControlBlock {
                         angle = angle - 10;
                         arrow.style.transform = `rotate(${angle}deg)`;
                     }
-                }, 10);
+                }, 25);
             };
         }
-        
+
     }
 }
 

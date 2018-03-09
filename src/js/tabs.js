@@ -11,7 +11,7 @@ class Tabs {
     toggle (event) {
         // debugger;
         if (!event.target.classList.contains("tabs__item--active") && event.target.classList.contains("tabs__item")) {
-            document.body.querySelector(".tabs__item--active").classList.remove("tabs__item--active");    
+            document.body.querySelector(".tabs__item--active").classList.remove("tabs__item--active");
             event.target.classList.add("tabs__item--active");
         }
 
