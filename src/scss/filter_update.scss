@@ -11,39 +11,44 @@ $font-color:#efefef;
 $duration: .4s;
 
 .filter_container {
-    //padding-top: 90px;
+
     max-width: 1156px;
     width:100%;
     font-family:"HelveticaNeue";
-    //height:10px;
+
 
 }
+
 .main {
     position:relative;
 
 }
+
 @font-face {
     font-family: "HelveticaNeue";
     src: url('../fonts/HelveticaNeueCyr-Medium.woff');
 }
 .table-control{
     position:relative;
+    width:1024px;
 }
 #modalFilter {
     position:absolute;
     display: inline-block;
-    margin: 0 10%;
+    margin: 0 13%;
     visibility: hidden;
     background-color: #f5f5f5;
     /*animation-name: slideIn;*/
     z-index: 10;
     animation-duration: 1s;
-
-    width: 78.5%;
+    font-size:12.4px;
+    width: 72%;
     height: 6px;
-    padding: 30px 40px 30px 40px;
-    top:200px;
-    //left:230px;
+    padding: 20px 40px 20px 30px;
+    top:160px;
+   h6{
+         font-size:10px;
+     }
 }
 
 
@@ -56,7 +61,7 @@ $duration: .4s;
     color: #333;
     font-weight: bold;
     transition: .3s;
-    margin-left:750px;
+    margin-left:840px;
     margin-top: 75px;
     border: none;
     animation-duration: 2s;
@@ -105,18 +110,21 @@ $duration: .4s;
 
 .filter_priceDateBlock {
     display: flex;
+    margin-top:35px;
+    flex-wrap:wrap;
 }
 .filter_block-by-date{
 
     h6{
+
         margin-bottom:20px;
         margin-right:30px;
     }
     input{
-        width:100px;
+        width:90px;
     }
     .filter_dateSpace{
-        margin-left:25px;
+        margin-left:20px;
 
     }
     #linkdate1, #linkdate2 {
@@ -130,47 +138,50 @@ $duration: .4s;
     }
 
     #linkdate2 {
-        left: 237px;
-        top: 148px;
+        left: 195px;
+        top: 152px;
         color:$darkblue;
+        font-size:12px;
     }
     #linkdate1 {
-        left: 93px;
-        top: 148px;
+        left: 73px;
+        top: 152px;
         color:$darkblue;
+        font-size:12px;
     }
 
 
 }
 .filter_block-by-price {
-    margin-left: 10px;
+    margin-left: 30px;
     h6 {
         margin-bottom: 20px;
-        margin-left: -22px;
+        margin-left:-5px;
+
     }
     #minRangePrice{
-        margin-right:65px;
+        margin-right:62px;
     }
 
 
 }
 
 .filter_block-by-quantity {
-    margin-left: 50px;
+    margin-left: 25px;
     h6{
         margin-bottom: 20px;
-        margin-left: -22px
+
     }
     #maxRangeQuantity{
-        margin-left:121px;
+        margin-left:107px;
     }
 }
 .filter_block-by-product {
-    margin-top: 35px;
+    margin-top: 20px;
     input {
         margin-top: 16px;
         height: 30px;
-        margin-left:30px;
+        margin-left:23px;
         width: 185px;
     }
 }
@@ -179,13 +190,16 @@ $duration: .4s;
     width: 40px;
     height: 20px;
 }
-#minRangePrice{
-    margin-right:8px;
-}
-#maxRangePrice,#maxRangeNumber {
-    margin-left:55px;
-}
 
+//#minRangePrice{
+//    margin-right:8px;
+//}
+#maxRangePrice,#maxRangeQuantity {
+    margin-left:45px;
+}
+#minRangePrice, #minRangeQuantity{
+    margin-left:14px;
+}
 //input RANGE style
 
 @mixin filter_range-slider($width, $height, $input-top, $input-bg-color, $input-thumb-color, $float:none, $input-height:7px, $input-border-radius:14px) {
@@ -203,13 +217,14 @@ $duration: .4s;
         border: none;
         border-radius: $input-border-radius;
         background: #CEE3F6;
-        left:48px;
+        left:61px;
         top:-14px;
-        width: 110px;
+        width: 95px;
         outline: none;
         height: $input-height;
         margin: 0;
         padding: 0;
+
         //overflow: hidden;
     }
 

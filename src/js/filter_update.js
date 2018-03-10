@@ -29,10 +29,10 @@ const filter_merge = document.querySelector (".table-control");
 //OPEN MODAL WIN
 
 function openModal() {
-    filter_merge.style.padding = "30px 41px 400px 41px"
+    filter_merge.style.padding = "30px 41px 390px 41px"
     link1.style.visibility = "visible";
     link2.style.visibility = "visible";
-    modalFilter.style.height = "320px";
+    modalFilter.style.height = "310px";
     modalFilter.style.animationName = "slideIn";
     modalFilter.style.visibility = "visible";
     openCloseFilter.textContent = "ЗАКРЫТЬ";
