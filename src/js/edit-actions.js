@@ -1,43 +1,45 @@
+
 let currentTr = null;
-let th = null;
-let currentTh = null;
-let editBtn = document.querySelectorAll('.products-list__cell-actions__edit');
-let inp = document.getElementsByClassName('products-list__cell__input');
-let divOk = document.querySelectorAll('.products-list__cell-actions__ok');
-let divRec = document.querySelectorAll('.products-list__cell-actions__recover');
+let td = null;
+let currentTd = null;
+let editBtn = document.querySelectorAll('.table-column-actions__edit');
+let inp = document.getElementsByClassName('table-column__input');
+let divOk = document.querySelectorAll('.table-column-actions__ok');
+let divRec = document.querySelectorAll('.table-column-actions__recover');
 let btnOk = document.querySelectorAll('.button__ok');
 let btnRec = document.querySelectorAll('.button__recover');
-let dotsBtn = document.querySelectorAll('.products-list__cell-actions__dots');
-let copyBtn = document.querySelectorAll('.products-list__cell-actions__copy');
-let delBtn = document.querySelectorAll('.products-list__cell-actions__delete');
+let dotsBtn = document.querySelectorAll('.table-column-actions__dots');
+let copyBtn = document.querySelectorAll('.table-column-actions__copy');
+let delBtn = document.querySelectorAll('.table-column-actions__delete');
 let uId = 0;
 let timerId = null;
 
 
 function dotsHandler(event) {
-        th = event.target.parentElement.parentElement;
-        th.children[0].classList.add("close");
-        th.children[1].classList.remove("close");
+    td = event.target.parentElement.parentElement;
+    td.children[0].classList.add("close");
+    td.children[1].classList.remove("close");
 };
 
 
 function removeEventClickOnDotsButtons() {
-    removeEvents('.products-list__cell-actions__dots', 'click', dotsHandler);
+    removeEvents('.table-column-actions__dots', 'click', dotsHandler);
 };
 
 
 function addEventClickOnDotsButtons() {
-    addEvents('.products-list__cell-actions__dots', 'click', dotsHandler);
+    addEvents('.table-column-actions__dots', 'click', dotsHandler);
 };
+
 addEventClickOnDotsButtons();
 
 
 function copyHandler(event) {
     currentTr = event.target.parentElement.parentElement.parentElement; // current tr with class = row
-    th = event.target.parentElement.parentElement; // current th with class = cell
-    currentTh = currentTr.children; // all th in this tr with class = cell
-    th.children[0].classList.remove("close");
-    th.children[1].classList.add("close");
+    td = event.target.parentElement.parentElement; // current td with class = cell
+    currentTd = currentTr.children; // all td in this tr with class = cell
+    td.children[0].classList.remove("close");
+    td.children[1].classList.add("close");
 
     let cloneTr = currentTr.cloneNode(true);
     let id = cloneTr.id;
@@ -66,22 +68,30 @@ function copyHandler(event) {
     let newObject = makeObject(cloneTr);
     add(newObject);
 
-    th.children[1].classList.add("close");
-    th.children[0].classList.remove("close");
+    td.children[1].classList.add("close");
+    td.children[0].classList.remove("close");
 };
 
 
 function makeObject(tr) {
+    let id = tr.id;
+    let name = tr.children[1].children[0].textContent;
+    let category = tr.children[2].textContent;
+    let count = tr.children[3].children[0];
+    let price = tr.children[4].children[0].textContent;
+    let creationDate = tr.children[5].children[0].textContent;
+    let weight = tr.children[5].children[0].textContent;
+    let size =  tr.children[7].children[0].textContent;
 
     return {
-		"id": tr.id,
-		"name": tr.children[1].children[0].textContent,
-		"category":  tr.children[2].textContent,
-		"count": tr.children[3].children[0].textContent,
-		"price": tr.children[4].children[0].textContent,
-		"creationDate": tr.children[5].children[0].textContent,
-		"weight": tr.children[5].children[0].textContent,
-		"size": tr.children[7].children[0].textContent
+		id: id,
+		name: name,
+		category:  category,
+		count: count,
+		price: price,
+		creationDate: creationDate,
+		weight: weight,
+		size: size
     };
 };
 
@@ -130,9 +140,9 @@ addEventMouseOutForActions();
 
 
 function removeEventClickOnCopyButtons() {
-    removeEvents('.products-list__cell-actions__copy', 'click', copyHandler);
+    removeEvents('.table-column-actions__copy', 'click', copyHandler);
     //тоже самое, что и код ниже:
-    // copyBtn = document.querySelectorAll('.products-list__cell-actions__copy');
+    // copyBtn = document.querySelectorAll('.table-column-actions__copy');
     // for(let i = 0; i < copyBtn.length; i++) {
     //     copyBtn[i].removeEventListener('click', copyHandler);
     // };
@@ -140,31 +150,31 @@ function removeEventClickOnCopyButtons() {
 
 
 function addEventClickOnCopyButtons() {
-    addEvents('.products-list__cell-actions__copy','click', copyHandler);    
+    addEvents('.table-column-actions__copy','click', copyHandler);    
 };
 addEventClickOnCopyButtons();
 
 
 function editHandler(event) {
     currentTr = event.target.parentElement.parentElement.parentElement;
-    th = event.target.parentElement.parentElement;
-    currentTh = currentTr.children;
-    th.children[1].classList.add("close");
-    th.children[2].classList.remove("close");
+    td = event.target.parentElement.parentElement;
+    currentTd = currentTr.children;
+    td.children[1].classList.add("close");
+    td.children[2].classList.remove("close");
 
-    for(let i = 1; i < currentTh.length-1; i++ ){
-        if(currentTh[i].classList.contains('creationDate')) {
-            currentTh[i].innerHTML = `<input type="date" value="${currentTh[i].textContent}" class="products-list__cell__input">`;
-        } else if(currentTh[i].classList.contains('category')) {
-            currentTh[i].innerHTML = `
-                <select name="category" class="category">
+    for(let i = 1; i < currentTd.length-1; i++ ){
+        if(currentTd[i].classList.contains('table-column-creationDate')) {
+            currentTd[i].innerHTML = `<input type="date" value="${currentTd[i].textContent}" class="table-column-creationDate__input">`;
+        } else if(currentTd[i].classList.contains('table-column-category')) {
+            currentTd[i].innerHTML = `
+                <select name="category" class="table-column-category">
                     <option>Игрушки</option>
                     <option>Косметика</option>
                     <option>Сумки</option>
                     <option>Обувь</option>
                 </select>`
         } else {
-            currentTh[i].innerHTML = `<input type="text" value="${currentTh[i].textContent}" class="products-list__cell__input">`;
+            currentTd[i].innerHTML = `<input type="text" value="${currentTd[i].textContent}" class="table-column__input">`;
 
         };
     };
@@ -172,12 +182,12 @@ function editHandler(event) {
 
 
 function removeEventClickOnEditButtons() {
-    removeEvents('.products-list__cell-actions__edit', 'click', editHandler);
+    removeEvents('.table-column-actions__edit', 'click', editHandler);
 };
 
 
 function addEventClickOnEditButtons() {
-    addEvents('.products-list__cell-actions__edit', 'click', editHandler);
+    addEvents('.table-column-actions__edit', 'click', editHandler);
 };
 addEventClickOnEditButtons();
 
@@ -189,11 +199,11 @@ function delHandler(event) {
     let id = currentTr.id;
     let originId = id.replace('row-', '');
     // current th with class = cell
-    th = event.target.parentElement.parentElement; 
+    td = event.target.parentElement.parentElement; 
     // all th in this tr with class = cell
-    currentTh = currentTr.children; 
-    th.children[1].classList.add("close");
-    th.children[3].classList.remove("close");
+    currentTd = currentTr.children; 
+    td.children[1].classList.add("close");
+    td.children[3].classList.remove("close");
     
     timerId = setTimeout( () => {
         let toDel = document.querySelector(`#${id}`);
@@ -209,72 +219,72 @@ function delHandler(event) {
 
 
 function removeEventClickOnDelButtons() {
-    removeEvents('.products-list__cell-actions__delete', 'click', delHandler);
+    removeEvents('.table-column-actions__delete', 'click', delHandler);
 };
 
 
 function addEventClickOnDelButtons() {
-    addEvents('.products-list__cell-actions__delete', 'click', delHandler);
+    addEvents('.table-column-actions__delete', 'click', delHandler);
 }; 
 addEventClickOnDelButtons();
 
 
 function recConfirmHandler(event) {
     clearTimeout(timerId);
-    currentTh = currentTr.children;
-    th = event.target.parentElement.parentElement;
+    currentTd = currentTr.children;
+    td = event.target.parentElement.parentElement;
     //let divRec = event.target.parentElement;
-    th.children[3].classList.add("close");
-    th.children[0].classList.remove("close");
+    td.children[3].classList.add("close");
+    td.children[0].classList.remove("close");
     currentTr.classList.remove('setToDel');
 };
 
 
 function editConfirmHandler(event) {
-    currentTh = currentTr.children;
-    th = event.target.parentElement.parentElement;
+    currentTd = currentTr.children;
+    td = event.target.parentElement.parentElement;
     const inpValue = [];
 
-    for(let i = 0; i < currentTh.length; i++ ) {
-        let el = currentTh[i];
-        if (el.classList.contains('th-checkbox'))
+    for(let i = 0; i < currentTd.length; i++ ) {
+        let el = currentTd[i];
+        if (el.classList.contains('table-column-checkbox'))
             continue;
             
-        const child = currentTh[i].children[0];
+        const child = currentTd[i].children[0];
         if (child.tagName == 'INPUT') {
-            if ( el.classList.contains('name')) {
-                el.innerHTML = `<a href="" class="products-list__link">` + child.value + '</a>';
+            if ( el.classList.contains('table-column-name')) {
+                el.innerHTML = `<a href=""Ссылка на товар/${currentTd.id}"" class="table-column-name__link">` + child.value + '</a>';
             } else {
-                el.innerHTML = child.value;
+                el.innerHTML = '<span>' + child.value + '</span>';
             };
         };
         if (child.tagName == 'SELECT') {
             el.innerHTML = child.value;;
         }
-        th.children[2].classList.add("close");        
-        th.children[0].classList.remove("close");
+        td.children[2].classList.add("close");        
+        td.children[0].classList.remove("close");
     };
 };
 
 
 function removeEventClickOnEditConfirmButtons() {
-    removeEvents('.products-list__cell-actions__ok', 'click', editConfirmHandler);
+    removeEvents('.table-column-actions__ok', 'click', editConfirmHandler);
 };
 
 
 function addEventClickOnEditConfirmButtons() {
-    addEvents('.products-list__cell-actions__ok', 'click', editConfirmHandler);
+    addEvents('.table-column-actions__ok', 'click', editConfirmHandler);
 };
 addEventClickOnEditConfirmButtons();
 
 
 function removeEventClickOnRecConfirmButtons() {
-    removeEvents('.products-list__cell-actions__recover','click', recConfirmHandler);
+    removeEvents('.table-column-actions__recover','click', recConfirmHandler);
 };
 
 
 function addEventClickOnRecConfirmButtons() {
-    addEvents('.products-list__cell-actions__recover','click', recConfirmHandler);
+    addEvents('.table-column-actions__recover','click', recConfirmHandler);
 };
 addEventClickOnRecConfirmButtons();
 

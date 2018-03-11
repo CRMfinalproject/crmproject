@@ -1,77 +1,55 @@
-// здесь подставить класс таблицы
-.products-list {
-    border: 1px solid gray;
-    border-collapse: collapse;
-    width: 700px;
-
-    // здесь подставить класс tr
-    &__row {
-        height: 50px;
-        background-color: #fff;
-        border-bottom: 1px solid #d0d0d0;
-        font-size: 13px;
-        width: 100%;
-        text-align: center;
-        
-        &:hover {
-            background-color: #f9f9f9;  
-        }
-
-        &__cell {
-            width: 100px;
-        }
-    }
-
-    &__cell-actions {
-        width: 100%;
+.table-column-actions {
+        width: 130px;
         text-align: center;
         line-height: 100%;
+        white-space: nowrap;
     
             &__dots {
                 height: 5px;
-                text-align: right;
-                cursor: pointer;
                 margin: 10px;
+                cursor: pointer;
             }
             &__copy {
-                // здесь уточнить размеры картинок
                 width: 14px;
                 cursor: pointer;
             }
             &__edit {
-                // здесь уточнить размеры картинок
                 width: 14px;
-                cursor: pointer;
                 margin-left: 5px;
                 margin-right: 5px;
+                cursor: pointer;
             }
             &__delete {
-                // здесь уточнить размеры картинок
                 height: 16px;
                 cursor: pointer;
             }
+
+            &__recover {
+                text-align: center;
+            }
+
+            &__ok {
+                text-align: center;
+            }
     }
-    
-}
 
 .button__ok {
-    width: 100%;
+    width: 100px;
     height: 25px;
     color: white;
     background-color: green;
     box-shadow: 0 1px 2px #f9f9f9;
     cursor: pointer;
-
 }
 
 .button__recover {
-    width: 100%;
+    width: 100px;
     height: 25px;
     color: black;
-    background-color: red;
+    font-size: 11px;
+    background-color: rgb(155, 153, 153);
     box-shadow: 0 1px 2px #f9f9f9;
     cursor: pointer;
-
 }
             
 .open {
@@ -81,17 +59,9 @@
     display: none;
 } 
 
-.checkbox {
-    border: 1px solid #d3d3d3;
-    box-shadow: none;
-    width: 14px;
-    height: 14px;
-    border-radius: 3px;
-    transition: .2s;
-    cursor: pointer;
-}
-
 .setToDel {
     color: rgb(175, 174, 174);
     background-color: #f9f9f9;
 }
+
+

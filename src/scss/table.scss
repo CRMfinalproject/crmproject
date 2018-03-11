@@ -21,9 +21,13 @@
 .row-table {
     border-bottom: 1px solid #d1d1d1;
     
+    &:hover {
+        background-color: #f9f9f9;  
+    }
+    
 }
 
-.table-column-name{
+.table-column-name__link {
     text-decoration: none;
     font-size: 13px;
     font-family: "Myriad Pro";
@@ -32,4 +36,25 @@
 
 .row-table {
     height: 50px;
+}
+
+.checkbox {
+     border: 1px solid #d3d3d3;
+     box-shadow: none;
+     width: 14px;
+     height: 14px;
+     border-radius: 3px;
+     transition: .2s;
+     cursor: pointer;
+}
+
+.table-column-name,
+.table-column-count,
+.table-column-price,
+.table-column-creationDate,
+.table-column-weight,
+.table-column-size {
+    input {
+        width: 100px;
+    }
 }
