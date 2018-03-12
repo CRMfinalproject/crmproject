@@ -1,4 +1,4 @@
-let table = {
+/*let table = {
     fields: [
         { name: "name", view: "Название товара", hidden: false },
         { name: "category", view: "Категория", hidden: false },
@@ -8,7 +8,7 @@ let table = {
         { name: "weight", view: "Вес", hidden: true },
         { name: "size", view: "Размеры(ШхВхД)", hidden: true }
     ]
-};
+};*/
 
 class Fieldsettings {
     constructor() {
@@ -38,6 +38,8 @@ class Fieldsettings {
         };
     hide() {
         if (event.target.classList.contains('table__fieldsettings__item') === false && event.target.classList.contains('table__fieldsettings__checkbox') === false) {
+            table.renderHeader();
+            //table.renderData();
             this.container.classList.remove('table__fieldsettings--active');
             this.triggerBtn.setAttribute('src', '../images/field_settings.png');
             this.headingText.textContent = '';
@@ -52,7 +54,6 @@ class Fieldsettings {
             this.selectedFieldCheckbox = event.target;
         }
         this.selectedFieldCheckbox.checked ? table.fields.find((el) => el.name === this.selectedFieldCheckbox.name).hidden = false : table.fields.find((el) => el.name === this.selectedFieldCheckbox.name).hidden = true;
-        //table.render();
     }
 }
-let productFieldSettings = new Fieldsettings();
+let fieldSettings = new Fieldsettings();
