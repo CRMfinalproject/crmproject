@@ -1,15 +1,28 @@
-
-.data-table {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    border-collapse: collapse;
-    font-size: 13px;
-    font-family: "Myriad Pro";
-    background-color: #fff;
-    
+$darkblue:	#6495ED;
+@font-face {
+  font-family: "HelveticaNeue";
+  src: url('../fonts/HelveticaNeueCyr-Medium.woff');
 }
+.data-table {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-family: "HelveticaNeue";
+  background-color: #fff;
+  color: grey;
+  padding-left: 20px;
+  th {
+    color: $darkblue;
 
+
+
+  &:nth-child(2) {
+    padding-left: 40px;
+  }
+
+}}
 .order-ctrl {
     text-align: left;
     margin-top: 40px;
@@ -20,18 +33,29 @@
 }
 .row-table {
     border-bottom: 1px solid #d1d1d1;
+  font-family: "HelveticaNeue";
     
     &:hover {
         background-color: #f9f9f9;  
     }
+    &:first-child{
+      margin-left:30px;
+    }
+
     
 }
+
+
+
 
 .table-column-name__link {
     text-decoration: none;
     font-size: 13px;
-    font-family: "Myriad Pro";
-    color: #3a7bff;
+    font-family: "HelveticaNeue";
+    color: $darkblue;
+  &:first-child{
+    padding-left:40px;
+  }
 }
 
 .row-table {
