@@ -1,0 +1,67 @@
+.table-column-actions {
+        width: 130px;
+        text-align: center;
+        line-height: 100%;
+        white-space: nowrap;
+    
+            &__dots {
+                height: 5px;
+                margin: 10px;
+                cursor: pointer;
+            }
+            &__copy {
+                width: 14px;
+                cursor: pointer;
+            }
+            &__edit {
+                width: 14px;
+                margin-left: 5px;
+                margin-right: 5px;
+                cursor: pointer;
+            }
+            &__delete {
+                height: 16px;
+                cursor: pointer;
+            }
+
+            &__recover {
+                text-align: center;
+            }
+
+            &__ok {
+                text-align: center;
+            }
+    }
+
+.button__ok {
+    width: 100px;
+    height: 25px;
+    color: white;
+    background-color: green;
+    box-shadow: 0 1px 2px #f9f9f9;
+    cursor: pointer;
+}
+
+.button__recover {
+    width: 100px;
+    height: 25px;
+    color: black;
+    font-size: 11px;
+    background-color: rgb(155, 153, 153);
+    box-shadow: 0 1px 2px #f9f9f9;
+    cursor: pointer;
+}
+            
+.open {
+    display: block;
+}    
+.close {
+    display: none;
+} 
+
+.setToDel {
+    color: rgb(175, 174, 174);
+    background-color: #f9f9f9;
+}
+
+
