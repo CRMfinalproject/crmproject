@@ -16,8 +16,6 @@ class Fieldsettings {
         this.triggerBtn = document.querySelector('.table__fieldsettings__btn');
         this.headingText = document.querySelector('.table__fieldsettings_heading__text');
         this.form = {};
-        this.selectedField = {};
-        this.selectedCheckbox = {};
         this.container.addEventListener('click', () => this.container.classList.contains('table__fieldsettings--active') ? (event.target.classList.contains('table__fieldsettings__item') || event.target.classList.contains('table__fieldsettings__checkbox') ? this.updateField() : this.hide()) : this.render());
         document.body.addEventListener('click', () => {
             if (this.container.classList.contains('table__fieldsettings--active')) {
@@ -38,12 +36,12 @@ class Fieldsettings {
         };
     hide() {
         if (event.target.classList.contains('table__fieldsettings__item') === false && event.target.classList.contains('table__fieldsettings__checkbox') === false) {
-            table.renderHeader();
-            //table.renderData();
             this.container.classList.remove('table__fieldsettings--active');
             this.triggerBtn.setAttribute('src', '../images/field_settings.png');
             this.headingText.textContent = '';
             this.container.removeChild(this.form);
+            table.renderHeader();
+            table.renderData(data);
         }
     };
     updateField() {

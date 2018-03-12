@@ -112,6 +112,7 @@ gulp.task('js', () => {
       'table-control-block.js',
       'table.js',
       'edit-actions.js',
+
       '*.js'
     ]))
     .pipe(concat('index.js'))

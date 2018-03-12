@@ -1,12 +1,12 @@
 class Table {
-    constructor(data = {}) {
+    constructor(fields, data = {}) {
         document.body.querySelector(".content").innerHTML += 
         `<table class="data-table">
             <thead class="data-table-header"></thead>
             <tbody class="data-table-body"></tbody>
         </table>`;
 
-      
+        this.fields = fields;
         this.renderHeader();
         this.renderData(data);
     }
@@ -14,7 +14,7 @@ class Table {
     renderHeader() {
         // header
         let headerContent = "";
-        headerContent = `<tr class = "row-table">`;
+        /*headerContent = `<tr class = "row-table">`;
         headerContent += `<th class = "order-ctrl"><input type = "checkbox" class ="checkbox"></input></th>`
         headerContent += `<th class = "order-ctrl">Название товара</th>`;
         headerContent += `<th class = "order-ctrl">Категория</th>`;
@@ -23,8 +23,13 @@ class Table {
         headerContent += `<th class = "order-ctrl">Дата создания</th>`;
         headerContent += `<th class = "order-ctrl">Вес</th>`;
         headerContent += `<th class = "order-ctrl">Размеры(ШхВхД)</th>`;
-        headerContent += `<th class = "order-ctrl"></th>`; // for settings
-        headerContent += `</tr>`;
+        headerContent += `<th class = "order-ctrl"><div class="table__fieldsettings"><p class="table__fieldsettings_heading"><span class="table__fieldsettings_heading__text"></span><img class="table__fieldsettings__btn" src="../images/field_settings.png"></p></div></th>`; // for settings
+        headerContent += `</tr>`;*/
+// добавила в отрисовку заголовков проверку выбранных полей
+        headerContent = `<tr class = "row-table">
+                                <th class = "order-ctrl"><input type = "checkbox" class ="checkbox"></th>
+                                ${this.fields.map((elem) => elem.hidden === false ? ` <th class = "order-ctrl">${elem.view}</th>` : '').reduce((accum, next) => accum + next)}
+                                <th class = "order-ctrl"><div class="table__fieldsettings"><p class="table__fieldsettings_heading"><span class="table__fieldsettings_heading__text"></span><img class="table__fieldsettings__btn" src="../images/field_settings.png"></p></div></th>`;
 
         document.querySelector(".data-table-header").innerHTML = headerContent;
     }
@@ -35,14 +40,14 @@ class Table {
         let bodyContent = "";
         data.map(row => {
             bodyContent += `<tr class = "row-table" id="row-${row.id}">`;
-            bodyContent += `<td class="table-column-checkbox"><input type="checkbox" class ="checkbox row-table"></input></td>`;
-            bodyContent += `<td class="table-column-name"><a href = "Ссылка на товар/${row.id}" class = "table-column-name__link">${row.name}</a></td>`;
-            bodyContent += `<td class="table-column-category"><span>${row.category}</span></td>`;
-            bodyContent += `<td class="table-column-count"><span>${row.count} шт</span></td>`;
-            bodyContent += `<td class="table-column-price"><span>${row.price} грн</span></td>`;
-            bodyContent += `<td class="table-column-creationDate"><span>${row.creationDate}</span></td>`;
-            bodyContent += `<td class="table-column-weight"><span>${row.weight} г</span></td>`;
-            bodyContent += `<td class="table-column-size"><span>${row.size} см </span></td>`;
+            bodyContent += `<td class="table-column-checkbox"><input type="checkbox" class ="checkbox row-table"></td>`;
+            bodyContent += this.fields.find((field) => field.name === 'name').hidden === false ? `<td class="table-column-name"><a href = "Ссылка на товар/${row.id}" class = "table-column-name__link">${row.name}</a></td>` : '';
+            bodyContent += this.fields.find((field) => field.name === 'category').hidden === false ? `<td class="table-column-category"><span>${row.category}</span></td>` : '';
+            bodyContent += this.fields.find((field) => field.name === 'count').hidden === false ? `<td class="table-column-count"><span>${row.count} шт</span></td>` : '';
+            bodyContent += this.fields.find((field) => field.name === 'price').hidden === false ? `<td class="table-column-price"><span>${row.price} грн</span></td>` : '';
+            bodyContent += this.fields.find((field) => field.name === 'creationDate').hidden === false ? `<td class="table-column-creationDate"><span>${row.creationDate}</span></td>` : '';
+            bodyContent += this.fields.find((field) => field.name === 'weight').hidden === false ? `<td class="table-column-weight"><span>${row.weight} г</span></td>` : '';
+            bodyContent += this.fields.find((field) => field.name === 'size').hidden === false ? `<td class="table-column-size"><span>${row.size} см </span></td>` : '';
             bodyContent += `
             <td class="table-column-settings">
                 <div class="table-column-actions js-dots">
@@ -59,13 +64,18 @@ class Table {
             </td>`;
             bodyContent += `</tr>`;
         });
-
-
-        
         document.querySelector(".data-table-body").innerHTML = bodyContent;
 
     }
 }
-
-let table = new Table(data.slice(0, ROWS_PER_PAGE));
+let productTableFields = [
+    { name: "name", view: "Название товара", hidden: false },
+    { name: "category", view: "Категория", hidden: false },
+    { name: "count", view: "Количество на складе", hidden: false },
+    { name: "price", view: "Цена", hidden: false },
+    { name: "creationDate", view: "Дата создания", hidden: false },
+    { name: "weight", view: "Вес", hidden: true },
+    { name: "size", view: "Размеры(ШхВхД)", hidden: true }
+]
+let table = new Table(productTableFields, data.slice(0, ROWS_PER_PAGE));
 
