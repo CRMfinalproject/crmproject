@@ -6,7 +6,7 @@ let data = [
         "category": "Косметика",
         "count": 259,
         "price": 299,
-        "creationDate": "02/21/2018",
+        "creationDate": "2018-02-01",
         "weight": 10,
         "size": "1x1x5"
     },
@@ -16,7 +16,7 @@ let data = [
         "category": "Игрушки",
         "count": 24,
         "price": 359,
-        "creationDate": "02/20/2018",
+        "creationDate": "2018-02-01",
         "weight": 250,
         "size": "40x40x30"
     },
@@ -26,7 +26,7 @@ let data = [
         "category": "Одежда",
         "count": 52,
         "price": 300,
-        "creationDate": "02/13/2018",
+        "creationDate": "2018-02-01",
         "weight": 500,
         "size": "40x40x50"
     },
@@ -36,7 +36,7 @@ let data = [
         "category": "Обувь",
         "count": 100,
         "price": 999,
-        "creationDate": "02/12/2018",
+        "creationDate": "2018-02-01",
         "weight": 700,
         "size": "35x20x18"
     },
@@ -46,7 +46,7 @@ let data = [
         "category": "Книги",
         "count": 500,
         "price": 55,
-        "creationDate": "02/19/2018",
+        "creationDate": "2018-02-01",
         "weight": 1000,
         "size": "20x15x4"
     },
@@ -56,7 +56,7 @@ let data = [
         "category": "Хоз.товары",
         "count": 500,
         "price": 15,
-        "creationDate": "01/18/2018",
+        "creationDate": "2018-02-01",
         "weight": 100,
         "size": "8x4x2"
     },
@@ -66,7 +66,7 @@ let data = [
         "category": "Кожа",
         "count": 5,
         "price": 5000,
-        "creationDate": "02/21/2018",
+        "creationDate": "2018-02-01",
         "weight": 3000,
         "size": "1000x1000x50"
     },
@@ -76,7 +76,7 @@ let data = [
         "category": "Ремни",
         "count": 10,
         "price": 199,
-        "creationDate": "12/21/2017",
+        "creationDate": "2018-02-01",
         "weight": 300,
         "size": "1200x40x5"
     },
@@ -86,7 +86,7 @@ let data = [
         "category": "Книги",
         "count": 200,
         "price": 150,
-        "creationDate": "02/21/2018",
+        "creationDate": "2018-02-01",
         "weight": 1000,
         "size": "300x20x5"
     },
@@ -96,7 +96,7 @@ let data = [
         "category": "Одежда",
         "count": 100,
         "price": 699,
-        "creationDate": "02/01/2018",
+        "creationDate": "2018-02-01",
         "weight": 850,
         "size": "1100x700x10"
     },
@@ -106,7 +106,7 @@ let data = [
         "category": "Косметика",
         "count": 1000,
         "price": 99,
-        "creationDate": "02/21/2018",
+        "creationDate": "2018-02-01",
         "weight": 10,
         "size": "1x1x5"
     },
@@ -116,7 +116,7 @@ let data = [
         "category": "Обувь",
         "count": 155,
         "price": 499,
-        "creationDate": "02/11/2018",
+        "creationDate": "2018-02-01",
         "weight": 10,
         "size": "5x1x1"
     },
@@ -126,7 +126,7 @@ let data = [
         "category": "Хоз.товары",
         "count": 50,
         "price": 79,
-        "creationDate": "02/21/2018",
+        "creationDate": "2018-02-01",
         "weight": 150,
         "size": "21x12x3"
     },
@@ -136,7 +136,7 @@ let data = [
         "category": "Косметика",
         "count": 259,
         "price": 299,
-        "creationDate": "02/21/2018",
+        "creationDate": "2018-02-01",
         "weight": 10,
         "size": "1x1x5"
     },
@@ -146,7 +146,7 @@ let data = [
         "category": "Игрушки",
         "count": 24,
         "price": 359,
-        "creationDate": "02/20/2018",
+        "creationDate": "2018-02-01",
         "weight": 250,
         "size": "40x40x30"
     },
@@ -156,7 +156,7 @@ let data = [
         "category": "Одежда",
         "count": 52,
         "price": 300,
-        "creationDate": "02/13/2018",
+        "creationDate": "2018-02-01",
         "weight": 500,
         "size": "40x40x50"
     },
@@ -166,7 +166,7 @@ let data = [
         "category": "Обувь",
         "count": 100,
         "price": 999,
-        "creationDate": "02/12/2018",
+        "creationDate": "2018-02-01",
         "weight": 700,
         "size": "35x20x18"
     },
@@ -176,7 +176,7 @@ let data = [
         "category": "Книги",
         "count": 500,
         "price": 55,
-        "creationDate": "02/19/2018",
+        "creationDate": "2018-02-01",
         "weight": 1000,
         "size": "20x15x4"
     },
@@ -186,7 +186,7 @@ let data = [
         "category": "Хоз.товары",
         "count": 500,
         "price": 15,
-        "creationDate": "01/18/2018",
+        "creationDate": "2018-02-01",
         "weight": 100,
         "size": "8x4x2"
     },
@@ -196,7 +196,7 @@ let data = [
         "category": "Кожа",
         "count": 5,
         "price": 5000,
-        "creationDate": "02/21/2018",
+        "creationDate": "2018-02-01",
         "weight": 3000,
         "size": "1000x1000x50"
     },
@@ -206,7 +206,7 @@ let data = [
         "category": "Ремни",
         "count": 10,
         "price": 199,
-        "creationDate": "12/21/2017",
+        "creationDate": "2018-02-01",
         "weight": 300,
         "size": "1200x40x5"
     },
@@ -216,7 +216,7 @@ let data = [
         "category": "Книги",
         "count": 200,
         "price": 150,
-        "creationDate": "02/21/2018",
+        "creationDate": "2018-02-01",
         "weight": 1000,
         "size": "300x20x5"
     },
@@ -226,7 +226,7 @@ let data = [
         "category": "Одежда",
         "count": 100,
         "price": 699,
-        "creationDate": "02/01/2018",
+        "creationDate": "2018-02-01",
         "weight": 850,
         "size": "1100x700x10"
     },
@@ -236,7 +236,7 @@ let data = [
         "category": "Косметика",
         "count": 1000,
         "price": 99,
-        "creationDate": "02/21/2018",
+        "creationDate": "2018-02-01",
         "weight": 10,
         "size": "1x1x5"
     },
@@ -246,7 +246,7 @@ let data = [
         "category": "Обувь",
         "count": 155,
         "price": 499,
-        "creationDate": "02/11/2018",
+        "creationDate":  "2018-02-01",
         "weight": 10,
         "size": "5x1x1"
     },
@@ -376,7 +376,7 @@ let data = [
         "category": "Обувь",
         "count": 155,
         "price": 499,
-        "creationDate": "02/11/2018",
+        "creationDate":  "2018-02-01",
         "weight": 10,
         "size": "5x1x1"
     },
@@ -506,7 +506,7 @@ let data = [
         "category": "Обувь",
         "count": 155,
         "price": 499,
-        "creationDate": "02/11/2018",
+        "creationDate":  "2018-02-01",
         "weight": 10,
         "size": "5x1x1"
     },
