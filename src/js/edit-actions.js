@@ -1,22 +1,9 @@
-
-let currentTr = null;
-let td = null;
-let currentTd = null;
-let editBtn = document.querySelectorAll('.table-column-actions__edit');
-let inp = document.getElementsByClassName('table-column__input');
-let divOk = document.querySelectorAll('.table-column-actions__ok');
-let divRec = document.querySelectorAll('.table-column-actions__recover');
-let btnOk = document.querySelectorAll('.button__ok');
-let btnRec = document.querySelectorAll('.button__recover');
-let dotsBtn = document.querySelectorAll('.table-column-actions__dots');
-let copyBtn = document.querySelectorAll('.table-column-actions__copy');
-let delBtn = document.querySelectorAll('.table-column-actions__delete');
 let uId = 0;
 let timerId = null;
 
 
 function dotsHandler(event) {
-    td = event.target.parentElement.parentElement;
+    let td = event.target.parentElement.parentElement;
     td.children[0].classList.add("close");
     td.children[1].classList.remove("close");
 };
@@ -35,9 +22,9 @@ addEventClickOnDotsButtons();
 
 
 function copyHandler(event) {
-    currentTr = event.target.parentElement.parentElement.parentElement; // current tr with class = row
-    td = event.target.parentElement.parentElement; // current td with class = cell
-    currentTd = currentTr.children; // all td in this tr with class = cell
+    let currentTr = event.target.parentElement.parentElement.parentElement; // current tr with class = row
+    let td = event.target.parentElement.parentElement; // current td with class = cell
+    let currentTd = currentTr.children; // all td in this tr with class = cell
     td.children[0].classList.remove("close");
     td.children[1].classList.add("close");
 
@@ -142,6 +129,7 @@ addEventMouseOutForActions();
 function removeEventClickOnCopyButtons() {
     removeEvents('.table-column-actions__copy', 'click', copyHandler);
     //тоже самое, что и код ниже:
+   // let copyBtn = document.querySelectorAll('.table-column-actions__copy');
     // copyBtn = document.querySelectorAll('.table-column-actions__copy');
     // for(let i = 0; i < copyBtn.length; i++) {
     //     copyBtn[i].removeEventListener('click', copyHandler);
@@ -156,9 +144,9 @@ addEventClickOnCopyButtons();
 
 
 function editHandler(event) {
-    currentTr = event.target.parentElement.parentElement.parentElement;
-    td = event.target.parentElement.parentElement;
-    currentTd = currentTr.children;
+    let currentTr = event.target.parentElement.parentElement.parentElement;
+    let td = event.target.parentElement.parentElement;
+    let currentTd = currentTr.children;
     td.children[1].classList.add("close");
     td.children[2].classList.remove("close");
 
@@ -194,14 +182,14 @@ addEventClickOnEditButtons();
 
 function delHandler(event) {
     // current tr with class = row
-    currentTr = event.target.parentElement.parentElement.parentElement; 
+    let currentTr = event.target.parentElement.parentElement.parentElement; 
     currentTr.classList.add('setToDel');
     let id = currentTr.id;
     let originId = id.replace('row-', '');
     // current th with class = cell
-    td = event.target.parentElement.parentElement; 
+    let td = event.target.parentElement.parentElement; 
     // all th in this tr with class = cell
-    currentTd = currentTr.children; 
+    let currentTd = currentTr.children; 
     td.children[1].classList.add("close");
     td.children[3].classList.remove("close");
     
@@ -231,9 +219,9 @@ addEventClickOnDelButtons();
 
 function recConfirmHandler(event) {
     clearTimeout(timerId);
-    currentTd = currentTr.children;
-    td = event.target.parentElement.parentElement;
-    //let divRec = event.target.parentElement;
+    let currentTr = event.target.parentElement.parentElement.parentElement;
+    let currentTd = currentTr.children;
+    let td = event.target.parentElement.parentElement;
     td.children[3].classList.add("close");
     td.children[0].classList.remove("close");
     currentTr.classList.remove('setToDel');
@@ -241,8 +229,9 @@ function recConfirmHandler(event) {
 
 
 function editConfirmHandler(event) {
-    currentTd = currentTr.children;
-    td = event.target.parentElement.parentElement;
+    let currentTr = event.target.parentElement.parentElement.parentElement;
+    let currentTd = currentTr.children;
+    let td = event.target.parentElement.parentElement;
     const inpValue = [];
 
     for(let i = 0; i < currentTd.length; i++ ) {

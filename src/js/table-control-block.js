@@ -14,7 +14,6 @@ class TableControlBlock {
     }
 
     render() {
-        // debugger;
         this.container.innerHTML = `
         <div class="table-control__button table-control__button--actions">
             <div class="table-control__button__title">Действия с выбранными</div>
@@ -27,7 +26,6 @@ class TableControlBlock {
     }
 
     renderActionSubmenu() {
-        // debugger;
         this.actionSubmenu.innerHTML += `
         <div class="table-control__submenu">
             <img src="../images/garbage.svg" alt="+" class="table-control__submenu__icon">
@@ -36,7 +34,6 @@ class TableControlBlock {
     }
 
     showActionSubmenu(event) {
-        // debugger;
         if (event.target.classList.contains("table-control__button--actions") || 
             event.target.parentElement.classList.contains("table-control__button--actions")) {
             let actionsButton = document.body.querySelector(".table-control__button--actions");
