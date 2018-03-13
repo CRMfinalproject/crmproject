@@ -1,0 +1,60 @@
+
+.data-table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    font-size: 13px;
+    font-family: "Myriad Pro";
+    background-color: #fff;
+    
+}
+
+.order-ctrl {
+    text-align: left;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    color: #3a7bff;
+    border-bottom: 1px solid #d1d1d1;
+    
+}
+.row-table {
+    border-bottom: 1px solid #d1d1d1;
+    
+    &:hover {
+        background-color: #f9f9f9;  
+    }
+    
+}
+
+.table-column-name__link {
+    text-decoration: none;
+    font-size: 13px;
+    font-family: "Myriad Pro";
+    color: #3a7bff;
+}
+
+.row-table {
+    height: 50px;
+}
+
+.checkbox {
+     border: 1px solid #d3d3d3;
+     box-shadow: none;
+     width: 14px;
+     height: 14px;
+     border-radius: 3px;
+     transition: .2s;
+     cursor: pointer;
+}
+
+.table-column-name,
+.table-column-count,
+.table-column-price,
+.table-column-creationDate,
+.table-column-weight,
+.table-column-size {
+    input {
+        width: 100px;
+    }
+}
