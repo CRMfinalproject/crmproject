@@ -58,3 +58,14 @@
         width: 100px;
     }
 }
+.dropdown-arrow {
+	width: 4px;
+	height: 4px;
+	border-radius: 0;
+	border-bottom-width: 1px;
+	border-right-width: 1px;
+	position: absolute;
+	top: 2px;
+	border-color: #3a7bff;
+	margin-left: 7px;
+}
