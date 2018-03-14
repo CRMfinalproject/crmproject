@@ -42,8 +42,6 @@ class AddProduct {
                 size: `${this.container.querySelector('#js-new-product-width').value} x ${this.container.querySelector('#js-new-product-height').value} x ${this.container.querySelector('#js-new-product-length').value}` ,
                 weight: this.container.querySelector('#js-new-product-weight').value,
                 volume: this.container.querySelector('#js-new-product-volume').value
-
-
             }
             data.push(productToAdd);
         }
