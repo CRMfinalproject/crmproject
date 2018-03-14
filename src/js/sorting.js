@@ -1,38 +1,160 @@
-const getByName = document.querySelector("[data-sort='product-name']");
-const getByCat = document.querySelector("[data-sort='product-category']");
-const getByCount = document.querySelector("[data-sort='product-count']");
-const getByPrice = document.querySelector("[data-sort='product-price']");
-const getByDate = document.querySelector("[data-sort='product-date']");
-const getByWeight = document.querySelector("[data-sort='product-weight']");
-const getBySize = document.querySelector("[data-sort='product-size']");
-const tBody = document.querySelector("#js-tbody");
-const url = ("/GoIT/CRM/data.json");
+let data = [
+    {
+        "id": 1,
+        "name": "Помада Kylie",
+        "category": "Косметика",
+        "count": 259,
+        "price": 299,
+        "creationDate": "02/21/2018",
+        "weight": 10,
+        "size": "1x1x5"
+    },
+    {
+        "id": 2,
+        "name": "Обезьянка",
+        "category": "Игрушки",
+        "count": 24,
+        "price": 359,
+        "creationDate": "02/20/2018",
+        "weight": 250,
+        "size": "40x40x30"
+    },
+    {
+        "id": 3,
+        "name": "Кофта",
+        "category": "Одежда",
+        "count": 52,
+        "price": 300,
+        "creationDate": "02/13/2018",
+        "weight": 500,
+        "size": "40x40x50"
+    },
+    {
+        "id": 4,
+        "name": "Кроссовки",
+        "category": "Обувь",
+        "count": 100,
+        "price": 999,
+        "creationDate": "02/12/2018",
+        "weight": 700,
+        "size": "35x20x18"
+    },
+    {
+        "id": 5,
+        "name": "Библия",
+        "category": "Книги",
+        "count": 500,
+        "price": 55,
+        "creationDate": "02/19/2018",
+        "weight": 1000,
+        "size": "20x15x4"
+    },
+    {
+        "id": 6,
+        "name": "Мыло",
+        "category": "Хоз.товары",
+        "count": 500,
+        "price": 15,
+        "creationDate": "01/18/2018",
+        "weight": 100,
+        "size": "8x4x2"
+    },
+    {
+        "id": 7,
+        "name": "Куртка",
+        "category": "Кожа",
+        "count": 5,
+        "price": 5000,
+        "creationDate": "02/21/2018",
+        "weight": 3000,
+        "size": "1000x1000x50"
+    },
+    {
+        "id": 8,
+        "name": "Ремень брючной",
+        "category": "Ремни",
+        "count": 10,
+        "price": 199,
+        "creationDate": "12/21/2017",
+        "weight": 300,
+        "size": "1200x40x5"
+    },
+    {
+        "id": 9,
+        "name": "Энциклопедия",
+        "category": "Книги",
+        "count": 200,
+        "price": 150,
+        "creationDate": "02/21/2018",
+        "weight": 1000,
+        "size": "300x20x5"
+    },
+    {
+        "id": 10,
+        "name": "Джинсы",
+        "category": "Одежда",
+        "count": 100,
+        "price": 699,
+        "creationDate": "02/01/2018",
+        "weight": 850,
+        "size": "1100x700x10"
+    },
+    {
+        "id": 11,
+        "name": "Лак",
+        "category": "Косметика",
+        "count": 1000,
+        "price": 99,
+        "creationDate": "02/21/2018",
+        "weight": 10,
+        "size": "1x1x5"
+    },
+    {
+        "id": 12,
+        "name": "Кеды",
+        "category": "Обувь",
+        "count": 155,
+        "price": 499,
+        "creationDate": "02/11/2018",
+        "weight": 10,
+        "size": "5x1x1"
+    },
+    {
+        "id": 13,
+        "name": "Шампунь",
+        "category": "Хоз.товары",
+        "count": 50,
+        "price": 79,
+        "creationDate": "02/21/2018",
+        "weight": 150,
+        "size": "21x12x3"
+    }
+];
 
+const tHead = document.querySelector(".data-table-header");
+const tBody = document.querySelector(".data-table-body");
 
 const updateView = products => {
-  let htmlString = "";
-  products.map(product => {
-    htmlString += `<tr class="row">
-			<td><input type="checkbox" name="checkbox"></td>
-			<td>${product.name}</td>
-			<td>${product.category}</td>
-			<td>${product.count}</td>
-			<td>${product.price}</td>
-			<td>${product.creationDate}</td>
-			<td>${product.weight}</td>
-			<td>${product.size}</td>
-		</tr>`;
+	let htmlString = "";
+	products.map(product => {
+		htmlString += `<tr class="row">
+				<td><input type="checkbox" name="checkbox"></td>
+				<td>${product.name}</td>
+				<td>${product.category}</td>
+				<td>${product.count}</td>
+				<td>${product.price}</td>
+				<td>${product.creationDate}</td>
+				<td>${product.weight}</td>
+				<td>${product.size}</td>
+				</tr>`;
   });
   tBody.innerHTML = htmlString;
 };
 
-const sortByName = () =>
-	fetch(url)
-	.then(response => 
-		response.json())
-	.then(data => {
-		if(getByName.classList.contains("asc")){
-			getByName.classList.remove("asc");
+const sortByName = () => {
+	if(event.target.textContent === "Название товара"){
+		event.target.classList.toggle("desc");
+		if(event.target.classList.contains("desc")){
 			data.sort(function(obj1, obj2) {
 				if (obj1.name < obj2.name) return 1;
 				if (obj1.name > obj2.name) return -1;
@@ -40,7 +162,6 @@ const sortByName = () =>
 			});
 			updateView(data);
 		} else {
-			getByName.classList.add("asc");
 			data.sort(function(obj1, obj2) {
 				if (obj1.name < obj2.name) return -1;
 				if (obj1.name > obj2.name) return 1;
@@ -48,18 +169,14 @@ const sortByName = () =>
 			});
 			updateView(data);
 		}
-    })
-	.catch(error => {
-		console.log('Fetch Error:', error);
-	});
+	}
 
-const sortByCat = () =>
-	fetch(url)
-	.then(response =>
-		response.json())
-	.then(data => {
-		if(getByCat.classList.contains("asc")){
-			getByCat.classList.remove("asc");
+};
+
+const sortByCat = () => {
+	if(event.target.textContent === "Категория"){
+		event.target.classList.toggle("desc");
+		if(event.target.classList.contains("desc")){
 			data.sort(function(obj1, obj2) {
 				if (obj1.category < obj2.category) return 1;
 				if (obj1.category > obj2.category) return -1;
@@ -67,118 +184,89 @@ const sortByCat = () =>
 			});
 			updateView(data);
 		} else {
-			getByCat.classList.add("asc");
 			data.sort(function(obj1, obj2) {
 				if (obj1.category < obj2.category) return -1;
 				if (obj1.category > obj2.category) return 1;
 				return 0;
 			});
 			updateView(data);
-		}
-	 })
-	.catch(error => {
-		console.log('Fetch Error :-S', error);
-	});	
+		}	
+	}
+};
 
-const sortByCount = () =>
-	fetch(url)
-	.then(response =>
-		response.json())
-	.then(data => {
-		if(getByCount.classList.contains("asc")){
-			getByCount.classList.remove("asc");
+const sortByCount = () => {
+	if(event.target.textContent === "Кол-во на складе"){
+		event.target.classList.toggle("desc");
+		if(event.target.classList.contains("desc")){
 			data.sort(function(obj1, obj2) {
-				return obj2.count - obj1.count;
+			return obj2.count - obj1.count;
 			});
 			updateView(data);
 		} else {
-			getByCount.classList.add("asc");
 			data.sort(function(obj1, obj2) {
 				return obj1.count - obj2.count;
 			});
 			updateView(data);
 		}
-	})
-	.catch(error => {
-		console.log('Fetch Error :-S', error);
-	});
+	}
+	
+};
 
-const sortByPrice = () =>
-	fetch(url)
-	.then(response =>
-		response.json())
-	.then(data => {
-		if(getByPrice.classList.contains("asc")){
-			getByPrice.classList.remove("asc");
+const sortByPrice = () => {
+	if(event.target.textContent === "Цена"){
+		event.target.classList.toggle("desc");
+		if(event.target.classList.contains("desc")){
 			data.sort(function(obj1, obj2) {
 				return obj2.price - obj1.price;
 			});
 			updateView(data);
 		} else {
-			getByPrice.classList.add("asc");
 			data.sort(function(obj1, obj2) {
 				return obj1.price - obj2.price;
 			});
 			updateView(data);
 		}
-	})
-	.catch(error => {
-		console.log('Fetch Error :-S', error);
-	});
-	
-const sortByDate = () =>
-	fetch(url)
-	.then(response =>
-		response.json())
-	.then(data => {
-		if(getByDate.classList.contains("asc")){
-			getByDate.classList.remove("asc");
+	}
+};
+
+const sortByDate = () => {
+	if(event.target.textContent === "Дата создания"){
+		event.target.classList.toggle("desc");
+		if(event.target.classList.contains("desc")){
 			data.sort(function(obj1, obj2) {
 				return (new Date(obj2.creationDate) - new Date(obj1.creationDate));
 			});
 			updateView(data);
 		} else {
-			getByDate.classList.add("asc");
 			data.sort(function(obj1, obj2) {
 				return (new Date(obj1.creationDate) - new Date(obj2.creationDate));
 			});
 			updateView(data);
 		}
-	})
-	.catch(error => {
-		console.log('Fetch Error :-S', error);
-	});
+	}
+};
 
-const sortByWeight = () =>
-	fetch(url)
-	.then(response =>
-		response.json())
-	.then(data => {
-		if(getByWeight.classList.contains("asc")){
-			getByWeight.classList.remove("asc");
+const sortByWeight = () => {
+	if(event.target.textContent === "Вес"){
+		event.target.classList.toggle("desc");
+		if(event.target.classList.contains("desc")){
 			data.sort(function(obj1, obj2) {
 				return obj2.weight - obj1.weight;
 			});
 			updateView(data);
 		} else {
-			getByWeight.classList.add("asc");
 			data.sort(function(obj1, obj2) {
 				return obj1.weight - obj2.weight;
 			});
 			updateView(data);
 		}
-	})
-	.catch(error => {
-		console.log('Fetch Error :-S', error);
-	});
+	}	
+};
 
-const sortBySize = () =>
-	fetch(url)
-	.then(response =>
-		response.json())
-	.then(data => {
-		if(getBySize.classList.contains("asc")){
-			getBySize.classList.remove("asc");
+const sortBySize = () => {
+	if(event.target.textContent === "Размеры(ШхВхД)"){
+		event.target.classList.toggle("desc");
+		if(event.target.classList.contains("desc")){
 			data.sort(function(obj1, obj2) {
 				let size1 = obj1.size.split("x");
 				let size2 = obj2.size.split("x");
@@ -188,7 +276,6 @@ const sortBySize = () =>
 			});
 			updateView(data);
 		} else {
-			getBySize.classList.add("asc");
 			data.sort(function(obj1, obj2) {
 				let size1 = obj1.size.split("x");
 				let size2 = obj2.size.split("x");
@@ -198,16 +285,16 @@ const sortBySize = () =>
 			});
 			updateView(data);
 		}
-	})
-	.catch(error => {
-		console.log('Fetch Error :-S', error);
-	});
-
+	}
 	
-getByName.addEventListener("click", sortByName);
-getByCat.addEventListener("click", sortByCat);
-getByCount.addEventListener("click", sortByCount);
-getByPrice.addEventListener("click", sortByPrice);
-getByDate.addEventListener("click", sortByDate);
-getByWeight.addEventListener("click", sortByWeight);
-getBySize.addEventListener("click", sortBySize);
+};
+	
+thead.addEventListener("click", function(){
+	if(event.target.textContent === "Название товара") sortByName();
+	if(event.target.textContent === "Категория") sortByCat();
+	if(event.target.textContent === "Кол-во на складе") sortByCount();
+	if(event.target.textContent === "Цена") sortByPrice();
+	if(event.target.textContent === "Дата создания") sortByDate();
+	if(event.target.textContent === "Вес") sortByWeight();
+	if(event.target.textContent === "Размеры(ШхВхД)") sortBySize();
+});
