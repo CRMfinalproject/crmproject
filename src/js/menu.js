@@ -44,30 +44,28 @@ burgerMenu.element.addEventListener('click', event => {
     burgerMenu.toggle();
 });
 
+// document.body.addEventListener('click', (event) => {
+//     debugger
+//     let el = event.target;
+//     let shouldMenuClose = true;
 
-/*document.body.addEventListener('click', (event) => {
-    let el = event.target;
-    let shouldMenuClose = true;
+//     while( el != document.body) {
+//         let hasBurger = el.classList.contains(classBurger);
+//         let hasBurgerMenu = el.classList.contains(classBurgerCont);
+//         let hasMenu = el.classList.contains(classMenu);
 
-    while( el != document.body) {
-        let hasBurger = el.classList.contains(classBurger);
-        let hasBurgerMenu = el.classList.contains(classBurgerCont);
-        let hasMenu = el.classList.contains(classMenu);
+//         if (hasBurger || hasBurgerMenu || hasMenu) {
+//             shouldMenuClose = false;
+//             break;
+//         }
 
-        if (hasBurger || hasBurgerMenu || hasMenu) {
-            shouldMenuClose = false;
-            break;
-        }
+//         el = el.parentNode;
+//     }
 
-        el = el.parentNode;
-    }
-
-    if (shouldMenuClose) {
-        burgerMenu.close();
-        userCabinetMenu.close();
-        burgerContMenu.close();
-        event.preventDefault();
-    }
-});
-
-*/
+//     if (shouldMenuClose) {
+//         burgerMenu.close();
+//         userCabinetMenu.close();
+//         burgerContMenu.close();
+//         event.preventDefault();
+//     }
+// });
