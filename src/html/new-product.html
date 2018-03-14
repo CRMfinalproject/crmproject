@@ -1,40 +1,42 @@
 <div class="new-product__wrapper">
     <div class="new-product__content">
         <h2 class="new-product__form__heading">Добавить новый товар</h2>
-        <form>
+        <form action="" method="post">
             <div class="new-product__form">
                 <div class="new-product__form__column">
-                    <input type="text" class="new-product__form__input--text" placeholder="Название товара">
-                    <input type="text" class="new-product__form__input--text" placeholder="Введите название категории">
-                <select class="new-product__form__selection" id="js-select-category"></select>
-                <button class="new-product__form__selection__button">+</button>
+                    <input type="text" class="new-product__form__input--text" id="js-new-product-name" name="name" placeholder="Название товара" required>
+                    <input type="text" class="new-product__form__input--text" id="js-new-product-category" name="category" placeholder="Введите название категории">
+                <select class="new-product__form__selection" id="js-select-category">
+                    <option> </option>
+                </select>
+                <button class="new-product__form__selection__button" id="js-category-add-btn">+</button>
                 <p class="new-product__form__input__label">Описание товара</p>
-                <textarea class="new-product__form__input--textarea" rows="4"></textarea>
+                <textarea class="new-product__form__input--textarea" id="js-new-product-description" name="description" rows="4"></textarea>
             </div>
             <div class="new-product__form__column">
                 <div class="new-product__form__row">
                     <p class="new-product__form__input--number__label">Стоимость<br>
-                        <input type="number" class="new-product__form__input--number" placeholder="0"> грн.
+                        <input type="number" class="new-product__form__input--number" id="js-new-product-price" name="price" placeholder="0" required> грн.
                     </p>
                     <p class="new-product__form__input--number__label">Количество<br>
-                        <input type="number" class="new-product__form__input--number" placeholder="0"> шт.
+                        <input type="number" class="new-product__form__input--number" id="js-new-product-count" name="count" placeholder="0"> шт.
                     </p>
                 </div>
                 <p class="new-product__form__input__group-label">Размеры</p>
                 <p class="new-product__form__input--number__label--small">Ширина<br>
-                    <input type="number" class="new-product__form__input--number" placeholder="0"> x
+                    <input type="number" class="new-product__form__input--number" name="width" id="js-new-product-width" placeholder="0" required> x
                 </p>
                 <p class="new-product__form__input--number__label--small">Высота<br>
-                    <input type="number" class="new-product__form__input--number" placeholder="0"> x
+                    <input type="number" class="new-product__form__input--number" name="height" id="js-new-product-height" placeholder="0" required> x
                 </p>
                 <p class="new-product__form__input--number__label--small">Длина<br>
-                    <input type="number" class="new-product__form__input--number" placeholder="0">
+                    <input type="number" class="new-product__form__input--number" name="length" placeholder="0" id="js-new-product-length" required>
                 </p>
                 <p class="new-product__form__input--number__label">Вес<br>
-                    <input type="number" class="new-product__form__input--number" placeholder="0.1"> кг.
+                    <input type="number" class="new-product__form__input--number" id="js-new-product-weight" name="weight" placeholder="0.1" required> кг.
                 </p>
                 <p class="new-product__form__input--number__label">Объемный вес<sup>*</sup>
-                    <input type="number" class="new-product__form__input--number" placeholder="0.1"> кг.
+                    <input type="number" class="new-product__form__input--number" name = "volume" id="js-new-product-volume" placeholder="0.1" required> кг.
                 </p>
             </div>
         </div>
