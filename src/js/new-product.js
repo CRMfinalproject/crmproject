@@ -3,17 +3,19 @@ class AddProduct {
         this.container = document.querySelector('.new-product__wrapper');
         this.categorySelection = document.querySelector('#js-select-category');
         this.categoryList = categoryList;
-        //document.body.querySelector(".table-control__button--add-new").addEventListener('click', () => this.render());
-        this.createCategoryList();
+        document.body.querySelector(".table-control__button--add-new").addEventListener('click', () => this.render());
         this.container.querySelector('form').addEventListener('input', () => this.autocompleteFields());
         this.container.querySelector('#js-category-add-btn').addEventListener('click', () => this.addCategory());
         this.container.querySelector('#js-submit-btn').addEventListener('click', () => this.createNewProduct());
 
     }
-        render() {};
-        createCategoryList() {
+        render() {
+            this.newProductHtml = document.querySelector('#js-add-new-product').textContent.trim();
+            document.querySelector('.table-control').insertAdjacentHTML('afterend', this.newProductHtml);
             this.categorySelection.insertAdjacentHTML('beforeend', this.categoryList.map((elem) => `<option value=${elem}>${elem}</option>`).reduce((accum, elem) => accum + elem));
+
         };
+
         addCategory() {
             if (this.categoryList.includes(this.container.querySelector('#js-new-product-category').value) === false) {
                 this.categoryList.push(this.container.querySelector('#js-new-product-category').value);
@@ -22,7 +24,6 @@ class AddProduct {
             }
         }
         autocompleteFields() {
-            console.log(event.target);
             if (event.target === this.container.querySelector('select')) {
                 this.container.querySelector('#js-new-product-category').value = this.container.querySelector('select').value;
             }

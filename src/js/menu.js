@@ -45,7 +45,7 @@ burgerMenu.element.addEventListener('click', event => {
 });
 
 
-document.body.addEventListener('click', (event) => {
+/*document.body.addEventListener('click', (event) => {
     let el = event.target;
     let shouldMenuClose = true;
 
@@ -70,3 +70,4 @@ document.body.addEventListener('click', (event) => {
     }
 });
 
+*/
