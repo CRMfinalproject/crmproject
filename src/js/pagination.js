@@ -89,9 +89,10 @@ class Pagination {
         // вызываем renderTable класса Table с записи номер startRow по запись номер endRow (включительно)
         let startRow = (this.currentPage - 1) * ROWS_PER_PAGE;
         let endRow = this.currentPage * ROWS_PER_PAGE - 1;
-        if (endRow >= data.length) {
-            endRow = data.length-1};
-        table.renderData(data.slice(startRow, endRow));
+        if (endRow >= finalResults.length) {
+            endRow = finalResults.length-1};
+        console.log()
+        table.renderData(finalResults.slice(startRow, endRow));
         this.render(this.pagesToShow()); 
   
     }
@@ -108,4 +109,4 @@ class Pagination {
     }
 }
 
-let page = new Pagination(data);
+let page = new Pagination(finalResults);

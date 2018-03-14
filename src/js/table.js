@@ -47,19 +47,19 @@ class Table {
                     bodyContent += `<td class="table-column-weight"><span>${data[i].weight} г</span></td>`;
                     bodyContent += `<td class="table-column-size"><span>${data[i].size} см </span></td>`;
                     bodyContent += `
-                <td class="table-column-settings">
-                    <div class="table-column-actions js-dots">
-                        <img src="../images/three-dots.png" class="table-column-actions__dots adsf">
-                    </div><div class="table-column-actions js-actions close">
-                        <img src="../images/copy-icon.svg" title="переместить" class="table-column-actions__copy">
-                        <img src="../images/edit-icon.svg" title="редактировать" class="table-column-actions__edit">
-                        <img src="../images/delete-icon.svg" title="удалить" class="table-column-actions__delete">
-                    </div><div class="table-column-actions__ok  js-ok close">
-                        <button class="button__ok">OK</button>
-                    </div><div class="table-column-actions__recover js-recover close">
-                        <button class="button__recover">Восстановить</button>
-                    </div>
-                </td>`;
+                    <td class="table-column-settings">
+                        <div class="table-column-actions js-dots">
+                            <img src="../images/three-dots.png" class="table-column-actions__dots adsf">
+                        </div><div class="table-column-actions js-actions close">
+                            <img src="../images/copy-icon.svg" title="переместить" class="table-column-actions__copy">
+                            <img src="../images/edit-icon.svg" title="редактировать" class="table-column-actions__edit">
+                            <img src="../images/delete-icon.svg" title="удалить" class="table-column-actions__delete">
+                        </div><div class="table-column-actions__ok  js-ok close">
+                            <button class="button__ok">OK</button>
+                        </div><div class="table-column-actions__recover js-recover close">
+                            <button class="button__recover">Восстановить</button>
+                        </div>
+                    </td>`;
                     bodyContent += `</tr>`;
 
 

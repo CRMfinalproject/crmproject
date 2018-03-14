@@ -201,13 +201,18 @@ function filterMimMaxDate() {
 let finalResults = [];
 
  function resultID() {
+    result = [];
     result[0] = filterNamePrice;
     result[1] = filterNameCount;
     if (filterNameCategory.length !== 0) {
-        result[2] = filterNameCategory;
+        result.push(filterNameCategory);
     }
     if (filterNameDate.length !== 0) {
-        result[3] = filterNameDate;
+        result.push(filterNameDate);
+    }
+    if (searchSelectByname.value.length !== 0) {
+        result.push(filterNamebyName);
+        console.log(filterNamebyName);
     }
     finalResults = [];
     let sorted_arr  = [];
@@ -236,51 +241,61 @@ let finalResults = [];
             result.splice(2,1);
             break;
         case 4:
-            sorted_arr = result[0].concat(result[1],result[2],result[3]);
+        sorted_arr = result[0].concat(result[1],result[2],result[3]);
+        sorted_arr.sort(function (a, b) {
+            return a - b;
+        });
+        for (let j = 0; j < sorted_arr.length - 1; j++) {
+            if (sorted_arr[j] === sorted_arr[j + 1] && sorted_arr[j] === sorted_arr[j + 2] && sorted_arr[j] === sorted_arr[j + 3]) {
+                finalResults.push(sorted_arr[j]);
+            }
+        }
+        result.splice(3,1);
+        break;
+
+        //Here must be case 5: SearchingByName
+        case 5:
+            sorted_arr = result[0].concat(result[1],result[2],result[3],result[4]);
             sorted_arr.sort(function (a, b) {
                 return a - b;
             });
             for (let j = 0; j < sorted_arr.length - 1; j++) {
-                if (sorted_arr[j] === sorted_arr[j + 1] && sorted_arr[j] === sorted_arr[j + 2] && sorted_arr[j] === sorted_arr[j + 3]) {
+                if (sorted_arr[j] === sorted_arr[j + 1] && sorted_arr[j] === sorted_arr[j + 2] && sorted_arr[j] === sorted_arr[j + 3] && sorted_arr[j] === sorted_arr[j + 4]) {
                     finalResults.push(sorted_arr[j]);
                 }
             }
-            result.splice(3,1);
+            result.splice(4,1);
             break;
+
         default:
             break;
-        //Here must be case 5: SearchingByName
     }
+
      table.renderData();
      page.setSettings(finalResults);
      page.render();
+
     //Here must be fetch request...
     console.log("Список ID для fetch" + "  " + finalResults);
-};
+}
 
 
 
 //FILTER SEARCH BY NAME
 
-let resizeName = [];
 let filterNamebyName = [];
 function searchSelectByName() {
     filterNamebyName = [];
     if (searchSelectByname.value != "") {
-        for (let i = 0; i < searchSelectByname.value.length; i++) {
-            for (let j = 0; j < data.length; j++) {
-
-                resizeName = data[j].name.split("", searchSelectByname.value.length);
-                console.log(resizeName);
-
-                if (searchSelectByname.value[i] == resizeName[i]) {
-                    filterNamebyName.push(data[j].id);
-
-                }
-
-            }
-        }
-        console.log(`searchByName ${filterNamebyName}`);
-    }
-
+        for (let i = 0; i < data.length; i++) {
+             data[i].name.slice(0, searchSelectByname.value.length);
+             if(searchSelectByname.value.toLowerCase().indexOf(data[i].name.slice(0, searchSelectByname.value.length).toLowerCase()) > -1){
+                 filterNamebyName.push(data[i].id);
+             }
+         }
+     }
+        // console.log("searchByName" + filterNamebyName);
+        resultID();
 }
+
+
