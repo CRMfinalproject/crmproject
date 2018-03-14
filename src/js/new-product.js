@@ -4,12 +4,12 @@ class AddProduct {
         document.body.querySelector(".table-control__button--add-new").addEventListener('click', () => this.render());
     }
         render() {
-            this.container = document.createElement('div');
-            this.container.classList.add('new-product__wrapper');
-            document.querySelector('.content').insertBefore(this.container, document.body.querySelector('.table-control'));
             document.querySelector('.content').removeChild(document.querySelector('.pagination'));
             document.querySelector('.content').removeChild(document.querySelector('.data-table'));
             document.querySelector('.content').removeChild(document.querySelector('.table-control'));
+            this.container = document.createElement('div');
+            this.container.classList.add('new-product__wrapper');
+            document.querySelector('.content').appendChild(this.container);
             this.newProductHtml = document.querySelector('#js-add-new-product').textContent.trim();
             this.container.insertAdjacentHTML('afterbegin', this.newProductHtml);
             this.categorySelection = this.container.querySelector('#js-select-category');
