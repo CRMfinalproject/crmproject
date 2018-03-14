@@ -1,10 +1,11 @@
 class TableControlBlock {
     constructor(addText) {
         //  debugger;  
-        if (!document.body.querySelector(".table-control")) {
+        /*if (!document.body.querySelector(".table-control")) {
             document.body.querySelector(".content").innerHTML += `<div class="table-control"></div>`;     
         };
-        this.container = document.body.querySelector(".table-control");
+        this.container = document.body.querySelector(".table-control");*/
+        this.container = document.createElement('div');
         this.addText = addText;
         this.render();
         this.actionSubmenu = this.container.querySelector(".table-control__button--actions");
@@ -14,6 +15,8 @@ class TableControlBlock {
     }
 
     render() {
+        this.container.classList.add('table-control');
+        document.body.querySelector(".content").appendChild(this.container);
         this.container.innerHTML = `
         <div class="table-control__button table-control__button--actions">
             <div class="table-control__button__title">Действия с выбранными</div>

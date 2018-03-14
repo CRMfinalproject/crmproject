@@ -1,11 +1,9 @@
 class Table {
     constructor(fields, data = {}) {
-        document.body.querySelector(".content").innerHTML += 
-        `<table class="data-table">
-            <thead class="data-table-header"></thead>
-            <tbody class="data-table-body"></tbody>
-        </table>`;
-
+        this.container = document.createElement('table');
+        document.body.querySelector('.content').appendChild(this.container);
+        this.container.classList.add('data-table');
+        this.container.insertAdjacentHTML('afterbegin', `<thead class="data-table-header"></thead><tbody class="data-table-body"></tbody>`);
         this.fields = fields;
         this.renderHeader();
         this.renderData(data);
