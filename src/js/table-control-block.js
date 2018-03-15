@@ -1,26 +1,34 @@
-class TableControlBlock {
-    constructor(addText) {
-        //  debugger;  
-        /*if (!document.body.querySelector(".table-control")) {
-            document.body.querySelector(".content").innerHTML += `<div class="table-control"></div>`;     
-        };
-        this.container = document.body.querySelector(".table-control");*/
-        // this.container = document.createElement('div');
-        this.container = this.createElement(document.body.querySelector(".content"), 'div', 'table-control');
-        this.addText = addText;
-        this.render();
-        this.actionSubmenu = this.container.querySelector(".table-control__button--actions");
-        this.renderActionSubmenu();
-        this.actionSubmenu.addEventListener('click', this.showActionSubmenu.bind(this));
-        // document.body.querySelector(".content").addEventListener('click', this.showActionSubmenu.bind(this));
-    }
-
-    createElement(par, tag, elemClass) {
+function createElement(par, tag, elemClass) {
     let element = document.createElement(tag);
     let elemClassArr = elemClass.split(" ");
     elemClassArr.map(elemClass => element.classList.add(elemClass));
     par.appendChild(element);
     return element;
+}
+
+class TableControlBlock {
+    constructor(addText) {
+        debugger;  
+        /*if (!document.body.querySelector(".table-control")) {
+            document.body.querySelector(".content").innerHTML += `<div class="table-control"></div>`;     
+        };
+        this.container = document.body.querySelector(".table-control");*/
+        // this.container = document.createElement('div');
+        this.addText = addText;
+
+        if (!document.body.querySelector(".table-control")) {
+            this.container = createElement(document.body.querySelector(".content"), 'div', 'table-control');
+            this.render();
+        } else {
+            this.container = document.body.querySelector(".table-control");
+            this.renderButtonTitle();
+            };
+        
+        
+        this.actionSubmenu = this.container.querySelector(".table-control__button--actions");
+        this.renderActionSubmenu();
+        this.actionSubmenu.addEventListener('click', this.showActionSubmenu.bind(this));
+        // document.body.querySelector(".content").addEventListener('click', this.showActionSubmenu.bind(this));
     }
 
     render() {
@@ -48,6 +56,10 @@ class TableControlBlock {
                 <img src="../images/round-add-button.svg" alt="+" class="table-control__button__icon">
                 <div class="table-control__button__title">${this.addText}</div>
             </div> `);
+    }
+
+    renderButtonTitle() {
+        this.container.querySelector(".table-control__button--add-new .table-control__button__title").innerHTML = this.addText;
     }
 
     renderActionSubmenu() {
