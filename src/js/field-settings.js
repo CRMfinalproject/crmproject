@@ -41,7 +41,16 @@ class Fieldsettings {
             this.headingText.textContent = '';
             this.container.removeChild(this.form);
             table.renderHeader();
-            table.renderData(data);
+            table.renderData();
+            debugger;
+            this.container.addEventListener('click', () => this.container.classList.contains('table__fieldsettings--active') ? (event.target.classList.contains('table__fieldsettings__item') || event.target.classList.contains('table__fieldsettings__checkbox') ? this.updateField() : this.hide()) : this.render());
+            document.body.addEventListener('click', () => {
+                if (this.container.classList.contains('table__fieldsettings--active')) {
+                    if (event.target !== this.triggerBtn && event.target.classList.contains('table__fieldsettings__item') === false && event.target.classList.contains('table__fieldsettings__checkbox') === false) {
+                        this.hide();
+                    }
+                }
+            })
         }
     };
     updateField() {
