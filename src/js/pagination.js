@@ -87,13 +87,20 @@ class Pagination {
         else { this.currentPage = Number(event.target.innerHTML); }
         
         // вызываем renderTable класса Table с записи номер startRow по запись номер endRow (включительно)
-        let startRow = (this.currentPage - 1) * ROWS_PER_PAGE;
-        let endRow = this.currentPage * ROWS_PER_PAGE - 1;
+        // let startRow = (this.currentPage - 1) * ROWS_PER_PAGE;
+        // let endRow = this.currentPage * ROWS_PER_PAGE - 1;
+        // if (endRow >= data.length) {
+        //     endRow = data.length-1};
+        // table.renderData(data.slice(startRow, endRow));
+        // this.render(this.pagesToShow()); 
+
+        startRow = (this.currentPage - 1) * ROWS_PER_PAGE;
+        endRow = this.currentPage * ROWS_PER_PAGE - 1;
         if (endRow >= data.length) {
             endRow = data.length-1};
-        table.renderData(data.slice(startRow, endRow));
-        this.render(this.pagesToShow()); 
-  
+        table.renderData();
+        this.render(this.pagesToShow());
+
     }
     controlSize(event) {
         if (screen.width < 780 && !this.mobile) {
