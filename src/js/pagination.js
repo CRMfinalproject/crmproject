@@ -1,22 +1,23 @@
 class Pagination {
-    constructor(data) {
+    constructor() {
         // document.body.querySelector(".content").innerHTML += `<div class="pagination"></div>`;    
         
         let content = document.querySelector('.content');
         content.insertAdjacentHTML('beforeend', '<div class="pagination"></div>');
         this.container = document.body.querySelector(".pagination");
 
-        this.setSettings(data);
+        this.setSettings();
         this.render();
 
         this.container.addEventListener('click', this.switchPages.bind(this));
 
         window.addEventListener('resize', this.controlSize.bind(this));
     }
-    setSettings(data) {
+    setSettings() {
         // от сервера мы получаем общее количество ТОВАРОВ
+        debugger;
         this.totalPages = Math.ceil(data.length/10);
-        this.currentPage = 1;
+        this.currentPage = Math.ceil(endRow/10);
         this.arrPages = Array.from({ length: (this.totalPages + 1) }, (v, i) => i);
         this.arrPages.splice(0, 1);
         this.mobile = (screen.width < 780) ? true : false;
@@ -44,7 +45,7 @@ class Pagination {
         return this.arrPagesToShow;
     }
     render() {
-        // debugger;
+        debugger;
         this.container.innerHTML = ``;
         if (this.currentPage != 1) {
             this.container.innerHTML = `
@@ -87,13 +88,6 @@ class Pagination {
         else { this.currentPage = Number(event.target.innerHTML); }
         
         // вызываем renderTable класса Table с записи номер startRow по запись номер endRow (включительно)
-        // let startRow = (this.currentPage - 1) * ROWS_PER_PAGE;
-        // let endRow = this.currentPage * ROWS_PER_PAGE - 1;
-        // if (endRow >= data.length) {
-        //     endRow = data.length-1};
-        // table.renderData(data.slice(startRow, endRow));
-        // this.render(this.pagesToShow()); 
-
         startRow = (this.currentPage - 1) * ROWS_PER_PAGE;
         endRow = this.currentPage * ROWS_PER_PAGE - 1;
         if (endRow >= data.length) {
@@ -115,4 +109,4 @@ class Pagination {
     }
 }
 
-let page = new Pagination(data);
+let page = new Pagination();

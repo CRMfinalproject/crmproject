@@ -66,7 +66,7 @@ class TableControlBlock {
         this.actionSubmenu.insertAdjacentHTML("beforeend", `
             <div class="table-control__submenu">
                 <img src="../images/garbage.svg" alt="+" class="table-control__submenu__icon">
-                <div class="table-control__button__title">Удалить</div>
+                <div class="table-control__button__title table-control__submenu__title">Удалить</div>
             </div>`
         );
     }
@@ -88,6 +88,7 @@ class TableControlBlock {
                         arrow.style.transform = `rotate(${angle}deg)`;
                     }
                 }, 10);
+            
             } else {
                 angle = 225;
                 let id = setInterval(() => {
@@ -100,7 +101,38 @@ class TableControlBlock {
                 }, 10);
             };
         }
+
+        debugger;
+        let submenu = document.body.querySelector(".table-control__submenu");
+        submenu.addEventListener('click', this.deleteSelected());
         
+    }
+
+    deleteSelected() {
+        debugger;
+
+        if (event.target.classList.contains("table-control__submenu__icon") || event.target.classList.contains("table-control__submenu__title")) {
+            let inputsToDel = Array.from(table.container.querySelectorAll("input:checked"),
+                elem => elem.parentElement.parentElement.id.slice(4));
+
+            if (inputsToDel.length != 0) {
+                let countToDel = 0;
+                while (countToDel != inputsToDel.length) {
+                    for (let i=0; i<data.length; i++) {
+                        inputsToDel.map(productToDel => {
+                            if (data[i].id == productToDel) {
+                                data.splice(i, 1);
+                                countToDel++;
+                            }
+                        })
+                    };
+                };
+                debugger;
+                table.renderData();
+                page.setSettings();
+                page.render();
+            }
+        }
     }
 }
 
