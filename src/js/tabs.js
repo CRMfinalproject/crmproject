@@ -1,9 +1,9 @@
 class Tabs {
     constructor () {
-        document.body.querySelector(".content").innerHTML += `<div class="tabs"></div>`;
+        document.body.querySelector(".content").insertAdjacentHTML("afterbegin",`<div class="tabs"></div>`);
         this.tabsContainer = document.body.querySelector(".tabs");
         this.render();
-        document.body.querySelector(".content").addEventListener('click', this.toggle.bind(this));
+        this.tabsContainer.addEventListener('click', this.toggle.bind(this));
         // document.body.querySelector(".tabs").addEventListener('click', this.toggle.bind(this));
     }
 
@@ -24,7 +24,7 @@ class Tabs {
         }
     }
     render () {
-        this.tabsContainer.innerHTML = `
+        this.tabsContainer.insertAdjacentHTML = `
             <div class="tabs__item tabs__item--active">Товары</div>
             <div class="tabs__item">Поставки</div>
             <div class="tabs__item">Категории</div>`;
