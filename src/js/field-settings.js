@@ -1,15 +1,3 @@
-/*let table = {
-    fields: [
-        { name: "name", view: "Название товара", hidden: false },
-        { name: "category", view: "Категория", hidden: false },
-        { name: "count", view: "Количество на складе", hidden: false },
-        { name: "price", view: "Цена", hidden: false },
-        { name: "creationDate", view: "Дата создания", hidden: false },
-        { name: "weight", view: "Вес", hidden: true },
-        { name: "size", view: "Размеры(ШхВхД)", hidden: true }
-    ]
-};*/
-
 class Fieldsettings {
     constructor() {
         this.container = document.querySelector('.table__fieldsettings');
@@ -42,7 +30,6 @@ class Fieldsettings {
             this.container.removeChild(this.form);
             table.renderHeader();
             table.renderData();
-            debugger;
             this.container.addEventListener('click', () => this.container.classList.contains('table__fieldsettings--active') ? (event.target.classList.contains('table__fieldsettings__item') || event.target.classList.contains('table__fieldsettings__checkbox') ? this.updateField() : this.hide()) : this.render());
             document.body.addEventListener('click', () => {
                 if (this.container.classList.contains('table__fieldsettings--active')) {

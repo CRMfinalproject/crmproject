@@ -18,6 +18,7 @@ class AddProduct {
             this.form = this.container.querySelector('#js-new-product-form');
             this.categoryInput = this.container.querySelector('#js-new-product-category');
             this.descriptionInput = this.container.querySelector('#js-new-product-description');
+            this.numberInputs = this.container.querySelectorAll('.new-product__form__input--number__label', '.new-product__form__input--number__label--small');
             this.priceInput = this.container.querySelector('#js-new-product-price');
             this.countInput = this.container.querySelector('#js-new-product-count');
             this.widthInput = this.container.querySelector('#js-new-product-width');
@@ -27,6 +28,7 @@ class AddProduct {
             this.categoryAddBtn = this.container.querySelector('#js-category-add-btn');
             this.submitBtn = this.container.querySelector('#js-submit-btn');
             this.form.addEventListener('input', () => this.autocompleteFields());
+            this.form.addEventListener('click', () => this.changeNumberInput());
             this.categoryAddBtn.addEventListener('click', () => {
                 event.preventDefault();
                 this.addCategory()

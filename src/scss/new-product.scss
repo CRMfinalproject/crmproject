@@ -26,6 +26,7 @@
 
 .new-product__content {
   width: 60%;
+  height: fit-content;
 }
 
 .new-product__form__heading {
@@ -70,14 +71,18 @@
   position: relative;
   top: -50px;
   width: 90%;
-  line-height: 2em;
+  line-height: 2.1em;
 }
 
 .new-product__form__input--number {
+  display: inline-block;
   width: 50px;
   height: 37px;
   margin-top: 10px;
   text-align: center;
+  /*&::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }*/
 }
 
 .new-product__form__input--number__label {
@@ -89,9 +94,30 @@
 .new-product__form__input--number__label--small {
   display: inline-block;
   width: 30%;
-  margin: 0 0 5px;
+  margin: 0 0 37px;
+}
+/*.new-product__form__input__arrow--up, .new-product__form__input__arrow--down {
+    display: inline-block;
+    position: relative;
+    left: 0;
+    width: 4px;
+    height: 4px;
+    border: none;
+    border-left: 2px solid #77bbeb;
+    border-bottom: 2px solid #77bbeb;
+    background-color: #ffffff;
+    font-size: 0;
 }
 
+.new-product__form__input__arrow--up {
+    transform: rotate(135deg);
+}
+
+.new-product__form__input__arrow--up {
+    top: -17px;
+    transform: rotate(-45deg);
+  }
+*/
 .new-product__form__input__label {
   position: relative;
   width: 90%;
@@ -111,10 +137,19 @@
   display: block;
   position: relative;
   top: -36px;
-  left: 70%;
-  width: 17px;
+  left: 60%;
+  width: 50px;
   height: 35px;
   border: 0 none;
+  color: #ffffff;
+  -webkit-appearance: none;
+}
+
+.new-product__form__selection option:not(:checked){
+  color: black;
+}
+.new-product__form__selection option:not(:hover){
+  color: black;
 }
 
 .new-product__form__selection__button {
@@ -127,7 +162,21 @@
   border: 0 none;
   background-color: #73cc83;
   color: #ffffff;
-  font-size: 24px;
+  font-size: 20px;
+  &::before {
+    content: '';
+    display: block;
+    position: relative;
+    top: 13px;
+    left: -20px;
+    width: 5px;
+    height: 5px;
+    border: none;
+    border-left: 2px solid #77bbeb;
+    border-bottom: 2px solid #77bbeb;
+    font-size: 0;
+    transform: rotate(-45deg);
+  }
 }
 
 .new-product__form__reference {
