@@ -1,14 +1,12 @@
 class Table {
-    constructor(fields, data = {}) {
-        document.body.querySelector(".content").innerHTML += 
-        `<table class="data-table">
-            <thead class="data-table-header"></thead>
-            <tbody class="data-table-body"></tbody>
-        </table>`;
-
+    constructor(fields) {
+        this.container = document.createElement('table');
+        document.body.querySelector('.content').appendChild(this.container);
+        this.container.classList.add('data-table');
+        this.container.insertAdjacentHTML('afterbegin', `<thead class="data-table-header"></thead><tbody class="data-table-body"></tbody>`);
         this.fields = fields;
         this.renderHeader();
-        this.renderData(data);
+        this.renderData();
     }
 
     renderHeader() {
@@ -36,9 +34,10 @@ class Table {
 
 
     // data
-    renderData(data) {
+    renderData() {
+        let dataPage = data.slice(startRow, endRow);
         let bodyContent = "";
-        data.map(row => {
+        dataPage.map(row => {
             bodyContent += `<tr class = "row-table" id="row-${row.id}">`;
             bodyContent += `<td class="table-column-checkbox"><input type="checkbox" class ="checkbox row-table"></td>`;
             bodyContent += this.fields.find((field) => field.name === 'name').hidden === false ? `<td class="table-column-name"><a href = "Ссылка на товар/${row.id}" class = "table-column-name__link">${row.name}</a></td>` : '';
@@ -77,5 +76,5 @@ let productTableFields = [
     { name: "weight", view: "Вес", hidden: true },
     { name: "size", view: "Размеры(ШхВхД)", hidden: true }
 ]
-let table = new Table(productTableFields, data.slice(0, ROWS_PER_PAGE));
+let table = new Table(productTableFields);
 
