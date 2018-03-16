@@ -9,14 +9,14 @@ const sortByName = () => {
 				if (obj1.name > obj2.name) return -1;
 				return 0;
 			});
-			renderData();
+			table.renderData();
 		} else {
 			data.sort(function(obj1, obj2) {
 				if (obj1.name < obj2.name) return -1;
 				if (obj1.name > obj2.name) return 1;
 				return 0;
 			});
-			renderData();
+			table.renderData();
 		}
 	}
 
@@ -31,14 +31,14 @@ const sortByCat = () => {
 				if (obj1.category > obj2.category) return -1;
 				return 0;
 			});
-			renderData();
+			table.renderData();
 		} else {
 			data.sort(function(obj1, obj2) {
 				if (obj1.category < obj2.category) return -1;
 				if (obj1.category > obj2.category) return 1;
 				return 0;
 			});
-			renderData();
+			table.renderData();
 		}	
 	}
 };
@@ -51,12 +51,12 @@ const sortByCount = () => {
 			data.sort(function(obj1, obj2) {
 			return obj2.count - obj1.count;
 			});
-			renderData();
+			table.renderData();
 		} else {
 			data.sort(function(obj1, obj2) {
 				return obj1.count - obj2.count;
 			});
-			renderData();
+			table.renderData();
 		}
 	}
 	
@@ -70,12 +70,12 @@ const sortByPrice = () => {
 			data.sort(function(obj1, obj2) {
 				return obj2.price - obj1.price;
 			});
-			renderData();
+			table.renderData();
 		} else {
 			data.sort(function(obj1, obj2) {
 				return obj1.price - obj2.price;
 			});
-			renderData();
+			table.renderData();
 		}
 	}
 };
@@ -88,12 +88,12 @@ const sortByDate = () => {
 			data.sort(function(obj1, obj2) {
 				return (new Date(obj2.creationDate) - new Date(obj1.creationDate));
 			});
-			renderData();
+			table.renderData();
 		} else {
 			data.sort(function(obj1, obj2) {
 				return (new Date(obj1.creationDate) - new Date(obj2.creationDate));
 			});
-			renderData();
+			table.renderData();
 		}
 	}
 };
@@ -106,12 +106,12 @@ const sortByWeight = () => {
 			data.sort(function(obj1, obj2) {
 				return obj2.weight - obj1.weight;
 			});
-			renderData();
+			table.renderData();
 		} else {
 			data.sort(function(obj1, obj2) {
 				return obj1.weight - obj2.weight;
 			});
-			renderData();
+			table.renderData();
 		}
 	}	
 };
@@ -128,7 +128,7 @@ const sortBySize = () => {
 				let volume2 = size2[0] * size2[1] * size2[2];
 				return (volume2 - volume1);
 			});
-			renderData();
+			table.renderData();
 		} else {
 			data.sort(function(obj1, obj2) {
 				let size1 = obj1.size.split("x");
@@ -137,7 +137,7 @@ const sortBySize = () => {
 				let volume2 = size2[0] * size2[1] * size2[2];
 				return volume1 - volume2;
 			});
-			renderData();
+			table.renderData();
 		}
 	}
 };
