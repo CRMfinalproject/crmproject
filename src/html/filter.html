@@ -5,12 +5,12 @@
     </div>
     <div class="filter_modal" id="modalFilter">
         <div class="filter_block_by-status" id = "filter_block_by-status">
-            <h6>ФИЛЬР ПО КАТЕГОРИИ:</h6>
+            <h6>ФИЛЬТР ПО КАТЕГОРИИ:</h6>
             <ul class="filter_checkboxes">
                 <li><input type="checkbox" id = "checkbox1" class = "filter_checkboxes__input" onclick = "checkControl()" name="status" value = "Обувь">
                     <label for="checkbox1"  class="filter_checkboxes__check-item"></label><span class = "filter_checkboxes__name">Обувь</span></li>
-                <li><input type="checkbox" id = "checkbox2"  class = "filter_checkboxes__input" onclick = "checkControl()" name="status" value="Для животных">
-                    <label for="checkbox2" class="filter_checkboxes__check-item" ></label><span class = "filter_checkboxes__name">Для животных</span></li>
+                <li><input type="checkbox" id = "checkbox2"  class = "filter_checkboxes__input" onclick = "checkControl()" name="status" value="Игрушки">
+                    <label for="checkbox2" class="filter_checkboxes__check-item" ></label><span class = "filter_checkboxes__name">Игрушки</span></li>
                 <li><input type="checkbox" id = "checkbox3"  class = "filter_checkboxes__input" onclick = "checkControl()" name="status" value="Ремни">
                     <label for="checkbox3" class="filter_checkboxes__check-item" ></label><span class = "filter_checkboxes__name">Ремни</span></li>
                 <li><input type="checkbox" id = "checkbox4"  class = "filter_checkboxes__input" onclick = "checkControl()" name="status" value="Косметика">
@@ -19,6 +19,8 @@
                     <label for="checkbox5" class="filter_checkboxes__check-item" ></label><span class = "filter_checkboxes__name">Кожа</span></li>
                 <li> <input type="checkbox" id = "checkbox6"  name="status" class = "filter_checkboxes__input" onclick = "checkControl()"  value="Книги">
                     <label for="checkbox6" class="filter_checkboxes__check-item"></label><span class = "filter_checkboxes__name">Книги</span></li>
+                <li> <input type="checkbox" id = "checkbox7"  name="status" class = "filter_checkboxes__input" onclick = "checkControl()"  value="Хоз.товары">
+                    <label for="checkbox7" class="filter_checkboxes__check-item"></label><span class = "filter_checkboxes__name">Хоз.товары</span></li>
             </ul>
         </div>
 
@@ -36,12 +38,12 @@
 
             <div class = "filter_block-by-price" id="filter-block-by-price">
                 <h6>ФИЛЬТР ПО ЦЕНЕ:</h6>
-                <input id="minRangePrice" class = "minRangePrice"  type="number" onkeyup = "inputRangePrice()" value = "65">
-                <input id="maxRangePrice" class = "maxRangePrice" type="number" onkeyup = "inputRangePrice()" value = "9999"> грн.
+                <input id="minRangePrice" class = "minRangePrice"  type="number" onkeyup = "inputRangePrice()" value = "15">
+                <input id="maxRangePrice" class = "maxRangePrice" type="number" onkeyup = "inputRangePrice()" value = "5000"> грн.
                 <section class="filter_range-slider" id = "filter_range-slider">
                     <span class="rangeValues"></span>
-                    <input class = "filter_range-slider__slide-price" id ="minPrice" value="65" min="65" max="9999" step="10" type="range" data-price = "price">
-                    <input  class = "filter_range-slider__slide-price" id ="maxPrice" value="9999" min="65" max="9999" step="10" type="range" data-price = "price">
+                    <input class = "filter_range-slider__slide-price" id ="minPrice" value="15" min="15" max="5000" step="10" type="range" data-price = "price">
+                    <input  class = "filter_range-slider__slide-price" id ="maxPrice" value="5000" min="15" max="5000" step="10" type="range" data-price = "price">
                 </section>
             </div>
 

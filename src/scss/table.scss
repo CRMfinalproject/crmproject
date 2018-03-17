@@ -105,3 +105,54 @@ $darkblue:	#6495ED;
 .table-column-size {
   text-align: center;
 }
+
+#Косметика,#Одежда,#Обувь,#Игрушки,#Хозтовары,#Книги,#Кожа,#Ремни{
+  text-align: center;
+  span {
+    color: white;
+    border-radius: 4px;
+    display:block;
+    height:25px;
+    line-height:24px;
+  }
+}
+#Косметика{
+  span {
+    background-color: hotpink;
+  }
+}
+#Одежда {
+  span {
+    background-color: #7D678B;
+  }
+}
+#Обувь {
+  span {
+    background-color: #04B4AE;
+      }
+}
+#Игрушки {
+  span {
+    background-color: lightsalmon;
+     }
+}
+#Хозтовары {
+  span {
+    background-color: #72D1ED;
+      }
+}
+#Книги {
+  span {
+    background-color: #D7DF01;
+      }
+}
+#Ремни {
+  span {
+    background-color: #886A08;
+      }
+}
+#Кожа {
+  span {
+    background-color: #876C6C;
+      }
+}

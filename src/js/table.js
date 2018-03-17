@@ -34,13 +34,15 @@ class Table {
         let bodyContent = "";
 
         for (let i = 0; i < data.length; i++) {
+            // document.querySelector(`${data[i].category}`).style.color = data[i].color;
             for (let j = 0; j < finalResults.length; j++) {
                 if (data[i].id === finalResults[j]) {
 
                     bodyContent += `<tr class = "row-table" id="row-${data[i].id}">`;
                     bodyContent += `<td class="table-column-checkbox"><input type="checkbox" class ="checkbox row-table"></input></td>`;
-                    bodyContent += `<td class="table-column-name"><a href = "Ссылка на товар/${data[i].id}" class = "table-column-name__link">${data[i].name}</a></td>`;
-                    bodyContent += `<td class="table-column-category"><span>${data[i].category}</span></td>`;
+                    bodyContent += `<td class="table-column-name"><a href = "Ссылка на товар/${data[i].id}" class = "table-column-name__link" >${data[i].name}</a></td>`;
+                    bodyContent += `<td class="table-column-category" id = ${data[i].category.replace(/\./g, "")}><span>${data[i].category}</span></td>`;
+
                     bodyContent += `<td class="table-column-count"><span>${data[i].count} шт</span></td>`;
                     bodyContent += `<td class="table-column-price"><span>${data[i].price} грн</span></td>`;
                     bodyContent += `<td class="table-column-creationDate"><span>${data[i].creationDate}</span></td>`;
@@ -64,10 +66,13 @@ class Table {
 
 
                 }
+
             }
 
         }
+
         document.querySelector(".data-table-body").innerHTML = bodyContent;
+
     }
 
 
