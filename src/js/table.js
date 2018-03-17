@@ -66,13 +66,8 @@ class Table {
         });
         document.querySelector(".data-table-body").innerHTML = bodyContent;
 
-        addEventClickOnDotsButtons();
-        addEventMouseOutForActions();
-        addEventClickOnCopyButtons();
-        addEventClickOnEditButtons();
-        addEventClickOnDelButtons();
-        addEventClickOnEditConfirmButtons();
-        addEventClickOnRecConfirmButtons();
+        // from edit-actions.js:
+        addEditActionsEvents()
     }
 }
 let productTableFields = [

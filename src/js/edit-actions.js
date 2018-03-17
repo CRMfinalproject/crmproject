@@ -281,3 +281,14 @@ function addEventClickOnRecConfirmButtons() {
 function getGenericId() {
     // AJAX request to get new ID;   
 }
+
+
+function addEditActionsEvents(){
+    addEventClickOnDotsButtons();
+    addEventMouseOutForActions();
+    addEventClickOnCopyButtons();
+    addEventClickOnEditButtons();
+    addEventClickOnDelButtons();
+    addEventClickOnEditConfirmButtons();
+    addEventClickOnRecConfirmButtons();
+}
