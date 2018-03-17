@@ -30,6 +30,7 @@ class Table {
                                 <th class = "order-ctrl"><div class="table__fieldsettings"><p class="table__fieldsettings_heading"><span class="table__fieldsettings_heading__text"></span><img class="table__fieldsettings__btn" src="../images/field_settings.png"></p></div></th>`;
 
         document.querySelector(".data-table-header").innerHTML = headerContent;
+        new Fieldsettings();
     }
 
 
@@ -65,6 +66,13 @@ class Table {
         });
         document.querySelector(".data-table-body").innerHTML = bodyContent;
 
+        addEventClickOnDotsButtons();
+        addEventMouseOutForActions();
+        addEventClickOnCopyButtons();
+        addEventClickOnEditButtons();
+        addEventClickOnDelButtons();
+        addEventClickOnEditConfirmButtons();
+        addEventClickOnRecConfirmButtons();
     }
 }
 let productTableFields = [

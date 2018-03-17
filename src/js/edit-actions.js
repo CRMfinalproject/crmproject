@@ -18,7 +18,7 @@ function addEventClickOnDotsButtons() {
     addEvents('.table-column-actions__dots', 'click', dotsHandler);
 };
 
-addEventClickOnDotsButtons();
+//addEventClickOnDotsButtons();
 
 
 function copyHandler(event) {
@@ -123,7 +123,7 @@ function actionsMouseLeave(event) {
         el.previousSibling.classList.remove('close');
     };
 };
-addEventMouseOutForActions();
+//addEventMouseOutForActions();
 
 
 function removeEventClickOnCopyButtons() {
@@ -140,7 +140,7 @@ function removeEventClickOnCopyButtons() {
 function addEventClickOnCopyButtons() {
     addEvents('.table-column-actions__copy','click', copyHandler);    
 };
-addEventClickOnCopyButtons();
+//addEventClickOnCopyButtons();
 
 
 function editHandler(event) {
@@ -177,7 +177,7 @@ function removeEventClickOnEditButtons() {
 function addEventClickOnEditButtons() {
     addEvents('.table-column-actions__edit', 'click', editHandler);
 };
-addEventClickOnEditButtons();
+//addEventClickOnEditButtons();
 
 
 function delHandler(event) {
@@ -214,7 +214,7 @@ function removeEventClickOnDelButtons() {
 function addEventClickOnDelButtons() {
     addEvents('.table-column-actions__delete', 'click', delHandler);
 }; 
-addEventClickOnDelButtons();
+//addEventClickOnDelButtons();
 
 
 function recConfirmHandler(event) {
@@ -264,7 +264,7 @@ function removeEventClickOnEditConfirmButtons() {
 function addEventClickOnEditConfirmButtons() {
     addEvents('.table-column-actions__ok', 'click', editConfirmHandler);
 };
-addEventClickOnEditConfirmButtons();
+//addEventClickOnEditConfirmButtons();
 
 
 function removeEventClickOnRecConfirmButtons() {
@@ -275,7 +275,7 @@ function removeEventClickOnRecConfirmButtons() {
 function addEventClickOnRecConfirmButtons() {
     addEvents('.table-column-actions__recover','click', recConfirmHandler);
 };
-addEventClickOnRecConfirmButtons();
+// addEventClickOnRecConfirmButtons();
 
 
 function getGenericId() {

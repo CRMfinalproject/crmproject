@@ -1,5 +1,6 @@
 class Fieldsettings {
     constructor() {
+        console.log("FieldSettings constructor");
         this.container = document.querySelector('.table__fieldsettings');
         this.triggerBtn = document.querySelector('.table__fieldsettings__btn');
         this.headingText = document.querySelector('.table__fieldsettings_heading__text');
@@ -14,6 +15,7 @@ class Fieldsettings {
         })
     }
     render() {
+        console.log("FieldSettings render");
             this.container.classList.add('table__fieldsettings--active');
             this.triggerBtn.setAttribute('src', '../images/field_settings_active.png');
             this.headingText.textContent = "Настройка полей";
@@ -23,6 +25,7 @@ class Fieldsettings {
             this.form.innerHTML = table.fields.map((elem) => elem.hidden === false ? `<label class="table__fieldsettings__item"><input type="checkbox" class="table__fieldsettings__checkbox" name='${elem.name}' checked> ${elem.view}</label>` : `<label class="table__fieldsettings__item"><input type="checkbox" class="table__fieldsettings__checkbox" name='${elem.name}'> ${elem.view}</label>`).reduce((accum, elem) => accum + elem);
         };
     hide() {
+        console.log("FieldSettings hide");
         if (event.target.classList.contains('table__fieldsettings__item') === false && event.target.classList.contains('table__fieldsettings__checkbox') === false) {
             this.container.classList.remove('table__fieldsettings--active');
             this.triggerBtn.setAttribute('src', '../images/field_settings.png');
@@ -41,6 +44,7 @@ class Fieldsettings {
         }
     };
     updateField() {
+        console.log("FieldSettings updateField");
         if(event.target.classList.contains('table__fieldsettings__item')) {
             this.selectedField = event.target;
             this.selectedFieldCheckbox = this.selectedField.querySelector('.table__fieldsettings__checkbox');
@@ -50,4 +54,4 @@ class Fieldsettings {
         this.selectedFieldCheckbox.checked ? table.fields.find((el) => el.name === this.selectedFieldCheckbox.name).hidden = false : table.fields.find((el) => el.name === this.selectedFieldCheckbox.name).hidden = true;
     }
 }
-let fieldSettings = new Fieldsettings();
+//let fieldSettings = new Fieldsettings();
