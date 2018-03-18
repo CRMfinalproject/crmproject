@@ -194,6 +194,7 @@ function delHandler(event) {
     td.children[3].classList.remove("close");
     
     timerId = setTimeout( () => {
+        debugger;
         let toDel = document.querySelector(`#${id}`);
         toDel.remove();
         for(let i = 0; i< data.length; i++) {
