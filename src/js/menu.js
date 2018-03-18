@@ -45,7 +45,6 @@ burgerMenu.element.addEventListener('click', event => {
 });
 
 // document.body.addEventListener('click', (event) => {
-//     debugger
 //     let el = event.target;
 //     let shouldMenuClose = true;
 
