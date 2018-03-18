@@ -35,13 +35,24 @@ const burgerContMenu = new Menu(burgerMenuContainer, {
     openStateClass: openClassBurgerCont
 });
 
-userCabinetMenu.element.addEventListener('click', () => userCabinetMenu.toggle());
+userCabinetMenu.element.addEventListener('click', event => {
+    event.preventDefault();
+    userCabinetMenu.toggle();
+})
+
+userCabinetMenu.element.addEventListener('mouseleave', () => userCabinetMenu.close());
 
 burgerMenu.element.addEventListener('click', event => {
     event.preventDefault();
 
     burgerContMenu.toggle();
     burgerMenu.toggle();
+    event.stopPropagation()
+});
+
+burgerContMenu.element.addEventListener('mouseleave', event => {
+    burgerContMenu.close();
+    burgerMenu.close();
 });
 
 // document.body.addEventListener('click', (event) => {
