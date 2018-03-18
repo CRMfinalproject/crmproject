@@ -45,7 +45,9 @@ class Pagination {
         return this.arrPagesToShow;
     }
     render() {
-        debugger;
+        // debugger;
+        this.setSettings();
+        this.pagesToShow();
         this.container.innerHTML = ``;
         if (this.currentPage != 1) {
             this.container.innerHTML = `
