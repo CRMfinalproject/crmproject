@@ -110,10 +110,10 @@ gulp.task('js', () => {
       'data.js',
       'tabs.js',
       'table-control-block.js',
-      'field-settings.js',
+      
       'edit-actions.js',
       'table.js',
-      
+      'field-settings.js',
       '*.js'
     ]))
     .pipe(concat('index.js'))

@@ -13,18 +13,7 @@ class Table {
     renderHeader() {
         // header
         let headerContent = "";
-        /*headerContent = `<tr class = "row-table">`;
-        headerContent += `<th class = "order-ctrl"><input type = "checkbox" class ="checkbox"></input></th>`
-        headerContent += `<th class = "order-ctrl">Название товара</th>`;
-        headerContent += `<th class = "order-ctrl">Категория</th>`;
-        headerContent += `<th class = "order-ctrl">Количество на складе</th>`;
-        headerContent += `<th class = "order-ctrl">Цена</th>`;
-        headerContent += `<th class = "order-ctrl">Дата создания</th>`;
-        headerContent += `<th class = "order-ctrl">Вес</th>`;
-        headerContent += `<th class = "order-ctrl">Размеры(ШхВхД)</th>`;
-        headerContent += `<th class = "order-ctrl"><div class="table__fieldsettings"><p class="table__fieldsettings_heading"><span class="table__fieldsettings_heading__text"></span><img class="table__fieldsettings__btn" src="../images/field_settings.png"></p></div></th>`; // for settings
-        headerContent += `</tr>`;*/
-// добавила в отрисовку заголовков проверку выбранных полей
+      // добавила в отрисовку заголовков проверку выбранных полей
         //${ this.fields.map((elem) => elem.hidden === false ? ` <th class = "order-ctrl">${elem.view}</th>` : '').reduce((accum, next) => accum + next) }
         headerContent = `<tr class = "row-table">
                                 <th class = "order-ctrl"><input type = "checkbox" class ="checkbox"></th>
@@ -32,7 +21,7 @@ class Table {
                                 <th class = "order-ctrl"><div class="table__fieldsettings"><p class="table__fieldsettings_heading"><span class="table__fieldsettings_heading__text"></span><img class="table__fieldsettings__btn" src="../images/field_settings.png"></p></div></th>`;
 
         document.querySelector(".data-table-header").innerHTML = headerContent;
-        new Fieldsettings();
+        //new Fieldsettings();
     }
 
 
@@ -97,4 +86,3 @@ let productTableFields = [
     { name: "size", view: "Размеры(ШхВхД)", hidden: true }
 ]
 let table = new Table(productTableFields);
-
