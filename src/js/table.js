@@ -78,11 +78,11 @@ class Table {
         });
     }
 
-    selectAll () {
+    selectAll() {
+        let checkboxArr = table.container.children[1].querySelectorAll(".checkbox");
         if (document.querySelector(".data-table-header .checkbox").checked) {
-            let inputs = Array.from(table.container.children[1].querySelectorAll(".checkbox"),
-                elem => elem.checked = true);
-        }
+            checkboxArr.forEach((elem) => { elem.checked = true });
+        } else checkboxArr.forEach((elem) => { elem.checked = false });;
     }
 
     deleteSelected () {
