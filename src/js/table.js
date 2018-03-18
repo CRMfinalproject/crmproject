@@ -7,6 +7,7 @@ class Table {
         this.fields = fields;
         this.renderHeader();
         this.renderData();
+        // this.pagination = new Pagination(this)
     }
 
     renderHeader() {

@@ -1,7 +1,7 @@
 class Pagination {
-    constructor() {
+    constructor(table) {
         // document.body.querySelector(".content").innerHTML += `<div class="pagination"></div>`;    
-        
+        // this.table = table;
         let content = document.querySelector('.content');
         content.insertAdjacentHTML('beforeend', '<div class="pagination"></div>');
         this.container = document.body.querySelector(".pagination");
