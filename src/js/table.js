@@ -20,13 +20,17 @@ class Table {
                                 ${this.fields.map((field) => ` <th class = "order-ctrl table-header-${field.name}" ${field.hidden ? "hidden" : ""} >${field.view}</th>`).reduce((accum, next) => accum + next)}
                                 <th class = "order-ctrl"><div class="table__fieldsettings"><p class="table__fieldsettings_heading"><span class="table__fieldsettings_heading__text"></span><img class="table__fieldsettings__btn" src="../images/field_settings.png"></p></div></th>`;
 
-        document.querySelector(".data-table-header").innerHTML = headerContent;
+        this.container.querySelector(".data-table-header").innerHTML = headerContent;
         //new Fieldsettings();
+        this.container.querySelector(".data-table-header .checkbox").addEventListener('change', this.selectAll.bind(this));
     }
 
 
     // data
     renderData() {
+       // перед тем, как перерисовать таблицу удаляем отмеченные у удалению строки
+        this.deleteSelected();
+
         let dataPage = data.slice(startRow, endRow);
         let bodyContent = "";
 
@@ -72,7 +76,34 @@ class Table {
                 el.hidden = field.hidden;
             }
         });
+    }
 
+    selectAll () {
+        if (document.querySelector(".data-table-header .checkbox").checked) {
+            let inputs = Array.from(table.container.children[1].querySelectorAll(".checkbox"),
+                elem => elem.checked = true);
+        }
+    }
+
+    deleteSelected () {
+        let rowsToDel = Array.from(document.querySelectorAll(".setToDel"));
+        if (rowsToDel.length) {
+            let idsToDel = rowsToDel.map(row => {
+                row.classList.add('setToDel');
+                return row.id.replace('row-', '');
+            });
+            let countToDel = 0;
+                    while (countToDel != idsToDel.length) {
+                        for (let i=0; i<data.length; i++) {
+                            idsToDel.map(productToDel => {
+                                if (data[i].id == productToDel) {
+                                    data.splice(i, 1);
+                                    countToDel++;
+                                }
+                            })
+                        };
+                    };
+        }
     }
 
 }
