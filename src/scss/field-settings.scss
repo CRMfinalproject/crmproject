@@ -1,0 +1,107 @@
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../fonts/AvenirNextCyr/AvenirNextCyr-Regular.ttf") format("truetype");
+  font-weight: normal;
+}
+
+.table__fieldsettings {
+  //position: absolute;
+  //top: 185px;
+  //right: 10%;
+  width: 88px;
+  height: 25px;
+  //margin-top: 20px;
+  //margin-right: 10px;
+  //padding-top: 24px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.table__fieldsettings_btn {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+}
+
+.table__fieldsettings--active {
+  position: absolute;
+  top: 185px;
+  right: 10%;
+  width: 18%;
+  padding-top: 10px;
+  height: auto;
+  transition: left -500ms;
+  border: 1px solid #8a8a8a;
+  border-radius: 4px;
+  background-color: #ffffff;
+  font-family: "AvenirNext", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  color: #8a8a8a;
+}
+
+.table__fieldsettings_heading {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  width: 85%;
+  margin: 0 10px 0.5em auto;
+  height: 25px;
+  color: #8a8a8a;
+}
+
+.table__fieldsettings_heading__text{
+    padding-top: 3px;
+}
+
+.table__fieldsettings__form {
+  display: block;
+  width: 85%;
+  margin: auto auto 20px;
+  color: black;
+}
+
+.table__fieldsettings__item {
+  display: block;
+  width: 100%;
+  padding: 0.5em 0;
+  cursor: pointer;
+  &::before {
+    content: ' ';
+    position: relative;
+    top: 0;
+    left: 10px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #83abd9;
+    border-radius: 3px;
+  }
+}
+
+.table__fieldsettings__checkbox {
+  display: inline-block;
+  visibility: hidden;
+  &:checked {
+    &::after {
+      content: '';
+      visibility: visible;
+      position: relative;
+      width: 10px;
+      height: 3px;
+      top: -5px;
+      left: 1px;
+      display: inline-block;
+      border: 2px solid #83abd9;
+      border-top: none;
+      border-right: none;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .table__fieldsettings--active {
+    width: 60%;
+  }
+}

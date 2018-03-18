@@ -35,38 +35,47 @@ const burgerContMenu = new Menu(burgerMenuContainer, {
     openStateClass: openClassBurgerCont
 });
 
-userCabinetMenu.element.addEventListener('click', () => userCabinetMenu.toggle());
+userCabinetMenu.element.addEventListener('click', event => {
+    event.preventDefault();
+    userCabinetMenu.toggle();
+})
+
+userCabinetMenu.element.addEventListener('mouseleave', () => userCabinetMenu.close());
 
 burgerMenu.element.addEventListener('click', event => {
     event.preventDefault();
 
     burgerContMenu.toggle();
     burgerMenu.toggle();
+    event.stopPropagation()
 });
 
-
-document.body.addEventListener('click', (event) => {
-    let el = event.target;
-    let shouldMenuClose = true;
-
-    while( el != document.body) {
-        let hasBurger = el.classList.contains(classBurger);
-        let hasBurgerMenu = el.classList.contains(classBurgerCont);
-        let hasMenu = el.classList.contains(classMenu);
-
-        if (hasBurger || hasBurgerMenu || hasMenu) {
-            shouldMenuClose = false;
-            break;
-        }
-
-        el = el.parentNode;
-    }
-
-    if (shouldMenuClose) {
-        burgerMenu.close();
-        userCabinetMenu.close();
-        burgerContMenu.close();
-        event.preventDefault();
-    }
+burgerContMenu.element.addEventListener('mouseleave', event => {
+    burgerContMenu.close();
+    burgerMenu.close();
 });
 
+// document.body.addEventListener('click', (event) => {
+//     let el = event.target;
+//     let shouldMenuClose = true;
+
+//     while( el != document.body) {
+//         let hasBurger = el.classList.contains(classBurger);
+//         let hasBurgerMenu = el.classList.contains(classBurgerCont);
+//         let hasMenu = el.classList.contains(classMenu);
+
+//         if (hasBurger || hasBurgerMenu || hasMenu) {
+//             shouldMenuClose = false;
+//             break;
+//         }
+
+//         el = el.parentNode;
+//     }
+
+//     if (shouldMenuClose) {
+//         burgerMenu.close();
+//         userCabinetMenu.close();
+//         burgerContMenu.close();
+//         event.preventDefault();
+//     }
+// });
