@@ -172,4 +172,3 @@ gulp.task('start', ['del:dist', 'build', 'server', 'watch']);
 // Для таска 'js' добавить конкатенацию и минификацию JavaScript файлов c пакетами gulp- concat и gulp- uglify.
 
 
-
