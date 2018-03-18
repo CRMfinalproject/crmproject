@@ -1,5 +1,20 @@
 const tHead = document.querySelector(".data-table-header");
 
+const sortNumbers = (criteria) => {
+		event.target.classList.toggle("desc");
+		if (event.target.classList.contains("desc")) {
+			data.sort(function (obj1, obj2) {
+				return obj2[criteria] - obj1[criteria];
+			});
+			table.renderData();
+		} else {
+			data.sort(function (obj1, obj2) {
+				return obj1[criteria] - obj2[criteria];
+			});
+			table.renderData();
+		}
+};
+
 const sortByName = () => {
 	if(event.target.textContent === "Название товара"){
 		event.target.classList.toggle("desc");
@@ -44,41 +59,41 @@ const sortByCat = () => {
 };
 
 
-const sortByCount = () => {
-	if(event.target.textContent === "Кол-во на складе"){
-		event.target.classList.toggle("desc");
-		if(event.target.classList.contains("desc")){
-			data.sort(function(obj1, obj2) {
-			return obj2.count - obj1.count;
-			});
-			table.renderData();
-		} else {
-			data.sort(function(obj1, obj2) {
-				return obj1.count - obj2.count;
-			});
-			table.renderData();
-		}
-	}
+// const sortByCount = () => {
+// 	if(event.target.textContent === "Кол-во на складе"){
+// 		event.target.classList.toggle("desc");
+// 		if(event.target.classList.contains("desc")){
+// 			data.sort(function(obj1, obj2) {
+// 			return obj2.count - obj1.count;
+// 			});
+// 			table.renderData();
+// 		} else {
+// 			data.sort(function(obj1, obj2) {
+// 				return obj1.count - obj2.count;
+// 			});
+// 			table.renderData();
+// 		}
+// 	}
 	
-};
+// };
 
 
-const sortByPrice = () => {
-	if(event.target.textContent === "Цена"){
-		event.target.classList.toggle("desc");
-		if(event.target.classList.contains("desc")){
-			data.sort(function(obj1, obj2) {
-				return obj2.price - obj1.price;
-			});
-			table.renderData();
-		} else {
-			data.sort(function(obj1, obj2) {
-				return obj1.price - obj2.price;
-			});
-			table.renderData();
-		}
-	}
-};
+// const sortByPrice = () => {
+// 	if(event.target.textContent === "Цена"){
+// 		event.target.classList.toggle("desc");
+// 		if(event.target.classList.contains("desc")){
+// 			data.sort(function(obj1, obj2) {
+// 				return obj2.price - obj1.price;
+// 			});
+// 			table.renderData();
+// 		} else {
+// 			data.sort(function(obj1, obj2) {
+// 				return obj1.price - obj2.price;
+// 			});
+// 			table.renderData();
+// 		}
+// 	}
+// };
 
 
 const sortByDate = () => {
@@ -99,22 +114,22 @@ const sortByDate = () => {
 };
 
 
-const sortByWeight = () => {
-	if(event.target.textContent === "Вес"){
-		event.target.classList.toggle("desc");
-		if(event.target.classList.contains("desc")){
-			data.sort(function(obj1, obj2) {
-				return obj2.weight - obj1.weight;
-			});
-			table.renderData();
-		} else {
-			data.sort(function(obj1, obj2) {
-				return obj1.weight - obj2.weight;
-			});
-			table.renderData();
-		}
-	}	
-};
+// const sortByWeight = () => {
+// 	if(event.target.textContent === "Вес"){
+// 		event.target.classList.toggle("desc");
+// 		if(event.target.classList.contains("desc")){
+// 			data.sort(function(obj1, obj2) {
+// 				return obj2.weight - obj1.weight;
+// 			});
+// 			table.renderData();
+// 		} else {
+// 			data.sort(function(obj1, obj2) {
+// 				return obj1.weight - obj2.weight;
+// 			});
+// 			table.renderData();
+// 		}
+// 	}	
+// };
 
 
 const sortBySize = () => {
@@ -142,12 +157,22 @@ const sortBySize = () => {
 	}
 };
 	
-tHead.addEventListener("click", function(){
-	if(event.target.textContent === "Название товара") sortByName();
-	if(event.target.textContent === "Категория") sortByCat();
-	if(event.target.textContent === "Кол-во на складе") sortByCount();
-	if(event.target.textContent === "Цена") sortByPrice();
-	if(event.target.textContent === "Дата создания") sortByDate();
-	if(event.target.textContent === "Вес") sortByWeight();
-	if(event.target.textContent === "Размеры(ШхВхД)") sortBySize();
+// tHead.addEventListener("click", function(){
+// 	if(event.target.textContent === "Название товара") sortByName();
+// 	if(event.target.textContent === "Категория") sortByCat();
+// 	if(event.target.textContent === "Кол-во на складе") sortByCount();
+// 	if(event.target.textContent === "Цена") sortByPrice();
+// 	if(event.target.textContent === "Дата создания") sortByDate();
+// 	if(event.target.textContent === "Вес") sortByWeight();
+// 	if(event.target.textContent === "Размеры(ШхВхД)") sortBySize();
+// });
+
+tHead.addEventListener("click", function () {
+	if (event.target.textContent === "Название товара") sortByName();
+	if (event.target.textContent === "Категория") sortByCat();
+	if (event.target.textContent === "Кол-во на складе") sortNumbers("count");
+	if (event.target.textContent === "Цена") sortNumbers("price");
+	if (event.target.textContent === "Дата создания") sortByDate();
+	if (event.target.textContent === "Вес") sortNumbers("weight");
+	if (event.target.textContent === "Размеры(ШхВхД)") sortBySize();
 });
