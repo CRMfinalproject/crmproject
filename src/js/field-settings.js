@@ -42,4 +42,4 @@ class Fieldsettings {
         this.selectedFieldCheckbox.checked ? table.fields.find((el) => el.name === this.selectedFieldCheckbox.name).hidden = false : table.fields.find((el) => el.name === this.selectedFieldCheckbox.name).hidden = true;
     }
 }
-//let fieldSettings = new Fieldsettings();
+let fieldSettings = new Fieldsettings();

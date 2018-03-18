@@ -13,35 +13,23 @@ class Table {
     renderHeader() {
         // header
         let headerContent = "";
-        /*headerContent = `<tr class = "row-table">`;
-        headerContent += `<th class = "order-ctrl"><input type = "checkbox" class ="checkbox"></input></th>`
-        headerContent += `<th class = "order-ctrl">Название товара</th>`;
-        headerContent += `<th class = "order-ctrl">Категория</th>`;
-        headerContent += `<th class = "order-ctrl">Количество на складе</th>`;
-        headerContent += `<th class = "order-ctrl">Цена</th>`;
-        headerContent += `<th class = "order-ctrl">Дата создания</th>`;
-        headerContent += `<th class = "order-ctrl">Вес</th>`;
-        headerContent += `<th class = "order-ctrl">Размеры(ШхВхД)</th>`;
-        headerContent += `<th class = "order-ctrl"><div class="table__fieldsettings"><p class="table__fieldsettings_heading"><span class="table__fieldsettings_heading__text"></span><img class="table__fieldsettings__btn" src="../images/field_settings.png"></p></div></th>`; // for settings
-        headerContent += `</tr>`;*/
-// добавила в отрисовку заголовков проверку выбранных полей
+      // добавила в отрисовку заголовков проверку выбранных полей
         //${ this.fields.map((elem) => elem.hidden === false ? ` <th class = "order-ctrl">${elem.view}</th>` : '').reduce((accum, next) => accum + next) }
         headerContent = `<tr class = "row-table">
                                 <th class = "order-ctrl"><input type = "checkbox" class ="checkbox"></th>
                                 ${this.fields.map((field) => ` <th class = "order-ctrl table-header-${field.name}" ${field.hidden ? "hidden" : ""} >${field.view}</th>`).reduce((accum, next) => accum + next)}
                                 <th class = "order-ctrl"><div class="table__fieldsettings"><p class="table__fieldsettings_heading"><span class="table__fieldsettings_heading__text"></span><img class="table__fieldsettings__btn" src="../images/field_settings.png"></p></div></th>`;
 
-        document.querySelector(".data-table-header").innerHTML = headerContent;
-        new Fieldsettings();
-        document.querySelector(".data-table-header .checkbox").addEventListener('change', this.selectAll.bind(this));
+        this.container.querySelector(".data-table-header").innerHTML = headerContent;
+        //new Fieldsettings();
+        this.container.querySelector(".data-table-header .checkbox").addEventListener('change', this.selectAll.bind(this));
     }
 
 
     // data
     renderData() {
        // перед тем, как перерисовать таблицу удаляем отмеченные у удалению строки
-       debugger; 
-       this.deleteSelected();
+        this.deleteSelected();
 
         let dataPage = data.slice(startRow, endRow);
         let bodyContent = "";
@@ -98,7 +86,6 @@ class Table {
     }
 
     deleteSelected () {
-        debugger;
         let rowsToDel = Array.from(document.querySelectorAll(".setToDel"));
         if (rowsToDel.length) {
             let idsToDel = rowsToDel.map(row => {
@@ -130,4 +117,3 @@ let productTableFields = [
     { name: "size", view: "Размеры(ШхВхД)", hidden: true }
 ]
 let table = new Table(productTableFields);
-
