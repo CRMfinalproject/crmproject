@@ -13,11 +13,23 @@ class Table {
     renderHeader() {
         // header
         let headerContent = "";
-        // добавила в отрисовку заголовков проверку выбранных полей
+        /*headerContent = `<tr class = "row-table">`;
+        headerContent += `<th class = "order-ctrl"><input type = "checkbox" class ="checkbox"></input></th>`
+        headerContent += `<th class = "order-ctrl">Название товара</th>`;
+        headerContent += `<th class = "order-ctrl">Категория</th>`;
+        headerContent += `<th class = "order-ctrl">Количество на складе</th>`;
+        headerContent += `<th class = "order-ctrl">Цена</th>`;
+        headerContent += `<th class = "order-ctrl">Дата создания</th>`;
+        headerContent += `<th class = "order-ctrl">Вес</th>`;
+        headerContent += `<th class = "order-ctrl">Размеры(ШхВхД)</th>`;
+        headerContent += `<th class = "order-ctrl"><div class="table__fieldsettings"><p class="table__fieldsettings_heading"><span class="table__fieldsettings_heading__text"></span><img class="table__fieldsettings__btn" src="../images/field_settings.png"></p></div></th>`; // for settings
+        headerContent += `</tr>`;*/
+// добавила в отрисовку заголовков проверку выбранных полей
+        //${ this.fields.map((elem) => elem.hidden === false ? ` <th class = "order-ctrl">${elem.view}</th>` : '').reduce((accum, next) => accum + next) }
         headerContent = `<tr class = "row-table">
-                        <th class = "order-ctrl"><input type = "checkbox" class ="checkbox"></th>
-                        ${this.fields.map((field) => ` <th class = "order-ctrl table-header-${field.name}" >${field.view}</th>`).reduce((accum, next) => accum + next)}
-                        <th class = "order-ctrl"><div class="table__fieldsettings"><p class="table__fieldsettings_heading"><span class="table__fieldsettings_heading__text"></span><img class="table__fieldsettings__btn" src="../images/field_settings.png"></p></div></th>`;
+                                <th class = "order-ctrl"><input type = "checkbox" class ="checkbox"></th>
+                                ${this.fields.map((field) => ` <th class = "order-ctrl table-header-${field.name}" ${field.hidden ? "hidden" : ""} >${field.view}</th>`).reduce((accum, next) => accum + next)}
+                                <th class = "order-ctrl"><div class="table__fieldsettings"><p class="table__fieldsettings_heading"><span class="table__fieldsettings_heading__text"></span><img class="table__fieldsettings__btn" src="../images/field_settings.png"></p></div></th>`;
 
         document.querySelector(".data-table-header").innerHTML = headerContent;
         new Fieldsettings();
@@ -32,13 +44,13 @@ class Table {
         dataPage.map(row => {
             bodyContent += `<tr class = "row-table" id="row-${row.id}">`;
             bodyContent += `<td class="table-column-checkbox"><input type="checkbox" class ="checkbox row-table"></td>`;
-            bodyContent += `<td class="table-column-name" ><a href = "Ссылка на товар/${row.id}" class = "table-column-name__link">${row.name}</a></td>`;
-            bodyContent += `<td class="table-column-category" ><span>${row.category}</span></td>`;
-            bodyContent += `<td class="table-column-count" ><span>${row.count} шт</span></td>`;
-            bodyContent += `<td class="table-column-price" ><span>${row.price} грн</span></td>`;
-            bodyContent += `<td class="table-column-creationDate" ><span>${row.creationDate}</span></td>`;
-            bodyContent += `<td class="table-column-weight" ><span>${row.weight} г</span></td>`;
-            bodyContent += `<td class="table-column-size" ><span>${row.size} см </span></td>`;
+            bodyContent += `<td class="table-column-name" ${this.fields.find((f) => f.name === 'name').hidden ? "hidden" : ""}><a href = "Ссылка на товар/${row.id}" class = "table-column-name__link">${row.name}</a></td>`;
+            bodyContent += `<td class="table-column-category" ${this.fields.find((f) => f.name === 'category').hidden ? "hidden" : ""}><span>${row.category}</span></td>`;
+            bodyContent += `<td class="table-column-count" ${this.fields.find((f) => f.name === 'count').hidden ? "hidden" : ""}><span>${row.count} шт</span></td>`;
+            bodyContent += `<td class="table-column-price" ${this.fields.find((f) => f.name === 'price').hidden ? "hidden" : ""}><span>${row.price} грн</span></td>`;
+            bodyContent += `<td class="table-column-creationDate" ${this.fields.find((f) => f.name === 'creationDate').hidden ? "hidden" : ""}><span>${row.creationDate}</span></td>`;
+            bodyContent += `<td class="table-column-weight" ${this.fields.find((f) => f.name === 'weight').hidden ? "hidden" : ""}><span>${row.weight} г</span></td>`;
+            bodyContent += `<td class="table-column-size" ${this.fields.find((f) => f.name === 'size').hidden ? "hidden" : ""}><span>${row.size} см </span></td>`;
             bodyContent += `
             <td class="table-column-settings">
                 <div class="table-column-actions js-dots">
