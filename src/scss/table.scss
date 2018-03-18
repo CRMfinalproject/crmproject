@@ -112,7 +112,7 @@ $darkblue:	#6495ED;
 .table-column-size {
   text-align: center;
 }
-#Косметика,#Одежда,#Обувь,#Игрушки,#Хозтовары,#Книги,#Кожа,#Ремни{
+td[value="Косметика"]#Косметика,#Одежда,#Обувь,#Игрушки,#Хозтовары,#Книги,#Кожа,#Ремни{
   text-align: center;
   span {
     color: white;
@@ -123,43 +123,57 @@ $darkblue:	#6495ED;
     width:100px;
   }
 }
-#Косметика{
+td[value=Косметика]{
   span {
     background-color: hotpink;
   }
 }
-#Одежда {
+td[value=Одежда]{
   span {
     background-color: #7D678B;
   }
 }
-#Обувь {
+td[value=Обувь] {
   span {
     background-color: #04B4AE;
   }
 }
-#Игрушки {
+td[value=Игрушки]{
   span {
     background-color: lightsalmon;
   }
 }
-#Хозтовары {
+td[value=Хозтовары] {
   span {
     background-color: #72D1ED;
   }
 }
-#Книги {
+td[value=Книги] {
   span {
     background-color: #D7DF01;
   }
 }
-#Ремни {
+td[value=Ремни] {
   span {
     background-color: #886A08;
   }
 }
-#Кожа {
+td[value=Кожа] {
   span {
     background-color: #876C6C;
+  }
+}
+
+td[value="Косметика"],td[value=Обувь],td[value=Косметика], td[value=Одежда],td[value=Кожа],td[value=Ремни],td[value=Книги],td[value=Хозтовары],td[value=Игрушки]{
+
+
+  text-align: center;
+  span {
+    color: white;
+    border-radius: 4px;
+    display:block;
+    height:25px;
+    line-height:24px;
+    width:100px;
   }
 }
