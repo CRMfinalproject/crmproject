@@ -39,6 +39,9 @@ class Table {
     // data
     renderData() {
         let dataPage = data.slice(startRow, endRow);
+        if (dataFilter) {
+            dataPage = dataFilter.slice(startRow, endRow);
+        }
         let bodyContent = "";
 
         dataPage.map(row => {
@@ -73,11 +76,11 @@ class Table {
         addEditActionsEvents()
     }
 
-    showColumns(){
+    showColumns() {
         this.fields.forEach(field => {
             let header = this.container.getElementsByClassName(`table-header-${field.name}`)[0];
             header.hidden = field.hidden;
-            
+
             let colData = this.container.getElementsByClassName(`table-column-${field.name}`);
             for (const el of colData) {
                 el.hidden = field.hidden;
@@ -87,14 +90,15 @@ class Table {
     }
 
 }
+
 let productTableFields = [
-    { name: "name", view: "Название товара", hidden: false},
-    { name: "category", view: "Категория", hidden: false},
-    { name: "count", view: "Количество на складе", hidden: false},
-    { name: "price", view: "Цена", hidden: false },
-    { name: "creationDate", view: "Дата создания", hidden: false },
-    { name: "weight", view: "Вес", hidden: true },
-    { name: "size", view: "Размеры(ШхВхД)", hidden: true }
+    {name: "name", view: "Название товара", hidden: false},
+    {name: "category", view: "Категория", hidden: false},
+    {name: "count", view: "Количество на складе", hidden: false},
+    {name: "price", view: "Цена", hidden: false},
+    {name: "creationDate", view: "Дата создания", hidden: false},
+    {name: "weight", view: "Вес", hidden: true},
+    {name: "size", view: "Размеры(ШхВхД)", hidden: true}
 ]
 let table = new Table(productTableFields);
 

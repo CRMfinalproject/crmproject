@@ -8,7 +8,7 @@ function createElement(par, tag, elemClass) {
 
 class TableControlBlock {
     constructor(addText) {
-        debugger;  
+
         /*if (!document.body.querySelector(".table-control")) {
             document.body.querySelector(".content").innerHTML += `<div class="table-control"></div>`;     
         };
@@ -32,7 +32,7 @@ class TableControlBlock {
     }
 
     render() {
-        debugger;
+
         // this.container.classList.add('table-control');
         // document.body.querySelector(".content").appendChild(this.container);
 

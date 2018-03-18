@@ -2,10 +2,12 @@
     padding: 30px 41px 13px;
     background-color: #fff;
     display: flex;
+    flex-wrap:wrap;
     flex-direction: row;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+    height:100px;
 
     &__button {
         text-transform: uppercase;
