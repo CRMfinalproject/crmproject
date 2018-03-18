@@ -15,7 +15,7 @@ class TableControlBlock {
             this.render();
         } else {
             this.container = document.body.querySelector(".table-control");
-            this.renderButtonTitle();
+            this.renderButtonTitle(this.addText);
             };
         
         
@@ -37,8 +37,8 @@ class TableControlBlock {
             </div> `);
     }
 
-    renderButtonTitle() {
-        this.container.querySelector(".table-control__button--add-new .table-control__button__title").innerHTML = this.addText;
+    renderButtonTitle(addText) {
+        this.container.querySelector(".table-control__button--add-new .table-control__button__title").innerHTML = addText;
     }
 
     renderActionSubmenu() {
@@ -101,8 +101,8 @@ class TableControlBlock {
             });
 
             rowsToDel.map (row => {
-                row.children[6].children[0].classList.add("close");
-                row.children[6].children[3].classList.remove("close");
+                row.children[row.children.length-1].children[0].classList.add("close");
+                row.children[row.children.length-1].children[3].classList.remove("close");
             });
 
             if (idsToDel.length != 0) {
@@ -124,7 +124,7 @@ class TableControlBlock {
                 }, 5000);
         }
     }
-}
+    }
 }
 
 let tableControl = new TableControlBlock("новый товар");
