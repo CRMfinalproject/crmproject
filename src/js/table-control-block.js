@@ -22,7 +22,6 @@ class TableControlBlock {
         this.actionSubmenu = this.container.querySelector(".table-control__button--actions");
         this.renderActionSubmenu();
         this.actionSubmenu.addEventListener('click', this.showActionSubmenu.bind(this));
-        // document.body.querySelector(".content").addEventListener('click', this.showActionSubmenu.bind(this));
     }
 
     render() {
@@ -90,6 +89,7 @@ class TableControlBlock {
     }
 
     deleteSelected() {
+        debugger;
         if (event.target.classList.contains("table-control__submenu__icon") || event.target.classList.contains("table-control__submenu__title")) {
             debugger;
             let rowsToDel = Array.from(table.container.children[1].querySelectorAll("input:checked"),
@@ -101,30 +101,46 @@ class TableControlBlock {
             });
 
             rowsToDel.map (row => {
+                debugger;
                 row.children[row.children.length-1].children[0].classList.add("close");
                 row.children[row.children.length-1].children[3].classList.remove("close");
+                row.children[row.children.length - 1].children[3].addEventListener('click', this.recoverDeleted.bind(this));
             });
 
-            if (idsToDel.length != 0) {
-                timerId = setTimeout(() => {
-                    let countToDel = 0;
-                    while (countToDel != idsToDel.length) {
-                        for (let i=0; i<data.length; i++) {
-                            idsToDel.map(productToDel => {
-                                if (data[i].id == productToDel) {
-                                    data.splice(i, 1);
-                                    countToDel++;
-                                }
-                            })
-                        };
-                    };
-                    table.renderData();
-                    page.setSettings();
-                    page.render();
-                }, 5000);
+            // if (idsToDel.length != 0) {
+            //     this.timerId = setTimeout(() => {
+            //         let countToDel = 0;
+            //         while (countToDel != idsToDel.length) {
+            //             for (let i=0; i<data.length; i++) {
+            //                 idsToDel.map(productToDel => {
+            //                     if (data[i].id == productToDel) {
+            //                         data.splice(i, 1);
+            //                         countToDel++;
+            //                     }
+            //                 })
+            //             };
+            //         };
+            //         table.renderData();
+            //         page.setSettings();
+            //         page.render();
+            //     }, 5000);
+            // }
         }
     }
+
+    recoverDeleted(event) {
+        debugger;
+        console.log(this);
+        clearTimeout(this.timerId);
+        let currentTr = event.target.parentElement.parentElement.parentElement;
+        let currentTd = currentTr.children;
+        currentTd[0].children[0].checked = false;
+        let td = event.target.parentElement.parentElement;
+        td.children[3].classList.add("close");
+        td.children[0].classList.remove("close");
+        currentTr.classList.remove('setToDel');
     }
+
 }
 
 let tableControl = new TableControlBlock("новый товар");
