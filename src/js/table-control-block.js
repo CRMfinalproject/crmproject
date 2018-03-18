@@ -92,7 +92,7 @@ class TableControlBlock {
         debugger;
         if (event.target.classList.contains("table-control__submenu__icon") || event.target.classList.contains("table-control__submenu__title")) {
             debugger;
-            let rowsToDel = Array.from(table.container.children[1].querySelectorAll("input:checked"),
+            let rowsToDel = Array.from(table.container.children[1].querySelectorAll(".checkbox:checked"),
                 elem => elem.parentElement.parentElement);
 
             let idsToDel = rowsToDel.map(row => {
@@ -106,6 +106,8 @@ class TableControlBlock {
                 row.children[row.children.length-1].children[3].classList.remove("close");
                 row.children[row.children.length - 1].children[3].addEventListener('click', this.recoverDeleted.bind(this));
             });
+
+            document.querySelector(".data-table-header .checkbox").checked = false;
 
             // if (idsToDel.length != 0) {
             //     this.timerId = setTimeout(() => {

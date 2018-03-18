@@ -11,6 +11,7 @@ class Table {
     }
 
     renderHeader() {
+        debugger;
         // header
         let headerContent = "";
         /*headerContent = `<tr class = "row-table">`;
@@ -33,6 +34,8 @@ class Table {
 
         document.querySelector(".data-table-header").innerHTML = headerContent;
         new Fieldsettings();
+        console.log(document.querySelector(".data-table-header .checkbox"));
+        document.querySelector(".data-table-header .checkbox").addEventListener('change', this.selectAll.bind(this));
     }
 
 
@@ -83,7 +86,14 @@ class Table {
                 el.hidden = field.hidden;
             }
         });
+    }
 
+    selectAll () {
+        debugger;
+        if (document.querySelector(".data-table-header .checkbox").checked) {
+            let inputs = Array.from(table.container.children[1].querySelectorAll(".checkbox"),
+                elem => elem.checked = true);
+        }
     }
 
 }
