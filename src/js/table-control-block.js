@@ -95,13 +95,18 @@ class TableControlBlock {
             let rowsToDel = Array.from(table.container.children[1].querySelectorAll(".checkbox:checked"),
                 elem => elem.parentElement.parentElement);
 
-            let idsToDel = rowsToDel.map(row => {
-                row.classList.add('setToDel');
-                return row.id.replace('row-', '');
-            });
+            // let idsToDel = rowsToDel.map(row => {
+            //     row.classList.add('setToDel');
+            //     return row.id.replace('row-', '');
+            // });
+
+            // rowsToDel.map(row => {
+            //     row.classList.add('setToDel');
+            //     return row.id.replace('row-', '');
+            // });
 
             rowsToDel.map (row => {
-                debugger;
+                row.classList.add('setToDel');
                 row.children[row.children.length-1].children[0].classList.add("close");
                 row.children[row.children.length-1].children[3].classList.remove("close");
                 row.children[row.children.length - 1].children[3].addEventListener('click', this.recoverDeleted.bind(this));

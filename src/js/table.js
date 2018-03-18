@@ -11,7 +11,6 @@ class Table {
     }
 
     renderHeader() {
-        debugger;
         // header
         let headerContent = "";
         /*headerContent = `<tr class = "row-table">`;
@@ -34,13 +33,16 @@ class Table {
 
         document.querySelector(".data-table-header").innerHTML = headerContent;
         new Fieldsettings();
-        console.log(document.querySelector(".data-table-header .checkbox"));
         document.querySelector(".data-table-header .checkbox").addEventListener('change', this.selectAll.bind(this));
     }
 
 
     // data
     renderData() {
+       // перед тем, как перерисовать таблицу удаляем отмеченные у удалению строки
+       debugger; 
+       this.deleteSelected();
+
         let dataPage = data.slice(startRow, endRow);
         let bodyContent = "";
 
@@ -89,10 +91,31 @@ class Table {
     }
 
     selectAll () {
-        debugger;
         if (document.querySelector(".data-table-header .checkbox").checked) {
             let inputs = Array.from(table.container.children[1].querySelectorAll(".checkbox"),
                 elem => elem.checked = true);
+        }
+    }
+
+    deleteSelected () {
+        debugger;
+        let rowsToDel = Array.from(document.querySelectorAll(".setToDel"));
+        if (rowsToDel.length) {
+            let idsToDel = rowsToDel.map(row => {
+                row.classList.add('setToDel');
+                return row.id.replace('row-', '');
+            });
+            let countToDel = 0;
+                    while (countToDel != idsToDel.length) {
+                        for (let i=0; i<data.length; i++) {
+                            idsToDel.map(productToDel => {
+                                if (data[i].id == productToDel) {
+                                    data.splice(i, 1);
+                                    countToDel++;
+                                }
+                            })
+                        };
+                    };
         }
     }
 
