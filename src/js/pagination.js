@@ -4,6 +4,7 @@ class Pagination {
         
         let content = document.querySelector('.content');
         content.insertAdjacentHTML('beforeend', '<div class="pagination"></div>');
+        this.table = activeTable;
         this.container = document.body.querySelector(".pagination");
 
         this.setSettings(data);
@@ -98,7 +99,7 @@ class Pagination {
         endRow = this.currentPage * ROWS_PER_PAGE - 1;
         if (endRow >= data.length) {
             endRow = data.length-1};
-        table.renderData();
+        this.table.renderData();
         this.render(this.pagesToShow());
 
     }

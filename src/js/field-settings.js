@@ -1,5 +1,6 @@
 class Fieldsettings {
     constructor() {
+        this.table = activeTable;
         this.container = document.querySelector('.table__fieldsettings');
         this.triggerBtn = document.querySelector('.table__fieldsettings__btn');
         this.headingText = document.querySelector('.table__fieldsettings_heading__text');
@@ -20,7 +21,7 @@ class Fieldsettings {
             this.form = document.createElement('form');
             this.container.appendChild(this.form);
             this.form.classList.add("table__fieldsettings__form");
-            this.form.innerHTML = table.fields.map((elem) => elem.hidden === false ? `<label class="table__fieldsettings__item"><input type="checkbox" class="table__fieldsettings__checkbox" name='${elem.name}' checked> ${elem.view}</label>` : `<label class="table__fieldsettings__item"><input type="checkbox" class="table__fieldsettings__checkbox" name='${elem.name}'> ${elem.view}</label>`).reduce((accum, elem) => accum + elem);
+            this.form.innerHTML = this.table.fields.map((elem) => elem.hidden === false ? `<label class="table__fieldsettings__item"><input type="checkbox" class="table__fieldsettings__checkbox" name='${elem.name}' checked> ${elem.view}</label>` : `<label class="table__fieldsettings__item"><input type="checkbox" class="table__fieldsettings__checkbox" name='${elem.name}'> ${elem.view}</label>`).reduce((accum, elem) => accum + elem);
         };
     hide() {
         if (event.target.classList.contains('table__fieldsettings__item') === false && event.target.classList.contains('table__fieldsettings__checkbox') === false) {
@@ -28,7 +29,7 @@ class Fieldsettings {
             this.triggerBtn.setAttribute('src', '../images/field_settings.png');
             this.headingText.textContent = '';
             this.container.removeChild(this.form);
-            table.showColumns();
+            this.table.showColumns();
         }
     };
     updateField() {
@@ -38,7 +39,7 @@ class Fieldsettings {
         } else {
             this.selectedFieldCheckbox = event.target;
         }
-        this.selectedFieldCheckbox.checked ? table.fields.find((el) => el.name === this.selectedFieldCheckbox.name).hidden = false : table.fields.find((el) => el.name === this.selectedFieldCheckbox.name).hidden = true;
+        this.selectedFieldCheckbox.checked ? this.table.fields.find((el) => el.name === this.selectedFieldCheckbox.name).hidden = false : this.table.fields.find((el) => el.name === this.selectedFieldCheckbox.name).hidden = true;
     }
 }
-//let fieldSettings = new Fieldsettings();
+let fieldSettings = new Fieldsettings();

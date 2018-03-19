@@ -1,6 +1,5 @@
 class Tabs {
     constructor () {
-        debugger;
         // document.body.querySelector(".content").insertAdjacentHTML("afterbegin",`<div class="tabs"></div>`);
         // this.tabsContainer = document.body.querySelector(".tabs");
         this.tabsContainer = createElement(document.body.querySelector(".content"), 'div', 'tabs');
@@ -10,16 +9,22 @@ class Tabs {
     }
 
     toggle (event) {
-        debugger;
         if (!event.target.classList.contains("tabs__item--active") && event.target.classList.contains("tabs__item")) {
             document.body.querySelector(".tabs__item--active").classList.remove("tabs__item--active");
             event.target.classList.add("tabs__item--active");
 
             if (document.body.querySelector(".tabs__item--active").innerHTML == "Товары") {
                 tableControl = new TableControlBlock("новый товар");
+                return activeTable = new Table(productTableFields);
+                new FieldSettings();
+                new Pagination();
             }
             if (document.body.querySelector(".tabs__item--active").innerHTML == "Поставки") {
                 tableControl = new TableControlBlock("новая поставка");
+                return activeTable = new Table(supplyTableFields);
+                new FieldSettings();
+                new Pagination();
+
             }
             if (document.body.querySelector(".tabs__item--active").innerHTML == "Категории") {
                 tableControl = new TableControlBlock("новая категория");
