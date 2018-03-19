@@ -1,59 +1,59 @@
 
-const burgerBtn = '.burger';
-const burgerMenuContainer = '.burger-menu__container';
-const menuItemBtn = '.menu__item';
-const openClassBurgerCont = 'burger-menu__container--open';
-const openClassBurgerBtn = 'burger--open';
-const openClassMenuItemBtn = 'menu__item--open';
-const classBurgerCont = 'burger-menu__container';
-const classBurger = 'burger';
-const classMenu = 'menu';
+// const burgerBtn = '.burger';
+// const burgerMenuContainer = '.burger-menu__container';
+// const menuItemBtn = '.menu__item';
+// const openClassBurgerCont = 'burger-menu__container--open';
+// const openClassBurgerBtn = 'burger--open';
+// const openClassMenuItemBtn = 'menu__item--open';
+// const classBurgerCont = 'burger-menu__container';
+// const classBurger = 'burger';
+// const classMenu = 'menu';
 
-class Menu {
-    constructor(selector, options) {
-        this.element = document.querySelector(selector);
-        this.options = options;
-    }
+// class Menu {
+//     constructor(selector, options) {
+//         this.element = document.querySelector(selector);
+//         this.options = options;
+//     }
 
-    toggle() {
-        this.element.classList.toggle(this.options.openStateClass);
-    }
+//     toggle() {
+//         this.element.classList.toggle(this.options.openStateClass);
+//     }
 
-    close() {
-        this.element.classList.remove(this.options.openStateClass);
-    }
-}
+//     close() {
+//         this.element.classList.remove(this.options.openStateClass);
+//     }
+// }
 
 
-const userCabinetMenu = new Menu(menuItemBtn, {
-    openStateClass: openClassMenuItemBtn
-});
-const burgerMenu = new Menu(burgerBtn, {
-    openStateClass: openClassBurgerBtn
-});
-const burgerContMenu = new Menu(burgerMenuContainer, {
-    openStateClass: openClassBurgerCont
-});
+// const userCabinetMenu = new Menu(menuItemBtn, {
+//     openStateClass: openClassMenuItemBtn
+// });
+// const burgerMenu = new Menu(burgerBtn, {
+//     openStateClass: openClassBurgerBtn
+// });
+// const burgerContMenu = new Menu(burgerMenuContainer, {
+//     openStateClass: openClassBurgerCont
+// });
 
-userCabinetMenu.element.addEventListener('click', event => {
-    event.preventDefault();
-    userCabinetMenu.toggle();
-})
+// userCabinetMenu.element.addEventListener('click', event => {
+//     event.preventDefault();
+//     userCabinetMenu.toggle();
+// })
 
-userCabinetMenu.element.addEventListener('mouseleave', () => userCabinetMenu.close());
+// userCabinetMenu.element.addEventListener('mouseleave', () => userCabinetMenu.close());
 
-burgerMenu.element.addEventListener('click', event => {
-    event.preventDefault();
+// burgerMenu.element.addEventListener('click', event => {
+//     event.preventDefault();
 
-    burgerContMenu.toggle();
-    burgerMenu.toggle();
-    event.stopPropagation()
-});
+//     burgerContMenu.toggle();
+//     burgerMenu.toggle();
+//     event.stopPropagation()
+// });
 
-burgerContMenu.element.addEventListener('mouseleave', event => {
-    burgerContMenu.close();
-    burgerMenu.close();
-});
+// burgerContMenu.element.addEventListener('mouseleave', event => {
+//     burgerContMenu.close();
+//     burgerMenu.close();
+// });
 
 // document.body.addEventListener('click', (event) => {
 //     let el = event.target;
