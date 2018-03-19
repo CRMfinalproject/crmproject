@@ -89,22 +89,9 @@ class TableControlBlock {
     }
 
     deleteSelected() {
-        debugger;
         if (event.target.classList.contains("table-control__submenu__icon") || event.target.classList.contains("table-control__submenu__title")) {
-            debugger;
             let rowsToDel = Array.from(table.container.children[1].querySelectorAll(".checkbox:checked"),
                 elem => elem.parentElement.parentElement);
-
-            // let idsToDel = rowsToDel.map(row => {
-            //     row.classList.add('setToDel');
-            //     return row.id.replace('row-', '');
-            // });
-
-            // rowsToDel.map(row => {
-            //     row.classList.add('setToDel');
-            //     return row.id.replace('row-', '');
-            // });
-
             rowsToDel.map (row => {
                 row.classList.add('setToDel');
                 row.children[row.children.length-1].children[0].classList.add("close");

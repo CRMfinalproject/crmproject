@@ -13,6 +13,9 @@ const babel = require("gulp-babel");
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const order = require("gulp-order");
+const webpack = require('webpack');
+const webpackStream = require('webpack-stream');
+const webpackConfig = require('./webpack.config.js');
 
 const path = {
   src: {
@@ -101,27 +104,33 @@ gulp.task('fonts', () => {
     }));
 });
 
-gulp.task('js', () => {
-  return gulp.src(path.src.js)
-    .pipe(babel({
-      presets: ['env']
-    }))
-    .pipe(order([
-      'data.js',
-      'tabs.js',
-      'table-control-block.js',
+// gulp.task('js', () => {
+//   return gulp.src(path.src.js)
+//     .pipe(babel({
+//       presets: ['env']
+//     }))
+//     .pipe(order([
+//       'data.js',
+//       'tabs.js',
+//       'table-control-block.js',
       
-      'edit-actions.js',
-      'table.js',
-      'field-settings.js',
-      '*.js'
-    ]))
-    .pipe(concat('index.js'))
-    // .pipe(uglify())
-    .pipe(gulp.dest(path.dist.js))
-    .pipe(browserSync.reload({
-      stream: true
-    }));
+//       'edit-actions.js',
+//       'table.js',
+//       'field-settings.js',
+//       '*.js'
+//     ]))
+//     .pipe(concat('index.js'))
+//     // .pipe(uglify())
+//     .pipe(gulp.dest(path.dist.js))
+//     .pipe(browserSync.reload({
+//       stream: true
+//     }));
+// });
+
+gulp.task('js', () => {
+  gulp.src(path.src.js)
+    .pipe(webpackStream(webpackConfig), webpack)
+    .pipe(gulp.dest(path.dist.js));
 });
 
 // Таск слежения за изменениями файлов
