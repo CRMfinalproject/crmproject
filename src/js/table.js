@@ -17,7 +17,7 @@ class Table {
         //${ this.fields.map((elem) => elem.hidden === false ? ` <th class = "order-ctrl">${elem.view}</th>` : '').reduce((accum, next) => accum + next) }
         headerContent = `<tr class = "row-table">
                                 <th class = "order-ctrl"><input type = "checkbox" class ="checkbox"></th>
-                                ${this.fields.map((field) => ` <th class = "order-ctrl table-header-${field.name}" ${field.hidden ? "hidden" : ""} >${field.view}</th>`).reduce((accum, next) => accum + next)}
+                                ${this.fields.map((field) => ` <th class = "order-ctrl table-header-${field.name}" ${field.hidden ? "hidden" : ""} >${field.view}<span class = "dropdown-arrow"></span></th>`).reduce((accum, next) => accum + next)}
                                 <th class = "order-ctrl"><div class="table__fieldsettings"><p class="table__fieldsettings_heading"><span class="table__fieldsettings_heading__text"></span><img class="table__fieldsettings__btn" src="../images/field_settings.png"></p></div></th>`;
 
         this.container.querySelector(".data-table-header").innerHTML = headerContent;
