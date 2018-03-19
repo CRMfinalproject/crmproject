@@ -1,40 +1,33 @@
 const tHead = document.querySelector(".data-table-header");
-
-/* const sortNumbers = (criteria) => {
-		event.target.classList.toggle("desc");
-		if (event.target.classList.contains("desc")) {
-			data.sort(function (obj1, obj2) {
-				return obj2[criteria] - obj1[criteria];
-			});
-			table.renderData();
-		} else {
-			data.sort(function (obj1, obj2) {
-				return obj1[criteria] - obj2[criteria];
-			});
-			table.renderData();
-		}
-}; */
+let prev;
 
 const sortNames = (criteria) => {
-		event.target.classList.toggle("desc");
-		if(event.target.classList.contains("desc")){
-			data.sort(function(obj1, obj2) {
-				if (obj1[criteria] < obj2[criteria]) return 1;
-				if (obj1[criteria] > obj2[criteria]) return -1;
-				return 0;
-			});
-			table.renderData();
-		} else {
-			data.sort(function(obj1, obj2) {
-				if (obj1[criteria] < obj2[criteria]) return -1;
-				if (obj1[criteria] > obj2[criteria]) return 1;
-				return 0;
-			});
-			table.renderData();
-		}
+	if((typeof prev !== 'undefined') && (prev !== event.target)){
+        prev.classList.remove("desc");
+    }
+	event.target.classList.toggle("desc");
+	if(event.target.classList.contains("desc")){
+		data.sort(function(obj1, obj2) {
+			if (obj1[criteria] < obj2[criteria]) return 1;
+			if (obj1[criteria] > obj2[criteria]) return -1;
+			return 0;
+		});
+		table.renderData();
+	} else {
+		data.sort(function(obj1, obj2) {
+			if (obj1[criteria] < obj2[criteria]) return -1;
+			if (obj1[criteria] > obj2[criteria]) return 1;
+			return 0;
+		});
+		table.renderData();
+	}
+	prev = event.target;
 };
 
 const sortByDate = () => {
+	if((typeof prev !== 'undefined') && (prev !== event.target)){
+        prev.classList.remove("desc");
+    }
 	if(event.target.textContent === "Дата создания"){
 		event.target.classList.toggle("desc");
 		if(event.target.classList.contains("desc")){
@@ -49,9 +42,13 @@ const sortByDate = () => {
 			table.renderData();
 		}
 	}
+	prev = event.target;
 };
 
 const sortBySize = () => {
+	if((typeof prev !== 'undefined') && (prev !== event.target)){
+        prev.classList.remove("desc");
+    }
 	if(event.target.textContent === "Размеры(ШхВхД)"){
 		event.target.classList.toggle("desc");
 		if(event.target.classList.contains("desc")){
@@ -74,6 +71,7 @@ const sortBySize = () => {
 			table.renderData();
 		}
 	}
+	prev = event.target;
 };
 
 tHead.addEventListener("click", function () {
