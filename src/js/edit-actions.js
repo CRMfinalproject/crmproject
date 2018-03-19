@@ -18,7 +18,7 @@ function addEventClickOnDotsButtons() {
     addEvents('.table-column-actions__dots', 'click', dotsHandler);
 };
 
-addEventClickOnDotsButtons();
+//addEventClickOnDotsButtons();
 
 
 function copyHandler(event) {
@@ -123,7 +123,7 @@ function actionsMouseLeave(event) {
         el.previousSibling.classList.remove('close');
     };
 };
-addEventMouseOutForActions();
+//addEventMouseOutForActions();
 
 
 function removeEventClickOnCopyButtons() {
@@ -140,7 +140,7 @@ function removeEventClickOnCopyButtons() {
 function addEventClickOnCopyButtons() {
     addEvents('.table-column-actions__copy','click', copyHandler);    
 };
-addEventClickOnCopyButtons();
+//addEventClickOnCopyButtons();
 
 
 function editHandler(event) {
@@ -177,7 +177,7 @@ function removeEventClickOnEditButtons() {
 function addEventClickOnEditButtons() {
     addEvents('.table-column-actions__edit', 'click', editHandler);
 };
-addEventClickOnEditButtons();
+//addEventClickOnEditButtons();
 
 
 function delHandler(event) {
@@ -193,16 +193,17 @@ function delHandler(event) {
     td.children[1].classList.add("close");
     td.children[3].classList.remove("close");
     
-    timerId = setTimeout( () => {
-        let toDel = document.querySelector(`#${id}`);
-        toDel.remove();
-        for(let i = 0; i< data.length; i++) {
-            if(data[i].id == originId) {
-                data.splice(i, 1);
-                break;
-            };
-        };
-    }, 5000);
+    // timerId = setTimeout( () => {
+    //     debugger;
+    //     let toDel = document.querySelector(`#${id}`);
+    //     toDel.remove();
+    //     for(let i = 0; i< data.length; i++) {
+    //         if(data[i].id == originId) {
+    //             data.splice(i, 1);
+    //             break;
+    //         };
+    //     };
+    // }, 5000);
 };
 
 
@@ -214,7 +215,7 @@ function removeEventClickOnDelButtons() {
 function addEventClickOnDelButtons() {
     addEvents('.table-column-actions__delete', 'click', delHandler);
 }; 
-addEventClickOnDelButtons();
+//addEventClickOnDelButtons();
 
 
 function recConfirmHandler(event) {
@@ -264,7 +265,7 @@ function removeEventClickOnEditConfirmButtons() {
 function addEventClickOnEditConfirmButtons() {
     addEvents('.table-column-actions__ok', 'click', editConfirmHandler);
 };
-addEventClickOnEditConfirmButtons();
+//addEventClickOnEditConfirmButtons();
 
 
 function removeEventClickOnRecConfirmButtons() {
@@ -275,9 +276,20 @@ function removeEventClickOnRecConfirmButtons() {
 function addEventClickOnRecConfirmButtons() {
     addEvents('.table-column-actions__recover','click', recConfirmHandler);
 };
-addEventClickOnRecConfirmButtons();
+// addEventClickOnRecConfirmButtons();
 
 
 function getGenericId() {
     // AJAX request to get new ID;   
+}
+
+
+function addEditActionsEvents(){
+    addEventClickOnDotsButtons();
+    addEventMouseOutForActions();
+    addEventClickOnCopyButtons();
+    addEventClickOnEditButtons();
+    addEventClickOnDelButtons();
+    addEventClickOnEditConfirmButtons();
+    addEventClickOnRecConfirmButtons();
 }
