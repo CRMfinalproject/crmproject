@@ -31,6 +31,5 @@ let table = new Table(productTableFields, data);
 import Fieldsettings from './field-settings';
 let fieldSettings = new Fieldsettings(productTableFields, table);
 
-
-//import Pagination from './pagination';
-//let page = new Pagination(data, ROWS_PER_PAGE, startRow, endRow, table);
+import Pagination from './pagination';
+let page = new Pagination(table);

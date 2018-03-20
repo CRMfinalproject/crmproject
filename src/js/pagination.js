@@ -1,10 +1,6 @@
 export default class {
-    constructor(data, ROWS_PER_PAGE, startRow, endRow, table) {
-        // document.body.querySelector(".content").innerHTML += `<div class="pagination"></div>`;    
-        this.data = data;
-        this.ROWS_PER_PAGE = ROWS_PER_PAGE;
-        this.startRow = startRow;
-        this.endRow = endRow;
+    constructor(table) {
+        // document.body.querySelector(".content").innerHTML += `<div class="pagination"></div>`;         
         this.table = table;
 
         let content = document.querySelector('.content');
@@ -21,15 +17,15 @@ export default class {
     setSettings() {
         // от сервера мы получаем общее количество ТОВАРОВ
         debugger;
-        this.totalPages = Math.ceil(this.data.length/10);
-        this.currentPage = Math.ceil(this.endRow/10);
+        this.totalPages = Math.ceil(this.table.data.length/10);
+        this.currentPage = Math.ceil(this.table.endRow/10);
         this.arrPages = Array.from({ length: (this.totalPages + 1) }, (v, i) => i);
         this.arrPages.splice(0, 1);
         this.mobile = (screen.width < 780) ? true : false;
         this.arrPagesToShow = this.pagesToShow();
     }
     pagesToShow() {
-        // debugger;
+        debugger;
         let startPage, endPage;
         if (this.mobile) {
             startPage = (this.currentPage <= 4) ? 0 : this.currentPage - 2;
@@ -50,7 +46,7 @@ export default class {
         return this.arrPagesToShow;
     }
     render() {
-        // debugger;
+        debugger;
         this.setSettings();
         this.pagesToShow();
         this.container.innerHTML = ``;
@@ -81,7 +77,7 @@ export default class {
         }
     }
     switchPages(event) {
-        // debugger;
+        debugger;
         event.preventDefault();
         if (event.target.innerHTML == "..." || event.target == this.container || 
             event.target.classList.contains("pagination__item")) { return };
@@ -95,13 +91,13 @@ export default class {
         else { this.currentPage = Number(event.target.innerHTML); }
         
         // вызываем renderTable класса Table с записи номер startRow по запись номер endRow (включительно)
-        this.startRow = (this.currentPage - 1) * this.ROWS_PER_PAGE;
-        this.endRow = this.currentPage * this.ROWS_PER_PAGE;
-        if (this.endRow >= this.data.length) {
-            this.endRow = this.data.length};
+        // this.startRow = (this.currentPage - 1) * this.table.ROWS_PER_PAGE;
+        // this.endRow = this.currentPage * this.table.ROWS_PER_PAGE;
+        // if (this.table.endRow >= this.table.data.length) {
+        //     this.table.endRow = this.table.data.length};
+        this.table.setCurrentPage(this.currentPage);
         this.table.renderData();
         this.render(this.pagesToShow());
-
     }
     controlSize(event) {
         if (screen.width < 780 && !this.mobile) {

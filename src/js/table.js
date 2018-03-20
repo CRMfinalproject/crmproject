@@ -15,9 +15,9 @@ export default class {
     }
 
     setSettings () {
-        const ROWS_PER_PAGE = 10;
+        this.ROWS_PER_PAGE = 10;
         this.startRow = 0;
-        this.endRow = ROWS_PER_PAGE;
+        this.endRow = this.ROWS_PER_PAGE;
     }
 
     renderHeader() {
@@ -113,6 +113,15 @@ export default class {
                         };
                     };
         }
+    }
+
+    setCurrentPage (currentPage) {
+        debugger;
+        this.startRow = (currentPage - 1) * this.ROWS_PER_PAGE;
+        this.endRow = currentPage * this.ROWS_PER_PAGE;
+        if (this.endRow >= this.data.length) {
+            this.endRow = this.data.length
+        };
     }
 
 }

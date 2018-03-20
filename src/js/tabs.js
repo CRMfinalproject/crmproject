@@ -11,19 +11,23 @@ export default class {
         if (!event.target.classList.contains("tabs__item--active") && event.target.classList.contains("tabs__item")) {
             document.body.querySelector(".tabs__item--active").classList.remove("tabs__item--active");
             event.target.classList.add("tabs__item--active");
-
+            debugger;
             switch (document.body.querySelector(".tabs__item--active").innerHTML) {
                 case "Товары": 
-                    tableControl.renderButtonTitle("новый товар");
+                    this.renderButtonTitle("новый товар");
                     break;
                 case "Поставки":
-                    tableControl.renderButtonTitle("новая поставка");
+                    this.renderButtonTitle("новая поставка");
                     break;
                 case "Категории":
-                    tableControl.renderButtonTitle("новая категория");
+                    this.renderButtonTitle("новая категория");
                     break;
             }
         }
+    }
+    renderButtonTitle(addText) {
+        debugger;
+        document.querySelector(".table-control__button--add-new .table-control__button__title").innerHTML = addText;
     }
     render () {
         this.tabsContainer.insertAdjacentHTML("afterbegin", `
