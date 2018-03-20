@@ -1,7 +1,4 @@
-const ROWS_PER_PAGE = 10;
-let startRow = 0;
-let endRow = ROWS_PER_PAGE;
-let data = [
+export default [
     {
         "id": 1,
         "name": "Помада Kylie",

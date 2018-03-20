@@ -1,6 +1,8 @@
-class Tabs {
+import { createElem } from './utils';
+
+export default class {
     constructor () {
-        this.tabsContainer = createElement(document.body.querySelector(".content"), 'div', 'tabs');
+        this.tabsContainer = createElem(document.body.querySelector(".content"), 'div', 'tabs');
         this.render();
         this.tabsContainer.addEventListener('click', this.toggle.bind(this));
     }
@@ -30,4 +32,4 @@ class Tabs {
             <div class="tabs__item">Категории</div>`);
     }
 }
-let tabs = new Tabs();
+//let tabs = new Tabs();

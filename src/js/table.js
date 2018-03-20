@@ -1,13 +1,23 @@
-class Table {
-    constructor(fields) {
+export default class {
+    constructor(fields, data) {
         this.container = document.createElement('table');
         document.body.querySelector('.content').appendChild(this.container);
         this.container.classList.add('data-table');
         this.container.insertAdjacentHTML('afterbegin', `<thead class="data-table-header"></thead><tbody class="data-table-body"></tbody>`);
+        
         this.fields = fields;
+        this.data = data;
+
+        this.setSettings();
         this.renderHeader();
         this.renderData();
         this.showColumns();
+    }
+
+    setSettings () {
+        const ROWS_PER_PAGE = 10;
+        this.startRow = 0;
+        this.endRow = ROWS_PER_PAGE;
     }
 
     renderHeader() {
@@ -25,13 +35,12 @@ class Table {
         this.container.querySelector(".data-table-header .checkbox").addEventListener('change', this.selectAll.bind(this));
     }
 
-
     // data
     renderData() {
        // перед тем, как перерисовать таблицу удаляем отмеченные у удалению строки
         this.deleteSelected();
-
-        let dataPage = data.slice(startRow, endRow);
+        debugger;
+        let dataPage = this.data.slice(this.startRow, this.endRow);
         let bodyContent = "";
 
         dataPage.map(row => {
@@ -63,7 +72,7 @@ class Table {
         document.querySelector(".data-table-body").innerHTML = bodyContent;
 
         // from edit-actions.js:
-        addEditActionsEvents()
+        // addEditActionsEvents()
     }
 
     showColumns(){
@@ -79,7 +88,7 @@ class Table {
     }
 
     selectAll() {
-        let checkboxArr = table.container.children[1].querySelectorAll(".checkbox");
+        let checkboxArr = document.querySelector(".data-table-body").querySelectorAll(".checkbox");
         if (document.querySelector(".data-table-header .checkbox").checked) {
             checkboxArr.forEach((elem) => { elem.checked = true });
         } else checkboxArr.forEach((elem) => { elem.checked = false });;
@@ -94,10 +103,10 @@ class Table {
             });
             let countToDel = 0;
                     while (countToDel != idsToDel.length) {
-                        for (let i=0; i<data.length; i++) {
+                        for (let i=0; i<this.data.length; i++) {
                             idsToDel.map(productToDel => {
-                                if (data[i].id == productToDel) {
-                                    data.splice(i, 1);
+                                if (this.data[i].id == productToDel) {
+                                    this.data.splice(i, 1);
                                     countToDel++;
                                 }
                             })
@@ -107,13 +116,3 @@ class Table {
     }
 
 }
-let productTableFields = [
-    { name: "name", view: "Название товара", hidden: false},
-    { name: "category", view: "Категория", hidden: false},
-    { name: "count", view: "Количество на складе", hidden: false},
-    { name: "price", view: "Цена", hidden: false },
-    { name: "creationDate", view: "Дата создания", hidden: false },
-    { name: "weight", view: "Вес", hidden: true },
-    { name: "size", view: "Размеры(ШхВхД)", hidden: true }
-]
-let table = new Table(productTableFields);

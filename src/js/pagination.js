@@ -1,7 +1,12 @@
-class Pagination {
-    constructor(table) {
+export default class {
+    constructor(data, ROWS_PER_PAGE, startRow, endRow, table) {
         // document.body.querySelector(".content").innerHTML += `<div class="pagination"></div>`;    
-        // this.table = table;
+        this.data = data;
+        this.ROWS_PER_PAGE = ROWS_PER_PAGE;
+        this.startRow = startRow;
+        this.endRow = endRow;
+        this.table = table;
+
         let content = document.querySelector('.content');
         content.insertAdjacentHTML('beforeend', '<div class="pagination"></div>');
         this.container = document.body.querySelector(".pagination");
@@ -16,8 +21,8 @@ class Pagination {
     setSettings() {
         // от сервера мы получаем общее количество ТОВАРОВ
         debugger;
-        this.totalPages = Math.ceil(data.length/10);
-        this.currentPage = Math.ceil(endRow/10);
+        this.totalPages = Math.ceil(this.data.length/10);
+        this.currentPage = Math.ceil(this.endRow/10);
         this.arrPages = Array.from({ length: (this.totalPages + 1) }, (v, i) => i);
         this.arrPages.splice(0, 1);
         this.mobile = (screen.width < 780) ? true : false;
@@ -90,11 +95,11 @@ class Pagination {
         else { this.currentPage = Number(event.target.innerHTML); }
         
         // вызываем renderTable класса Table с записи номер startRow по запись номер endRow (включительно)
-        startRow = (this.currentPage - 1) * ROWS_PER_PAGE;
-        endRow = this.currentPage * ROWS_PER_PAGE;
-        if (endRow >= data.length) {
-            endRow = data.length};
-        table.renderData();
+        this.startRow = (this.currentPage - 1) * this.ROWS_PER_PAGE;
+        this.endRow = this.currentPage * this.ROWS_PER_PAGE;
+        if (this.endRow >= this.data.length) {
+            this.endRow = this.data.length};
+        this.table.renderData();
         this.render(this.pagesToShow());
 
     }
@@ -111,4 +116,6 @@ class Pagination {
     }
 }
 
-let page = new Pagination();
+
+
+// let page = new Pagination();
