@@ -1,3 +1,10 @@
+const burgerBtn = '.burger';
+const burgerMenuContainer = '.burger-menu__container';
+const menuItemBtn = '.menu__item';
+const openClassBurgerCont = 'burger-menu__container--open';
+const openClassBurgerBtn = 'burger--open';
+const openClassMenuItemBtn = 'menu__item--open';
+
 class Menu {
     constructor(selector, options) {
         this.element = document.querySelector(selector);
@@ -18,21 +25,21 @@ class UserCabinetMenu extends Menu {
     constructor(selector, options) {
         debugger;
         super(selector, options);
-        this.element.addEventListener('mouseleave', () => this.close.bind(this));
+        this.element.addEventListener('mouseleave', this.close());
         this.element.addEventListener('click', event => {
             event.preventDefault();
-            this.toggle.bind(this);
+            this.toggle();
         })
     }
 }
 class BurgerMenu extends Menu {
-    constructor(selector, options) {
+    constructor(selector, options, burgerContMenu) {
         debugger;
         super(selector, options);
         this.element.addEventListener('click', event => {
             event.preventDefault();
-            // burgerContMenu.toggle();
-            this.toggle.bind(this);
+            burgerContMenu.toggle();
+            this.toggle();
             event.stopPropagation();
         })
     }
@@ -42,72 +49,13 @@ class BurgerContMenu extends Menu {
         debugger;
         super(selector, options);
         this.element.addEventListener('mouseleave', event => {
-            this.close.bind(this);
+            this.close();
             // burgerMenu.close();
+            document.body.querySelector('.burger').classList.remove('burger--open');
         });
     }
 }
-export { BurgerMenu, UserCabinetMenu, BurgerContMenu };
+export { BurgerMenu, UserCabinetMenu, BurgerContMenu, burgerBtn, burgerMenuContainer,
+ menuItemBtn, openClassBurgerCont, openClassBurgerBtn, openClassMenuItemBtn };
+// export * from '/menu'
 
-// const classBurgerCont = 'burger-menu__container';
-// const classBurger = 'burger';
-// const classMenu = 'menu';
-
-// const userCabinetMenu = new Menu(menuItemBtn, {
-//     openStateClass: openClassMenuItemBtn
-// });
-// const burgerMenu = new Menu(burgerBtn, {
-//     openStateClass: openClassBurgerBtn
-// });
-// const burgerContMenu = new Menu(burgerMenuContainer, {
-//     openStateClass: openClassBurgerCont
-// });
-
-// userCabinetMenu.element.addEventListener('click', event => {
-//     event.preventDefault();
-//     userCabinetMenu.toggle();
-// })
-
-// userCabinetMenu.element.addEventListener('mouseleave', () => userCabinetMenu.close());
-
-// burgerMenu.element.addEventListener('click', event => {
-//     event.preventDefault();
-
-//     burgerContMenu.toggle();
-//     burgerMenu.toggle();
-//     event.stopPropagation()
-// });
-
-// burgerContMenu.element.addEventListener('mouseleave', event => {
-//     burgerContMenu.close();
-//     burgerMenu.close();
-// });
-
-
-
-
-
-// document.body.addEventListener('click', (event) => {
-//     let el = event.target;
-//     let shouldMenuClose = true;
-
-//     while( el != document.body) {
-//         let hasBurger = el.classList.contains(classBurger);
-//         let hasBurgerMenu = el.classList.contains(classBurgerCont);
-//         let hasMenu = el.classList.contains(classMenu);
-
-//         if (hasBurger || hasBurgerMenu || hasMenu) {
-//             shouldMenuClose = false;
-//             break;
-//         }
-
-//         el = el.parentNode;
-//     }
-
-//     if (shouldMenuClose) {
-//         burgerMenu.close();
-//         userCabinetMenu.close();
-//         burgerContMenu.close();
-//         event.preventDefault();
-//     }
-// });

@@ -1,21 +1,16 @@
-const burgerBtn = '.burger';
-const burgerMenuContainer = '.burger-menu__container';
-const menuItemBtn = '.menu__item';
-const openClassBurgerCont = 'burger-menu__container--open';
-const openClassBurgerBtn = 'burger--open';
-const openClassMenuItemBtn = 'menu__item--open';
-
-import { BurgerMenu, UserCabinetMenu, BurgerContMenu } from './menu';
+import { BurgerMenu, UserCabinetMenu, BurgerContMenu, burgerBtn, burgerMenuContainer,
+    menuItemBtn, openClassBurgerCont, openClassBurgerBtn, openClassMenuItemBtn } from './menu';
 
 const userCabinetMenu = new UserCabinetMenu(menuItemBtn, {
     openStateClass: openClassMenuItemBtn
 });
-const burgerMenu = new BurgerMenu(burgerBtn, {
-    openStateClass: openClassBurgerBtn
-});
 const burgerContMenu = new BurgerContMenu(burgerMenuContainer, {
     openStateClass: openClassBurgerCont
 });
+const burgerMenu = new BurgerMenu(burgerBtn, {
+    openStateClass: openClassBurgerBtn
+}, burgerContMenu);
+
 
 import exportedData from './data';
 let data = exportedData;
