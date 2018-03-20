@@ -4,7 +4,7 @@ class Pagination {
         
         let content = document.querySelector('.content');
         content.insertAdjacentHTML('beforeend', '<div class="pagination"></div>');
-        this.table = activeTable;
+        this.table = table;
         this.container = document.body.querySelector(".pagination");
 
         this.setSettings(data);

@@ -15,15 +15,13 @@ class Tabs {
 
             if (document.body.querySelector(".tabs__item--active").innerHTML == "Товары") {
                 tableControl = new TableControlBlock("новый товар");
-                return activeTable = new Table(productTableFields);
-                new FieldSettings();
-                new Pagination();
+                //table = new Table(productTableFields);
+                //new Pagination();
             }
             if (document.body.querySelector(".tabs__item--active").innerHTML == "Поставки") {
                 tableControl = new TableControlBlock("новая поставка");
-                return activeTable = new Table(supplyTableFields);
-                new FieldSettings();
-                new Pagination();
+                //table = new Table(supplyTableFields);
+                //new Pagination();
 
             }
             if (document.body.querySelector(".tabs__item--active").innerHTML == "Категории") {

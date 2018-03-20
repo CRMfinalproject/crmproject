@@ -1,6 +1,6 @@
 class Fieldsettings {
     constructor() {
-        this.table = activeTable;
+        this.table = table;
         this.container = document.querySelector('.table__fieldsettings');
         this.triggerBtn = document.querySelector('.table__fieldsettings__btn');
         this.headingText = document.querySelector('.table__fieldsettings_heading__text');

@@ -5,6 +5,7 @@ class Table {
         this.container.classList.add('data-table');
         this.container.insertAdjacentHTML('afterbegin', `<thead class="data-table-header"></thead><tbody class="data-table-body"></tbody>`);
         this.fields = fields;
+        debugger;
         this.renderHeader();
         this.renderData();
         this.showColumns();
@@ -114,4 +115,4 @@ let supplyTableFields = [
     { name: "supplyDate", view: "Дата поставки", hidden: false },
 ];
 
-let activeTable = new Table(productTableFields);
+let table = new Table(productTableFields);
