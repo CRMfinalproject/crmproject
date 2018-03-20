@@ -84,18 +84,19 @@
   visibility: hidden;
   &:checked {
     &::after {
-      content: '';
+      //content: '';
       visibility: visible;
-      position: relative;
-      width: 10px;
-      height: 3px;
-      top: -5px;
-      left: 1px;
-      display: inline-block;
-      border: 2px solid #83abd9;
-      border-top: none;
-      border-right: none;
-      transform: rotate(-45deg);
+      //position: relative;
+      //width: 10px;
+      //height: 3px;
+      top: -1px;
+      left: -1px;
+	  transition: 0s;
+      //display: inline-block;
+      //border: 2px solid #83abd9;
+      //border-top: none;
+      //border-right: none;
+      //transform: rotate(-45deg);
     }
   }
 }
