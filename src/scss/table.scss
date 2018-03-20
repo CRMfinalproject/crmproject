@@ -90,28 +90,21 @@ $darkblue:	#6495ED;
   cursor: pointer;
 }
 
-.table-column-name,
 .table-column-count,
 .table-column-price,
-.table-column-creationDate,
 .table-column-weight,
 .table-column-size {
-
-  //input {
-  //  width: 100px;
-  //}
+    span{
+      padding-left:7px;
+    }
 }
-.table-column-count span{
-  padding-left:70px;
-}
-
-
 
 .table-column-creationDate,
 .table-column-weight,
 .table-column-size {
   text-align: center;
 }
+
 #Косметика,#Одежда,#Обувь,#Игрушки,#Хозтовары,#Книги,#Кожа,#Ремни{
   text-align: center;
   span {
@@ -162,4 +155,14 @@ $darkblue:	#6495ED;
   span {
     background-color: #876C6C;
   }
+}
+
+.setToDel {
+  color: rgb(175, 174, 174);
+  background-color: #f9f9f9;
+  
+    &-category {
+        color: black;
+        background-color: #f9f9f9;
+    };
 }

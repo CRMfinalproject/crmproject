@@ -138,14 +138,9 @@ const userCabinetMenu = new Menu('.menu', {
     openStateClass: 'menu__item--open',
     subItemClass: '.menu__subitem',
     onClick() {
-        console.log('userCabinetMenu: onClick')
         this.open();
     },
-    onSubItemClick() {
-        console.log('userCabinetMenu: onSubItemClick')
-    },
     onItemMouseLeave() {
-        console.log('userCabinetMenu: onItemMouseLeave')
         this.close();
     }
 });
@@ -153,15 +148,22 @@ const userCabinetMenu = new Menu('.menu', {
 const burgerBtn = new Menu('.burger', {
     openStateClass: 'burger--open',
     onClick() {
-        console.log('burgerBtn: onClick')
+        this.toggle();
         burgerMenu.toggle();
     },
+    onItemMouseLeave() {
+        this.close();
+        burgerMenu.close();
+    }
 });
 
 const burgerMenu = new Menu('.burger-menu__container', {
     openStateClass: 'burger-menu__container--open',
     onClick() {
-        console.log('burgerMenu: onClick')
         this.close();
     },
+    onItemMouseLeave() {
+        this.close();
+        burgerBtn.close();
+    }
 });
