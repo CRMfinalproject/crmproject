@@ -1,10 +1,21 @@
-// const ROWS_PER_PAGE = 10;
-// let startRow = 0;
-// let endRow = ROWS_PER_PAGE;
-// let tableSettings = {
-//     startRow: 0,
-//     endRow: ROWS_PER_PAGE
-// };
+const burgerBtn = '.burger';
+const burgerMenuContainer = '.burger-menu__container';
+const menuItemBtn = '.menu__item';
+const openClassBurgerCont = 'burger-menu__container--open';
+const openClassBurgerBtn = 'burger--open';
+const openClassMenuItemBtn = 'menu__item--open';
+
+import { BurgerMenu, UserCabinetMenu, BurgerContMenu } from './menu';
+
+const userCabinetMenu = new UserCabinetMenu(menuItemBtn, {
+    openStateClass: openClassMenuItemBtn
+});
+const burgerMenu = new BurgerMenu(burgerBtn, {
+    openStateClass: openClassBurgerBtn
+});
+const burgerContMenu = new BurgerContMenu(burgerMenuContainer, {
+    openStateClass: openClassBurgerCont
+});
 
 import exportedData from './data';
 let data = exportedData;
@@ -24,6 +35,11 @@ let tabs = new Tabs();
 
 import TableControlBlock from './table-control-block';
 let tableControl = new TableControlBlock("новый товар");
+
+import AddProduct from './new-product';
+let productCategoryList = data.map(
+    (elem) => elem.category).sort().filter((el, i, arr) => arr.includes(el, i + 1) === false);
+let newProduct = new AddProduct(productCategoryList);
 
 import Table from './table';
 let table = new Table(productTableFields, data);

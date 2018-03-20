@@ -21,7 +21,6 @@ export default class {
 
     render() {
         debugger;
-        console.log(this.addText);
         this.container.insertAdjacentHTML("afterbegin", `
             <div class="table-control__button table-control__button--actions">
                 <div class="table-control__button__title">Действия с выбранными</div>

@@ -1,4 +1,4 @@
-class AddProduct {
+export default class {
     constructor(categoryList) {
         this.categoryList = categoryList;
         document.body.querySelector(".table-control__button--add-new").addEventListener('click', () => this.render());
@@ -66,6 +66,6 @@ class AddProduct {
 
 }
 
-let productCategoryList = data.map((elem) => elem.category).sort().filter((el, i, arr) => arr.includes(el, i + 1) === false);
-let newProduct = new AddProduct(productCategoryList);
+// let productCategoryList = data.map((elem) => elem.category).sort().filter((el, i, arr) => arr.includes(el, i + 1) === false);
+// let newProduct = new AddProduct(productCategoryList);
 
