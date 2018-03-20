@@ -1,6 +1,6 @@
 const ROWS_PER_PAGE = 10;
 let startRow = 0;
-let endRow = ROWS_PER_PAGE-1;
+let endRow = ROWS_PER_PAGE;
 let data = [
     {
         "id": 1,

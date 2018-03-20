@@ -1,31 +1,33 @@
 class Tabs {
     constructor () {
+<<<<<<< HEAD
         // document.body.querySelector(".content").insertAdjacentHTML("afterbegin",`<div class="tabs"></div>`);
         // this.tabsContainer = document.body.querySelector(".tabs");
+=======
+>>>>>>> development
         this.tabsContainer = createElement(document.body.querySelector(".content"), 'div', 'tabs');
         this.render();
         this.tabsContainer.addEventListener('click', this.toggle.bind(this));
-        // document.body.querySelector(".tabs").addEventListener('click', this.toggle.bind(this));
     }
 
     toggle (event) {
         if (!event.target.classList.contains("tabs__item--active") && event.target.classList.contains("tabs__item")) {
             document.body.querySelector(".tabs__item--active").classList.remove("tabs__item--active");
             event.target.classList.add("tabs__item--active");
-
-            if (document.body.querySelector(".tabs__item--active").innerHTML == "Товары") {
-                tableControl = new TableControlBlock("новый товар");
-                //table = new Table(productTableFields);
-                //new Pagination();
-            }
-            if (document.body.querySelector(".tabs__item--active").innerHTML == "Поставки") {
-                tableControl = new TableControlBlock("новая поставка");
-                //table = new Table(supplyTableFields);
-                //new Pagination();
-
-            }
-            if (document.body.querySelector(".tabs__item--active").innerHTML == "Категории") {
-                tableControl = new TableControlBlock("новая категория");
+            switch (document.body.querySelector(".tabs__item--active").innerHTML) {
+                case "Товары": 
+                    tableControl.renderButtonTitle("новый товар");
+                    //table = new Table(productTableFields);
+                    //new Pagination();
+                    break;
+                case "Поставки":
+                    tableControl.renderButtonTitle("новая поставка");
+                    //table = new Table(supplyTableFields);
+                    //new Pagination();
+                    break;
+                case "Категории":
+                    tableControl.renderButtonTitle("новая категория");
+                    break;
             }
         }
     }

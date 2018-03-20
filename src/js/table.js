@@ -23,8 +23,12 @@ class Table {
         if (fieldSettings) {
             new Fieldsettings();
         }
+        this.container.querySelector(".data-table-header .checkbox").addEventListener('change', this.selectAll.bind(this));
     }
     renderData() {
+       // перед тем, как перерисовать таблицу удаляем отмеченные у удалению строки
+        this.deleteSelected();
+
         let dataPage = data.slice(startRow, endRow);
         let fieldNames = this.fields.map((elem) => elem.name);
         let bodyContent = '';
@@ -38,7 +42,7 @@ class Table {
                             bodyContent += `<td class="table-column-name" ${this.fields.find((f) => f.name === 'name').hidden ? "hidden" : ""}><a href = "Ссылка на товар/${row.id}" class = "table-column-name__link">${row.name}</a></td>`;
                             break;
                         case 'category' :
-                            bodyContent += `<td class="table-column-category" ${this.fields.find((f) => f.name === 'category').hidden ? "hidden" : ""}><span>${row.category}</span></td>`;
+                            bodyContent += `<td class="table-column-category" id = ${row.category.replace(/\./g, "")}  ${this.fields.find((f) => f.name === 'category').hidden ? "hidden" : ""}><span>${row.category}</span></td>`;
                             break;
                         case 'count' :
                             bodyContent += `<td class="table-column-count" ${this.fields.find((f) => f.name === 'count').hidden ? "hidden" : ""}><span>${row.count} шт</span></td>`;
@@ -95,7 +99,34 @@ class Table {
                 el.hidden = field.hidden;
             }
         });
+    }
 
+    selectAll() {
+        let checkboxArr = table.container.children[1].querySelectorAll(".checkbox");
+        if (document.querySelector(".data-table-header .checkbox").checked) {
+            checkboxArr.forEach((elem) => { elem.checked = true });
+        } else checkboxArr.forEach((elem) => { elem.checked = false });
+    }
+
+    deleteSelected () {
+        let rowsToDel = Array.from(document.querySelectorAll(".setToDel"));
+        if (rowsToDel.length) {
+            let idsToDel = rowsToDel.map(row => {
+                row.classList.add('setToDel');
+                return row.id.replace('row-', '');
+            });
+            let countToDel = 0;
+                    while (countToDel != idsToDel.length) {
+                        for (let i=0; i<data.length; i++) {
+                            idsToDel.map(productToDel => {
+                                if (data[i].id == productToDel) {
+                                    data.splice(i, 1);
+                                    countToDel++;
+                                }
+                            })
+                        };
+                    };
+        }
     }
 }
 let productTableFields = [
