@@ -1,10 +1,5 @@
 class Tabs {
     constructor () {
-<<<<<<< HEAD
-        // document.body.querySelector(".content").insertAdjacentHTML("afterbegin",`<div class="tabs"></div>`);
-        // this.tabsContainer = document.body.querySelector(".tabs");
-=======
->>>>>>> development
         this.tabsContainer = createElement(document.body.querySelector(".content"), 'div', 'tabs');
         this.render();
         this.tabsContainer.addEventListener('click', this.toggle.bind(this));
