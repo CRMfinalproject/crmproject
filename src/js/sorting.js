@@ -111,7 +111,6 @@ class Sorting {
 			}
 		}
 	}
-
 }
 
 let sorting = new Sorting();
