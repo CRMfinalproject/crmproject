@@ -1,4 +1,3 @@
-
 let filterNamePrice = [];
 let filterNameCount = [];
 let filterNameCategory = [];
@@ -19,7 +18,6 @@ const link1 = document.querySelector("#linkdate1");
 inputDate2.style.visibility = "hidden";
 inputDate1.style.visibility = "hidden";
 const link2 = document.querySelector("#linkdate2");
-const filter_merge = document.querySelector (".table-control");
 
 //OPEN MODAL WIN
 
@@ -29,11 +27,8 @@ function openModal() {
     link2.style.visibility = "visible";
     modalFilter.style.height = "300px";
     parentFilter.style.height = "420px";
-    // filter_merge.style.padding = "30px 41px 390px 41px";
-    modalFilter.style.animationName = "slideIn";
     modalFilter.style.visibility = "visible";
     openCloseFilter.textContent = "ЗАКРЫТЬ";
-    arrowFilter.style.animationName = "arrowFilter";
     arrowFilter.style.transform = "rotate(225deg)";
     btnFilter.style.borderColor = "white";
     btnFilter.setAttribute("onclick", "hiddenModal()")
@@ -47,16 +42,13 @@ function hiddenModal() {
     inputDate2.style.visibility = "hidden";
     modalFilter.style.height = "1px";
     parentFilter.style.height = "100px";
-    // filter_merge.style.padding = "30px 41px 13px 41px";
     inputDate1.style.visibility = "hidden";
     link2.style.visibility = "hidden";
     link1.style.visibility = "hidden";
-    arrowFilter.style.animationName = "arrowFilterback";
     arrowFilter.style.transform = "rotate(45deg)";
     openCloseFilter.textContent = "ОТКРЫТЬ";
     btnFilter.setAttribute("onclick", "openModal()")
 }
-
 
 
 function linkdate1() {
@@ -147,7 +139,7 @@ window.onload = function () {
 function inputRangePrice() {
     minPrice.value = minRangePrice.value;
     maxPrice.value = maxRangePrice.value;
-    Tablefilter.priceMin = minRangePrice.value;;
+    Tablefilter.priceMin = minRangePrice.value;
     Tablefilter.priceMax = maxRangePrice.value;
     filterMinMaxPrice();
 }
@@ -186,22 +178,44 @@ function checkControl() {
 //FILTER MIN-MAX DATE
 
 function filterMimMaxDate() {
-    let today = new Date();
     let minDate = new Date(inputdateMin.value);
-    minDate.setHours(0);
     let maxDate = new Date(inputdateMax.value);
-    maxDate.setHours(0);
     filterNameDate = [];
     for (let i = 0; i < data.length; i++) {
         let mainDate = new Date(data[i].creationDate);
-        mainDate.setHours(0);
-        if (mainDate >= minDate && mainDate <= maxDate) {
+        if (inputdateMin.value === "" && inputdateMax.value !== "" && mainDate <= maxDate) {
             filterNameDate.push(data[i].id);
         }
+        if (inputdateMin.value !== "" && inputdateMax.value === "" && mainDate >= minDate) {
+            filterNameDate.push(data[i].id);
+        }
+        if (inputdateMin.value !== "" && inputdateMax.value !== "" && mainDate <= maxDate && mainDate >= minDate) {
+            filterNameDate.push(data[i].id);
+            resultID();
+        }
     }
-    // console.log(`RESULT by DATE ${filterNameDate}`);
+    resultID();
+    console.log(`RESULT by DATE` + filterNameDate);
+   }
+
+//FILTER SEARCH BY NAME
+
+let filterNamebyName = [];
+
+function searchSelectByName() {
+    filterNamebyName = [];
+    if (searchSelectByname.value != "") {
+        for (let i = 0; i < data.length; i++) {
+            data[i].name.slice(0, searchSelectByname.value.length);
+            if (searchSelectByname.value.toLowerCase().indexOf(data[i].name.slice(0, searchSelectByname.value.length).toLowerCase()) > -1) {
+                filterNamebyName.push(data[i].id);
+            }
+        }
+    }
+    // console.log("searchByName" + filterNamebyName);
     resultID();
 }
+
 
 //RESULT FILTER ARRAY OF IDs
 let finalResults = [];
@@ -218,10 +232,10 @@ function resultID() {
     }
     if (searchSelectByname.value.length !== 0) {
         result.push(filterNamebyName);
-        console.log(filterNamebyName);
+
     }
     finalResults = [];
-    let sorted_arr  = [];
+    let sorted_arr = [];
     switch (result.length) {
         case 2:
             sorted_arr = result[0].concat(result[1]);
@@ -235,7 +249,7 @@ function resultID() {
             }
             break;
         case 3:
-            sorted_arr = result[0].concat(result[1],result[2]);
+            sorted_arr = result[0].concat(result[1], result[2]);
             sorted_arr.sort(function (a, b) {
                 return a - b;
             });
@@ -244,10 +258,10 @@ function resultID() {
                     finalResults.push(sorted_arr[j]);
                 }
             }
-            result.splice(2,1);
+            result.splice(2, 1);
             break;
         case 4:
-            sorted_arr = result[0].concat(result[1],result[2],result[3]);
+            sorted_arr = result[0].concat(result[1], result[2], result[3]);
             sorted_arr.sort(function (a, b) {
                 return a - b;
             });
@@ -256,12 +270,11 @@ function resultID() {
                     finalResults.push(sorted_arr[j]);
                 }
             }
-            result.splice(3,1);
+            result.splice(3, 1);
             break;
 
-        //Here must be case 5: SearchingByName
         case 5:
-            sorted_arr = result[0].concat(result[1],result[2],result[3],result[4]);
+            sorted_arr = result[0].concat(result[1], result[2], result[3], result[4]);
             sorted_arr.sort(function (a, b) {
                 return a - b;
             });
@@ -270,7 +283,7 @@ function resultID() {
                     finalResults.push(sorted_arr[j]);
                 }
             }
-            result.splice(4,1);
+            result.splice(4, 1);
             break;
 
         default:
@@ -281,10 +294,12 @@ function resultID() {
     page.setSettings(finalResults);
     page.render();
 
-    //Here must be fetch request...
-    console.log("Список ID для fetch" + "  " + finalResults);
+    // console.log("Список ID для fetch" + "  " + finalResults);
 }
+
+//New data for rendering table
 let dataFilter = [];
+
 function filterData() {
     dataFilter = [];
     for (let i = 0; i < data.length; i++) {
@@ -294,26 +309,7 @@ function filterData() {
             }
         }
     }
-    console.log(dataFilter);
+    // console.log(dataFilter);
 
     table.renderData();
 }
-
-//FILTER SEARCH BY NAME
-
-let filterNamebyName = [];
-function searchSelectByName() {
-    filterNamebyName = [];
-    if (searchSelectByname.value != "") {
-        for (let i = 0; i < data.length; i++) {
-            data[i].name.slice(0, searchSelectByname.value.length);
-            if(searchSelectByname.value.toLowerCase().indexOf(data[i].name.slice(0, searchSelectByname.value.length).toLowerCase()) > -1){
-                filterNamebyName.push(data[i].id);
-            }
-        }
-    }
-    // console.log("searchByName" + filterNamebyName);
-    resultID();
-}
-
-

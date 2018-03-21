@@ -19,14 +19,17 @@
 .new-product__wrapper {
   width: 80%;
   height: auto;
-  margin: 0 auto 333px;
+  margin-left:30px;
+  //margin: 0 auto 333px;
   background-color: #ffffff;
   font-size: 12px;
+  visibility: visible;
 }
 
 .new-product__content {
   width: 60%;
   height: fit-content;
+
 }
 
 .new-product__form__heading {

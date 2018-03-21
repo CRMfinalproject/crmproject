@@ -30,20 +30,20 @@
                 <h6>ФИЛЬТР ПО ДАТЕ:</h6>
                 <span class="filter_dateSpace">oт</span>
                 <button id="linkdate1" onclick="linkdate1()">Выбрать</button>
-                <input id="inputdateMin" onclick = "filterMimMaxDate()" type="date" value="" placeholder="Выбрать" class="">
+                <input id="inputdateMin"  onchange="filterMimMaxDate()" type="date" value="" placeholder="Выбрать" class="">
                 <span>- до </span>
                 <button id="linkdate2" onclick="linkdate2()">Выбрать</button>
-                <input id="inputdateMax" onclick = "filterMimMaxDate()" type="date" value="" placeholder="Выбрать" class="">
+                <input id="inputdateMax" onchange="filterMimMaxDate()" type="date" value="" placeholder="Выбрать" class="">
             </div>
 
             <div class = "filter_block-by-price" id="filter-block-by-price">
                 <h6>ФИЛЬТР ПО ЦЕНЕ:</h6>
                 <input id="minRangePrice" class = "minRangePrice"  type="number" onkeyup = "inputRangePrice()" value = "15">
-                <input id="maxRangePrice" class = "maxRangePrice" type="number" onkeyup = "inputRangePrice()" value = "6000"> грн.
+                <input id="maxRangePrice" class = "maxRangePrice" type="number" onkeyup = "inputRangePrice()" value = "5005"> грн.
                 <section class="filter_range-slider" id = "filter_range-slider">
                     <span class="rangeValues"></span>
-                    <input class = "filter_range-slider__slide-price" id ="minPrice" value="15" min="15" max="6000" step="10" type="range" data-price = "price">
-                    <input  class = "filter_range-slider__slide-price" id ="maxPrice" value="6000" min="15" max="6000" step="10" type="range" data-price = "price">
+                    <input class = "filter_range-slider__slide-price" id ="minPrice" value="15" min="15" max="5004" step="10" type="range" data-price = "price">
+                    <input  class = "filter_range-slider__slide-price" id ="maxPrice" value="6000" min="15" max="5004" step="10" type="range" data-price = "price">
                 </section>
             </div>
 

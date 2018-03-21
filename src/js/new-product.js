@@ -64,6 +64,7 @@ class AddProduct {
             data.push(productToAdd);
         }
 
+
 }
 
 let productCategoryList = data.map((elem) => elem.category).sort().filter((el, i, arr) => arr.includes(el, i + 1) === false);

@@ -1,7 +1,7 @@
 $blue:#ADD8E6;
 $grey:#eaeaea;
+$dark-grey:#424242;
 $darkblue:#1E90FF;
-
 $checked-color: #1E90FF;
 $unchecked-color: #000;
 $checkbox-height: 14px;
@@ -9,14 +9,17 @@ $background-color:#667788;
 $light:#CDC9C9;
 $font-color:#efefef;
 $duration: .4s;
+$bg:#f5f5f5;
 .wrapper{
-    max-width:1448px;
-    width:100%;
+    max-width:1648px;
+    width:110%;
+
 }
 .filter_container {
     height:1px;
     max-width: 1156px;
     width:100%;
+
 }
 
 @font-face {
@@ -25,19 +28,16 @@ $duration: .4s;
 }
 
 #modalFilter {
-    //position: relative;
-    //top:192px;
-    //left:120px;
+
     display: inline-block;
-    //margin-left: 134px;
     visibility: hidden;
-    background-color: #f5f5f5;
-    /*animation-name: slideIn;*/
+    background-color: $bg;
     z-index: 1;
     animation-duration: 1s;
     width: 958px;
     height: 306px;
     padding: 30px 40px 30px 40px;
+    color: $dark-grey;
 }
 
 #btnFilter {
@@ -45,7 +45,7 @@ $duration: .4s;
     float: right;
     width: 180px;
     height: 37px;
-    color: #333;
+    color:#585858;
     font-weight: bold;
     transition: .3s;
     margin-left:394px;
@@ -99,43 +99,53 @@ $duration: .4s;
     display: flex;
 }
 .filter_block-by-date{
+    width: 316px;
+    margin-right: -33px;
 
     h6{
         margin-bottom:20px;
         margin-right:30px;
     }
     input{
-        width:100px;
+        width:115px;
+        color:$dark-grey;
     }
     .filter_dateSpace{
-        margin-left:25px;
+        margin-left:10px;
 
     }
     #linkdate1, #linkdate2 {
         position: absolute;
         text-decoration: underline;
-
         font-style: italic;
-        background-color: #eaeaea;
+        background-color: $bg;
         border: none;
 
     }
 
     #linkdate2 {
-        left: 490px;
-        top: 346px;
+        left: 397px;
+        top: 372px;
         color:$darkblue;
     }
     #linkdate1 {
-        left: 354px;
-        top: 346px;
+        left: 243px;
+        top: 372px;
         color:$darkblue;
     }
-
+    //date input style
+    ::-webkit-datetime-edit {
+         width:130px;
+    }
+    ::-webkit-inner-spin-button {
+        display: none; }
+    //::-webkit-calendar-picker-indicator {
+    //    display: none; }
 
 }
+
 .filter_block-by-price {
-    margin-left: 10px;
+    margin-left: 26px;
     h6 {
         margin-bottom: 20px;
         margin-left: -22px;
@@ -143,12 +153,13 @@ $duration: .4s;
     #minRangePrice{
         margin-right:65px;
     }
-
-
+    input{
+        margin-left:15px;
+    }
 }
 
 .filter_block-by-quantity {
-    margin-left: 50px;
+    margin-left: 40px;
     h6{
         margin-bottom: 20px;
         margin-left: -22px
@@ -156,10 +167,14 @@ $duration: .4s;
     #maxRangeQuantity{
         margin-left:121px;
     }
+    input{
+        margin-left:15px;
+    }
 }
 .filter_block-by-product {
     margin-top: 35px;
     input {
+
         margin-top: 16px;
         height: 30px;
         margin-left:30px;
@@ -170,12 +185,14 @@ $duration: .4s;
 #minRangePrice, #maxRangePrice, #minRangeQuantity, #maxRangeQuantity {
     width: 40px;
     height: 20px;
+    text-align: right;
 }
 #minRangePrice{
     margin-right:8px;
 }
-#maxRangePrice,#maxRangeNumber {
+#maxRangePrice,#maxRangeQuantity {
     margin-left:55px;
+    width:53px;
 }
 
 //input RANGE style
@@ -195,9 +212,9 @@ $duration: .4s;
         border: none;
         border-radius: $input-border-radius;
         background: #CEE3F6;
-        left:48px;
+        left:68px;
         top:-14px;
-        width: 110px;
+        width: 100px;
         outline: none;
         height: $input-height;
         margin: 0;
