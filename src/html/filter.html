@@ -28,10 +28,10 @@
 
             <div class="filter_block-by-date">
                 <h6>ФИЛЬТР ПО ДАТЕ:</h6>
-                <span class="filter_dateSpace">oт</span>
+                <span class="filter_dateSpace filter_block-by-date__from-to">oт</span>
                 <button id="linkdate1" onclick="linkdate1()">Выбрать</button>
                 <input id="inputdateMin"  onchange="filterMimMaxDate()" type="date" value="" placeholder="Выбрать" class="">
-                <span>- до </span>
+                <span class="filter_block-by-date__from-to">- до </span>
                 <button id="linkdate2" onclick="linkdate2()">Выбрать</button>
                 <input id="inputdateMax" onchange="filterMimMaxDate()" type="date" value="" placeholder="Выбрать" class="">
             </div>
@@ -39,7 +39,8 @@
             <div class = "filter_block-by-price" id="filter-block-by-price">
                 <h6>ФИЛЬТР ПО ЦЕНЕ:</h6>
                 <input id="minRangePrice" class = "minRangePrice"  type="number" onkeyup = "inputRangePrice()" value = "15">
-                <input id="maxRangePrice" class = "maxRangePrice" type="number" onkeyup = "inputRangePrice()" value = "5005"> грн
+                <input id="maxRangePrice" class = "maxRangePrice" type="number" onkeyup = "inputRangePrice()" value = "5005"> 
+                <span class="filter_block-by-price__currency">грн</span>
                 <section class="filter_range-slider" id = "filter_range-slider">
                     <span class="rangeValues"></span>
                     <input class = "filter_range-slider__slide-price" id ="minPrice" value="15" min="15" max="5004" step="10" type="range" data-price = "price">
@@ -50,7 +51,8 @@
             <div class="filter_block-by-quantity" id="filter-block-by-quantity">
                 <h6>ФИЛЬТР ПО КОЛИЧЕСТВУ:</h6>
                 <input id="minRangeQuantity" class = "minRangeNumber"  type="number" onkeyup = "inputRangeCount()" value = "5">
-                <input id="maxRangeQuantity" class = "maxRangeNumber" type="number"  onkeyup = "inputRangeCount()" value = "999"> шт.
+                <input id="maxRangeQuantity" class = "maxRangeNumber" type="number"  onkeyup = "inputRangeCount()" value = "999">
+                <span class="filter_block-by-price__quantity">шт.</span>
                 <section class="filter_range-slider">
                     <span class="rangeValues"></span>
                     <input class = "filter_range-slider__slide-quantity" id = "minCount" value="5" min="5" max="999" step="1" type="range">
