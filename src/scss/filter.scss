@@ -1,5 +1,4 @@
 $blue:#ADD8E6;
-$grey:#eaeaea;
 $dark-grey:#424242;
 $darkblue:#1E90FF;
 $checked-color: #1E90FF;
@@ -41,7 +40,7 @@ $bg:#f5f5f5;
 }
 
 #btnFilter {
-    background-color: $grey;
+    background-color: $bg;
     float: right;
     width: 180px;
     height: 37px;
@@ -51,7 +50,7 @@ $bg:#f5f5f5;
     margin-left:394px;
     border: none;
     animation-duration: 2s;
-    font-size:11px;
+    font-size:10px;
     position:relative;
 
     border-radius:3px;
@@ -72,7 +71,7 @@ $bg:#f5f5f5;
     width: 7px;
     height: 7px;
     display: inline-block;
-    vertical-align: top;
+    //vertical-align: top;
     transform: rotate(45deg);
     animation-duration: 0.5s;
 
@@ -85,7 +84,7 @@ $bg:#f5f5f5;
     margin-bottom:20px;
 
     li {
-        margin-top: 33px;
+        margin-top: 16px;
     }
     label {
         margin-left: 30px;
@@ -125,12 +124,12 @@ $bg:#f5f5f5;
 
     #linkdate2 {
         left: 397px;
-        top: 372px;
+        top: 352px;
         color:$darkblue;
     }
     #linkdate1 {
         left: 243px;
-        top: 372px;
+        top: 352px;
         color:$darkblue;
     }
     //date input style
