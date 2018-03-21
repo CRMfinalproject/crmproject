@@ -1,5 +1,4 @@
 $blue:#ADD8E6;
-$grey:#eaeaea;
 $dark-grey:#424242;
 $darkblue:#1E90FF;
 $checked-color: #1E90FF;
@@ -33,7 +32,6 @@ $bg:#f5f5f5;
         color:black;
     }
 
-
     display: inline-block;
     visibility: hidden;
     background-color: $bg;
@@ -46,7 +44,9 @@ $bg:#f5f5f5;
 }
 
 #btnFilter {
+
     background-color: $grey;
+    float: right;
     width: 180px;
     height: 37px;
     color:#585858;
@@ -55,7 +55,12 @@ $bg:#f5f5f5;
     margin-left:40%;
     border: none;
     animation-duration: 2s;
+
     font-size:11px;
+
+    position:relative;
+
+
     border-radius:3px;
 
     &:active{
@@ -74,7 +79,7 @@ $bg:#f5f5f5;
     width: 7px;
     height: 7px;
     display: inline-block;
-    vertical-align: top;
+    //vertical-align: top;
     transform: rotate(45deg);
     animation-duration: 0.5s;
 
@@ -89,7 +94,7 @@ $bg:#f5f5f5;
     font-size:14px;
 
     li {
-        margin-top: 33px;
+        margin-top: 16px;
     }
     label {
         margin-left: 30px;
@@ -132,6 +137,7 @@ $bg:#f5f5f5;
     }
 
     #linkdate2 {
+
         left: 200px;
         top: 35px;
         color:$darkblue;
@@ -139,8 +145,11 @@ $bg:#f5f5f5;
     #linkdate1 {
         left: 50px;
         top: 35px;
+
         color:$darkblue;
     }
+
+
     //date input style
     ::-webkit-datetime-edit {
          width:130px;
