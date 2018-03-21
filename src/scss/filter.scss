@@ -32,6 +32,7 @@ $bg:#f5f5f5;
         color:black;
     }
 
+
     display: inline-block;
     visibility: hidden;
     background-color: $bg;
@@ -45,8 +46,11 @@ $bg:#f5f5f5;
 
 #btnFilter {
 
-    background-color: $grey;
+    background-color: $bg;
+
+
     float: right;
+
     width: 180px;
     height: 37px;
     color:#585858;
@@ -58,7 +62,8 @@ $bg:#f5f5f5;
 
     font-size:11px;
 
-    position:relative;
+
+
 
 
     border-radius:3px;
@@ -146,6 +151,8 @@ $bg:#f5f5f5;
         left: 50px;
         top: 35px;
 
+        //left: 397px;
+        //top: 352px;
         color:$darkblue;
     }
 
