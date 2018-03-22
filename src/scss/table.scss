@@ -120,16 +120,16 @@ $darkblue:	#6495ED;
   cursor: pointer;
 }
 
-.table-column-name,
-.table-column-count,
-.table-column-price,
-.table-column-creationDate,
-.table-column-weight,
-.table-column-size {
-  //input {
-  //  width: 100px;
-  //}
-}
+// .table-column-name,
+// .table-column-count,
+// .table-column-price,
+// .table-column-creationDate,
+// .table-column-weight,
+// .table-column-size {
+//   //input {
+//   //  width: 100px;
+//   //}
+// }
 .table-column-count span{
   padding-left:70px;
 }
@@ -238,4 +238,5 @@ input[type=checkbox]:checked {
 
 input[type=checkbox]:checked:after {
       opacity: 1;
+}
 }
