@@ -110,10 +110,10 @@ gulp.task('js', () => {
       'data.js',
       'tabs.js',
       'table-control-block.js',
-      'field-settings.js',
+      
       'edit-actions.js',
       'table.js',
-      
+      'field-settings.js',
       '*.js'
     ]))
     .pipe(concat('index.js'))
@@ -146,7 +146,7 @@ gulp.task('server', () => {
       baseDir: "./dist",
       index: '/html/index.html'
     },
-      //browser: 'google chrome',
+      // browser: 'google chrome',
     // Говорим спрятать надоедливое окошко обновления в браузере
     notify: false
   });

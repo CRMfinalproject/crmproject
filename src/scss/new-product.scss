@@ -17,16 +17,33 @@
 }
 
 .new-product__wrapper {
-  width: 80%;
-  height: auto;
+  position: absolute;
+  top: 105px;
+  left: 15.2%;
+  width: 50%;
+  height: fit-content;
   margin: 0 auto 333px;
+  border: 1px solid #77bbeb;
   background-color: #ffffff;
   font-size: 12px;
+  font-family: "Helvetica Neue";
+  z-index: 3;
 }
 
-.new-product__content {
-  width: 60%;
-  height: fit-content;
+.new-product__close-button{
+  position: relative;
+  top: -10px;
+  left: 97%;
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  border-radius: 100%;
+  background-color: #73cc83;
+  color: #ffffff;
+  text-align: center;
+  line-height: 19px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .new-product__form__heading {
@@ -41,10 +58,15 @@
   color: #77bbeb;
 }
 
+.new-product__form__heading--success {
+  color: #73cc83;
+}
+
 .new-product__form {
   display: flex;
   flex-direction: row;
   justify-content: start;
+  flex-wrap: wrap;
   width: 90%;
   margin: auto;
 }
@@ -64,7 +86,7 @@
 .new-product__form__input--text {
   width: 90%;
   height: 37px;
-  margin-top: 24px;
+  margin-top: 10px;
 }
 
 .new-product__form__input--textarea {
@@ -72,11 +94,15 @@
   top: -50px;
   width: 90%;
   line-height: 2.1em;
+  &:enabled{
+    font-family: "Helvetica Neue";
+    color: #000000;
+  }
 }
 
 .new-product__form__input--number {
   display: inline-block;
-  width: 50px;
+  width: 55px;
   height: 37px;
   margin-top: 10px;
   text-align: center;
@@ -88,13 +114,41 @@
 .new-product__form__input--number__label {
   display: inline-block;
   width: 48%;
-  margin: 0 0 30px;
+  margin: 0;
+  &::after{
+    content: '';
+    position: relative;
+    top: -25px;
+    left: 53%;
+  }
+  &:nth-child(1)::after {
+    content: 'грн.';
+  }
+  &:nth-child(2)::after {
+    content: 'шт.';
+  }
+  &:nth-child(6)::after, &:nth-child(7)::after{
+    content: 'кг';
+  }
 }
 
 .new-product__form__input--number__label--small {
   display: inline-block;
-  width: 30%;
-  margin: 0 0 37px;
+  width: 32%;
+  margin: 0 0 25px;
+  &::after{
+    content: 'x';
+    position: relative;
+    top: -25px;
+    left: 80%;
+  }
+  &:nth-child(5)::after{
+    content: 'см';
+  }
+}
+
+.new-product__form__input__label--required {
+  color: red;
 }
 /*.new-product__form__input__arrow--up, .new-product__form__input__arrow--down {
     display: inline-block;
@@ -137,11 +191,12 @@
   display: block;
   position: relative;
   top: -36px;
-  left: 60%;
+  left: 67%;
   width: 50px;
   height: 35px;
   border: 0 none;
   color: #ffffff;
+  text-transform: capitalize;
   -webkit-appearance: none;
 }
 
@@ -155,7 +210,7 @@
 .new-product__form__selection__button {
   position: relative;
   top: -72px;
-  left: 75%;
+  left: 78%;
   display: block;
   width: 37px;
   height: 37px;
@@ -179,23 +234,49 @@
   }
 }
 
-.new-product__form__reference {
-  margin: 0 0 30px;
+.new-product__form__reference, .new-product__form__reference--red {
+  margin: 0 30px 10px;
   font-size: 11px;
+  color: #757575;
+  font-family: "AvenirNext";
+}
+
+.new-product__form__reference--red {
+  color: red;
+  margin-bottom: 30px;
 }
 
 .new-product__form_submit-button {
   display: block;
   width: 31.3%;
   height: 36px;
-  margin: auto auto 300px;
+  margin: auto auto 48px;
   border: 0 none;
   border-radius: 2px;
   background-color: #73cc83;
   color: #ffffff;
   text-transform: uppercase;
-  font-family: "AvenirNext";
   font-weight: 600;
   font-size: 10px;
   line-height: 28px;
+}
+
+@media screen and (max-width: 1000px) {
+  .content {
+    width: 100%;
+  }
+  .new-product__wrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 80%;
+    margin: auto;
+  }
+  .new-product__form {
+    width: 60%;
+  }
+  .new-product__form__column {
+    width: 75%;
+    margin: auto;
+  }
 }
