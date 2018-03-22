@@ -171,7 +171,7 @@ function editHandler(event) {
             let reducedArr = mappedArr.reduce((accum, elem) => accum + elem);
             categorySelection.insertAdjacentHTML('beforeend',reducedArr);
         } else if(el.classList.contains('table-column-creationDate')) {
-            el.innerHTML = `<input type="date" value="${el.textContent}" class="table-column__input"`;
+            el.innerHTML = `<input type="date" value="${el.textContent}" class="table-column__input">`;
         } else {
             firstCh.innerHTML = `<input type="text" value="${firstCh.textContent}" class="table-column__input">`;
         };
@@ -203,7 +203,7 @@ function delHandler(event) {
         let isCategory = el.classList.contains('table-column-category')
         
         if (isName) {
-            child.classList.add('setToDel');
+            child.classList.add('setToDel-name');
             continue;
         };
         if (isCategory) {
@@ -259,7 +259,7 @@ function recConfirmHandler(event) {
         let isCategory = el.classList.contains('table-column-category')
         
         if (isName) {
-            child.classList.remove('setToDel');
+            child.classList.remove('setToDel-name');
         };
         if (isCategory) {
             child.classList.remove('setToDel-category');
@@ -296,8 +296,12 @@ function editConfirmHandler(event) {
         if (isCategory) {
             el.innerHTML = `<span>${child.value}</span>`;
             continue;
-        };
-        if (isCount || isPrice || isWeight || isSize || isDate) {
+        }
+        if (isDate) {
+            el.innerHTML = child.value;
+            continue;
+        }
+        if (isCount || isPrice || isWeight || isSize) {
             child.innerHTML = child.children[0].value;
             continue;
         };

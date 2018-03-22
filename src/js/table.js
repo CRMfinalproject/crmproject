@@ -53,9 +53,9 @@ class Table {
                     <img src="../images/edit-icon.svg" title="редактировать" class="table-column-actions__edit">
                     <img src="../images/delete-icon.svg" title="удалить" class="table-column-actions__delete">
                 </div><div class="table-column-actions__ok  js-ok close">
-                    <button class="button__ok">OK</button>
+                    <span class="button__ok">OK</span>
                 </div><div class="table-column-actions__recover js-recover close">
-                    <button class="button__recover">Отмена</button>
+                    <span class="button__recover">Отмена</span>
                 </div>
             </td>`;
             bodyContent += `</tr>`;
