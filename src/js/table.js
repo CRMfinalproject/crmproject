@@ -125,16 +125,3 @@ export default class {
     }
 
 }
-<<<<<<< HEAD
-=======
-let productTableFields = [
-    { name: "name", view: "Название товара", hidden: false },
-    { name: "category", view: "Категория", hidden: false },
-    { name: "count", view: "Кол-во на складе", hidden: false },
-    { name: "price", view: "Цена", hidden: false },
-    { name: "creationDate", view: "Дата создания", hidden: false },
-    { name: "weight", view: "Вес", hidden: true },
-    { name: "size", view: "Размеры(ШхВхД)", hidden: true }
-]
-let table = new Table(productTableFields);
->>>>>>> development
