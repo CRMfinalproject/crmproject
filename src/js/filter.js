@@ -26,7 +26,7 @@ function openModal() {
     link1.style.visibility = "visible";
     link2.style.visibility = "visible";
     modalFilter.style.height = "300px";
-    parentFilter.style.height = "420px";
+    parentFilter.style.height = "400px";
     modalFilter.style.visibility = "visible";
     openCloseFilter.textContent = "ЗАКРЫТЬ";
     arrowFilter.style.transform = "rotate(225deg)";
