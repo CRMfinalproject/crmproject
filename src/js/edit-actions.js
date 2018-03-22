@@ -170,6 +170,8 @@ function editHandler(event) {
             let mappedArr = categoryList.map((elem) => `<option value=${elem}>${elem}</option>`);
             let reducedArr = mappedArr.reduce((accum, elem) => accum + elem);
             categorySelection.insertAdjacentHTML('beforeend',reducedArr);
+        } else if(el.classList.contains('table-column-creationDate')) {
+            el.innerHTML = `<input type="date" value="${el.textContent}" class="table-column__input"`;
         } else {
             firstCh.innerHTML = `<input type="text" value="${firstCh.textContent}" class="table-column__input">`;
         };
@@ -209,8 +211,8 @@ function delHandler(event) {
             continue;
         };
     };
-    let id = currentTr.id;
-    let originId = id.replace('row-', '');
+    // let id = currentTr.id;
+    // let originId = id.replace('row-', '');
     // current th with class = cell
     let td = event.target.parentElement.parentElement; 
     td.children[1].classList.add("close");
@@ -219,14 +221,14 @@ function delHandler(event) {
     //====== to uncomment the code below if it will be needed: =====//
 
     // timerId = setTimeout( () => {
-    //     let toDel = document.querySelector(`#${id}`);
-    //     toDel.remove();
-    //     for(let i = 0; i< data.length; i++) {
-    //         if(data[i].id == originId) {
-    //             data.splice(i, 1);
-    //             break;
-    //         };
-    //     };
+        // let toDel = document.querySelector(`#${id}`);
+        // toDel.remove();
+        // for(let i = 0; i< data.length; i++) {
+        //     if(data[i].id == originId) {
+        //         data.splice(i, 1);
+        //         break;
+        //     };
+        // };
     // }, 5000);
 };
 
