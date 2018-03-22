@@ -23,6 +23,7 @@ class Fieldsettings {
             this.form.innerHTML = table.fields.map((elem) => elem.hidden === false ? `<label class="table__fieldsettings__item"><input type="checkbox" class="table__fieldsettings__checkbox" name='${elem.name}' checked> ${elem.view}</label>` : `<label class="table__fieldsettings__item"><input type="checkbox" class="table__fieldsettings__checkbox" name='${elem.name}'> ${elem.view}</label>`).reduce((accum, elem) => accum + elem);
         };
     hide() {
+        debugger;
         if (event.target.classList.contains('table__fieldsettings__item') === false && event.target.classList.contains('table__fieldsettings__checkbox') === false) {
             this.container.classList.remove('table__fieldsettings--active');
             this.triggerBtn.setAttribute('src', '../images/field_settings.png');
@@ -41,4 +42,4 @@ class Fieldsettings {
         this.selectedFieldCheckbox.checked ? table.fields.find((el) => el.name === this.selectedFieldCheckbox.name).hidden = false : table.fields.find((el) => el.name === this.selectedFieldCheckbox.name).hidden = true;
     }
 }
-//let fieldSettings = new Fieldsettings();
+let fieldSettings = new Fieldsettings();

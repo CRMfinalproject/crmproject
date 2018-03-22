@@ -1,28 +1,25 @@
 class Tabs {
     constructor () {
-
-        // document.body.querySelector(".content").insertAdjacentHTML("afterbegin",`<div class="tabs"></div>`);
-        // this.tabsContainer = document.body.querySelector(".tabs");
         this.tabsContainer = createElement(document.body.querySelector(".content"), 'div', 'tabs');
         this.render();
         this.tabsContainer.addEventListener('click', this.toggle.bind(this));
-        // document.body.querySelector(".tabs").addEventListener('click', this.toggle.bind(this));
     }
 
     toggle (event) {
-
         if (!event.target.classList.contains("tabs__item--active") && event.target.classList.contains("tabs__item")) {
             document.body.querySelector(".tabs__item--active").classList.remove("tabs__item--active");
             event.target.classList.add("tabs__item--active");
 
-            if (document.body.querySelector(".tabs__item--active").innerHTML == "Товары") {
-                tableControl = new TableControlBlock("новый товар");
-            }
-            if (document.body.querySelector(".tabs__item--active").innerHTML == "Поставки") {
-                tableControl = new TableControlBlock("новая поставка");
-            }
-            if (document.body.querySelector(".tabs__item--active").innerHTML == "Категории") {
-                tableControl = new TableControlBlock("новая категория");
+            switch (document.body.querySelector(".tabs__item--active").innerHTML) {
+                case "Товары": 
+                    tableControl.renderButtonTitle("новый товар");
+                    break;
+                case "Поставки":
+                    tableControl.renderButtonTitle("новая поставка");
+                    break;
+                case "Категории":
+                    tableControl.renderButtonTitle("новая категория");
+                    break;
             }
         }
     }
