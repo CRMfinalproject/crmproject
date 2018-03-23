@@ -1,5 +1,5 @@
 .table-column-actions {
-        width: 130px;
+        width: 100px;
         text-align: center;
         line-height: 100%;
         white-space: nowrap;
@@ -44,7 +44,7 @@
     border-radius: 4px;
     background-color: #6897dc;
     border-color: #6897dc;
-    font-size: 13px;
+    font-size: 11px;
     cursor: pointer;
 }
 
@@ -69,6 +69,45 @@
 .close {
     display: none;
 } 
+.table-column{
+
+    &__input {
+    min-width: 70px;
+    width:70px;
+        
+        &-name{
+            min-width: 70px;
+            width:110px;
+            margin-left: 40px;
+        }
+
+        &-select {
+            min-width: 70px;
+            width:100px;
+        }
+
+        &-creationDate{
+            min-width: 70px;
+            width:120px;
+        }
+
+        &-size{
+            min-width: 70px;
+            width:80px;
+            text-align: center;
+
+        }
+        &-numbers{
+            min-width: 40px;
+            width:50px;
+            text-align: center;
+        }
+    }
+}
+.table-fixedtext {
+    width: 20px;
+    margin-left: 4px;
+}
 .setToDel {
     color:gray;
     background-color: #f9f9f9;

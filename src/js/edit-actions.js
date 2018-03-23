@@ -158,22 +158,32 @@ function editHandler(event) {
         let el = currentTd[i];
         let firstCh = el.children[0];
         let secondCh = el.children[1];
-        if(el.classList.contains('table-column-name')) {
-            el.innerHTML = `<input type="text" value="${el.textContent}" class="table-column__input">`;
-        } else if(el.classList.contains('table-column-category')) {
+        let isName = el.classList.contains('table-column-name');
+        let isCategory = el.classList.contains('table-column-category');
+        let isCount = el.classList.contains('table-column-count');
+        let isPrice = el.classList.contains('table-column-price');
+        let isDate = el.classList.contains('table-column-creationDate');
+        let isWeight = el.classList.contains('table-column-weight');
+        let isSize = el.classList.contains('table-column-size');
+
+        if(isName) {
+            el.innerHTML = `<input type="text" value="${el.textContent}" class="table-column__input-name">`;
+        } else if(isCategory) {
             el.innerHTML = `
-                <select name="category" class="table-column-select">
+                <select name="category" class="table-column__input-select">
                 </select>`
-            let categorySelection = document.querySelector('.table-column-select');
+            let categorySelection = document.querySelector('.table-column__input-select');
             let sortedCateg = data.map((elem) => elem.category).sort();
             let categoryList = sortedCateg.filter((el, i, arr) => arr.includes(el, i + 1) === false);
             let mappedArr = categoryList.map((elem) => `<option value=${elem}>${elem}</option>`);
             let reducedArr = mappedArr.reduce((accum, elem) => accum + elem);
             categorySelection.insertAdjacentHTML('beforeend',reducedArr);
-        } else if(el.classList.contains('table-column-creationDate')) {
-            el.innerHTML = `<input type="date" value="${el.textContent}" class="table-column__input">`;
-        } else {
-            firstCh.innerHTML = `<input type="text" value="${firstCh.textContent}" class="table-column__input">`;
+        } else if(isDate) {
+            el.innerHTML = `<input type="date" value="${el.textContent}" class="table-column__input-creationDate">`;
+        } else if(isPrice || isCount || isWeight){
+            firstCh.innerHTML = `<input type="text" value="${firstCh.textContent}" class="table-column__input-numbers">`;
+        } else if(isSize) {
+            firstCh.innerHTML = `<input type="text" value="${firstCh.textContent}" class="table-column__input-size">`;
         };
     };
 };

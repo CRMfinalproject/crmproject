@@ -113,7 +113,7 @@ let productTableFields = [
     { name: "count", view: "Кол-во на складе", hidden: false },
     { name: "price", view: "Цена", hidden: false },
     { name: "creationDate", view: "Дата создания", hidden: false },
-    { name: "weight", view: "Вес", hidden: true },
-    { name: "size", view: "Размеры(ШхВхД)", hidden: true }
+    { name: "weight", view: "Вес", hidden: false },
+    { name: "size", view: "Размеры(ШхВхД)", hidden: false }
 ]
 let table = new Table(productTableFields);
