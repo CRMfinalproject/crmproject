@@ -24,27 +24,33 @@ $darkblue:	#6495ED;
       padding-left: 40px;
     }
     &:nth-child(3){
-      padding-left:20px;
+      text-align:center;
     }
     &:nth-child(4){
-      padding-left:30px;
+      text-align:center;
+    }
+    &:nth-child(5){
+      text-align:center;
     }
     &:nth-child(6){
-      padding-left:30px;
+      text-align:center;
     }
     &:nth-child(7){
-      padding-left:30px;
+      text-align:center;
     }
     &:nth-child(8){
-      padding-left:40px;
+      text-align:center;
     }
-  }}
+  }
+}
+  
 .order-ctrl {
   text-align: left;
   margin-top: 40px;
   margin-bottom: 40px;
   color: #3a7bff;
   border-bottom: 1px solid #d1d1d1;
+  cursor: pointer;
 
 }
 
@@ -58,10 +64,10 @@ $darkblue:	#6495ED;
     display: inline-block;
     vertical-align: top;
     transform: rotate(45deg);
-	transition: .2s;
-	position: relative;
-	left: 3px;
-	top: 3px;
+    transition: .2s;
+    position: relative;
+    left: 5px;
+    top: 3px;
 }
 
 .desc .dropdown-arrow {
@@ -74,7 +80,7 @@ $darkblue:	#6495ED;
     display: inline-block;
     vertical-align: top;
     transform: rotate(225deg);
-	transition: .2s;
+	  transition: .2s;
 }
 
 .row-table {
@@ -119,6 +125,7 @@ $darkblue:	#6495ED;
   transition: .2s;
   cursor: pointer;
 }
+<<<<<<< HEAD
 
 // .table-column-name,
 // .table-column-count,
@@ -143,13 +150,26 @@ $darkblue:	#6495ED;
 }
 td[value="Косметика"]#Косметика,#Одежда,#Обувь,#Игрушки,#Хозтовары,#Книги,#Кожа,#Ремни{
   text-align: center;
+=======
+.table-column-price,
+.table-column-count,
+.table-column-creationDate,
+.table-column-weight,
+.table-column-size {
+  text-align:center;
+}
+
+#Косметика,#Одежда,#Обувь,#Игрушки,#Хозтовары,#Книги,#Кожа,#Ремни{
+text-align: center;
+>>>>>>> development
   span {
-    color: white;
-    border-radius: 4px;
-    display:block;
-    height:25px;
-    line-height:24px;
-    width:100px;
+      color: white;
+      border-radius: 4px;
+      display:block;
+      height:25px;
+      line-height:24px;
+      width:100px;
+      display: inline-block;    
   }
 }
 td[value=Косметика]{
@@ -239,4 +259,7 @@ input[type=checkbox]:checked {
 input[type=checkbox]:checked:after {
       opacity: 1;
 }
+<<<<<<< HEAD
 }
+=======
+>>>>>>> development

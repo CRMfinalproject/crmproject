@@ -45,8 +45,8 @@ class Table {
             bodyContent += `<td class="table-column-count" ${this.fields.find((f) => f.name === 'count').hidden ? "hidden" : ""}><span>${row.count} шт</span></td>`;
             bodyContent += `<td class="table-column-price" ${this.fields.find((f) => f.name === 'price').hidden ? "hidden" : ""}><span>${row.price} грн</span></td>`;
             bodyContent += `<td class="table-column-creationDate" ${this.fields.find((f) => f.name === 'creationDate').hidden ? "hidden" : ""}><span>${row.creationDate}</span></td>`;
-            bodyContent += `<td class="table-column-weight" ${this.fields.find((f) => f.name === 'weight').hidden ? "hidden" : ""}><span>${row.weight} г</span></td>`;
-            bodyContent += `<td class="table-column-size" ${this.fields.find((f) => f.name === 'size').hidden ? "hidden" : ""}><span>${row.size} см </span></td>`;
+            bodyContent += `<td class="table-column-weight" ${this.fields.find((f) => f.name === 'weight').hidden ? "hidden" : ""}><span>${row.weight}</span><span class="table-fixedtext">г</span></td>`;
+            bodyContent += `<td class="table-column-size" ${this.fields.find((f) => f.name === 'size').hidden ? "hidden" : ""}><span>${row.size}</span><span class="table-fixedtext">см</span></td>`;
             bodyContent += `
             <td class="table-column-settings">
                 <div class="table-column-actions js-dots">
@@ -56,9 +56,9 @@ class Table {
                     <img src="../images/edit-icon.svg" title="редактировать" class="table-column-actions__edit">
                     <img src="../images/delete-icon.svg" title="удалить" class="table-column-actions__delete">
                 </div><div class="table-column-actions__ok  js-ok close">
-                    <button class="button__ok">OK</button>
+                    <span class="button__ok">OK</span>
                 </div><div class="table-column-actions__recover js-recover close">
-                    <button class="button__recover">Восстановить</button>
+                    <span class="button__recover">Отмена</span>
                 </div>
             </td>`;
             bodyContent += `</tr>`;
@@ -117,7 +117,7 @@ let productTableFields = [
     { name: "count", view: "Кол-во на складе", hidden: false },
     { name: "price", view: "Цена", hidden: false },
     { name: "creationDate", view: "Дата создания", hidden: false },
-    { name: "weight", view: "Вес", hidden: true },
-    { name: "size", view: "Размеры(ШхВхД)", hidden: true }
+    { name: "weight", view: "Вес", hidden: false },
+    { name: "size", view: "Размеры(ШхВхД)", hidden: false }
 ]
 let table = new Table(productTableFields);
