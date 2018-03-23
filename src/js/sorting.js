@@ -51,7 +51,7 @@ class Sorting {
 	
 	sortBySize() {
 		if((typeof this.prev !== "undefined") && (this.prev !== event.target)){
-			prev.classList.remove("desc");
+			this.prev.classList.remove("desc");
 		}
 		if(event.target.textContent === "Размеры(ШхВхД)"){
 			event.target.classList.toggle("desc");
