@@ -55,7 +55,12 @@ function copyHandler(event) {
     let year = now.getFullYear();
     let month = now.getMonth();
     let day = now.getDate();
-    let newDate = `${year}-${month}-${day}`
+    let newDate = '';
+    if (month < 10) {
+        newDate = `${year}-0${month}-${day}`
+    } else {
+        newDate = `${year}-${month}-${day}`
+    }
     dateCell.children[0].innerHTML = newDate;
     
     let newObject = makeObject(cloneTr);
