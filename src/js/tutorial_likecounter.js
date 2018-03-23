@@ -1,32 +1,35 @@
-//const PAGE_API_URL = 'http://feathy.online/main/tutorials/rest';
-const likeImg = document.querySelector('#js-likeImg');
-if (localStorage.getItem('liked') === 'true') {
-	likeImg.setAttribute('src', '../images/tutorial/icon_liked.png');
-} else {
-	likeImg.setAttribute('src', '../images/tutorial/icon_like.png');
+class Likecounter {
+	constructor() {
+		this.likeImg = document.querySelector('#js-likeImg');
+        this.container = document.querySelector('#js-likeBtn');
+        this.likeBtnCounter = document.querySelector('#js-likeBtnCounter');
+        this.likeCounter = 0;
+        this.render();
+        this.container.addEventListener('click', () => this.countLikes());
+	};
+	render() {
+        if (localStorage.getItem('liked') === 'true') {
+            this.likeImg.setAttribute('src', '../images/tutorial/icon_liked.png');
+        } else {
+            this.likeImg.setAttribute('src', '../images/tutorial/icon_like.png');
+        }
+        this.likeBtnCounter.textContent = this.likeCounter;
+
+    }
+	countLikes() {
+        event.preventDefault();
+        if (localStorage.getItem("liked") === "true") {
+            this.likeCounter--;
+            localStorage.setItem("liked", "false");
+            this.likeImg.setAttribute('src', '../images/tutorial/icon_like.png');
+        } else {
+            this.likeCounter++;
+            localStorage.setItem("liked", "true");
+            this.likeImg.setAttribute('src', '../images/tutorial/icon_liked.png');
+        }
+        this.likeBtnCounter.textContent = this.likeCounter;
+        return this.likeCounter;
+	}
 }
-let likeCounter = 0;
-/*fetch(PAGE_API_URL, {method: "GET"})
-.then((response) => response.ok ? response.json : throw new Error('Error fetching data')
-.then((data) => likeCounter = data.likeCounter)
-.catch(error) => throw new Error('Error fetching data');*/
-const tutorialLikeBtn = document.querySelector('#js-likeBtn');
-const tutorialLikeBtnCounter = document.querySelector('#js-likeBtnCounter');
-tutorialLikeBtnCounter.textContent = likeCounter;
-tutorialLikeBtn.addEventListener('click', function() {
-	event.preventDefault();
-	if (localStorage.getItem("liked") === "true") {
-		likeCounter--;
-   		localStorage.setItem("liked", "false");
-   		likeImg.setAttribute('src', '../images/tutorial/icon_like.png');
-   	} else {
-   		likeCounter++;
-   		localStorage.setItem("liked", "true");
-   		likeImg.setAttribute('src', '../images/tutorial/icon_liked.png');
-   	}
-  tutorialLikeBtnCounter.textContent = likeCounter;
-  /*fetch(PAGE_API_URL, {method:"PUT"})
-  .then(response) => response.ok ? "likeCounter update" : "failed to update likeCounter"
-  .catch(error) => throw new Error ('Error fetching data');*/
-  return likeCounter;
-})
+
+let tutorialLikeCounter = new Likecounter();
