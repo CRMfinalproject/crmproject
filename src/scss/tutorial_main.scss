@@ -120,14 +120,13 @@
 }
 
 .tutorial-main__icons-block {
-	display: flex;
 	width: 78%;
 	margin: 10px auto 45px;
-	flex-direction: row;
-	justify-content: space-between;
 }
 
 .tutorial-main__icons-block__item {
+	width: 20%;
+	margin-left: 93%;
 	font-size: 12px;
 	line-height: 2em;
 	font-weight: 600;

@@ -32,4 +32,4 @@ class Likecounter {
 	}
 }
 
-let tutorialLikeCounter = new Likecounter();
+//let tutorialLikeCounter = new Likecounter();
