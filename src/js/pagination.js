@@ -6,12 +6,13 @@ class Pagination {
         content.insertAdjacentHTML('beforeend', '<div class="pagination"></div>');
         this.container = document.body.querySelector(".pagination");
 
-        this.setSettings(data);
-        this.render();
+
 
         this.container.addEventListener('click', this.switchPages.bind(this));
 
         window.addEventListener('resize', this.controlSize.bind(this));
+        this.setSettings(data);
+        this.render();
     }
     setSettings(data) {
         // от сервера мы получаем общее количество ТОВАРОВ
@@ -95,9 +96,9 @@ class Pagination {
         // this.render(this.pagesToShow());
 
         startRow = (this.currentPage - 1) * ROWS_PER_PAGE;
-        endRow = this.currentPage * ROWS_PER_PAGE - 1;
+        endRow = this.currentPage * ROWS_PER_PAGE;
         if (endRow >= data.length) {
-            endRow = data.length-1};
+            endRow = data.length};
         table.renderData();
         this.render(this.pagesToShow());
 

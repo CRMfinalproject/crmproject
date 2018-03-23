@@ -291,10 +291,10 @@ function resultID() {
         default:
             break;
     }
-
-    filterData();
     page.setSettings(finalResults);
     page.render();
+    filterData();
+
 
     // console.log("Список ID для fetch" + "  " + finalResults);
 }

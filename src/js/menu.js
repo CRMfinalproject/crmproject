@@ -86,7 +86,7 @@ class Menu {
         this.subitems = document.querySelectorAll(selector + ` ${options.subItemClass}`); 
         this.options = options;
         this.element.addEventListener('click', event => this.onClick(event));
-        this.element.addEventListener('mouseleave', event => this.onItemMouseLeave(event));
+        // this.element.addEventListener('mouseleave', event => this.onItemMouseLeave(event));
 
         this.subitems.forEach( subitem => subitem.addEventListener('click', event => this.onSubItemClick(event)));
     }

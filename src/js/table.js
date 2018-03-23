@@ -33,6 +33,7 @@ class Table {
 
         let dataPage = data.slice(startRow, endRow);
         if (dataFilter) {
+
             dataPage = dataFilter.slice(startRow, endRow);
         }
         let bodyContent = "";
@@ -85,6 +86,7 @@ class Table {
         let checkboxArr = table.container.children[1].querySelectorAll(".checkbox");
         if (document.querySelector(".data-table-header .checkbox").checked) {
             checkboxArr.forEach((elem) => { elem.checked = true });
+
         } else checkboxArr.forEach((elem) => { elem.checked = false });;
     }
 
