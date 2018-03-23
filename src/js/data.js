@@ -21,7 +21,7 @@ let data = [
         "count": 24,
         "price": 359,
         "purchasePrice": 150,
-        "creationDate": "2018-02-01",
+        "creationDate": "2018-02-05",
         "supplyDate": "2018-03-01",
         "weight": 250,
         "size": "40x40x30"
@@ -129,7 +129,7 @@ let data = [
         "count": 1000,
         "price": 99,
         "purchasePrice": 79,
-        "creationDate": "2018-02-01",
+        "creationDate": "2018-03-18",
         "supplyDate": "2018-03-01",
         "weight": 10,
         "size": "1x1x5"
@@ -153,7 +153,7 @@ let data = [
         "count": 50,
         "price": 79,
         "purchasePrice": 69,
-        "creationDate": "2018-02-01",
+        "creationDate": "2018-02-05",
         "supplyDate": "2018-03-01",
         "weight": 150,
         "size": "21x12x3"
@@ -273,7 +273,7 @@ let data = [
         "count": 100,
         "price": 699,
         "purchasePrice": 599,
-        "creationDate": "2018-02-01",
+        "creationDate": "2018-03-18",
         "supplyDate": "2018-03-01",
         "weight": 850,
         "size": "1100x700x10"
@@ -309,7 +309,7 @@ let data = [
         "count": 50,
         "price": 79,
         "purchasePrice": 69,
-        "creationDate": "2018-02-01",
+        "creationDate": "2018-02-05",
         "supplyDate": "2018-03-01",
         "weight": 150,
         "size": "21x12x3"
@@ -393,7 +393,7 @@ let data = [
         "count": 5,
         "price": 5000,
         "purchasePrice": 4500,
-        "creationDate": "2018-02-01",
+        "creationDate": "2018-02-05",
         "supplyDate": "2018-03-01",
         "weight": 3000,
         "size": "1000x1000x50"
@@ -429,7 +429,7 @@ let data = [
         "count": 100,
         "price": 699,
         "purchasePrice": 599,
-        "creationDate": "2018-02-01",
+        "creationDate": "2018-02-05",
         "supplyDate": "2018-03-01",
         "weight": 850,
         "size": "1100x700x10"
@@ -513,7 +513,7 @@ let data = [
         "count": 100,
         "price": 999,
         "purchasePrice": 899,
-        "creationDate": "2018-02-01",
+        "creationDate": "2018-02-05",
         "supplyDate": "2018-03-01",
         "weight": 700,
         "size": "35x20x18"
@@ -585,7 +585,7 @@ let data = [
         "count": 100,
         "price": 699,
         "purchasePrice": 599,
-        "creationDate": "2018-02-01",
+        "creationDate": "2018-02-05",
         "supplyDate": "2018-03-01",
         "weight": 850,
         "size": "1100x700x10"
@@ -609,7 +609,7 @@ let data = [
         "count": 155,
         "price": 499,
         "purchasePrice": 399,
-        "creationDate": "2018-02-01",
+        "creationDate": "2018-03-18",
         "supplyDate": "2018-03-01",
         "weight": 10,
         "size": "5x1x1"
