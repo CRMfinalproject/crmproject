@@ -125,7 +125,6 @@ $darkblue:	#6495ED;
   transition: .2s;
   cursor: pointer;
 }
-<<<<<<< HEAD
 
 // .table-column-name,
 // .table-column-count,
@@ -150,18 +149,6 @@ $darkblue:	#6495ED;
 }
 td[value="Косметика"]#Косметика,#Одежда,#Обувь,#Игрушки,#Хозтовары,#Книги,#Кожа,#Ремни{
   text-align: center;
-=======
-.table-column-price,
-.table-column-count,
-.table-column-creationDate,
-.table-column-weight,
-.table-column-size {
-  text-align:center;
-}
-
-#Косметика,#Одежда,#Обувь,#Игрушки,#Хозтовары,#Книги,#Кожа,#Ремни{
-text-align: center;
->>>>>>> development
   span {
       color: white;
       border-radius: 4px;
@@ -225,41 +212,38 @@ td[value="Косметика"],td[value=Обувь],td[value=Косметика]
     line-height:24px;
     width:100px;
   }
-input[type=checkbox] {
-  background-color: #fff;
-  border: 1px solid #d3d3d3;
-  box-shadow: none;
-  outline: none;
-  width: 14px;
-  height: 14px;
-  border-radius: 3px;
-  -webkit-appearance: none;
-  position: relative;
-  transition: .2s;
-  cursor: pointer;
-}
-
-input[type=checkbox]:after {
-    content: " ";
-    opacity: 0;
+  input[type=checkbox] {
+    background-color: #fff;
+    border: 1px solid #d3d3d3;
+    box-shadow: none;
+    outline: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    position: relative;
     transition: .2s;
-    background: url("../images/input-checked.svg") no-repeat;
-    background-size: 15px auto;
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    top: -2px;
-    left: 1px;
-}
+    cursor: pointer;
+  }
 
-input[type=checkbox]:checked {
-    border-color: #6897dc;
-}
+  input[type=checkbox]:after {
+      content: " ";
+      opacity: 0;
+      transition: .2s;
+      background: url("../images/input-checked.svg") no-repeat;
+      background-size: 15px auto;
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      top: -2px;
+      left: 1px;
+  }
 
-input[type=checkbox]:checked:after {
-      opacity: 1;
+  input[type=checkbox]:checked {
+      border-color: #6897dc;
+  }
+
+  input[type=checkbox]:checked:after {
+        opacity: 1;
+  }
 }
-<<<<<<< HEAD
-}
-=======
->>>>>>> development
