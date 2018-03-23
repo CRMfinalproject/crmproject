@@ -32,12 +32,15 @@ class Table {
         this.deleteSelected();
 
         let dataPage = data.slice(startRow, endRow);
+        if (dataFilter) {
+            dataPage = dataFilter.slice(startRow, endRow);
+        }
         let bodyContent = "";
 
         dataPage.map(row => {
             bodyContent += `<tr class = "row-table" id="row-${row.id}">`;
             bodyContent += `<td class="table-column-checkbox"><input type="checkbox" class ="checkbox row-table"></td>`;
-            bodyContent += `<td class="table-column-name"  ${this.fields.find((f) => f.name === 'name').hidden ? "hidden" : ""}><a href = "Ссылка на товар/${row.id}" class = "table-column-name__link">${row.name}</a></td>`;
+            bodyContent += `<td class="table-column-name"  ${this.fields.find((f) => f.name === 'name').hidden ? "hidden" : ""}><a href = "#" class = "table-column-name__link">${row.name}</a></td>`;
             bodyContent += `<td class="table-column-category" id = ${row.category.replace(/\./g, "")}  ${this.fields.find((f) => f.name === 'category').hidden ? "hidden" : ""}><span>${row.category}</span></td>`;
             bodyContent += `<td class="table-column-count" ${this.fields.find((f) => f.name === 'count').hidden ? "hidden" : ""}><span>${row.count}</span><span class="table-fixedtext">шт</span></td>`;
             bodyContent += `<td class="table-column-price" ${this.fields.find((f) => f.name === 'price').hidden ? "hidden" : ""}><span>${row.price}</span><span class="table-fixedtext">грн</span></td>`;
