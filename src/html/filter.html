@@ -38,10 +38,10 @@
 
 			<div class = "filter_block-by-price" id="filter-block-by-price">
 				<h6>ФИЛЬТР ПО ЦЕНЕ:</h6>
-				<input id="minRangePrice" class = "minRangePrice"  type="number" onkeyup = "inputRangePrice()" value = "15">
+				<input id="minRangePrice" class = "minRangePrice"  type="number" onchange = "inputRangePrice()" value = "15">
 
 
-				<input id="maxRangePrice" class = "maxRangePrice" type="number" onkeyup = "inputRangePrice()" value = "5005">
+				<input id="maxRangePrice" class = "maxRangePrice" type="number" onchange = "inputRangePrice()" value = "5005">
 				<span class="filter_block-by-price__currency">грн</span>
 
 				<section class="filter_range-slider" id = "filter_range-slider">
@@ -53,8 +53,8 @@
 
 			<div class="filter_block-by-quantity" id="filter-block-by-quantity">
 				<h6>ФИЛЬТР ПО КОЛИЧЕСТВУ:</h6>
-				<input id="minRangeQuantity" class = "minRangeNumber"  type="number" onkeyup = "inputRangeCount()" value = "5">
-				<input id="maxRangeQuantity" class = "maxRangeNumber" type="number"  onkeyup = "inputRangeCount()" value = "999">
+				<input id="minRangeQuantity" class = "minRangeNumber"  type="number" onchange = "inputRangeCount()" value = "5">
+				<input id="maxRangeQuantity" class = "maxRangeNumber" type="number"  onchange = "inputRangeCount()" value = "999">
 				<span class="filter_block-by-price__quantity">шт.</span>
 				<section class="filter_range-slider">
 					<span class="rangeValues"></span>

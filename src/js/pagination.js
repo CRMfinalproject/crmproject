@@ -95,9 +95,9 @@ class Pagination {
         // this.render(this.pagesToShow());
 
         startRow = (this.currentPage - 1) * ROWS_PER_PAGE;
-        endRow = this.currentPage * ROWS_PER_PAGE - 1;
+        endRow = this.currentPage * ROWS_PER_PAGE;
         if (endRow >= data.length) {
-            endRow = data.length-1};
+            endRow = data.length};
         table.renderData();
         this.render(this.pagesToShow());
 
