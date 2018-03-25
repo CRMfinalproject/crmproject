@@ -29,7 +29,7 @@ class Table {
     // data
     renderData() {
        // перед тем, как перерисовать таблицу удаляем отмеченные у удалению строки
-       debugger; 
+    //    debugger; 
        this.deleteSelected();
 
         let dataPage = data.slice(startRow, endRow);

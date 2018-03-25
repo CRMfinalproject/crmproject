@@ -291,7 +291,10 @@ function resultID() {
         default:
             break;
     }
+    debugger;
     page.setSettings(finalResults);
+    startRow = 0;
+    endRow = ROWS_PER_PAGE;
     page.render();
     filterData();
 

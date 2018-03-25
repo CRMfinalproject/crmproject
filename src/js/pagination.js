@@ -16,14 +16,15 @@ class Pagination {
     }
     setSettings(data) {
         // от сервера мы получаем общее количество ТОВАРОВ
-        this.totalPages = Math.ceil(data.length/10);
+        debugger;
+        this.totalPages = (data.length < 10) ? 1 : Math.ceil(data.length/10);
         this.currentPage = 1;
         this.arrPages = Array.from({ length: (this.totalPages + 1) }, (v, i) => i);
         this.arrPages.splice(0, 1);
         this.mobile = (screen.width < 780) ? true : false;
-        this.arrPagesToShow = this.pagesToShow();
+        this.arrPagesToShow = this.pagesToShow(data);
     }
-    pagesToShow() {
+    pagesToShow(data) {
         debugger;
         let startPage, endPage;
         this.totalPages = Math.ceil(data.length / 10);
@@ -93,7 +94,9 @@ class Pagination {
         if (endRow >= data.length) {
             endRow = data.length};
         table.renderData();
-        this.render(this.pagesToShow());
+        if (dataFilter) {
+            this.render(this.pagesToShow(dataFilter))
+        } else this.render(this.pagesToShow(data));
 
     }
     controlSize(event) {
