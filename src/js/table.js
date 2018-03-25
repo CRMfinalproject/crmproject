@@ -29,7 +29,8 @@ class Table {
     // data
     renderData() {
        // перед тем, как перерисовать таблицу удаляем отмеченные у удалению строки
-        this.deleteSelected();
+       debugger; 
+       this.deleteSelected();
 
         let dataPage = data.slice(startRow, endRow);
         if (dataFilter) {
@@ -94,7 +95,7 @@ class Table {
         let rowsToDel = Array.from(document.querySelectorAll(".setToDel"));
         if (rowsToDel.length) {
             let idsToDel = rowsToDel.map(row => {
-                row.classList.add('setToDel');
+                // row.classList.add('setToDel');
                 return row.id.replace('row-', '');
             });
             let countToDel = 0;
@@ -103,6 +104,7 @@ class Table {
                             idsToDel.map(productToDel => {
                                 if (data[i].id == productToDel) {
                                     data.splice(i, 1);
+                                    dataFilter.splice(i, 1);
                                     countToDel++;
                                 }
                             })

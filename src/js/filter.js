@@ -304,6 +304,7 @@ function resultID() {
 let dataFilter = [];
 
 function filterData() {
+    debugger;
     dataFilter = [];
     for (let i = 0; i < data.length; i++) {
         for (let j = 0; j < finalResults.length; j++) {

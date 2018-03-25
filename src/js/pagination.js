@@ -24,8 +24,9 @@ class Pagination {
         this.arrPagesToShow = this.pagesToShow();
     }
     pagesToShow() {
-        // debugger;
+        debugger;
         let startPage, endPage;
+        this.totalPages = Math.ceil(data.length / 10);
         if (this.mobile) {
             startPage = (this.currentPage <= 4) ? 0 : this.currentPage - 2;
             endPage = (this.currentPage <= this.totalPages - 4) ? this.currentPage + 1 : this.totalPages;
@@ -45,7 +46,7 @@ class Pagination {
         return this.arrPagesToShow;
     }
     render() {
-        // debugger;
+        debugger;
         this.container.innerHTML = ``;
         if (this.currentPage != 1) {
             this.container.innerHTML = `
@@ -86,14 +87,6 @@ class Pagination {
             if (this.currentPage != this.totalPages) { this.currentPage++ }
         }
         else { this.currentPage = Number(event.target.innerHTML); }
-
-        // вызываем renderTable класса Table с записи номер startRow по запись номер endRow (включительно)
-        // let startRow = (this.currentPage - 1) * ROWS_PER_PAGE;
-        // let endRow = this.currentPage * ROWS_PER_PAGE - 1;
-        // if (endRow >= data.length) {
-        //     endRow = data.length-1};
-        // table.renderData(data.slice(startRow, endRow));
-        // this.render(this.pagesToShow());
 
         startRow = (this.currentPage - 1) * ROWS_PER_PAGE;
         endRow = this.currentPage * ROWS_PER_PAGE;
