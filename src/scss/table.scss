@@ -56,12 +56,13 @@ $darkblue:	#6495ED;
     width: 7px;
     height: 7px;
     display: inline-block;
-    vertical-align: top;
+    //vertical-align: top;
+    //vertical-align: middle;
     transform: rotate(45deg);
 	transition: .2s;
 	position: relative;
 	left: 3px;
-	top: 3px;
+	top: -3px;
 }
 
 .desc .dropdown-arrow {
