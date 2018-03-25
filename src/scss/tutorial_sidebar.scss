@@ -1,0 +1,67 @@
+.tutorial-sidebar {
+  	position: absolute;
+    top: 53px;
+    right: 0;
+    width: 22.2%;
+  	margin: 34px 2.2% 0 auto;
+  	border-radius: 5px;
+    background-color: #ffffff;
+    line-height: 24px;  
+    font-size: 14px;
+    font-family: "AvenirNext", sans-serif;
+  	font-weight: 600;
+}
+
+.tutorial-sidebar__heading {
+    width: 100%;
+    margin: 26px auto;
+    text-align: center;
+    font-size: 16px;
+}
+
+.tutorial-sidebar__item {
+    width: 80%;
+    margin: 10px auto;
+}
+
+.tutorial-sidebar__item:last-child {
+   margin-bottom: 25px;
+}
+
+.tutorial-sidebar__item__image {
+    display: block;
+    width: 100%;
+    height: 160px;
+    margin-bottom: 12px;
+}
+
+.tutorial-sidebar__item__link {
+    display: block;
+    margin: 12px auto 0;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 1024px) {
+  	.tutorial-sidebar {
+		position: relative;
+        top: -50px;
+        width: 74.84%;
+    	margin: 0 14px 63px auto;
+        padding: 15px 0 17px;
+    	border-radius: 0 0 5px 5px;
+  	}
+
+    .tutorial-sidebar__heading {
+        margin: 20px auto;
+    }
+
+  	.tutorial-sidebar__item {
+    	width: 81.70%;
+        margin: 5px auto;
+    }
+
+    .tutorial-sidebar__item__image {
+      height: auto;
+      margin: auto;
+    }
+}

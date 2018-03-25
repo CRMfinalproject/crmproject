@@ -1,0 +1,57 @@
+@media screen and (max-width: 414px) {
+
+    .menu__text {
+        display: none;
+    }
+    
+    .header {
+        height: 43px;
+        min-height: 43px;
+    }
+    .burger {
+        width: 49px;
+        min-width: 49px;
+
+        &__button {
+            width: 49px;
+            min-width: 49px;
+        }
+
+        &--open {
+            width: 220px;
+            min-width: 220px;
+        }
+    }
+
+    .burger-menu {
+        width: 49px;
+        min-width: 49px;
+
+        &__item {
+            height: 49px;
+        }
+
+        &__container {
+            min-height: 100%;
+            width: 49px;
+
+            &--open {
+                width: 220px;
+            }
+        }
+
+        #orders-img {
+            width: 30px;
+            margin: 0 10.5px;
+        }
+    
+        #products-img {
+            width: 20.5px;
+            margin: 0px 16.5px;
+        }
+        #settings-img, #statistics-img, #integration-img, #team-img, #tutorials-img {
+            width: 24px;
+            margin: 0px 14.5px;
+        }
+    }
+}

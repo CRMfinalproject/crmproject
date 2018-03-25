@@ -1,0 +1,222 @@
+
+$darkblue:	#6495ED;
+@font-face {
+  font-family: "HelveticaNeue";
+  src: url('../fonts/HelveticaNeueCyr-Medium.woff');
+}
+.data-table {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-family: "HelveticaNeue";
+  background-color: #fff;
+  color: grey;
+  padding-left: 20px;
+  th {
+
+    color: $darkblue;
+    &:first-child {
+      padding-left: 30px;
+    }
+    &:nth-child(2) {
+      padding-left: 40px;
+    }
+    &:nth-child(3){
+      text-align:center;
+    }
+    &:nth-child(4){
+      text-align:center;
+    }
+    &:nth-child(5){
+      text-align:center;
+    }
+    &:nth-child(6){
+      text-align:center;
+    }
+    &:nth-child(7){
+      text-align:center;
+    }
+    &:nth-child(8){
+      text-align:center;
+    }
+  }
+}
+  
+.order-ctrl {
+  text-align: left;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: #3a7bff;
+  border-bottom: 1px solid #d1d1d1;
+  cursor: pointer;
+
+}
+
+.dropdown-arrow {
+    border-radius: 2px;
+    border: 2px solid #3a7bff;
+    border-top-width: 0;
+    border-left-width: 0;
+    width: 7px;
+    height: 7px;
+    display: inline-block;
+    vertical-align: top;
+    transform: rotate(45deg);
+    transition: .2s;
+    position: relative;
+    left: 5px;
+    top: 3px;
+}
+
+.desc .dropdown-arrow {
+    border-radius: 2px;
+    border: 2px solid #3a7bff;
+    border-top-width: 0;
+    border-left-width: 0;
+    width: 7px;
+    height: 7px;
+    display: inline-block;
+    vertical-align: top;
+    transform: rotate(225deg);
+	  transition: .2s;
+}
+
+.row-table {
+  border-bottom: 1px solid #d1d1d1;
+  font-family: "HelveticaNeue";
+
+  &:hover {
+    background-color: #f9f9f9;
+  }
+  &:first-child{
+    margin-left:30px;
+  }
+
+
+}
+
+
+
+
+.table-column-name__link {
+  text-decoration: none;
+  font-size: 13px;
+  font-family: "HelveticaNeue";
+  color: $darkblue;
+  &:first-child{
+    padding-left:40px;
+  }
+
+}
+
+.row-table {
+  height: 50px;
+
+}
+
+.checkbox {
+  border: 1px solid #d3d3d3;
+  box-shadow: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  transition: .2s;
+  cursor: pointer;
+}
+.table-column-price,
+.table-column-count,
+.table-column-creationDate,
+.table-column-weight,
+.table-column-size {
+  text-align:center;
+}
+
+#Косметика,#Одежда,#Обувь,#Игрушки,#Хозтовары,#Книги,#Кожа,#Ремни{
+text-align: center;
+  span {
+      color: white;
+      border-radius: 4px;
+      display:block;
+      height:25px;
+      line-height:24px;
+      width:100px;
+      display: inline-block;    
+  }
+}
+#Косметика{
+  span {
+    background-color: hotpink;
+  }
+}
+#Одежда {
+  span {
+    background-color: #7D678B;
+  }
+}
+#Обувь {
+  span {
+    background-color: #04B4AE;
+  }
+}
+#Игрушки {
+  span {
+    background-color: lightsalmon;
+  }
+}
+#Хозтовары {
+  span {
+    background-color: #72D1ED;
+  }
+}
+#Книги {
+  span {
+    background-color: #D7DF01;
+  }
+}
+#Ремни {
+  span {
+    background-color: #886A08;
+  }
+}
+#Кожа {
+  span {
+    background-color: #876C6C;
+  }
+}
+
+input[type=checkbox] {
+  background-color: #fff;
+  border: 1px solid #d3d3d3;
+  box-shadow: none;
+  outline: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  -webkit-appearance: none;
+  position: relative;
+  transition: .2s;
+  cursor: pointer;
+}
+
+input[type=checkbox]:after {
+    content: " ";
+    opacity: 0;
+    transition: .2s;
+    background: url("../images/input-checked.svg") no-repeat;
+    background-size: 15px auto;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: -2px;
+    left: 1px;
+}
+
+input[type=checkbox]:checked {
+    border-color: #6897dc;
+}
+
+input[type=checkbox]:checked:after {
+      opacity: 1;
+}

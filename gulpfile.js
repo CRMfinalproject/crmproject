@@ -12,6 +12,7 @@ const rigger = require('gulp-rigger');
 const babel = require("gulp-babel");
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
+const order = require("gulp-order");
 
 const path = {
   src: {
@@ -105,6 +106,16 @@ gulp.task('js', () => {
     .pipe(babel({
       presets: ['env']
     }))
+    .pipe(order([
+      'data.js',
+      'tabs.js',
+      'table-control-block.js',
+      
+      'edit-actions.js',
+      'table.js',
+      'field-settings.js',
+      '*.js'
+    ]))
     .pipe(concat('index.js'))
     // .pipe(uglify())
     .pipe(gulp.dest(path.dist.js))
@@ -135,7 +146,7 @@ gulp.task('server', () => {
       baseDir: "./dist",
       index: '/html/index.html'
     },
-    // browser: 'google chrome',
+      // browser: 'google chrome',
     // Говорим спрятать надоедливое окошко обновления в браузере
     notify: false
   });
@@ -157,6 +168,7 @@ gulp.task('build', ['html', 'css', 'img', 'fonts', 'js']);
 gulp.task('start', ['del:dist', 'build', 'server', 'watch']);
 
 
-
+// Создать таск 'js' для обработки JavaScript файлов.Добавить обработку файлов пакетом gulp- babel.
+// Для таска 'js' добавить конкатенацию и минификацию JavaScript файлов c пакетами gulp- concat и gulp- uglify.
 
 

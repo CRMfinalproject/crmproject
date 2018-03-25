@@ -1,0 +1,125 @@
+.table-column-actions {
+        width: 100px;
+        text-align: center;
+        line-height: 100%;
+        white-space: nowrap;
+    
+            &__dots {
+                height: 5px;
+                margin: 10px;
+                cursor: pointer;
+            }
+            &__copy {
+                width: 14px;
+                cursor: pointer;
+            }
+            &__edit {
+                width: 14px;
+                margin-left: 5px;
+                margin-right: 5px;
+                cursor: pointer;
+            }
+            &__delete {
+                height: 16px;
+                cursor: pointer;
+            }
+
+            &__recover {
+                text-align: center;
+            }
+
+            &__ok {
+                text-align: center;
+            }
+    }
+
+.button__ok {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85px;
+    height: 25px;
+    line-height:25px;
+    color: white;
+    border-radius: 4px;
+    background-color: #6897dc;
+    border-color: #6897dc;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.button__recover {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85px;
+    height: 25px;
+    line-height:25px;
+    color: #f9f9f9;
+    font-size: 13px;
+    border-radius: 4px;
+    background-color: rgb(155, 153, 153);
+    border-color:grey;
+    cursor: pointer;
+}
+            
+.open {
+    display: block;
+}    
+.close {
+    display: none;
+} 
+.table-column{
+
+    &__input {
+    min-width: 70px;
+    width:70px;
+        
+        &-name{
+            min-width: 70px;
+            width:110px;
+            margin-left: 40px;
+        }
+
+        &-select {
+            min-width: 70px;
+            width:100px;
+        }
+
+        &-creationDate{
+            min-width: 70px;
+            width:120px;
+        }
+
+        &-size{
+            min-width: 70px;
+            width:80px;
+            text-align: center;
+
+        }
+        &-numbers{
+            min-width: 40px;
+            width:50px;
+            text-align: center;
+        }
+    }
+}
+.table-fixedtext {
+    width: 20px;
+    margin-left: 4px;
+}
+.setToDel {
+    color:gray;
+    background-color: #f9f9f9;
+
+    &-name {
+        color:gray!important;
+    }
+    &-category {
+        color:#f9f9f9!important;
+        background-color: rgb(202, 200, 200)!important;
+    }
+}
+
+
+
