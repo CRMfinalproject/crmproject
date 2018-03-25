@@ -151,10 +151,10 @@ const burgerBtn = new Menu('.burger', {
         this.toggle();
         burgerMenu.toggle();
     },
-    onItemMouseLeave() {
-        this.close();
-        burgerMenu.close();
-    }
+    // onItemMouseLeave() {
+    //     this.close();
+    //     burgerMenu.close();
+    // }
 });
 
 const burgerMenu = new Menu('.burger-menu__container', {
