@@ -97,7 +97,15 @@ class Sorting {
 				this.sortNames("price");
 				break;
 			}
+			case "Закупочная цена": {
+				this.sortNames("price");
+				break;
+			}
 			case "Дата создания": {
+				this.sortByDate();
+				break;
+			}
+			case "Дата поставки": {
 				this.sortByDate();
 				break;
 			}
