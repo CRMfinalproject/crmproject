@@ -42,13 +42,10 @@ class Table {
         dataPage.map(row => {
             bodyContent += `<tr class = "row-table" id="row-${row.id}">`;
             bodyContent += `<td class="table-column-checkbox"><input type="checkbox" class ="checkbox row-table"></td>`;
-            bodyContent += `<td class="table-column-name"  ${this.fields.find((f) => f.name === 'name').hidden ? "hidden" : ""}><a href = "#" class = "table-column-name__link">${row.name}</a></td>`;
-            bodyContent += `<td class="table-column-category" id = ${row.category.replace(/\./g, "")}  ${this.fields.find((f) => f.name === 'category').hidden ? "hidden" : ""}><span>${row.category}</span></td>`;
-            bodyContent += `<td class="table-column-count" ${this.fields.find((f) => f.name === 'count').hidden ? "hidden" : ""}><span>${row.count}</span><span class="table-fixedtext">шт</span></td>`;
-            bodyContent += `<td class="table-column-price" ${this.fields.find((f) => f.name === 'price').hidden ? "hidden" : ""}><span>${row.price}</span><span class="table-fixedtext">грн</span></td>`;
-            bodyContent += `<td class="table-column-creationDate" ${this.fields.find((f) => f.name === 'creationDate').hidden ? "hidden" : ""}><span>${row.creationDate}</span></td>`;
-            bodyContent += `<td class="table-column-weight" ${this.fields.find((f) => f.name === 'weight').hidden ? "hidden" : ""}><span>${row.weight}</span><span class="table-fixedtext">г</span></td>`;
-            bodyContent += `<td class="table-column-size" ${this.fields.find((f) => f.name === 'size').hidden ? "hidden" : ""}><span>${row.size}</span><span class="table-fixedtext">см</span></td>`;
+
+            bodyContent += 
+                this.fields.map((field) => `<td class="table-column-${field.name}" ${field.name == 'category' ? `id = ${row.category.replace(/\./g, "")}` :""} ${field.hidden ? "hidden" : ""}>${field.format(row[field.name])}</td>`).reduce((accum, next) => accum + next);
+
             bodyContent += `
             <td class="table-column-settings">
                 <div class="table-column-actions js-dots">
@@ -83,6 +80,13 @@ class Table {
         });
     }
 
+    redrawTable(fields){
+        this.fields = fields;
+        this.renderHeader();
+        this.renderData();
+        this.showColumns();
+    }
+
     selectAll() {
         let checkboxArr = table.container.children[1].querySelectorAll(".checkbox");
         if (document.querySelector(".data-table-header .checkbox").checked) {
@@ -115,12 +119,20 @@ class Table {
 
 }
 let productTableFields = [
-    { name: "name", view: "Название товара", hidden: false },
-    { name: "category", view: "Категория", hidden: false },
-    { name: "count", view: "Кол-во на складе", hidden: false },
-    { name: "price", view: "Цена", hidden: false },
-    { name: "creationDate", view: "Дата создания", hidden: false },
-    { name: "weight", view: "Вес", hidden: false },
-    { name: "size", view: "Размеры(ШхВхД)", hidden: false }
-]
+    { name: "name", view: "Название товара", hidden: false, format: (x) => `<a href = "#" class = "table-column-name__link">${x}</a>` },
+    { name: "category", view: "Категория", hidden: false, format: (x) => `<span>${x}</span>` },
+    { name: "count", view: "Кол-во на складе", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">шт</span>` },
+    { name: "price", view: "Цена", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">грн</span>` },
+    { name: "creationDate", view: "Дата создания", hidden: false, format: (x) => `<span>${x}</span>` },
+    { name: "weight", view: "Вес", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">г</span>` },
+    { name: "size", view: "Размеры(ШхВхД)", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">см</span>` }
+];
+
+let supplyTableFields = [
+    { name: "name", view: "Название товара", hidden: false, format: (x) => `<a href = "#" class = "table-column-name__link">${x}</a>` },
+    { name: "category", view: "Категория", hidden: false, format: (x) => `<span>${x}</span>` },
+    { name: "purchasePrice", view: "Закупочная цена", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">грн</span>` },
+    { name: "supplyDate", view: "Дата поставки", hidden: false, format: (x) => `<span>${x}</span>` },
+];
+
 let table = new Table(productTableFields);
