@@ -5,7 +5,7 @@
 }
 
 .table__fieldsettings {
-  width: 75px;
+  width: 72px;
   height: 25px;
   border: 1px solid transparent;
   cursor: pointer;
@@ -20,8 +20,8 @@
 
 .table__fieldsettings--active {
   position: absolute;
-  top: 185px;
-  right: 13.5%;
+  top: 220px;
+  right: 10%;
   width: 18%;
   padding-top: 10px;
   height: auto;
@@ -61,6 +61,7 @@
   width: 100%;
   padding: 0.5em 0;
   cursor: pointer;
+  text-align: left;
   &::before {
     content: ' ';
     position: relative;
