@@ -7,7 +7,6 @@ class Table {
         this.fields = fields;
         this.renderHeader();
         this.renderData();
-        this.showColumns();
     }
 
     renderHeader() {
@@ -44,7 +43,7 @@ class Table {
             bodyContent += `<td class="table-column-checkbox"><input type="checkbox" class ="checkbox row-table"></td>`;
 
             bodyContent += 
-                this.fields.map((field) => `<td class="table-column-${field.name}" ${field.name == 'category' ? `id = ${row.category.replace(/\./g, "")}` :""} ${field.hidden ? "hidden" : ""}>${field.format(row[field.name])}</td>`).reduce((accum, next) => accum + next);
+                this.fields.map((field) => `<td class="table-column-${field.name}" ${field.hidden ? "hidden" : ""}>${field.format(row[field.name])}</td>`).reduce((accum, next) => accum + next);
 
             bodyContent += `
             <td class="table-column-settings">
@@ -84,7 +83,6 @@ class Table {
         this.fields = fields;
         this.renderHeader();
         this.renderData();
-        this.showColumns();
     }
 
     selectAll() {
@@ -120,7 +118,7 @@ class Table {
 }
 let productTableFields = [
     { name: "name", view: "Название товара", hidden: false, format: (x) => `<a href = "#" class = "table-column-name__link">${x}</a>` },
-    { name: "category", view: "Категория", hidden: false, format: (x) => `<span>${x}</span>` },
+    { name: "category", view: "Категория", hidden: false, format: (x) => `<span id = ${x.replace(/\./g, "")}><span>${x}</span></span>` },
     { name: "count", view: "Кол-во на складе", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">шт</span>` },
     { name: "price", view: "Цена", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">грн</span>` },
     { name: "creationDate", view: "Дата создания", hidden: false, format: (x) => `<span>${x}</span>` },
@@ -130,7 +128,7 @@ let productTableFields = [
 
 let supplyTableFields = [
     { name: "name", view: "Название товара", hidden: false, format: (x) => `<a href = "#" class = "table-column-name__link">${x}</a>` },
-    { name: "category", view: "Категория", hidden: false, format: (x) => `<span>${x}</span>` },
+    { name: "category", view: "Категория", hidden: false, format: (x) => `<span id = ${x.replace(/\./g, "")}><span>${x}</span></span>` },
     { name: "purchasePrice", view: "Закупочная цена", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">грн</span>` },
     { name: "supplyDate", view: "Дата поставки", hidden: false, format: (x) => `<span>${x}</span>` },
 ];
