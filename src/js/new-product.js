@@ -29,24 +29,24 @@ class AddProduct {
         this.lengthInput = this.container.querySelector('#js-new-product-length');
         this.weightInput = this.container.querySelector('#js-new-product-weight');
         this.volumeInput = this.container.querySelector('#js-new-product-volume');
-        this.categoryAddBtn = this.container.querySelector('#js-category-add-btn');
+        //this.categoryAddBtn = this.container.querySelector('#js-category-add-btn');
         this.submitBtn = this.container.querySelector('#js-new-product-submit-btn');
         this.closeBtn = this.container.querySelector('#js-new-product-close-btn');
     };
     addEvents() {
         this.form.addEventListener('input', () => this.autocompleteFields());
-        this.categoryAddBtn.addEventListener('click', () => this.addCategory());
+        //this.categoryAddBtn.addEventListener('click', () => this.addCategory());
         this.submitBtn.addEventListener('click', () => this.createNewProduct());
         document.addEventListener('submit', () => this.showSuccessMessage());
     }
-    addCategory() {
+    /*addCategory() {
         event.preventDefault();
         if (this.categoryList.includes(this.categoryInput.value) === false) {
             this.categoryList.push(this.categoryInput.value);
             this.categoryList.sort();
             this.autocompleteFields();
         }
-    };
+    };*/
     autocompleteFields() {
         if (event.target === this.categorySelection) {
             this.categoryInput.value = this.categorySelection.value;
