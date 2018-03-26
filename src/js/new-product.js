@@ -37,7 +37,10 @@ class AddProduct {
         this.form.addEventListener('input', () => this.autocompleteFields());
         //this.categoryAddBtn.addEventListener('click', () => this.addCategory());
         this.submitBtn.addEventListener('click', () => this.createNewProduct());
-        document.addEventListener('submit', () => this.showSuccessMessage());
+        document.addEventListener('submit', () => {
+            setTimeout(() => document.querySelector('.content').removeChild(this.container), 2000)
+            this.showSuccessMessage();
+        });
     }
     /*addCategory() {
         event.preventDefault();
@@ -77,10 +80,11 @@ class AddProduct {
              event.preventDefault();
              document.querySelector('.new-product__form__heading').classList.add('new-product__form__heading--success');
              document.querySelector('.new-product__form__heading').textContent = "Товар добавлен";
+             this.container.removeChild(this.form);
          }
     };
     closeForm() {
-         if (event.target === this.closeBtn ) { //добавить клик вне окошка нового продукта
+         if (event.target === this.closeBtn) { //добавить клик вне окошка нового продукта
              document.querySelector('.content').removeChild(this.container);
          }
     }
