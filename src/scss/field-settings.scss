@@ -5,10 +5,11 @@
 }
 
 .table__fieldsettings {
-  width: 88px;
+  width: 75px;
   height: 25px;
   border: 1px solid transparent;
   cursor: pointer;
+  z-index:100;
 }
 
 .table__fieldsettings_btn {
@@ -20,7 +21,7 @@
 .table__fieldsettings--active {
   position: absolute;
   top: 185px;
-  right: 12%;
+  right: 13.5%;
   width: 18%;
   padding-top: 10px;
   height: auto;
@@ -78,18 +79,19 @@
   visibility: hidden;
   &:checked {
     &::after {
-      content: '';
+      //content: '';
       visibility: visible;
-      position: relative;
-      width: 10px;
-      height: 3px;
-      top: -5px;
-      left: 1px;
-      display: inline-block;
-      border: 2px solid #83abd9;
-      border-top: none;
-      border-right: none;
-      transform: rotate(-45deg);
+      //position: relative;
+      //width: 10px;
+      //height: 3px;
+      top: -1px;
+      left: -1px;
+	  transition: 0s;
+      //display: inline-block;
+      //border: 2px solid #83abd9;
+      //border-top: none;
+      //border-right: none;
+      //transform: rotate(-45deg);
     }
   }
 }

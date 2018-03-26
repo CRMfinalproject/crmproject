@@ -70,6 +70,7 @@ class AddProduct {
              volume: this.volumeInput.value
         };
         data.push(productToAdd);
+        dataFilter.push(productToAdd);
     };
     showSuccessMessage() {
          if (event.target === this.form) {
@@ -79,7 +80,7 @@ class AddProduct {
          }
     };
     closeForm() {
-         if (event.target === this.closeBtn) { //добавить клик вне окошка нового продукта
+         if (event.target === this.closeBtn ) { //добавить клик вне окошка нового продукта
              document.querySelector('.content').removeChild(this.container);
          }
     }

@@ -29,21 +29,26 @@ class Table {
     // data
     renderData() {
        // перед тем, как перерисовать таблицу удаляем отмеченные у удалению строки
-        this.deleteSelected();
+    //    debugger; 
+       this.deleteSelected();
 
         let dataPage = data.slice(startRow, endRow);
+        if (dataFilter) {
+
+            dataPage = dataFilter.slice(startRow, endRow);
+        }
         let bodyContent = "";
 
         dataPage.map(row => {
             bodyContent += `<tr class = "row-table" id="row-${row.id}">`;
             bodyContent += `<td class="table-column-checkbox"><input type="checkbox" class ="checkbox row-table"></td>`;
-            bodyContent += `<td class="table-column-name"  ${this.fields.find((f) => f.name === 'name').hidden ? "hidden" : ""}><a href = "Ссылка на товар/${row.id}" class = "table-column-name__link">${row.name}</a></td>`;
+            bodyContent += `<td class="table-column-name"  ${this.fields.find((f) => f.name === 'name').hidden ? "hidden" : ""}><a href = "#" class = "table-column-name__link">${row.name}</a></td>`;
             bodyContent += `<td class="table-column-category" id = ${row.category.replace(/\./g, "")}  ${this.fields.find((f) => f.name === 'category').hidden ? "hidden" : ""}><span>${row.category}</span></td>`;
-            bodyContent += `<td class="table-column-count" ${this.fields.find((f) => f.name === 'count').hidden ? "hidden" : ""}><span>${row.count} шт</span></td>`;
-            bodyContent += `<td class="table-column-price" ${this.fields.find((f) => f.name === 'price').hidden ? "hidden" : ""}><span>${row.price} грн</span></td>`;
+            bodyContent += `<td class="table-column-count" ${this.fields.find((f) => f.name === 'count').hidden ? "hidden" : ""}><span>${row.count}</span><span class="table-fixedtext">шт</span></td>`;
+            bodyContent += `<td class="table-column-price" ${this.fields.find((f) => f.name === 'price').hidden ? "hidden" : ""}><span>${row.price}</span><span class="table-fixedtext">грн</span></td>`;
             bodyContent += `<td class="table-column-creationDate" ${this.fields.find((f) => f.name === 'creationDate').hidden ? "hidden" : ""}><span>${row.creationDate}</span></td>`;
-            bodyContent += `<td class="table-column-weight" ${this.fields.find((f) => f.name === 'weight').hidden ? "hidden" : ""}><span>${row.weight} г</span></td>`;
-            bodyContent += `<td class="table-column-size" ${this.fields.find((f) => f.name === 'size').hidden ? "hidden" : ""}><span>${row.size} см </span></td>`;
+            bodyContent += `<td class="table-column-weight" ${this.fields.find((f) => f.name === 'weight').hidden ? "hidden" : ""}><span>${row.weight}</span><span class="table-fixedtext">г</span></td>`;
+            bodyContent += `<td class="table-column-size" ${this.fields.find((f) => f.name === 'size').hidden ? "hidden" : ""}><span>${row.size}</span><span class="table-fixedtext">см</span></td>`;
             bodyContent += `
             <td class="table-column-settings">
                 <div class="table-column-actions js-dots">
@@ -53,9 +58,9 @@ class Table {
                     <img src="../images/edit-icon.svg" title="редактировать" class="table-column-actions__edit">
                     <img src="../images/delete-icon.svg" title="удалить" class="table-column-actions__delete">
                 </div><div class="table-column-actions__ok  js-ok close">
-                    <button class="button__ok">OK</button>
+                    <span class="button__ok">OK</span>
                 </div><div class="table-column-actions__recover js-recover close">
-                    <button class="button__recover">Восстановить</button>
+                    <span class="button__recover">Отмена</span>
                 </div>
             </td>`;
             bodyContent += `</tr>`;
@@ -82,6 +87,7 @@ class Table {
         let checkboxArr = table.container.children[1].querySelectorAll(".checkbox");
         if (document.querySelector(".data-table-header .checkbox").checked) {
             checkboxArr.forEach((elem) => { elem.checked = true });
+
         } else checkboxArr.forEach((elem) => { elem.checked = false });;
     }
 
@@ -89,7 +95,7 @@ class Table {
         let rowsToDel = Array.from(document.querySelectorAll(".setToDel"));
         if (rowsToDel.length) {
             let idsToDel = rowsToDel.map(row => {
-                row.classList.add('setToDel');
+                // row.classList.add('setToDel');
                 return row.id.replace('row-', '');
             });
             let countToDel = 0;
@@ -98,6 +104,7 @@ class Table {
                             idsToDel.map(productToDel => {
                                 if (data[i].id == productToDel) {
                                     data.splice(i, 1);
+                                    dataFilter.splice(i, 1);
                                     countToDel++;
                                 }
                             })
@@ -113,7 +120,7 @@ let productTableFields = [
     { name: "count", view: "Кол-во на складе", hidden: false },
     { name: "price", view: "Цена", hidden: false },
     { name: "creationDate", view: "Дата создания", hidden: false },
-    { name: "weight", view: "Вес", hidden: true },
-    { name: "size", view: "Размеры(ШхВхД)", hidden: true }
+    { name: "weight", view: "Вес", hidden: false },
+    { name: "size", view: "Размеры(ШхВхД)", hidden: false }
 ]
 let table = new Table(productTableFields);
