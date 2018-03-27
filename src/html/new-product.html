@@ -6,11 +6,9 @@
                 <div class="new-product__form__column">
                     <span class="new-product__form__input__label--required">*</span><br>
                     <input type="text" class="new-product__form__input--text" id="js-new-product-name" name="name" placeholder="Название товара" required>
-                    <input type="text" class="new-product__form__input--text" id="js-new-product-category" name="category" placeholder="Введите название категории">
-                <select class="new-product__form__selection" id="js-select-category">
-                    <option> </option>
-                </select>
-                <button class="new-product__form__selection__button" id="js-category-add-btn">+</button>
+                    <input type="text" class="new-product__form__input--text" id="js-new-product-category" name="category" autocomplete="off" placeholder="Введите название категории">
+                    <ul class="new-product__form__selection" id="js-select-category"></ul>
+                    <div class="new-product__form__selection__arrow"></div>
                 <p class="new-product__form__input__label">Описание товара</p>
                 <textarea class="new-product__form__input--textarea" id="js-new-product-description" name="description" rows="5"></textarea>
             </div>
@@ -54,9 +52,9 @@
                     <div class="new-product__form__input__arrow--down"></div>
                 </div>
             </div>
-        </div>
         <p class="new-product__form__reference">*Объемный вес высчитывается по формуле ШхВхД / 4000</p>
         <p class="new-product__form__reference--red">*Обязательное поле</p>
-        <button class="new-product__form_submit-button" id="js-new-product-submit-btn">Создать товар</button>
-    </form>
+            </div>
+            <button class="new-product__form_submit-button" id="js-new-product-submit-btn">Создать товар</button>
+        </form>
 </script>
