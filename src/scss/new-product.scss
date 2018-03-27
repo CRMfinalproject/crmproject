@@ -27,7 +27,7 @@
   background-color: #ffffff;
   font-size: 12px;
   font-family: "Helvetica Neue";
-  z-index: 2;
+  z-index: 3;
 }
 
 .new-product__close-button{
@@ -49,7 +49,7 @@
 .new-product__form__heading {
   width: 90%;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 10px 0 20px;
   line-height: 1em;
   font-family: "Helvetica Neue", sans-serif;
   font-weight: bold;
@@ -83,15 +83,12 @@
   justify-content: space-evenly;
 }
 
-
 .new-product__form__input--text {
   width: 90%;
   height: 37px;
   margin-top: 10px;
   background: transparent;
   border: 1px solid #757575;
-  z-index: 2;
-
 }
 
 .new-product__form__input--textarea {
@@ -194,6 +191,7 @@
   cursor: pointer;
   transform: rotate(-45deg);
 }
+
 .new-product__form__input__label {
   position: relative;
   width: 90%;
@@ -218,7 +216,7 @@
   background-color: #ffffff;
   text-transform: capitalize;
   line-height: 2em;
-  z-index: 3;
+  z-index: 4;
 }
 
 .new-product__form__selection__option {
@@ -236,21 +234,6 @@
 
 }
 
-/*.new-product__form__selection__button {
-  position: relative;
-  top: -72px;
-  left: 78%;
-  display: block;
-  width: 37px;
-  height: 37px;
-  padding-top: 7px;
-  border: 0 none;
-  background-color: #73cc83;
-  color: #ffffff;
-  font-size: 20px;
-  line-height: 24px;
-}
-*/
 .new-product__form__reference, .new-product__form__reference--red {
   position: relative;
   top: -10px;
