@@ -2,7 +2,6 @@ class AddProduct {
     constructor(categoryList) {
         this.categoryList = categoryList;
         document.body.querySelector(".table-control__button--add-new").addEventListener('click', () => this.render());
-        document.body.querySelector('.content').addEventListener('click', () => this.closeForm());
     }
     render() {
         this.container = document.createElement('div');
@@ -38,6 +37,11 @@ class AddProduct {
         this.closeBtn = this.container.querySelector('#js-new-product-close-btn');
     };
     addEvents() {
+        document.querySelector('.content').addEventListener('click', () => {
+            if (event.target === this.closeBtn || event.target === this.background) {
+                this.closeForm();
+            }
+        })
         this.form.addEventListener('input', () => this.autocompleteVolume());
         this.form.addEventListener('click', () => {
             if (event.target === this.categoryInput || event.target === this.categorySelectionBtn) {
@@ -50,11 +54,7 @@ class AddProduct {
         this.form.addEventListener('keyup', () => this.autocompleteSelection());
         this.submitBtn.addEventListener('click', () => this.createNewProduct());
         document.addEventListener('submit', () => {
-            setTimeout(() => {
-                    document.querySelector('.content').removeChild(this.container);
-                    document.querySelector('.content').removeChild(this.background);
-                }, 1000
-            )
+            setTimeout(() => this.closeForm(), 1000)
             this.showSuccessMessage();
         });
     }
@@ -110,10 +110,8 @@ class AddProduct {
          }
     };
     closeForm() {
-         if (event.target === this.closeBtn) { //добавить клик вне окошка нового продукта
-             document.querySelector('.content').removeChild(this.container);
-             document.querySelector('.content').removeChild(this.background);
-         }
+         document.querySelector('.content').removeChild(this.container);
+         document.querySelector('.content').removeChild(this.background);
     }
 }
 let productCategoryList = data.map((elem) => elem.category).sort().filter((el, i, arr) => arr.includes(el, i + 1) === false);
