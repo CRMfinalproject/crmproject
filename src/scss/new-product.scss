@@ -88,7 +88,9 @@
   width: 90%;
   height: 37px;
   margin-top: 10px;
+  background: transparent;
   border: 1px solid #757575;
+  z-index: 2;
 
 }
 
@@ -98,6 +100,7 @@
   width: 90%;
   line-height: 1.7em;
   border: 1px solid #757575;
+  cursor: pointer;
   &:enabled{
     font-family: "Helvetica Neue";
     color: #000000;
@@ -178,25 +181,24 @@
     transform: rotate(-45deg);
   }
 */
+
+.new-product__form__selection__arrow {
+  position: relative;
+  top: -57px;
+  left: 195px;
+  width: 7px;
+  height: 7px;
+  border: none;
+  border-left: 2px solid #77bbeb;
+  border-bottom: 2px solid #77bbeb;
+  cursor: pointer;
+  transform: rotate(-45deg);
+}
 .new-product__form__input__label {
   position: relative;
   width: 90%;
   top: -30px;
   margin: 0;
-  &::before {
-    content: '';
-    display: block;
-    position: relative;
-    top: -28px;
-    left: 190px;
-    width: 5px;
-    height: 5px;
-    border: none;
-    border-left: 2px solid #77bbeb;
-    border-bottom: 2px solid #77bbeb;
-    font-size: 0;
-    transform: rotate(-45deg);
-  }
 }
 
 .new-product__form__input__group-label {
@@ -210,22 +212,28 @@
 .new-product__form__selection {
   display: block;
   position: relative;
-  top: -36px;
-  left: 74.6%;
-  width: 35px;
+  width: 90%;
   height: 35px;
-  border: 0 none;
+  list-style: none;
   background-color: #ffffff;
-  color: #ffffff;
   text-transform: capitalize;
-  -webkit-appearance: none;
+  line-height: 2em;
+  z-index: 3;
 }
 
-.new-product__form__selection option:not(:checked){
-  color: black;
+.new-product__form__selection__option {
+  height: 33px;
+  padding-top: 5px;
+  background-color: white;
+  border: 0.3px solid #757575;
+  border-top: 0 none;
+
 }
-.new-product__form__selection option:not(:hover){
-  color: black;
+
+.new-product__form__selection__option:hover {
+  background-color: #757575;
+  color: white;
+
 }
 
 /*.new-product__form__selection__button {

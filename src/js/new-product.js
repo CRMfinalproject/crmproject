@@ -11,15 +11,17 @@ class AddProduct {
         this.newProductHtml = document.querySelector('#js-add-new-product').textContent.trim();
         this.container.insertAdjacentHTML('afterbegin', this.newProductHtml);
         this.defineVariables();
-        this.categorySelectionHtml = this.categoryList.map((elem) => `<option value=${elem}>${elem}</option>`).reduce((accum, elem) => accum + elem);
+        this.categorySelectionHtml = this.categoryList.map((elem) => `<li class="new-product__form__selection__option" hidden>${elem}</li>`).reduce((accum, elem) => accum + elem);
         this.categorySelection.insertAdjacentHTML('beforeend', this.categorySelectionHtml);
+        this.categoryOption = this.container.querySelectorAll('.new-product__form__selection__option');
         this.addEvents();
     };
     defineVariables() {
-        this.categorySelection = this.container.querySelector('#js-select-category');
         this.nameInput = this.container.querySelector('#js-new-product-name');
         this.form = this.container.querySelector('#js-new-product-form');
         this.categoryInput = this.container.querySelector('#js-new-product-category');
+        this.categorySelection = this.container.querySelector('#js-select-category');
+        this.categorySelectionBtn = this.container.querySelector('.new-product__form__selection__arrow');
         this.descriptionInput = this.container.querySelector('#js-new-product-description');
         this.numberInputs = this.container.querySelectorAll('.new-product__form__input--number__label', '.new-product__form__input--number__label--small');
         this.priceInput = this.container.querySelector('#js-new-product-price');
@@ -29,31 +31,39 @@ class AddProduct {
         this.lengthInput = this.container.querySelector('#js-new-product-length');
         this.weightInput = this.container.querySelector('#js-new-product-weight');
         this.volumeInput = this.container.querySelector('#js-new-product-volume');
-        //this.categoryAddBtn = this.container.querySelector('#js-category-add-btn');
         this.submitBtn = this.container.querySelector('#js-new-product-submit-btn');
         this.closeBtn = this.container.querySelector('#js-new-product-close-btn');
     };
     addEvents() {
         this.form.addEventListener('input', () => this.autocompleteFields());
-        //this.categoryAddBtn.addEventListener('click', () => this.addCategory());
+        this.form.addEventListener('click', () => {
+            console.log(event.target)
+            if (event.target === this.categoryInput || event.target === this.categorySelectionBtn) {
+                this.showCategories();
+            } else if (event.target.classList.contains('new-product__form__selection__option')) {
+                this.selectCategory();
+                this.hideCategories();
+            }
+        });
         this.submitBtn.addEventListener('click', () => this.createNewProduct());
         document.addEventListener('submit', () => {
             setTimeout(() => document.querySelector('.content').removeChild(this.container), 2000)
             this.showSuccessMessage();
         });
     }
-    /*addCategory() {
-        event.preventDefault();
-        if (this.categoryList.includes(this.categoryInput.value) === false) {
-            this.categoryList.push(this.categoryInput.value);
-            this.categoryList.sort();
-            this.autocompleteFields();
-        }
-    };*/
+    showCategories() {
+        this.categoryOption.forEach((elem) => elem.removeAttribute('hidden'));
+    };
+    selectCategory() {
+      this.categoryInput.value = event.target.textContent;
+    };
+    hideCategories(){
+       this.categoryOption.forEach((elem) => elem.setAttribute('hidden', true));
+    };
     autocompleteFields() {
-        if (event.target === this.categorySelection) {
+        /*if (event.target === this.categoryInput) {
             this.categoryInput.value = this.categorySelection.value;
-        } else if (event.target === this.widthInput || event.target === this.heightInput || event.target === this.lengthInput) {
+        } else */if (event.target === this.widthInput || event.target === this.heightInput || event.target === this.lengthInput) {
             if (this.widthInput.value.length > 0 && this.heightInput.value.length > 0 && this.lengthInput.value.length > 0) {
                 this.volumeInput.value = Math.round(this.container.querySelector('#js-new-product-width').value * this.container.querySelector('#js-new-product-height').value * this.container.querySelector('#js-new-product-length').value / 4000 * 100) / 100;
             }
