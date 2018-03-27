@@ -16,7 +16,7 @@ class Pagination {
     }
     setSettings(data) {
         // от сервера мы получаем общее количество ТОВАРОВ
-        debugger;
+
         this.totalPages = (data.length < 10) ? 1 : Math.ceil(data.length/10);
         this.currentPage = 1;
         this.arrPages = Array.from({ length: (this.totalPages + 1) }, (v, i) => i);
@@ -25,7 +25,7 @@ class Pagination {
         this.arrPagesToShow = this.pagesToShow(data);
     }
     pagesToShow(data) {
-        debugger;
+
         let startPage, endPage;
         this.totalPages = Math.ceil(data.length / 10);
         if (this.mobile) {
@@ -47,7 +47,7 @@ class Pagination {
         return this.arrPagesToShow;
     }
     render() {
-        debugger;
+
         this.container.innerHTML = ``;
         if (this.currentPage != 1) {
             this.container.innerHTML = `

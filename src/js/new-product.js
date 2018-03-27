@@ -35,6 +35,7 @@ class AddProduct {
         this.volumeInput = this.container.querySelector('#js-new-product-volume');
         this.submitBtn = this.container.querySelector('#js-new-product-submit-btn');
         this.closeBtn = this.container.querySelector('#js-new-product-close-btn');
+        this.arrow = this.container.querySelector("arrow");
     };
     addEvents() {
         document.querySelector('.content').addEventListener('click', () => {
@@ -46,6 +47,9 @@ class AddProduct {
         this.form.addEventListener('click', () => {
             if (event.target === this.categoryInput || event.target === this.categorySelectionBtn) {
                 this.showCategories();
+                if (event.target === this.categorySelectionBtn || event.target === this.arrow ){
+                    this.hideCategories();
+                }
             } else if (event.target.classList.contains('new-product__form__selection__option')) {
                 this.selectCategory();
                 this.hideCategories();
