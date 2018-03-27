@@ -88,6 +88,8 @@
   width: 90%;
   height: 37px;
   margin-top: 10px;
+  border: 1px solid #757575;
+
 }
 
 .new-product__form__input--textarea {
@@ -95,6 +97,7 @@
   top: -20px;
   width: 90%;
   line-height: 1.7em;
+  border: 1px solid #757575;
   &:enabled{
     font-family: "Helvetica Neue";
     color: #000000;
@@ -106,6 +109,7 @@
   width: 55px;
   height: 37px;
   margin-top: 10px;
+  border: 1px solid #757575;
   text-align: center;
   /*&::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -211,6 +215,7 @@
   width: 35px;
   height: 35px;
   border: 0 none;
+  background-color: #ffffff;
   color: #ffffff;
   text-transform: capitalize;
   -webkit-appearance: none;
