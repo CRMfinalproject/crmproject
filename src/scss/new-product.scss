@@ -30,6 +30,17 @@
   z-index: 3;
 }
 
+.new-product__background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(117,117,117,0.5);
+  z-index: 2;
+}
+
+
 .new-product__close-button{
   position: relative;
   top: -10px;

@@ -8,6 +8,9 @@ class AddProduct {
         this.container = document.createElement('div');
         this.container.classList.add('new-product__wrapper');
         document.querySelector('.content').insertBefore(this.container, document.querySelector('.data-table'));
+        this.background = document.createElement('div');
+        this.background.classList.add('new-product__background');
+        document.querySelector('.content').appendChild(this.background);
         this.newProductHtml = document.querySelector('#js-add-new-product').textContent.trim();
         this.container.insertAdjacentHTML('afterbegin', this.newProductHtml);
         this.defineVariables();
@@ -47,7 +50,11 @@ class AddProduct {
         this.form.addEventListener('keyup', () => this.autocompleteSelection());
         this.submitBtn.addEventListener('click', () => this.createNewProduct());
         document.addEventListener('submit', () => {
-            setTimeout(() => document.querySelector('.content').removeChild(this.container), 2000)
+            setTimeout(() => {
+                    document.querySelector('.content').removeChild(this.container);
+                    document.querySelector('.content').removeChild(this.background);
+                }, 1000
+            )
             this.showSuccessMessage();
         });
     }
@@ -105,6 +112,7 @@ class AddProduct {
     closeForm() {
          if (event.target === this.closeBtn) { //добавить клик вне окошка нового продукта
              document.querySelector('.content').removeChild(this.container);
+             document.querySelector('.content').removeChild(this.background);
          }
     }
 }
