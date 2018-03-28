@@ -1,23 +1,20 @@
-class Tutorial {
+class Statistics {
     constructor(contentHtml) {
         this.contentHtml = contentHtml;
-        this.sidebarHtml = document.querySelector('#js-tutorial-sidebar').textContent.trim();
-        this.triggerBtn = document.querySelector('#js-menu-tutorials');
+        this.triggerBtn = document.querySelector('#js-menu-statistics');
 		this.currentBtn = this.triggerBtn.querySelector('.burger-menu__item');
         this.triggerBtn.addEventListener('click', () => this.render());
     };
     render(){
-        event.preventDefault();
-		this.target = event.target;
+        this.target = event.target;
 		this.prev = document.querySelector(".burger-menu__item--selected");
 		if((typeof this.prev !== "undefined") && (this.prev !== this.target)){
 			this.prev.classList.remove("burger-menu__item--selected");
 		}
 		this.currentBtn.classList.add("burger-menu__item--selected");
-        document.querySelector('.content').innerHTML = this.contentHtml + this.sidebarHtml;
-        new Likecounter();
+        document.querySelector('.content').innerHTML = this.contentHtml;
     }
 }
 
-let tutorialPageHtml = document.querySelector('#js-tutorial-content').textContent.trim();
-let tutorialPage = new Tutorial(tutorialPageHtml);
+let statisticsPageHtml = document.querySelector('#js-statistics-content').textContent.trim();
+let statisticsPage = new Statistics(statisticsPageHtml);
