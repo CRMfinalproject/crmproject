@@ -47,7 +47,7 @@ export default class {
     }
 
     showActionSubmenu(event) {
-        debugger;
+        // debugger;
         if (event.target.classList.contains("table-control__button--actions") || 
             event.target.parentElement.classList.contains("table-control__button--actions") ||
             event.target.classList.contains("table-control__submenu__icon") || 
@@ -86,9 +86,16 @@ export default class {
     }
 
     deleteSelected() {
+<<<<<<< HEAD
         if (event.target.classList.contains("table-control__submenu__icon") || event.target.classList.contains("table-control__submenu__title")) {
             debugger;
             let rowsToDel = Array.from(document.querySelector(".data-table-body").querySelectorAll(".checkbox:checked"),
+=======
+
+        if (event.target.classList.contains("table-control__submenu__icon") || event.target.classList.contains("table-control__submenu__title")) {
+
+            let rowsToDel = Array.from(table.container.children[1].querySelectorAll(".checkbox:checked"),
+>>>>>>> development
                 elem => elem.parentElement.parentElement);
             rowsToDel.map (row => {
                 row.classList.add('setToDel');
@@ -102,7 +109,7 @@ export default class {
     }
 
     recoverDeleted(event) {
-        debugger;
+
         console.log(this);
         clearTimeout(this.timerId);
         let currentTr = event.target.parentElement.parentElement.parentElement;

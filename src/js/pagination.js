@@ -7,26 +7,28 @@ export default class {
         content.insertAdjacentHTML('beforeend', '<div class="pagination"></div>');
         this.container = document.body.querySelector(".pagination");
 
-        this.setSettings();
-        this.render();
+
 
         this.container.addEventListener('click', this.switchPages.bind(this));
 
         window.addEventListener('resize', this.controlSize.bind(this));
+        this.setSettings(data);
+        this.render();
     }
-    setSettings() {
+    setSettings(data) {
         // от сервера мы получаем общее количество ТОВАРОВ
-        debugger;
-        this.totalPages = Math.ceil(this.table.data.length/10);
-        this.currentPage = Math.ceil(this.table.endRow/10);
+
+        this.totalPages = (this.table.data.length < 10) ? 1 : Math.ceil(this.table.data.length/10);
+        this.currentPage = 1;
         this.arrPages = Array.from({ length: (this.totalPages + 1) }, (v, i) => i);
         this.arrPages.splice(0, 1);
         this.mobile = (screen.width < 780) ? true : false;
-        this.arrPagesToShow = this.pagesToShow();
+        this.arrPagesToShow = this.pagesToShow(data);
     }
-    pagesToShow() {
-        debugger;
+    pagesToShow(data) {
+
         let startPage, endPage;
+        this.totalPages = Math.ceil(data.length / 10);
         if (this.mobile) {
             startPage = (this.currentPage <= 4) ? 0 : this.currentPage - 2;
             endPage = (this.currentPage <= this.totalPages - 4) ? this.currentPage + 1 : this.totalPages;
@@ -46,9 +48,10 @@ export default class {
         return this.arrPagesToShow;
     }
     render() {
-        debugger;
-        this.setSettings();
-        this.pagesToShow();
+        // debugger;
+        // this.setSettings();
+        // this.pagesToShow();
+
         this.container.innerHTML = ``;
         if (this.currentPage != 1) {
             this.container.innerHTML = `
@@ -79,9 +82,9 @@ export default class {
     switchPages(event) {
         debugger;
         event.preventDefault();
-        if (event.target.innerHTML == "..." || event.target == this.container || 
+        if (event.target.innerHTML == "..." || event.target == this.container ||
             event.target.classList.contains("pagination__item")) { return };
-        
+
         if (event.target.classList.contains("pagination__link__arrow--left")) {
             if (this.currentPage != 1) { this.currentPage-- }
         }
@@ -90,14 +93,19 @@ export default class {
         }
         else { this.currentPage = Number(event.target.innerHTML); }
         
-        // вызываем renderTable класса Table с записи номер startRow по запись номер endRow (включительно)
-        // this.startRow = (this.currentPage - 1) * this.table.ROWS_PER_PAGE;
-        // this.endRow = this.currentPage * this.table.ROWS_PER_PAGE;
-        // if (this.table.endRow >= this.table.data.length) {
-        //     this.table.endRow = this.table.data.length};
         this.table.setCurrentPage(this.currentPage);
-        this.table.renderData();
-        this.render(this.pagesToShow());
+        // this.table.renderData();
+        // this.render(this.pagesToShow());
+
+        startRow = (this.currentPage - 1) * ROWS_PER_PAGE;
+        endRow = this.currentPage * ROWS_PER_PAGE;
+        if (endRow >= data.length) {
+            endRow = data.length};
+        table.renderData();
+        if (dataFilter) {
+            this.render(this.pagesToShow(dataFilter))
+        } else this.render(this.pagesToShow(data));
+
     }
     controlSize(event) {
         if (screen.width < 780 && !this.mobile) {

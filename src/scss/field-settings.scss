@@ -5,16 +5,11 @@
 }
 
 .table__fieldsettings {
-  //position: absolute;
-  //top: 185px;
-  //right: 10%;
-  width: 88px;
+  width: 72px;
   height: 25px;
-  //margin-top: 20px;
-  //margin-right: 10px;
-  //padding-top: 24px;
   border: 1px solid transparent;
   cursor: pointer;
+  z-index:100;
 }
 
 .table__fieldsettings_btn {
@@ -25,7 +20,7 @@
 
 .table__fieldsettings--active {
   position: absolute;
-  top: 185px;
+  top: 220px;
   right: 10%;
   width: 18%;
   padding-top: 10px;
@@ -66,6 +61,7 @@
   width: 100%;
   padding: 0.5em 0;
   cursor: pointer;
+  text-align: left;
   &::before {
     content: ' ';
     position: relative;

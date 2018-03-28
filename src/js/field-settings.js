@@ -32,7 +32,7 @@ export default class {
                 </label>`).reduce((accum, elem) => accum + elem);
         };
     hide() {
-        debugger;
+
         if (event.target.classList.contains('table__fieldsettings__item') === false && event.target.classList.contains('table__fieldsettings__checkbox') === false) {
             this.container.classList.remove('table__fieldsettings--active');
             this.triggerBtn.setAttribute('src', '../images/field_settings.png');

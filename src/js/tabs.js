@@ -14,10 +14,21 @@ export default class {
             debugger;
             switch (document.body.querySelector(".tabs__item--active").innerHTML) {
                 case "Товары": 
+<<<<<<< HEAD
                     this.renderButtonTitle("новый товар");
                     break;
                 case "Поставки":
                     this.renderButtonTitle("новая поставка");
+=======
+                    tableControl.renderButtonTitle("новый товар");
+                    table.redrawTable(productTableFields);
+                    fieldSettings = new Fieldsettings();
+                    break;
+                case "Поставки":
+                    tableControl.renderButtonTitle("новая поставка");
+                    table.redrawTable(supplyTableFields);
+                    fieldSettings = new Fieldsettings();
+>>>>>>> development
                     break;
                 case "Категории":
                     this.renderButtonTitle("новая категория");
