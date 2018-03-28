@@ -188,7 +188,8 @@ function editHandler(event) {
                 <select name="category" class="table-column__input-select">
                     <option value=${el.textContent}>${el.textContent}</option>
                 </select>`
-            let categorySelection = document.querySelector('.table-column__input-select');
+            let id =  currentTr.id;
+            let categorySelection = document.querySelector(`#${id} .table-column-category .table-column__input-select`);
             categorySelection.insertAdjacentHTML('beforeend',reducedArr);
         } else if(isDate || isSupDate) {
             el.innerHTML = `<input type="date" value="${el.textContent}" class="table-column__input-date">`;
@@ -229,7 +230,6 @@ function delHandler(event) {
             continue;
         };
         if (isCategory) {
-            debugger
             child.children[0].classList.add('setToDel-category');
             continue;
         };
@@ -319,13 +319,23 @@ function editConfirmHandler(event) {
             continue;
         };
         if (isCategory) {
-            debugger
-            el.innerHTML = `
-            <span id=${child.value}>
-            <span>${child.value}
-            </span>
-            </span>
-            `;
+            let value = child.value;
+            if (value === 'Хоз.товары') {
+                el.innerHTML = `
+                <span id="Хозтовары">
+                <span>${value}
+                </span>
+                </span>
+                `;
+            } else {
+                el.innerHTML = `
+                <span id=${value}>
+                <span>${value}
+                </span>
+                </span>
+                `;
+            }
+    
             continue;
         }
         if (isDate || isSupDate) {
