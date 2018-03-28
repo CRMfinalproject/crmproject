@@ -292,9 +292,12 @@ function resultID() {
             break;
     }
 
-    filterData();
     page.setSettings(finalResults);
+    startRow = 0;
+    endRow = ROWS_PER_PAGE;
     page.render();
+    filterData();
+
 
     // console.log("Список ID для fetch" + "  " + finalResults);
 }
@@ -304,6 +307,7 @@ function resultID() {
 let dataFilter = [];
 
 function filterData() {
+
     dataFilter = [];
     for (let i = 0; i < data.length; i++) {
         for (let j = 0; j < finalResults.length; j++) {

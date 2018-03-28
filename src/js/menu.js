@@ -161,6 +161,7 @@ const burgerMenu = new Menu('.burger-menu__container', {
     openStateClass: 'burger-menu__container--open',
     onClick() {
         this.close();
+        burgerBtn.close();
     },
     onItemMouseLeave() {
         this.close();

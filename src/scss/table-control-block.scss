@@ -5,8 +5,11 @@
     flex-direction: row;
     flex-wrap:wrap;
     width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+
+    //margin-left: auto;
+    //margin-right: auto;
+    margin-left:80px;
+
     height:110px;
 
     &__button {
@@ -80,6 +83,7 @@
 
         &--opened & {
             display: flex;
+            z-index:100;
         }
         &--opened .table-control__button__arrow {
             // transform: rotate(225deg);
