@@ -149,7 +149,7 @@ class Menu {
         this.subitems = document.querySelectorAll(selector + ` ${options.subItemClass}`); 
         this.options = options;
         this.element.addEventListener('click', event => this.onClick(event));
-        // this.element.addEventListener('mouseleave', event => this.onItemMouseLeave(event));
+        this.element.addEventListener('mouseleave', event => this.onItemMouseLeave(event));
 
         this.subitems.forEach( subitem => subitem.addEventListener('click', event => this.onSubItemClick(event)));
     }
@@ -224,6 +224,7 @@ const burgerMenu = new Menu('.burger-menu__container', {
     openStateClass: 'burger-menu__container--open',
     onClick() {
         this.close();
+        burgerBtn.close();
     },
     onItemMouseLeave() {
         this.close();

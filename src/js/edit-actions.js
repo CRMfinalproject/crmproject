@@ -170,22 +170,29 @@ function editHandler(event) {
         let isDate = el.classList.contains('table-column-creationDate');
         let isWeight = el.classList.contains('table-column-weight');
         let isSize = el.classList.contains('table-column-size');
+        let isPurPrice = el.classList.contains('table-column-purchasePrice');
+        let isSupDate = el.classList.contains('table-column-supplyDate');
 
         if(isName) {
             el.innerHTML = `<input type="text" value="${el.textContent}" class="table-column__input-name">`;
         } else if(isCategory) {
-            el.innerHTML = `
-                <select name="category" class="table-column__input-select">
-                </select>`
-            let categorySelection = document.querySelector('.table-column__input-select');
             let sortedCateg = data.map((elem) => elem.category).sort();
             let categoryList = sortedCateg.filter((el, i, arr) => arr.includes(el, i + 1) === false);
+            if (categoryList.includes(el.textContent)) {
+                let i = categoryList.indexOf(el.textContent);
+                categoryList.splice(i, 1);
+            };
             let mappedArr = categoryList.map((elem) => `<option value=${elem}>${elem}</option>`);
             let reducedArr = mappedArr.reduce((accum, elem) => accum + elem);
+            el.innerHTML = `
+                <select name="category" class="table-column__input-select">
+                    <option value=${el.textContent}>${el.textContent}</option>
+                </select>`
+            let categorySelection = document.querySelector('.table-column__input-select');
             categorySelection.insertAdjacentHTML('beforeend',reducedArr);
-        } else if(isDate) {
-            el.innerHTML = `<input type="date" value="${el.textContent}" class="table-column__input-creationDate">`;
-        } else if(isPrice || isCount || isWeight){
+        } else if(isDate || isSupDate) {
+            el.innerHTML = `<input type="date" value="${el.textContent}" class="table-column__input-date">`;
+        } else if(isPrice || isCount || isWeight || isPurPrice){
             firstCh.innerHTML = `<input type="text" value="${firstCh.textContent}" class="table-column__input-numbers">`;
         } else if(isSize) {
             firstCh.innerHTML = `<input type="text" value="${firstCh.textContent}" class="table-column__input-size">`;
@@ -222,13 +229,14 @@ function delHandler(event) {
             continue;
         };
         if (isCategory) {
-            child.classList.add('setToDel-category');
+            debugger
+            child.children[0].classList.add('setToDel-category');
             continue;
         };
     };
     // let id = currentTr.id;
     // let originId = id.replace('row-', '');
-    // current th with class = cell
+    //current th with class = cell
     let td = event.target.parentElement.parentElement; 
     td.children[1].classList.add("close");
     td.children[3].classList.remove("close");
@@ -277,7 +285,7 @@ function recConfirmHandler(event) {
             child.classList.remove('setToDel-name');
         };
         if (isCategory) {
-            child.classList.remove('setToDel-category');
+            child.children[0].classList.remove('setToDel-category');
         };
     };
 };
@@ -300,6 +308,8 @@ function editConfirmHandler(event) {
         let isDate = el.classList.contains('table-column-creationDate');
         let isWeight = el.classList.contains('table-column-weight');
         let isSize = el.classList.contains('table-column-size');
+        let isPurPrice = el.classList.contains('table-column-purchasePrice');
+        let isSupDate = el.classList.contains('table-column-supplyDate');
 
         if (isCheckbox) {
             continue;
@@ -309,14 +319,20 @@ function editConfirmHandler(event) {
             continue;
         };
         if (isCategory) {
-            el.innerHTML = `<span>${child.value}</span>`;
+            debugger
+            el.innerHTML = `
+            <span id=${child.value}>
+            <span>${child.value}
+            </span>
+            </span>
+            `;
             continue;
         }
-        if (isDate) {
+        if (isDate || isSupDate) {
             el.innerHTML = child.value;
             continue;
         }
-        if (isCount || isPrice || isWeight || isSize) {
+        if (isCount || isPrice || isWeight || isSize || isPurPrice) {
             child.innerHTML = child.children[0].value;
             continue;
         };
