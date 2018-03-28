@@ -229,7 +229,8 @@ function delHandler(event) {
             continue;
         };
         if (isCategory) {
-            child.classList.add('setToDel-category');
+            debugger
+            child.children[0].classList.add('setToDel-category');
             continue;
         };
     };
@@ -284,7 +285,7 @@ function recConfirmHandler(event) {
             child.classList.remove('setToDel-name');
         };
         if (isCategory) {
-            child.classList.remove('setToDel-category');
+            child.children[0].classList.remove('setToDel-category');
         };
     };
 };
