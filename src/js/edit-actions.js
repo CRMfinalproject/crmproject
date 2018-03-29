@@ -321,19 +321,9 @@ function editConfirmHandler(event) {
         if (isCategory) {
             let value = child.value;
             if (value === 'Хоз.товары') {
-                el.innerHTML = `
-                <span id="Хозтовары">
-                <span>${value}
-                </span>
-                </span>
-                `;
+                el.innerHTML = `<span id="Хозтовары"><span>${value}</span></span>`;
             } else {
-                el.innerHTML = `
-                <span id=${value}>
-                <span>${value}
-                </span>
-                </span>
-                `;
+                el.innerHTML = `<span id=${value}><span>${value}</span></span>`;
             }
     
             continue;
