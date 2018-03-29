@@ -122,7 +122,7 @@ let productTableFields = [
     { name: "count", view: "Кол-во на складе", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">шт</span>` },
     { name: "price", view: "Цена", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">грн</span>` },
     { name: "creationDate", view: "Дата создания", hidden: false, format: (x) => `<span>${x}</span>` },
-    { name: "weight", view: "Вес", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">Кг</span>` },
+    { name: "weight", view: "Вес", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">кг</span>` },
     { name: "size", view: "Размеры(ШхВхД)", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">см</span>` }
 ];
 
