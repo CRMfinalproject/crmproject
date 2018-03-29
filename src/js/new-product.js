@@ -4,26 +4,28 @@ class AddProduct {
         document.body.querySelector(".table-control__button--add-new").addEventListener('click', () => this.render());
     }
     render() {
-        this.container = document.createElement('div');
-        this.container.classList.add('new-product__wrapper');
-        document.querySelector('.content').insertBefore(this.container, document.querySelector('.data-table'));
-        this.background = document.createElement('div');
-        this.background.classList.add('new-product__background');
-        document.querySelector('.content').appendChild(this.background);
-        this.newProductHtml = document.querySelector('#js-add-new-product').textContent.trim();
-        this.container.insertAdjacentHTML('afterbegin', this.newProductHtml);
-        this.defineVariables();
-        this.categorySelectionHtml = this.categoryList.map((elem) => `<li class="new-product__form__selection__option" hidden>${elem}</li>`).reduce((accum, elem) => accum + elem);
-        this.categorySelection.insertAdjacentHTML('beforeend', this.categorySelectionHtml);
-        this.categoryOption = this.container.querySelectorAll('.new-product__form__selection__option');
-        this.addEvents();
+        if (document.body.querySelector(".tabs__item--active").textContent === "Товары") {
+            this.container = document.createElement('div');
+            this.container.classList.add('new-product__wrapper');
+            document.querySelector('.content').insertBefore(this.container, document.querySelector('.data-table'));
+            this.background = document.createElement('div');
+            this.background.classList.add('new-product__background');
+            document.querySelector('.content').appendChild(this.background);
+            this.newProductHtml = document.querySelector('#js-add-new-product').textContent.trim();
+            this.container.insertAdjacentHTML('afterbegin', this.newProductHtml);
+            this.defineVariables();
+            this.categorySelectionHtml = this.categoryList.map((elem) => `<li class="new-product__form__selection__option" hidden>${elem}</li>`).reduce((accum, elem) => accum + elem);
+            this.categorySelection.insertAdjacentHTML('beforeend', this.categorySelectionHtml);
+            this.categoryOption = this.container.querySelectorAll('.new-product__form__selection__option');
+            this.addEvents();
+        }
     };
     defineVariables() {
         this.nameInput = this.container.querySelector('#js-new-product-name');
         this.form = this.container.querySelector('#js-new-product-form');
         this.categoryInput = this.container.querySelector('#js-new-product-category');
         this.categorySelection = this.container.querySelector('#js-select-category');
-        this.categorySelectionBtn = this.container.querySelector('.new-product__form__selection__arrow');
+        this.categorySelectionBtn = this.container.querySelector('#js-form-selection-arrow');
         this.descriptionInput = this.container.querySelector('#js-new-product-description');
         this.numberInputs = this.container.querySelectorAll('.new-product__form__input--number__label', '.new-product__form__input--number__label--small');
         this.priceInput = this.container.querySelector('#js-new-product-price');
@@ -35,7 +37,6 @@ class AddProduct {
         this.volumeInput = this.container.querySelector('#js-new-product-volume');
         this.submitBtn = this.container.querySelector('#js-new-product-submit-btn');
         this.closeBtn = this.container.querySelector('#js-new-product-close-btn');
-        this.arrow = this.container.querySelector("arrow");
     };
     addEvents() {
         document.querySelector('.content').addEventListener('click', () => {
@@ -45,15 +46,18 @@ class AddProduct {
         })
         this.form.addEventListener('input', () => this.autocompleteVolume());
         this.form.addEventListener('click', () => {
-            if (event.target === this.categoryInput || event.target === this.categorySelectionBtn) {
-                this.showCategories();
-                if (event.target === this.categorySelectionBtn || event.target === this.arrow ){
-                    this.hideCategories();
-                }
+            if (event.target === this.nameInput) {
+                this.hideStarInRequired();
             } else if (event.target.classList.contains('new-product__form__selection__option')) {
                 this.selectCategory();
                 this.hideCategories();
-            }
+            } else if (event.target === this.categoryInput || event.target === this.categorySelectionBtn || event.target.parentNode === this.categorySelectionBtn) {
+                this.showCategories();
+                    } /*else {
+                        if (event.target === this.categorySelectionBtn || event.target.parentNode === this.categorySelectionBtn || event.target.parentNode !== this.categorySelection) {
+                            this.hideCategories();
+                }
+            }*/
         });
         this.form.addEventListener('keyup', () => this.autocompleteSelection());
         this.submitBtn.addEventListener('click', () => this.createNewProduct());
@@ -71,6 +75,9 @@ class AddProduct {
     hideCategories(){
        this.categoryOption.forEach((elem) => elem.setAttribute('hidden', true));
     };
+    hideStarInRequired() {
+        this.container.querySelector('#js-required-field-star').setAttribute('hidden', true);
+    }
     autocompleteSelection() {
         if (event.target === this.categoryInput) {
             let inputLength = this.categoryInput.value.length;
@@ -127,4 +134,3 @@ class AddProduct {
 }
 let productCategoryList = data.map((elem) => elem.category).sort().filter((el, i, arr) => arr.includes(el, i + 1) === false);
 let newProduct = new AddProduct(productCategoryList);
-
