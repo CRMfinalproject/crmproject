@@ -3,13 +3,15 @@ import { createElem } from './utils';
 export default class {
     constructor (table) {
         this.table = table;
+        this.renderContainer();
+        this.render();
+    }
+    renderContainer () {
         let parent = document.body.querySelector(".content");
         let nextSibling = document.body.querySelector(".table-control");
         this.tabsContainer = createElem(parent, 'div', 'tabs', nextSibling);
-        this.render();
         this.tabsContainer.addEventListener('click', this.toggle.bind(this));
     }
-
     toggle (event) {
         if (!event.target.classList.contains("tabs__item--active") && event.target.classList.contains("tabs__item")) {
             document.body.querySelector(".tabs__item--active").classList.remove("tabs__item--active");

@@ -1,19 +1,35 @@
+import { createElem } from './utils';
+
 export default class {
     constructor(productTableFields, supplyTableFields, data, dataFilter) {
-        this.container = document.createElement('table');
-        document.body.querySelector('.content').appendChild(this.container);
-        this.container.classList.add('data-table');
-        this.container.insertAdjacentHTML('afterbegin', `<thead class="data-table-header"></thead><tbody class="data-table-body"></tbody>`);
-        debugger;
         this.fields = productTableFields;
         this.productFields = productTableFields;
         this.supplyFields = supplyTableFields;
         this.data = data;
         this.dataFilter = dataFilter;
 
+        this.renderContainer();
         this.setSettings();
         this.renderHeader();
         this.renderData();
+
+        // this.productsBtn = document.querySelector('#js-menu-products');
+        // this.productsBtn.addEventListener('click', () => {
+        //     debugger;
+        //     document.querySelector('.content').innerHTML = '';
+        //     this.renderContainer();
+        //     this.renderHeader();
+        //     this.renderData()
+        //  });
+    }
+    renderContainer () {
+        let parent = document.body.querySelector('.content');
+        this.container = createElem(parent, 'table', 'data-table');
+
+        // this.container = document.createElement('table');
+        // document.body.querySelector('.content').appendChild(this.container);
+        // this.container.classList.add('data-table');
+        this.container.insertAdjacentHTML('afterbegin', `<thead class="data-table-header"></thead><tbody class="data-table-body"></tbody>`);
     }
 
     setSettings () {
@@ -38,7 +54,7 @@ export default class {
     renderData() {
        // перед тем, как перерисовать таблицу удаляем отмеченные у удалению строки
         this.deleteSelected();
-        // debugger;
+        debugger;
         let dataPage = this.data.slice(this.startRow, this.endRow);
         if (this.dataFilter) {
             dataPage = this.dataFilter.slice(this.startRow, this.endRow);
@@ -101,7 +117,6 @@ export default class {
         let rowsToDel = Array.from(document.querySelectorAll(".setToDel"));
         if (rowsToDel.length) {
             let idsToDel = rowsToDel.map(row => {
-                // row.classList.add('setToDel');
                 return row.id.replace('row-', '');
             });
             let countToDel = 0;

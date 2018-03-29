@@ -3,22 +3,15 @@ import { createElem } from './utils';
 export default class {
     constructor(addText) {
         this.addText = addText;
-        debugger;
-        if (!document.body.querySelector(".table-control")) {
-            debugger;
-            this.container = createElem(document.body.querySelector(".content"), 'div', 'table-control');
-            this.render();
-        } else {
-            this.container = document.body.querySelector(".table-control");
-            this.renderButtonTitle(this.addText);
-            };
-        
-        
+        this.renderContainer();
+        this.render();
         this.actionSubmenu = this.container.querySelector(".table-control__button--actions");
         this.renderActionSubmenu();
         this.actionSubmenu.addEventListener('click', this.showActionSubmenu.bind(this));
     }
-
+    renderContainer() {
+        this.container = createElem(document.body.querySelector(".content"), 'div', 'table-control');
+    }
     render() {
         debugger;
         this.container.insertAdjacentHTML("afterbegin", `

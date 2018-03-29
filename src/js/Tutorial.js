@@ -9,7 +9,7 @@ export default class {
     render(){
         event.preventDefault();
         document.querySelector('.content').innerHTML = this.contentHtml + this.sidebarHtml;
-        new Likecounter();
+        // new Likecounter();
     }
 }
 

@@ -66,6 +66,20 @@ let sorting = new Sorting(table);
 import Pagination from './pagination';
 let page = new Pagination(table);
 
+let productsBtn = document.querySelector('#js-menu-products');
+productsBtn.addEventListener('click', () => {
+    document.querySelector('.content').innerHTML = '';
+    tabs.renderContainer();
+    tabs.render();
+    tableControl.renderContainer();
+    tableControl.render();
+    table.renderContainer();
+    table.renderHeader();
+    table.renderData();
+    page.renderContainer();
+    page.render();
+});
+
 import Tutorial from './tutorial';
 debugger;
 let tutorialPageHtml = document.querySelector('#js-tutorial-content').textContent.trim();
@@ -73,3 +87,4 @@ let tutorialPage = new Tutorial(tutorialPageHtml);
 
 import Likecounter from './tutorial_likecounter';
 let tutorialLikeCounter = new Likecounter();
+

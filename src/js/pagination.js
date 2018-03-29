@@ -2,13 +2,10 @@ export default class {
     constructor(table) {       
         // debugger;
         this.table = table;
-        let content = document.querySelector('.content');
-        content.insertAdjacentHTML('beforeend', '<div class="pagination"></div>');
-        this.container = document.body.querySelector(".pagination");
-        this.container.addEventListener('click', this.switchPages.bind(this));
 
         window.addEventListener('resize', this.controlSize.bind(this));
         this.setSettings();
+        this.renderContainer();
         this.render();
     }
     setSettings() {
@@ -41,6 +38,12 @@ export default class {
 
         return this.arrPagesToShow;
     }
+    renderContainer() {
+        let content = document.querySelector('.content');
+        content.insertAdjacentHTML('beforeend', '<div class="pagination"></div>');
+        this.container = document.body.querySelector(".pagination");
+        this.container.addEventListener('click', this.switchPages.bind(this));
+    } 
     render() {
         // debugger;
         this.container.innerHTML = ``;
