@@ -1,11 +1,15 @@
 export default class {
 	constructor(table){
-		this.tHead = document.querySelector(".data-table-header");
+		// this.tHead = document.querySelector(".data-table-header");
 		this.prev;
-		this.tHead.addEventListener("click", this.sort.bind(this));
+		// this.tHead.addEventListener("click", this.sort.bind(this));
 		this.table = table;
+		this.setClick();
 	}
-	
+	setClick() {
+		this.tHead = document.querySelector(".data-table-header");
+		this.tHead.addEventListener("click", this.sort.bind(this));	
+	}
 	sortNames(criteria) {
 		if((typeof this.prev !== "undefined") && (this.prev !== event.target)){
 			this.prev.classList.remove("desc");
