@@ -1,6 +1,7 @@
 export default class {
-    constructor(categoryList) {
+    constructor(categoryList, table) {
         this.categoryList = categoryList;
+        this.table = table;
         document.body.querySelector(".table-control__button--add-new").addEventListener('click', () => this.render());
     }
     render() {
@@ -91,7 +92,7 @@ export default class {
     };
     createNewProduct() {
         let productToAdd = {
-             id: data.length + 1,
+             id: this.table.data.length + 1,
              name: this.nameInput.value,
              category: this.categoryInput.value,
              description: this.descriptionInput.value,
@@ -102,8 +103,8 @@ export default class {
              weight: this.weightInput.value,
              volume: this.volumeInput.value
         };
-        data.push(productToAdd);
-        dataFilter.push(productToAdd);
+        this.table.data.push(productToAdd);
+        // dataFilter.push(productToAdd);
     };
     showSuccessMessage() {
          if (event.target === this.form) {
@@ -119,6 +120,4 @@ export default class {
     }
 }
 
-// let productCategoryList = data.map((elem) => elem.category).sort().filter((el, i, arr) => arr.includes(el, i + 1) === false);
-// let newProduct = new AddProduct(productCategoryList);
 

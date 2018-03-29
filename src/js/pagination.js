@@ -71,7 +71,7 @@ export default class {
         }
     }
     switchPages(event) {
-        debugger;
+        // debugger;
         event.preventDefault();
         if (event.target.innerHTML == "..." || event.target == this.container ||
             event.target.classList.contains("pagination__item")) { return };

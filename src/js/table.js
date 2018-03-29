@@ -21,7 +21,7 @@ export default class {
     }
 
     renderHeader() {
-        debugger;
+        // debugger;
         let headerContent = "";
       // добавила в отрисовку заголовков проверку выбранных полей
         //${ this.fields.map((elem) => elem.hidden === false ? ` <th class = "order-ctrl">${elem.view}</th>` : '').reduce((accum, next) => accum + next) }
@@ -38,7 +38,7 @@ export default class {
     renderData() {
        // перед тем, как перерисовать таблицу удаляем отмеченные у удалению строки
         this.deleteSelected();
-        debugger;
+        // debugger;
         let dataPage = this.data.slice(this.startRow, this.endRow);
         if (this.dataFilter) {
             dataPage = this.dataFilter.slice(this.startRow, this.endRow);
@@ -111,9 +111,9 @@ export default class {
                     while (countToDel != idsToDel.length) {
                         for (let i=0; i<this.data.length; i++) {
                             idsToDel.map(productToDel => {
-                                if (data[i].id == productToDel) {
-                                    data.splice(i, 1);
-                                    dataFilter.splice(i, 1);
+                                if (this.data[i].id == productToDel) {
+                                    this.data.splice(i, 1);
+                                    // dataFilter.splice(i, 1);
                                     countToDel++;
                                 }
                             })
@@ -123,7 +123,7 @@ export default class {
     }
 
     setCurrentPage (currentPage) {
-        debugger;
+        // debugger;
         this.startRow = (currentPage - 1) * this.ROWS_PER_PAGE;
         this.endRow = currentPage * this.ROWS_PER_PAGE;
         if (this.endRow >= this.data.length) {

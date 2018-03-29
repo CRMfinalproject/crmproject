@@ -49,13 +49,13 @@ let tabs = new Tabs();
 import TableControlBlock from './table-control-block';
 let tableControl = new TableControlBlock("новый товар");
 
+import Table from './table';
+let table = new Table(productTableFields, data, '');
+
 import AddProduct from './new-product';
 let productCategoryList = data.map(
     (elem) => elem.category).sort().filter((el, i, arr) => arr.includes(el, i + 1) === false);
-let newProduct = new AddProduct(productCategoryList);
-
-import Table from './table';
-let table = new Table(productTableFields, data, '');
+let newProduct = new AddProduct(productCategoryList, table);
 
 import Fieldsettings from './field-settings';
 let fieldSettings = new Fieldsettings(productTableFields, table);
