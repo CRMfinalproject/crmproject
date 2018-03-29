@@ -18,7 +18,6 @@ function addEventClickOnDotsButtons() {
     addEvents('.table-column-actions__dots', 'click', dotsHandler);
 };
 
-//addEventClickOnDotsButtons();
 
 
 function copyHandler(event) {
@@ -51,9 +50,21 @@ function copyHandler(event) {
     addEventClickOnRecConfirmButtons();
     addEventMouseOutForActions();
 
-
+    let dateCell = document.querySelector(`#${newId} .table-column-creationDate`);
+    let now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth();
+    let day = now.getDate();
+    let newDate = '';
+    if (month < 10) {
+        newDate = `${year}-0${month}-${day}`
+    } else {
+        newDate = `${year}-${month}-${day}`
+    }
+    dateCell.children[0].innerHTML = newDate;
+    
     let newObject = makeObject(cloneTr);
-    add(newObject);
+    add(newObject, data);
 
     td.children[1].classList.add("close");
     td.children[0].classList.remove("close");
@@ -64,7 +75,7 @@ function makeObject(tr) {
     let id = tr.id;
     let name = tr.children[1].children[0].textContent;
     let category = tr.children[2].textContent;
-    let count = tr.children[3].children[0];
+    let count = tr.children[3].children[0].textContent;
     let price = tr.children[4].children[0].textContent;
     let creationDate = tr.children[5].children[0].textContent;
     let weight = tr.children[5].children[0].textContent;
@@ -83,8 +94,8 @@ function makeObject(tr) {
 };
 
 
-function add(a) {
-    data.push(a);
+function add(obj, arr) {
+    arr.push(obj);
 };
 
 
@@ -123,7 +134,6 @@ function actionsMouseLeave(event) {
         el.previousSibling.classList.remove('close');
     };
 };
-//addEventMouseOutForActions();
 
 
 function removeEventClickOnCopyButtons() {
@@ -140,7 +150,6 @@ function removeEventClickOnCopyButtons() {
 function addEventClickOnCopyButtons() {
     addEvents('.table-column-actions__copy','click', copyHandler);    
 };
-//addEventClickOnCopyButtons();
 
 
 function editHandler(event) {
@@ -151,19 +160,43 @@ function editHandler(event) {
     td.children[2].classList.remove("close");
 
     for(let i = 1; i < currentTd.length-1; i++ ){
-        if(currentTd[i].classList.contains('table-column-creationDate')) {
-            currentTd[i].innerHTML = `<input type="date" value="${currentTd[i].textContent}" class="table-column-creationDate__input">`;
-        } else if(currentTd[i].classList.contains('table-column-category')) {
-            currentTd[i].innerHTML = `
-                <select name="category" class="table-column-category">
-                    <option>Игрушки</option>
-                    <option>Косметика</option>
-                    <option>Сумки</option>
-                    <option>Обувь</option>
-                </select>`
-        } else {
-            currentTd[i].innerHTML = `<input type="text" value="${currentTd[i].textContent}" class="table-column__input">`;
+        let el = currentTd[i];
+        let firstCh = el.children[0];
+        let secondCh = el.children[1];
+        let isName = el.classList.contains('table-column-name');
+        let isCategory = el.classList.contains('table-column-category');
+        let isCount = el.classList.contains('table-column-count');
+        let isPrice = el.classList.contains('table-column-price');
+        let isDate = el.classList.contains('table-column-creationDate');
+        let isWeight = el.classList.contains('table-column-weight');
+        let isSize = el.classList.contains('table-column-size');
+        let isPurPrice = el.classList.contains('table-column-purchasePrice');
+        let isSupDate = el.classList.contains('table-column-supplyDate');
 
+        if(isName) {
+            el.innerHTML = `<input type="text" value="${el.textContent}" class="table-column__input-name">`;
+        } else if(isCategory) {
+            let sortedCateg = data.map((elem) => elem.category).sort();
+            let categoryList = sortedCateg.filter((el, i, arr) => arr.includes(el, i + 1) === false);
+            if (categoryList.includes(el.textContent)) {
+                let i = categoryList.indexOf(el.textContent);
+                categoryList.splice(i, 1);
+            };
+            let mappedArr = categoryList.map((elem) => `<option value=${elem}>${elem}</option>`);
+            let reducedArr = mappedArr.reduce((accum, elem) => accum + elem);
+            el.innerHTML = `
+                <select name="category" class="table-column__input-select">
+                    <option value=${el.textContent}>${el.textContent}</option>
+                </select>`
+            let id =  currentTr.id;
+            let categorySelection = document.querySelector(`#${id} .table-column-category .table-column__input-select`);
+            categorySelection.insertAdjacentHTML('beforeend',reducedArr);
+        } else if(isDate || isSupDate) {
+            el.innerHTML = `<input type="date" value="${el.textContent}" class="table-column__input-date">`;
+        } else if(isPrice || isCount || isWeight || isPurPrice){
+            firstCh.innerHTML = `<input type="text" value="${firstCh.textContent}" class="table-column__input-numbers">`;
+        } else if(isSize) {
+            firstCh.innerHTML = `<input type="text" value="${firstCh.textContent}" class="table-column__input-size">`;
         };
     };
 };
@@ -177,32 +210,48 @@ function removeEventClickOnEditButtons() {
 function addEventClickOnEditButtons() {
     addEvents('.table-column-actions__edit', 'click', editHandler);
 };
-//addEventClickOnEditButtons();
 
 
 function delHandler(event) {
     // current tr with class = row
     let currentTr = event.target.parentElement.parentElement.parentElement; 
-    currentTr.classList.add('setToDel');
-    let id = currentTr.id;
-    let originId = id.replace('row-', '');
-    // current th with class = cell
-    let td = event.target.parentElement.parentElement; 
     // all th in this tr with class = cell
     let currentTd = currentTr.children; 
+    currentTr.classList.add('setToDel');
+
+    for(let i = 0; i < currentTd.length; i++ ) {
+        let el = currentTd[i];
+        let child = currentTd[i].children[0];
+        let isName = el.classList.contains('table-column-name');
+        let isCategory = el.classList.contains('table-column-category')
+        
+        if (isName) {
+            child.classList.add('setToDel-name');
+            continue;
+        };
+        if (isCategory) {
+            child.children[0].classList.add('setToDel-category');
+            continue;
+        };
+    };
+    // let id = currentTr.id;
+    // let originId = id.replace('row-', '');
+    //current th with class = cell
+    let td = event.target.parentElement.parentElement; 
     td.children[1].classList.add("close");
     td.children[3].classList.remove("close");
-    
+
+    //====== to uncomment the code below if it will be needed: =====//
+
     // timerId = setTimeout( () => {
-    //     debugger;
-    //     let toDel = document.querySelector(`#${id}`);
-    //     toDel.remove();
-    //     for(let i = 0; i< data.length; i++) {
-    //         if(data[i].id == originId) {
-    //             data.splice(i, 1);
-    //             break;
-    //         };
-    //     };
+        // let toDel = document.querySelector(`#${id}`);
+        // toDel.remove();
+        // for(let i = 0; i< data.length; i++) {
+        //     if(data[i].id == originId) {
+        //         data.splice(i, 1);
+        //         break;
+        //     };
+        // };
     // }, 5000);
 };
 
@@ -215,17 +264,30 @@ function removeEventClickOnDelButtons() {
 function addEventClickOnDelButtons() {
     addEvents('.table-column-actions__delete', 'click', delHandler);
 }; 
-//addEventClickOnDelButtons();
 
 
 function recConfirmHandler(event) {
-    clearTimeout(timerId);
+    //for delHandler:
+    //clearTimeout(timerId);
     let currentTr = event.target.parentElement.parentElement.parentElement;
     let currentTd = currentTr.children;
     let td = event.target.parentElement.parentElement;
     td.children[3].classList.add("close");
     td.children[0].classList.remove("close");
     currentTr.classList.remove('setToDel');
+    for(let i = 0; i < currentTd.length; i++ ) {
+        let el = currentTd[i];
+        let child = currentTd[i].children[0];
+        let isName = el.classList.contains('table-column-name');
+        let isCategory = el.classList.contains('table-column-category')
+        
+        if (isName) {
+            child.classList.remove('setToDel-name');
+        };
+        if (isCategory) {
+            child.children[0].classList.remove('setToDel-category');
+        };
+    };
 };
 
 
@@ -237,23 +299,48 @@ function editConfirmHandler(event) {
 
     for(let i = 0; i < currentTd.length; i++ ) {
         let el = currentTd[i];
-        if (el.classList.contains('table-column-checkbox'))
+        let child = currentTd[i].children[0];
+        let isCheckbox = el.classList.contains('table-column-checkbox');
+        let isName = el.classList.contains('table-column-name');
+        let isCategory = el.classList.contains('table-column-category');
+        let isCount = el.classList.contains('table-column-count');
+        let isPrice = el.classList.contains('table-column-price');
+        let isDate = el.classList.contains('table-column-creationDate');
+        let isWeight = el.classList.contains('table-column-weight');
+        let isSize = el.classList.contains('table-column-size');
+        let isPurPrice = el.classList.contains('table-column-purchasePrice');
+        let isSupDate = el.classList.contains('table-column-supplyDate');
+
+        if (isCheckbox) {
             continue;
-            
-        const child = currentTd[i].children[0];
-        if (child.tagName == 'INPUT') {
-            if ( el.classList.contains('table-column-name')) {
-                el.innerHTML = `<a href=""Ссылка на товар/${currentTd.id}"" class="table-column-name__link">` + child.value + '</a>';
-            } else {
-                el.innerHTML = '<span>' + child.value + '</span>';
-            };
         };
-        if (child.tagName == 'SELECT') {
-            el.innerHTML = child.value;;
+        if (isName) {
+            el.innerHTML = `<a href="Ссылка на товар/${currentTd.id}" class="table-column-name__link">${child.value}</a>`;
+            continue;
+        };
+        if (isCategory) {
+            let value = child.value;
+            if (value === 'Хоз.товары') {
+                el.innerHTML = `<span id="Хозтовары"><span>${value}</span></span>`;
+            } else {
+                el.innerHTML = `<span id=${value}><span>${value}</span></span>`;
+            }
+    
+            continue;
         }
-        td.children[2].classList.add("close");        
-        td.children[0].classList.remove("close");
+        if (isDate || isSupDate) {
+            el.innerHTML = child.value;
+            continue;
+        }
+        if (isCount || isPrice || isWeight || isSize || isPurPrice) {
+            child.innerHTML = child.children[0].value;
+            continue;
+        };
+
     };
+
+    td.children[2].classList.add("close");        
+    td.children[0].classList.remove("close");
 };
 
 
@@ -265,7 +352,6 @@ function removeEventClickOnEditConfirmButtons() {
 function addEventClickOnEditConfirmButtons() {
     addEvents('.table-column-actions__ok', 'click', editConfirmHandler);
 };
-//addEventClickOnEditConfirmButtons();
 
 
 function removeEventClickOnRecConfirmButtons() {
@@ -276,7 +362,6 @@ function removeEventClickOnRecConfirmButtons() {
 function addEventClickOnRecConfirmButtons() {
     addEvents('.table-column-actions__recover','click', recConfirmHandler);
 };
-// addEventClickOnRecConfirmButtons();
 
 
 function getGenericId() {

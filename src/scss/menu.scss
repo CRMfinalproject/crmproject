@@ -21,12 +21,14 @@ body {
 .wrapper {
     // height: 100%; 
     display: flex;
+	//width: 100%;
     // flex-direction: column;
 }
 
 .header {
     height: 50px;
     min-height: 50px;
+    width: 100%;
     display: flex;
     background-color: #ffffff;
 }
@@ -183,7 +185,7 @@ body {
     width: $burger-width;
     min-width: $burger-width;
     background: $burger-background;
-    z-index: 1000;
+    z-index: 1;
 
     &__container {
         padding: 0;

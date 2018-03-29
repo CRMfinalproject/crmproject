@@ -13,9 +13,13 @@ class Tabs {
             switch (document.body.querySelector(".tabs__item--active").innerHTML) {
                 case "Товары": 
                     tableControl.renderButtonTitle("новый товар");
+                    table.redrawTable(productTableFields);
+                    fieldSettings = new Fieldsettings();
                     break;
                 case "Поставки":
                     tableControl.renderButtonTitle("новая поставка");
+                    table.redrawTable(supplyTableFields);
+                    fieldSettings = new Fieldsettings();
                     break;
                 case "Категории":
                     tableControl.renderButtonTitle("новая категория");

@@ -11,14 +11,14 @@ class Sorting {
 		}
 		event.target.classList.toggle("desc");
 		if(event.target.classList.contains("desc")){
-			data.sort(function(obj1, obj2) {
+			dataFilter.sort(function(obj1, obj2) {
 				if (obj1[criteria] < obj2[criteria]) return 1;
 				if (obj1[criteria] > obj2[criteria]) return -1;
 				return 0;
 			});
 			table.renderData();
 		} else {
-			data.sort(function(obj1, obj2) {
+			dataFilter.sort(function(obj1, obj2) {
 				if (obj1[criteria] < obj2[criteria]) return -1;
 				if (obj1[criteria] > obj2[criteria]) return 1;
 				return 0;
@@ -35,12 +35,12 @@ class Sorting {
 		if(event.target.textContent === "Дата создания"){
 			event.target.classList.toggle("desc");
 			if(event.target.classList.contains("desc")){
-				data.sort(function(obj1, obj2) {
+				dataFilter.sort(function(obj1, obj2) {
 					return (new Date(obj2.creationDate) - new Date(obj1.creationDate));
 				});
 				table.renderData();
 			} else {
-				data.sort(function(obj1, obj2) {
+				dataFilter.sort(function(obj1, obj2) {
 					return (new Date(obj1.creationDate) - new Date(obj2.creationDate));
 				});
 				table.renderData();
@@ -56,7 +56,7 @@ class Sorting {
 		if(event.target.textContent === "Размеры(ШхВхД)"){
 			event.target.classList.toggle("desc");
 			if(event.target.classList.contains("desc")){
-				data.sort(function(obj1, obj2) {
+				dataFilter.sort(function(obj1, obj2) {
 					let size1 = obj1.size.split("x");
 					let size2 = obj2.size.split("x");
 					let volume1 = size1[0] * size1[1] * size1[2];
@@ -65,7 +65,7 @@ class Sorting {
 				});
 				table.renderData();
 			} else {
-				data.sort(function(obj1, obj2) {
+				dataFilter.sort(function(obj1, obj2) {
 					let size1 = obj1.size.split("x");
 					let size2 = obj2.size.split("x");
 					let volume1 = size1[0] * size1[1] * size1[2];
@@ -97,7 +97,15 @@ class Sorting {
 				this.sortNames("price");
 				break;
 			}
+			case "Закупочная цена": {
+				this.sortNames("price");
+				break;
+			}
 			case "Дата создания": {
+				this.sortByDate();
+				break;
+			}
+			case "Дата поставки": {
 				this.sortByDate();
 				break;
 			}
