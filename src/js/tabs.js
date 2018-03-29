@@ -3,7 +3,6 @@ import { createElem } from './utils';
 export default class {
     constructor (table) {
         this.table = table;
-        this.renderContainer();
         this.render();
     }
     renderContainer () {
@@ -36,6 +35,7 @@ export default class {
         document.querySelector(".table-control__button--add-new .table-control__button__title").innerHTML = addText;
     }
     render () {
+        this.renderContainer();
         this.tabsContainer.insertAdjacentHTML("afterbegin", `
             <div class="tabs__item tabs__item--active">Товары</div>
             <div class="tabs__item">Поставки</div>

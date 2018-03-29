@@ -7,28 +7,21 @@ export default class {
         this.supplyFields = supplyTableFields;
         this.data = data;
         this.dataFilter = dataFilter;
-
+        this.render();
+        // this.renderContainer();
+        // this.setSettings();
+        // this.renderHeader();
+        // this.renderData();
+    }
+    render() {
         this.renderContainer();
         this.setSettings();
         this.renderHeader();
         this.renderData();
-
-        // this.productsBtn = document.querySelector('#js-menu-products');
-        // this.productsBtn.addEventListener('click', () => {
-        //     debugger;
-        //     document.querySelector('.content').innerHTML = '';
-        //     this.renderContainer();
-        //     this.renderHeader();
-        //     this.renderData()
-        //  });
     }
     renderContainer () {
         let parent = document.body.querySelector('.content');
         this.container = createElem(parent, 'table', 'data-table');
-
-        // this.container = document.createElement('table');
-        // document.body.querySelector('.content').appendChild(this.container);
-        // this.container.classList.add('data-table');
         this.container.insertAdjacentHTML('afterbegin', `<thead class="data-table-header"></thead><tbody class="data-table-body"></tbody>`);
     }
 

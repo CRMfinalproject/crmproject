@@ -69,14 +69,9 @@ let page = new Pagination(table);
 let productsBtn = document.querySelector('#js-menu-products');
 productsBtn.addEventListener('click', () => {
     document.querySelector('.content').innerHTML = '';
-    tabs.renderContainer();
     tabs.render();
-    tableControl.renderContainer();
     tableControl.render();
-    table.renderContainer();
-    table.renderHeader();
-    table.renderData();
-    page.renderContainer();
+    table.render();
     page.render();
 });
 

@@ -3,17 +3,11 @@ import { createElem } from './utils';
 export default class {
     constructor(addText) {
         this.addText = addText;
-        this.renderContainer();
         this.render();
-        this.actionSubmenu = this.container.querySelector(".table-control__button--actions");
-        this.renderActionSubmenu();
-        this.actionSubmenu.addEventListener('click', this.showActionSubmenu.bind(this));
-    }
-    renderContainer() {
-        this.container = createElem(document.body.querySelector(".content"), 'div', 'table-control');
     }
     render() {
         debugger;
+        this.container = createElem(document.body.querySelector(".content"), 'div', 'table-control');
         this.container.insertAdjacentHTML("afterbegin", `
             <div class="table-control__button table-control__button--actions">
                 <div class="table-control__button__title">Действия с выбранными</div>
@@ -23,6 +17,7 @@ export default class {
                 <img src="../images/round-add-button.svg" alt="+" class="table-control__button__icon">
                 <div class="table-control__button__title">${this.addText}</div>
             </div> `);
+        this.renderActionSubmenu();
     }
 
     renderButtonTitle(addText) {
@@ -31,12 +26,14 @@ export default class {
     }
 
     renderActionSubmenu() {
+        this.actionSubmenu = this.container.querySelector(".table-control__button--actions");
         this.actionSubmenu.insertAdjacentHTML("beforeend", `
             <div class="table-control__submenu">
                 <img src="../images/garbage.svg" alt="+" class="table-control__submenu__icon">
                 <div class="table-control__button__title table-control__submenu__title">Удалить</div>
             </div>`
         );
+        this.actionSubmenu.addEventListener('click', this.showActionSubmenu.bind(this));
     }
 
     showActionSubmenu(event) {
@@ -108,5 +105,3 @@ export default class {
     }
 
 }
-
-// let tableControl = new TableControlBlock("новый товар");

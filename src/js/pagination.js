@@ -2,10 +2,8 @@ export default class {
     constructor(table) {       
         // debugger;
         this.table = table;
-
         window.addEventListener('resize', this.controlSize.bind(this));
         this.setSettings();
-        this.renderContainer();
         this.render();
     }
     setSettings() {
@@ -17,7 +15,6 @@ export default class {
         this.arrPagesToShow = this.pagesToShow(this.table.data);
     }
     pagesToShow() {
-
         let startPage, endPage;
         this.totalPages = Math.ceil(this.table.data.length / 10);
         if (this.mobile) {
@@ -27,7 +24,6 @@ export default class {
             startPage = (this.currentPage <= 4) ? 0 : this.currentPage - 3;
             endPage = (this.currentPage <= this.totalPages - 4) ? this.currentPage + 2 : this.totalPages;
         }
-
         this.arrPagesToShow = this.arrPages.slice(startPage, endPage);
         if (endPage != this.totalPages) {
             this.arrPagesToShow.push("...", this.totalPages);
@@ -35,7 +31,6 @@ export default class {
         if (startPage != 0) {
             this.arrPagesToShow.unshift(1, "...");
         }
-
         return this.arrPagesToShow;
     }
     renderContainer() {
@@ -46,6 +41,7 @@ export default class {
     } 
     render() {
         // debugger;
+        this.renderContainer();
         this.container.innerHTML = ``;
         if (this.currentPage != 1) {
             this.container.innerHTML = `
