@@ -1,8 +1,11 @@
 import { createElem } from './utils';
 
 export default class {
-    constructor () {
-        this.tabsContainer = createElem(document.body.querySelector(".content"), 'div', 'tabs');
+    constructor (table) {
+        this.table = table;
+        let parent = document.body.querySelector(".content");
+        let nextSibling = document.body.querySelector(".table-control");
+        this.tabsContainer = createElem(parent, 'div', 'tabs', nextSibling);
         this.render();
         this.tabsContainer.addEventListener('click', this.toggle.bind(this));
     }
@@ -15,13 +18,11 @@ export default class {
             switch (document.body.querySelector(".tabs__item--active").innerHTML) {
                 case "Товары": 
                     this.renderButtonTitle("новый товар");
-                    // table.redrawTable(productTableFields);
-                    // fieldSettings = new Fieldsettings();
+                    this.table.redrawTable("products");
                     break;
                 case "Поставки":
                     this.renderButtonTitle("новая поставка");
-                    // table.redrawTable(supplyTableFields);
-                    // fieldSettings = new Fieldsettings();
+                    this.table.redrawTable("supplies");
                     break;
                 case "Категории":
                     this.renderButtonTitle("новая категория");

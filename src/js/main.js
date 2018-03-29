@@ -43,14 +43,14 @@ let productTableFields = exportedProductTableFields;
 import exportedSupplyTableFields from './supplies-fields';
 let supplyTableFields = exportedSupplyTableFields;
 
-import Tabs from './tabs';
-let tabs = new Tabs();
-
 import TableControlBlock from './table-control-block';
 let tableControl = new TableControlBlock("новый товар");
 
 import Table from './table';
-let table = new Table(productTableFields, data, '');
+let table = new Table(productTableFields, supplyTableFields, data, '');
+
+import Tabs from './tabs';
+let tabs = new Tabs(table);
 
 import AddProduct from './new-product';
 let productCategoryList = data.map(

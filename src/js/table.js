@@ -1,11 +1,13 @@
 export default class {
-    constructor(fields, data, dataFilter) {
+    constructor(productTableFields, supplyTableFields, data, dataFilter) {
         this.container = document.createElement('table');
         document.body.querySelector('.content').appendChild(this.container);
         this.container.classList.add('data-table');
         this.container.insertAdjacentHTML('afterbegin', `<thead class="data-table-header"></thead><tbody class="data-table-body"></tbody>`);
         debugger;
-        this.fields = fields;
+        this.fields = productTableFields;
+        this.productFields = productTableFields;
+        this.supplyFields = supplyTableFields;
         this.data = data;
         this.dataFilter = dataFilter;
 
@@ -23,15 +25,13 @@ export default class {
     renderHeader() {
         // debugger;
         let headerContent = "";
-      // добавила в отрисовку заголовков проверку выбранных полей
-        //${ this.fields.map((elem) => elem.hidden === false ? ` <th class = "order-ctrl">${elem.view}</th>` : '').reduce((accum, next) => accum + next) }
+        // добавила в отрисовку заголовков проверку выбранных полей
         headerContent = `<tr class = "row-table">
                                 <th class = "order-ctrl"><input type = "checkbox" class ="checkbox"></th>
                                 ${this.fields.map((field) => ` <th class = "order-ctrl table-header-${field.name}" ${field.hidden ? "hidden" : ""} >${field.view}<span class = "dropdown-arrow"></span></th>`).reduce((accum, next) => accum + next)}
                                 <th class = "order-ctrl"><div class="table__fieldsettings"><p class="table__fieldsettings_heading"><span class="table__fieldsettings_heading__text"></span><img class="table__fieldsettings__btn" src="../images/field_settings.png"></p></div></th>`;
 
         this.container.querySelector(".data-table-header").innerHTML = headerContent;
-        //new Fieldsettings();
         this.container.querySelector(".data-table-header .checkbox").addEventListener('change', this.selectAll.bind(this));
     }
 
@@ -69,9 +69,6 @@ export default class {
             bodyContent += `</tr>`;
         });
         document.querySelector(".data-table-body").innerHTML = bodyContent;
-
-        // from edit-actions.js:
-        // addEditActionsEvents()
     }
 
     showColumns(){
@@ -87,7 +84,7 @@ export default class {
     }
 
     redrawTable(fields){
-        this.fields = fields;
+        this.fields = fields === "products" ? this.productFields : this.supplyFields;
         this.renderHeader();
         this.renderData();
     }
