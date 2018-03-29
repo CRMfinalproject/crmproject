@@ -131,12 +131,13 @@ $darkblue:	#6495ED;
 .table-column-count,
 .table-column-creationDate,
 .table-column-weight,
-.table-column-size {
+.table-column-size,
+.table-column-category,
+.table-column-purchasePrice,
+.table-column-supplyDate {
   text-align:center;
 }
-.table-column-category {
-  text-align: center;
-}
+
 #Косметика,#Одежда,#Обувь,#Игрушки,#Хозтовары,#Книги,#Кожа,#Ремни{
 text-align: center;
 
