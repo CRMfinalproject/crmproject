@@ -1,6 +1,7 @@
-class Likecounter {
+export default class {
 	constructor() {
-		this.likeImg = document.querySelector('#js-likeImg');
+        debugger;
+        this.likeImg = document.querySelector('#js-likeImg');
         this.container = document.querySelector('#js-likeBtn');
         this.likeBtnCounter = document.querySelector('#js-likeBtnCounter');
         this.likeCounter = 0;
@@ -31,5 +32,3 @@ class Likecounter {
         return this.likeCounter;
 	}
 }
-
-//let tutorialLikeCounter = new Likecounter();

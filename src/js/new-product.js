@@ -76,6 +76,7 @@ export default class {
             let inputLength = this.categoryInput.value.length;
             if (inputLength !== 0) {
                 this.categoryOption.forEach((elem) => {
+                    debugger;
                     elem.textContent.toLocaleLowerCase().slice(0, inputLength) === this.categoryInput.value.toLowerCase() ? elem.hidden = false : elem.hidden = true
                 })
             }
@@ -89,48 +90,35 @@ export default class {
         }
     };
     createNewProduct() {
-        if (this.nameInput.value !== '' && this.priceInput.value !== '' && this.weightInput.value !== '' && this.volumeInput.value !== '') {
-            let idArr = data.map((elem) => elem.id).sort();
-            let newId = idArr[idArr.length - 1] + 1;
-            let productToAdd = {
-                id: newId,
-                name: this.nameInput.value,
-                category: this.categoryInput.value,
-                description: this.descriptionInput.value,
-                price: this.priceInput.value,
-                count: this.countInput.value,
-                creationDate: `${new Date().getFullYear()}-0${new Date().getMonth() + 1}-${new Date().getDate()}`,
-                size: `${this.widthInput.value} x ${this.heightInput.value} x ${this.lengthInput.value}`,
-                weight: this.weightInput.value,
-                volume: this.volumeInput.value
-            };
-            data.push(productToAdd);
-            dataFilter.push(productToAdd);
-        }
+        let productToAdd = {
+             id: data.length + 1,
+             name: this.nameInput.value,
+             category: this.categoryInput.value,
+             description: this.descriptionInput.value,
+             price: this.priceInput.value,
+             count: this.countInput.value,
+             creationDate: `${new Date().getFullYear()}-0${new Date().getMonth() + 1}-${new Date().getDate()}`,
+             size: `${this.widthInput.value} x ${this.heightInput.value} x ${this.lengthInput.value}` ,
+             weight: this.weightInput.value,
+             volume: this.volumeInput.value
+        };
+        data.push(productToAdd);
+        dataFilter.push(productToAdd);
     };
     showSuccessMessage() {
          if (event.target === this.form) {
              event.preventDefault();
              document.querySelector('.new-product__form__heading').classList.add('new-product__form__heading--success');
              document.querySelector('.new-product__form__heading').textContent = "Товар добавлен";
-             if (this.form.parentNode !== null) {
-                 this.container.removeChild(this.form);
-             }
+             this.container.removeChild(this.form);
          }
     };
     closeForm() {
-         if (this.container.parentNode !== null && this.background.parentNode !== null) {
-             document.querySelector('.content').removeChild(this.container);
-             document.querySelector('.content').removeChild(this.background);
-         }
+         document.querySelector('.content').removeChild(this.container);
+         document.querySelector('.content').removeChild(this.background);
     }
 }
-<<<<<<< HEAD
 
 // let productCategoryList = data.map((elem) => elem.category).sort().filter((el, i, arr) => arr.includes(el, i + 1) === false);
 // let newProduct = new AddProduct(productCategoryList);
-=======
-let productCategoryList = data.map((elem) => elem.category).sort().filter((el, i, arr) => arr.includes(el, i + 1) === false);
-let newProduct = new AddProduct(productCategoryList);
->>>>>>> development
 

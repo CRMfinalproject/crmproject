@@ -1,5 +1,6 @@
-class Tutorial {
+export default class {
     constructor(contentHtml) {
+        debugger;
         this.contentHtml = contentHtml;
         this.sidebarHtml = document.querySelector('#js-tutorial-sidebar').textContent.trim();
         this.triggerBtn = document.querySelector('#js-menu-tutorials');
@@ -12,5 +13,3 @@ class Tutorial {
     }
 }
 
-let tutorialPageHtml = document.querySelector('#js-tutorial-content').textContent.trim();
-let tutorialPage = new Tutorial(tutorialPageHtml);

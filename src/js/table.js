@@ -1,12 +1,13 @@
 export default class {
-    constructor(fields, data) {
+    constructor(fields, data, dataFilter) {
         this.container = document.createElement('table');
         document.body.querySelector('.content').appendChild(this.container);
         this.container.classList.add('data-table');
         this.container.insertAdjacentHTML('afterbegin', `<thead class="data-table-header"></thead><tbody class="data-table-body"></tbody>`);
-        
+        debugger;
         this.fields = fields;
         this.data = data;
+        this.dataFilter = dataFilter;
 
         this.setSettings();
         this.renderHeader();
@@ -20,7 +21,7 @@ export default class {
     }
 
     renderHeader() {
-        // header
+        debugger;
         let headerContent = "";
       // добавила в отрисовку заголовков проверку выбранных полей
         //${ this.fields.map((elem) => elem.hidden === false ? ` <th class = "order-ctrl">${elem.view}</th>` : '').reduce((accum, next) => accum + next) }
@@ -34,19 +35,13 @@ export default class {
         this.container.querySelector(".data-table-header .checkbox").addEventListener('change', this.selectAll.bind(this));
     }
 
-    // data
     renderData() {
        // перед тем, как перерисовать таблицу удаляем отмеченные у удалению строки
         this.deleteSelected();
-    //     debugger;
-    //     let dataPage = this.data.slice(this.startRow, this.endRow);
-    // //    debugger; 
-       this.deleteSelected();
-
-        let dataPage = data.slice(startRow, endRow);
-        if (dataFilter) {
-
-            dataPage = dataFilter.slice(startRow, endRow);
+        debugger;
+        let dataPage = this.data.slice(this.startRow, this.endRow);
+        if (this.dataFilter) {
+            dataPage = this.dataFilter.slice(this.startRow, this.endRow);
         }
         let bodyContent = "";
 
@@ -137,21 +132,3 @@ export default class {
     }
 
 }
-// let productTableFields = [
-//     { name: "name", view: "Название товара", hidden: false, format: (x) => `<a href = "#" class = "table-column-name__link">${x}</a>` },
-//     { name: "category", view: "Категория", hidden: false, format: (x) => `<span id = ${x.replace(/\./g, "")}><span>${x}</span></span>` },
-//     { name: "count", view: "Кол-во на складе", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">шт</span>` },
-//     { name: "price", view: "Цена", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">грн</span>` },
-//     { name: "creationDate", view: "Дата создания", hidden: false, format: (x) => `<span>${x}</span>` },
-//     { name: "weight", view: "Вес", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">г</span>` },
-//     { name: "size", view: "Размеры(ШхВхД)", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">см</span>` }
-// ];
-
-// let supplyTableFields = [
-//     { name: "name", view: "Название товара", hidden: false, format: (x) => `<a href = "#" class = "table-column-name__link">${x}</a>` },
-//     { name: "category", view: "Категория", hidden: false, format: (x) => `<span id = ${x.replace(/\./g, "")}><span>${x}</span></span>` },
-//     { name: "purchasePrice", view: "Закупочная цена", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">грн</span>` },
-//     { name: "supplyDate", view: "Дата поставки", hidden: false, format: (x) => `<span>${x}</span>` },
-// ];
-
-// let table = new Table(productTableFields);

@@ -1,29 +1,47 @@
-import { BurgerMenu, UserCabinetMenu, BurgerContMenu, burgerBtn, burgerMenuContainer,
-    menuItemBtn, openClassBurgerCont, openClassBurgerBtn, openClassMenuItemBtn } from './menu';
-
-const userCabinetMenu = new UserCabinetMenu(menuItemBtn, {
-    openStateClass: openClassMenuItemBtn
+import Menu from './menu';
+const userCabinetMenu = new Menu('.menu', {
+    openStateClass: 'menu__item--open',
+    subItemClass: '.menu__subitem',
+    onClick() {
+        this.open();
+    },
+    onItemMouseLeave() {
+        this.close();
+    }
 });
-const burgerContMenu = new BurgerContMenu(burgerMenuContainer, {
-    openStateClass: openClassBurgerCont
-});
-const burgerMenu = new BurgerMenu(burgerBtn, {
-    openStateClass: openClassBurgerBtn
-}, burgerContMenu);
 
+const burgerBtn = new Menu('.burger', {
+    openStateClass: 'burger--open',
+    onClick() {
+        this.toggle();
+        burgerMenu.toggle();
+    },
+    // onItemMouseLeave() {
+    //     this.close();
+    //     burgerMenu.close();
+    // }
+});
+
+const burgerMenu = new Menu('.burger-menu__container', {
+    openStateClass: 'burger-menu__container--open',
+    onClick() {
+        this.close();
+        burgerBtn.close();
+    },
+    onItemMouseLeave() {
+        this.close();
+        burgerBtn.close();
+    }
+});
 
 import exportedData from './data';
 let data = exportedData;
 
-let productTableFields = [
-    { name: "name", view: "Название товара", hidden: false },
-    { name: "category", view: "Категория", hidden: false },
-    { name: "count", view: "Количество на складе", hidden: false },
-    { name: "price", view: "Цена", hidden: false },
-    { name: "creationDate", view: "Дата создания", hidden: false },
-    { name: "weight", view: "Вес", hidden: true },
-    { name: "size", view: "Размеры(ШхВхД)", hidden: true }
-]
+import exportedProductTableFields from './product-fields';
+let productTableFields = exportedProductTableFields;
+
+import exportedSupplyTableFields from './supplies-fields';
+let supplyTableFields = exportedSupplyTableFields;
 
 import Tabs from './tabs';
 let tabs = new Tabs();
@@ -37,10 +55,21 @@ let productCategoryList = data.map(
 let newProduct = new AddProduct(productCategoryList);
 
 import Table from './table';
-let table = new Table(productTableFields, data);
+let table = new Table(productTableFields, data, '');
 
 import Fieldsettings from './field-settings';
 let fieldSettings = new Fieldsettings(productTableFields, table);
 
+import Sorting from './sorting';
+let sorting = new Sorting(table);
+
 import Pagination from './pagination';
 let page = new Pagination(table);
+
+import Tutorial from './tutorial';
+debugger;
+let tutorialPageHtml = document.querySelector('#js-tutorial-content').textContent.trim();
+let tutorialPage = new Tutorial(tutorialPageHtml);
+
+import Likecounter from './tutorial_likecounter';
+let tutorialLikeCounter = new Likecounter();

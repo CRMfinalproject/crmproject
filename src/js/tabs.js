@@ -14,25 +14,17 @@ export default class {
             debugger;
             switch (document.body.querySelector(".tabs__item--active").innerHTML) {
                 case "Товары": 
-<<<<<<< HEAD
                     this.renderButtonTitle("новый товар");
+                    // table.redrawTable(productTableFields);
+                    // fieldSettings = new Fieldsettings();
                     break;
                 case "Поставки":
                     this.renderButtonTitle("новая поставка");
-=======
-                    tableControl.renderButtonTitle("новый товар");
-                    table.redrawTable(productTableFields);
-                    fieldSettings = new Fieldsettings();
-                    break;
-                case "Поставки":
-                    tableControl.renderButtonTitle("новая поставка");
-                    table.redrawTable(supplyTableFields);
-                    fieldSettings = new Fieldsettings();
->>>>>>> development
+                    // table.redrawTable(supplyTableFields);
+                    // fieldSettings = new Fieldsettings();
                     break;
                 case "Категории":
                     this.renderButtonTitle("новая категория");
-                    break;
             }
         }
     }
@@ -47,4 +39,3 @@ export default class {
             <div class="tabs__item">Категории</div>`);
     }
 }
-//let tabs = new Tabs();

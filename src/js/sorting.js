@@ -1,8 +1,9 @@
-class Sorting {
+export default class {
 	constructor(table){
 		this.tHead = document.querySelector(".data-table-header");
 		this.prev;
 		this.tHead.addEventListener("click", this.sort.bind(this));
+		this.table = table;
 	}
 	
 	sortNames(criteria) {
@@ -11,19 +12,21 @@ class Sorting {
 		}
 		event.target.classList.toggle("desc");
 		if(event.target.classList.contains("desc")){
-			dataFilter.sort(function(obj1, obj2) {
+			// dataFilter.sort(function(obj1, obj2) {
+			this.table.data.sort(function (obj1, obj2) {
 				if (obj1[criteria] < obj2[criteria]) return 1;
 				if (obj1[criteria] > obj2[criteria]) return -1;
 				return 0;
 			});
-			table.renderData();
+			this.table.renderData();
 		} else {
-			dataFilter.sort(function(obj1, obj2) {
+			// dataFilter.sort(function(obj1, obj2) {
+			this.table.data.sort(function (obj1, obj2) {
 				if (obj1[criteria] < obj2[criteria]) return -1;
 				if (obj1[criteria] > obj2[criteria]) return 1;
 				return 0;
 			});
-			table.renderData();
+			this.table.renderData();
 		}
 		this.prev = event.target;
 	}
@@ -35,15 +38,17 @@ class Sorting {
 		if(event.target.textContent === "Дата создания"){
 			event.target.classList.toggle("desc");
 			if(event.target.classList.contains("desc")){
-				dataFilter.sort(function(obj1, obj2) {
+				// dataFilter.sort(function(obj1, obj2) {
+				this.table.data.sort(function (obj1, obj2) {
 					return (new Date(obj2.creationDate) - new Date(obj1.creationDate));
 				});
-				table.renderData();
+				this.table.renderData();
 			} else {
-				dataFilter.sort(function(obj1, obj2) {
+				// dataFilter.sort(function(obj1, obj2) {
+				this.table.data.sort(function (obj1, obj2) {	
 					return (new Date(obj1.creationDate) - new Date(obj2.creationDate));
 				});
-				table.renderData();
+				this.table.renderData();
 			}
 		}
 		this.prev = event.target;
@@ -56,23 +61,25 @@ class Sorting {
 		if(event.target.textContent === "Размеры(ШхВхД)"){
 			event.target.classList.toggle("desc");
 			if(event.target.classList.contains("desc")){
-				dataFilter.sort(function(obj1, obj2) {
+				// dataFilter.sort(function(obj1, obj2) {
+				this.table.data.sort(function (obj1, obj2) {
 					let size1 = obj1.size.split("x");
 					let size2 = obj2.size.split("x");
 					let volume1 = size1[0] * size1[1] * size1[2];
 					let volume2 = size2[0] * size2[1] * size2[2];
 					return (volume2 - volume1);
 				});
-				table.renderData();
+				this.table.renderData();
 			} else {
-				dataFilter.sort(function(obj1, obj2) {
+				// dataFilter.sort(function(obj1, obj2) {
+				this.table.data.sort(function (obj1, obj2) {	
 					let size1 = obj1.size.split("x");
 					let size2 = obj2.size.split("x");
 					let volume1 = size1[0] * size1[1] * size1[2];
 					let volume2 = size2[0] * size2[1] * size2[2];
 					return volume1 - volume2;
 				});
-				table.renderData();
+				this.table.renderData();
 			}
 		}
 		this.prev = event.target;
@@ -121,4 +128,3 @@ class Sorting {
 	}
 }
 
-let sorting = new Sorting();

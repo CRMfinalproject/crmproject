@@ -1,34 +1,28 @@
 export default class {
-    constructor(table) {
-        // document.body.querySelector(".content").innerHTML += `<div class="pagination"></div>`;         
+    constructor(table) {       
+        // debugger;
         this.table = table;
-
         let content = document.querySelector('.content');
         content.insertAdjacentHTML('beforeend', '<div class="pagination"></div>');
         this.container = document.body.querySelector(".pagination");
-
-
-
         this.container.addEventListener('click', this.switchPages.bind(this));
 
         window.addEventListener('resize', this.controlSize.bind(this));
-        this.setSettings(data);
+        this.setSettings();
         this.render();
     }
-    setSettings(data) {
-        // от сервера мы получаем общее количество ТОВАРОВ
-
+    setSettings() {
         this.totalPages = (this.table.data.length < 10) ? 1 : Math.ceil(this.table.data.length/10);
         this.currentPage = 1;
         this.arrPages = Array.from({ length: (this.totalPages + 1) }, (v, i) => i);
         this.arrPages.splice(0, 1);
         this.mobile = (screen.width < 780) ? true : false;
-        this.arrPagesToShow = this.pagesToShow(data);
+        this.arrPagesToShow = this.pagesToShow(this.table.data);
     }
-    pagesToShow(data) {
+    pagesToShow() {
 
         let startPage, endPage;
-        this.totalPages = Math.ceil(data.length / 10);
+        this.totalPages = Math.ceil(this.table.data.length / 10);
         if (this.mobile) {
             startPage = (this.currentPage <= 4) ? 0 : this.currentPage - 2;
             endPage = (this.currentPage <= this.totalPages - 4) ? this.currentPage + 1 : this.totalPages;
@@ -49,9 +43,6 @@ export default class {
     }
     render() {
         // debugger;
-        // this.setSettings();
-        // this.pagesToShow();
-
         this.container.innerHTML = ``;
         if (this.currentPage != 1) {
             this.container.innerHTML = `
@@ -94,17 +85,15 @@ export default class {
         else { this.currentPage = Number(event.target.innerHTML); }
         
         this.table.setCurrentPage(this.currentPage);
-        // this.table.renderData();
-        // this.render(this.pagesToShow());
 
-        startRow = (this.currentPage - 1) * ROWS_PER_PAGE;
-        endRow = this.currentPage * ROWS_PER_PAGE;
-        if (endRow >= data.length) {
-            endRow = data.length};
-        table.renderData();
-        if (dataFilter) {
-            this.render(this.pagesToShow(dataFilter))
-        } else this.render(this.pagesToShow(data));
+        this.table.startRow = (this.currentPage - 1) * this.table.ROWS_PER_PAGE;
+        this.table.endRow = this.currentPage * this.table.ROWS_PER_PAGE;
+        if (this.table.endRow >= this.table.data.length) {
+            this.table.endRow = this.table.data.length};
+        this.table.renderData();
+        if (this.table.dataFilter) {
+            this.render(this.pagesToShow(this.table.dataFilter))
+        } else this.render(this.pagesToShow(this.table.data));
 
     }
     controlSize(event) {
@@ -120,6 +109,3 @@ export default class {
     }
 }
 
-
-
-// let page = new Pagination();

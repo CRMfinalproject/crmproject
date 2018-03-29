@@ -86,16 +86,9 @@ export default class {
     }
 
     deleteSelected() {
-<<<<<<< HEAD
         if (event.target.classList.contains("table-control__submenu__icon") || event.target.classList.contains("table-control__submenu__title")) {
             debugger;
             let rowsToDel = Array.from(document.querySelector(".data-table-body").querySelectorAll(".checkbox:checked"),
-=======
-
-        if (event.target.classList.contains("table-control__submenu__icon") || event.target.classList.contains("table-control__submenu__title")) {
-
-            let rowsToDel = Array.from(table.container.children[1].querySelectorAll(".checkbox:checked"),
->>>>>>> development
                 elem => elem.parentElement.parentElement);
             rowsToDel.map (row => {
                 row.classList.add('setToDel');
