@@ -74,6 +74,7 @@ productsBtn.addEventListener('click', () => {
     table.render();
     page.render();
     sorting.setClick();
+    fieldSettings.setClick();
 });
 
 import Tutorial from './tutorial';

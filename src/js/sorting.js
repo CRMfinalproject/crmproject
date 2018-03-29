@@ -1,8 +1,6 @@
 export default class {
 	constructor(table){
-		// this.tHead = document.querySelector(".data-table-header");
 		this.prev;
-		// this.tHead.addEventListener("click", this.sort.bind(this));
 		this.table = table;
 		this.setClick();
 	}

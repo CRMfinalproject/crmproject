@@ -8,10 +8,6 @@ export default class {
         this.data = data;
         this.dataFilter = dataFilter;
         this.render();
-        // this.renderContainer();
-        // this.setSettings();
-        // this.renderHeader();
-        // this.renderData();
     }
     render() {
         this.renderContainer();

@@ -6,10 +6,37 @@ export default class {
         this.triggerBtn = document.querySelector('.table__fieldsettings__btn');
         this.headingText = document.querySelector('.table__fieldsettings_heading__text');
         this.form = {};
-        this.container.addEventListener('click', () => this.container.classList.contains('table__fieldsettings--active') ? (event.target.classList.contains('table__fieldsettings__item') || event.target.classList.contains('table__fieldsettings__checkbox') ? this.updateField() : this.hide()) : this.render());
+        this.setClick();
+        // this.container.addEventListener('click', () => 
+        //     this.container.classList.contains('table__fieldsettings--active') ? 
+        //         (event.target.classList.contains('table__fieldsettings__item') || 
+        //         event.target.classList.contains('table__fieldsettings__checkbox') ? 
+        //             this.updateField() 
+        //                 : this.hide()) 
+        //                     : this.render());
+        // document.body.addEventListener('click', () => {
+        //     if (this.container.classList.contains('table__fieldsettings--active')) {
+        //         if (event.target !== this.triggerBtn && 
+        //             event.target.classList.contains('table__fieldsettings__item') === false && 
+        //             event.target.classList.contains('table__fieldsettings__checkbox') === false) {
+        //                 this.hide();
+        //             }
+        //         }
+        // })
+    }
+    setClick () {
+        this.container.addEventListener('click', () =>
+            this.container.classList.contains('table__fieldsettings--active') ?
+                (event.target.classList.contains('table__fieldsettings__item') ||
+                    event.target.classList.contains('table__fieldsettings__checkbox') ?
+                    this.updateField()
+                    : this.hide())
+                : this.render());
         document.body.addEventListener('click', () => {
             if (this.container.classList.contains('table__fieldsettings--active')) {
-                if (event.target !== this.triggerBtn && event.target.classList.contains('table__fieldsettings__item') === false && event.target.classList.contains('table__fieldsettings__checkbox') === false) {
+                if (event.target !== this.triggerBtn &&
+                    event.target.classList.contains('table__fieldsettings__item') === false &&
+                    event.target.classList.contains('table__fieldsettings__checkbox') === false) {
                     this.hide();
                 }
             }
@@ -53,4 +80,4 @@ export default class {
             this.fields.find((el) => el.name === this.selectedFieldCheckbox.name).hidden = true;
     }
 }
-// let fieldSettings = new Fieldsettings();
+

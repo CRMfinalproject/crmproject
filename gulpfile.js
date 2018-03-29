@@ -155,7 +155,7 @@ gulp.task('server', () => {
       baseDir: "./dist",
       index: '/html/index.html'
     },
-      browser: 'google chrome',
+      //browser: 'google chrome',
     // Говорим спрятать надоедливое окошко обновления в браузере
     notify: false
   });
