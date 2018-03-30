@@ -1,16 +1,13 @@
 export default class {
 	constructor() {
-        debugger;
+        this.likeCounter = 0;
+	};
+	render() {
         this.likeImg = document.querySelector('#js-likeImg');
         this.container = document.querySelector('#js-likeBtn');
         this.likeBtnCounter = document.querySelector('#js-likeBtnCounter');
-        this.likeCounter = 0;
-        // this.render();
-        // this.container.addEventListener('click', () => this.countLikes());
-        // this.container.addEventListener('click', this.countLikes.bind(this));
-	};
-	render() {
-        this.container.addEventListener('click', this.countLikes.bind(this));
+        this.container.addEventListener('click', () => this.countLikes());
+
         if (localStorage.getItem('liked') === 'true') {
             this.likeImg.setAttribute('src', '../images/tutorial/icon_liked.png');
         } else {
