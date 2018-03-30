@@ -25,13 +25,16 @@ export default class {
         // })
     }
     setClick () {
-        this.container.addEventListener('click', () =>
+        debugger;
+        this.container.addEventListener('click', () => {
+            debugger;
             this.container.classList.contains('table__fieldsettings--active') ?
                 (event.target.classList.contains('table__fieldsettings__item') ||
                     event.target.classList.contains('table__fieldsettings__checkbox') ?
                     this.updateField()
                     : this.hide())
-                : this.render());
+                : this.render()
+        });
         document.body.addEventListener('click', () => {
             if (this.container.classList.contains('table__fieldsettings--active')) {
                 if (event.target !== this.triggerBtn &&
