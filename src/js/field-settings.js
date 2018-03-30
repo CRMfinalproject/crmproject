@@ -2,14 +2,14 @@ export default class {
     constructor(productTableFields, table) {
         this.fields = productTableFields;
         this.table = table;
+        this.renderContainer();
+    }
+    renderContainer() {
+        debugger;
         this.container = document.querySelector('.table__fieldsettings');
         this.triggerBtn = document.querySelector('.table__fieldsettings__btn');
         this.headingText = document.querySelector('.table__fieldsettings_heading__text');
         this.form = {};
-        this.setClick();
-    }
-    setClick () {
-        debugger;
         this.container.addEventListener('click', () => {
             debugger;
             this.container.classList.contains('table__fieldsettings--active') ?
@@ -20,6 +20,7 @@ export default class {
                 : this.render()
         });
         document.body.addEventListener('click', () => {
+            debugger;
             if (this.container.classList.contains('table__fieldsettings--active')) {
                 if (event.target !== this.triggerBtn &&
                     event.target.classList.contains('table__fieldsettings__item') === false &&
@@ -30,6 +31,7 @@ export default class {
         })
     }
     render() {
+            debugger;
             this.container.classList.add('table__fieldsettings--active');
             this.triggerBtn.setAttribute('src', '../images/field_settings_active.png');
             this.headingText.textContent = "Настройка полей";
@@ -46,7 +48,7 @@ export default class {
                 </label>`).reduce((accum, elem) => accum + elem);
         };
     hide() {
-
+        debugger;
         if (event.target.classList.contains('table__fieldsettings__item') === false && event.target.classList.contains('table__fieldsettings__checkbox') === false) {
             this.container.classList.remove('table__fieldsettings--active');
             this.triggerBtn.setAttribute('src', '../images/field_settings.png');

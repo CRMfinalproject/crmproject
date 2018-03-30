@@ -43,7 +43,7 @@ export default class {
     renderData() {
        // перед тем, как перерисовать таблицу удаляем отмеченные у удалению строки
         this.deleteSelected();
-        debugger;
+        // debugger;
         let dataPage = this.data.slice(this.startRow, this.endRow);
         if (this.dataFilter) {
             dataPage = this.dataFilter.slice(this.startRow, this.endRow);

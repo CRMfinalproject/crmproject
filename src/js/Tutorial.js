@@ -1,6 +1,5 @@
 export default class {
     constructor(contentHtml) {
-        debugger;
         this.contentHtml = contentHtml;
         this.sidebarHtml = document.querySelector('#js-tutorial-sidebar').textContent.trim();
     };

@@ -92,7 +92,7 @@ export default class {
 		}
 	}
 	sort(event) {
-		debugger;
+		// debugger;
 		this.target = event.target.textContent;
 		switch(this.target) {
 			case "Название товара": {

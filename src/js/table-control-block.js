@@ -6,7 +6,7 @@ export default class {
         this.render();
     }
     render() {
-        debugger;
+        // debugger;
         this.container = createElem(document.body.querySelector(".content"), 'div', 'table-control');
         this.container.insertAdjacentHTML("afterbegin", `
             <div class="table-control__button table-control__button--actions">
@@ -21,7 +21,7 @@ export default class {
     }
 
     renderButtonTitle(addText) {
-        debugger;
+        // debugger;
         this.container.querySelector(".table-control__button--add-new .table-control__button__title").innerHTML = addText;
     }
 
