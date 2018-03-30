@@ -7,22 +7,6 @@ export default class {
         this.headingText = document.querySelector('.table__fieldsettings_heading__text');
         this.form = {};
         this.setClick();
-        // this.container.addEventListener('click', () => 
-        //     this.container.classList.contains('table__fieldsettings--active') ? 
-        //         (event.target.classList.contains('table__fieldsettings__item') || 
-        //         event.target.classList.contains('table__fieldsettings__checkbox') ? 
-        //             this.updateField() 
-        //                 : this.hide()) 
-        //                     : this.render());
-        // document.body.addEventListener('click', () => {
-        //     if (this.container.classList.contains('table__fieldsettings--active')) {
-        //         if (event.target !== this.triggerBtn && 
-        //             event.target.classList.contains('table__fieldsettings__item') === false && 
-        //             event.target.classList.contains('table__fieldsettings__checkbox') === false) {
-        //                 this.hide();
-        //             }
-        //         }
-        // })
     }
     setClick () {
         debugger;
