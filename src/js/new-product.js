@@ -45,19 +45,23 @@ class AddProduct {
             }
         })
         this.form.addEventListener('input', () => this.autocompleteVolume());
+        this.nameInput.addEventListener('mouseleave', () => this.showStarInRequired());
         this.form.addEventListener('click', () => {
             if (event.target === this.nameInput) {
                 this.hideStarInRequired();
             } else if (event.target.classList.contains('new-product__form__selection__option')) {
                 this.selectCategory();
                 this.hideCategories();
-            } else if (event.target === this.categoryInput || event.target === this.categorySelectionBtn || event.target.parentNode === this.categorySelectionBtn) {
-                this.showCategories();
-                    } /*else {
-                        if (event.target === this.categorySelectionBtn || event.target.parentNode === this.categorySelectionBtn || event.target.parentNode !== this.categorySelection) {
-                            this.hideCategories();
+            } else if (event.target === this.categorySelectionBtn || event.target.parentNode === this.categorySelectionBtn) {
+                if (Array.from(this.categoryOption).every(elem => elem.hidden === true)) {
+                    this.showCategories();
+                } else {
+                this.hideCategories();
                 }
-            }*/
+            } else if (event.target === this.categoryInput) {
+                this.categoryInput.value = '';
+                this.showCategories();
+            }
         });
         this.form.addEventListener('keyup', () => this.autocompleteSelection());
         this.submitBtn.addEventListener('click', () => this.createNewProduct());
@@ -77,6 +81,12 @@ class AddProduct {
     };
     hideStarInRequired() {
         this.container.querySelector('#js-required-field-star').setAttribute('hidden', true);
+
+    };
+    showStarInRequired() {
+        if (this.nameInput.value === '') {
+            setTimeout(() => this.container.querySelector('#js-required-field-star').removeAttribute('hidden'), 1000);
+        }
     }
     autocompleteSelection() {
         if (event.target === this.categoryInput) {
