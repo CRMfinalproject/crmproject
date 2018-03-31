@@ -107,8 +107,8 @@ class AddProduct {
     };
     createNewProduct() {
         if (this.nameInput.value !== '' && this.priceInput.value !== '' && this.weightInput.value !== '' && this.volumeInput.value !== '') {
-            let idArr = data.map((elem) => elem.id).sort();
-            let newId = idArr[idArr.length - 1] + 1;
+            let maxId = data.map((elem) => elem.id).reduce((accum, next) => accum > next ? accum : next);
+            let newId = maxId + 1;
             let productToAdd = {
                 id: newId,
                 name: this.nameInput.value,
