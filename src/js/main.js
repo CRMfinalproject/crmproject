@@ -82,7 +82,7 @@ productsBtn.addEventListener('click', () => {
     page.render();
     sorting.setClick();
     fieldSettings.renderContainer();
-    editActions.addEditActionsEvents();
+    newProduct.addEvent();
 });
 
 import Tutorial from './tutorial';

@@ -2,6 +2,9 @@ export default class {
     constructor(categoryList, table) {
         this.categoryList = categoryList;
         this.table = table;
+        this.addEvent();
+    }
+    addEvent() {
         document.body.querySelector(".table-control__button--add-new").addEventListener('click', () => this.render());
     }
     render() {
