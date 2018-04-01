@@ -16,12 +16,20 @@
     font-weight: 600;
 }
 
+.tutorial-wrapper {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+    justify-content: center;
+}
+
 .tutorial-main {
-  	position: absolute;
-	top: 87px;
-	left: 122px;
-  	width: 63%;
-  	margin: 0 auto 45px;
+  	// position: absolute;
+	// top: 87px;
+	// left: 122px;
+	// margin: 0 auto 45px;
+	width: 64%;
+	margin: 0 .81em 0 0;
   	border-radius: 5px;
   	background-color: #ffffff;
   	line-height: 24px;	
@@ -140,9 +148,10 @@
 
 @media screen and (max-width: 1024px) {
   	.tutorial-main {
-    	position: initial;
-    	width: 74.84%;
-    	margin: 13px 14px 0 auto;
+    	// position: initial;
+    	// width: 74.84%;
+		// margin: 13px 14px 0 auto;
+		margin: 0 .81em 0 0;
     	border-radius: 5px 5px 0 0;
     	font-size: 12px;
   	}
