@@ -43,7 +43,7 @@ export default class {
     renderData() {
        // перед тем, как перерисовать таблицу удаляем отмеченные у удалению строки
         this.deleteSelected();
-        // debugger;
+        debugger;
         let dataPage = this.data.slice(this.startRow, this.endRow);
         if (this.dataFilter) {
             dataPage = this.dataFilter.slice(this.startRow, this.endRow);
@@ -74,6 +74,10 @@ export default class {
             bodyContent += `</tr>`;
         });
         document.querySelector(".data-table-body").innerHTML = bodyContent;
+
+        // from edit-actions.js:
+        // editActions.addEditActionsEvents();
+        this.dispatchRenderData();
     }
 
     showColumns(){
@@ -131,5 +135,11 @@ export default class {
             this.endRow = this.data.length
         };
     }
-
+    dispatchRenderData () {
+        // debugger;
+        const eventTableRenderData = new CustomEvent('eventTableRenderData', {
+            bubbles: true
+        });
+        document.body.dispatchEvent(eventTableRenderData);
+    }
 }

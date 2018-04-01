@@ -60,6 +60,9 @@ let newProduct = new AddProduct(productCategoryList, table);
 import Fieldsettings from './field-settings';
 let fieldSettings = new Fieldsettings(productTableFields, table);
 
+import EditActions from './edit-actions';
+let editActions = new EditActions(table);
+
 import Sorting from './sorting';
 let sorting = new Sorting(table);
 
@@ -79,6 +82,7 @@ productsBtn.addEventListener('click', () => {
     page.render();
     sorting.setClick();
     fieldSettings.renderContainer();
+    editActions.addEditActionsEvents();
 });
 
 import Tutorial from './tutorial';

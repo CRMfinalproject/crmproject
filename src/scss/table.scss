@@ -5,10 +5,10 @@ $darkblue:	#6495ED;
   src: url('../fonts/HelveticaNeueCyr-Medium.woff');
 }
 .data-table {
-  width: 80%;
-  //margin-left: auto;
-  //margin-right: auto;
-  margin-left:80px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  // margin-left:80px;
 
   border-collapse: collapse;
   font-size: 13px;
@@ -131,12 +131,16 @@ $darkblue:	#6495ED;
 .table-column-count,
 .table-column-creationDate,
 .table-column-weight,
-.table-column-size {
+.table-column-size,
+.table-column-category,
+.table-column-purchasePrice,
+.table-column-supplyDate {
   text-align:center;
 }
 
 #Косметика,#Одежда,#Обувь,#Игрушки,#Хозтовары,#Книги,#Кожа,#Ремни{
 text-align: center;
+
   span {
       color: white;
       border-radius: 4px;
