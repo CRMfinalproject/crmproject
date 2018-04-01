@@ -4,6 +4,7 @@ export default class {
         this.table = table;
         window.addEventListener('resize', this.controlSize.bind(this));
         this.setSettings();
+        this.renderContainer();
         this.render();
     }
     setSettings() {
@@ -40,8 +41,8 @@ export default class {
         this.container.addEventListener('click', this.switchPages.bind(this));
     } 
     render() {
-        // debugger;
-        this.renderContainer();
+        debugger;
+        // this.renderContainer();
         this.container.innerHTML = ``;
         if (this.currentPage != 1) {
             this.container.innerHTML = `

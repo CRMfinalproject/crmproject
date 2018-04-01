@@ -66,12 +66,16 @@ let sorting = new Sorting(table);
 import Pagination from './pagination';
 let page = new Pagination(table);
 
+// import Filter from './filter';
+// let filter = new Filter(table);
+
 let productsBtn = document.querySelector('#js-menu-products');
 productsBtn.addEventListener('click', () => {
     document.querySelector('.content').innerHTML = '';
     tabs.render();
     tableControl.render();
     table.render();
+    page.renderContainer();
     page.render();
     sorting.setClick();
     fieldSettings.renderContainer();
