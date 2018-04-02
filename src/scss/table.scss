@@ -68,8 +68,8 @@ $darkblue:	#6495ED;
     transform: rotate(45deg);
     transition: .2s;
     position: relative;
-    left: 3px;
-    top: -3px;
+    left: 5px;
+    top: -1.6px;
 }
 
 .desc .dropdown-arrow {
@@ -80,7 +80,7 @@ $darkblue:	#6495ED;
     width: 7px;
     height: 7px;
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: bottom;
     transform: rotate(225deg);
 	  transition: .2s;
 }

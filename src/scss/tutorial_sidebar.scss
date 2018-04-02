@@ -1,15 +1,17 @@
 .tutorial-sidebar {
-  	position: absolute;
-    top: 53px;
-    right: 0;
+  	// position: absolute;
+    // top: 53px;
+    // right: 0;
     width: 22.2%;
-  	margin: 34px 2.2% 0 auto;
+    // margin: 34px 2.2% 0 auto;
+    min-width: max-content;
   	border-radius: 5px;
     background-color: #ffffff;
     line-height: 24px;  
     font-size: 14px;
     font-family: "AvenirNext", sans-serif;
-  	font-weight: 600;
+    font-weight: 600;
+    margin: 0 0 0 0;
 }
 
 .tutorial-sidebar__heading {
@@ -43,11 +45,12 @@
 
 @media screen and (max-width: 1024px) {
   	.tutorial-sidebar {
-		position: relative;
-        top: -50px;
-        width: 74.84%;
-    	margin: 0 14px 63px auto;
+		// position: relative;
+        // top: -50px;
+        // width: 74.84%;
+        // margin: 0 14px 63px auto;
         padding: 15px 0 17px;
+        margin: 0 0 0 0;
     	border-radius: 0 0 5px 5px;
   	}
 
