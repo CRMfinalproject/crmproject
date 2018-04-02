@@ -25,18 +25,11 @@ class Orders {
 		this.tabsContainer = createElement(parent, 'div', 'tabs');
         tabs = new Tabs();
         tableControl = new TableControlBlock("новый товар");
-        table = new Table(productTableFields);
-        //Table.selectAll();
+		table = new Table(this.fields);
 
-        //table.renderHeader();
-        //tabs.render();
-        //tableControl.render();
-
-        //table.renderData();
-        //page.render();
-//         filter = new Filter();
+        filter = new Filter();
         sorting = new Sorting();
-		fieldSettings = new Fieldsettings(productTableFields);
+		fieldSettings = new Fieldsettings(this.fields);
         page = new Pagination(data);
     }
 	
@@ -50,22 +43,5 @@ class Orders {
 		return element;
 	}
 }
-let productTableFields = [
-    { name: "name", view: "Название товара", hidden: false, format: (x) => `<a href = "#" class = "table-column-name__link">${x}</a>` },
-    { name: "category", view: "Категория", hidden: false, format: (x) => `<span id = ${x.replace(/\./g, "")}><span>${x}</span></span>` },
-    { name: "count", view: "Кол-во на складе", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">шт</span>` },
-    { name: "price", view: "Цена", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">грн</span>` },
-    { name: "creationDate", view: "Дата создания", hidden: false, format: (x) => `<span>${x}</span>` },
-    { name: "weight", view: "Вес", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">г</span>` },
-    { name: "size", view: "Размеры(ШхВхД)", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">см</span>` }
-];
-
-let supplyTableFields = [
-    { name: "name", view: "Название товара", hidden: false, format: (x) => `<a href = "#" class = "table-column-name__link">${x}</a>` },
-    { name: "category", view: "Категория", hidden: false, format: (x) => `<span id = ${x.replace(/\./g, "")}><span>${x}</span></span>` },
-    { name: "purchasePrice", view: "Закупочная цена", hidden: false, format: (x) => `<span>${x}</span><span class="table-fixedtext">грн</span>` },
-    { name: "supplyDate", view: "Дата поставки", hidden: false, format: (x) => `<span>${x}</span>` },
-];
-
 
 let ordersPage = new Orders(productTableFields);

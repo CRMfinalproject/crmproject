@@ -10,13 +10,14 @@ let finalResults = [];
 let filterNamebyName = [];
 
 class Filter{
-    constructor(){
+    constructor() {
 
-        this.modalFilter = document.querySelector("#modalFilter");
-        this.btnFilter = document.querySelector("#btnFilter");
+        const filterHtml = document.querySelector('#js-filter-content').textContent.trim();
         this.parentFilter = document.querySelector(".table-control");
-        this.parentFilter.appendChild(this.btnFilter);
-        this.parentFilter.appendChild(this.modalFilter);
+        this.parentFilter.insertAdjacentHTML("beforeend",filterHtml);
+        this.btnFilter = document.querySelector("#btnFilter");
+        this.modalFilter = document.querySelector("#modalFilter");
+
         this.arrowFilter = document.querySelector(".filter_btn__dropdown-arrow");
         this.inputDate2 = document.querySelector("#inputdateMax");
         this.inputDate1 = document.querySelector("#inputdateMin");
@@ -25,7 +26,7 @@ class Filter{
         this.inputDate2.style.visibility = "hidden";
         this.inputDate1.style.visibility = "hidden";
         this.link2 = document.querySelector("#linkdate2");
-
+        
         window.onload = function () {
             const sliderSections = document.getElementsByClassName("filter_modal");
 
