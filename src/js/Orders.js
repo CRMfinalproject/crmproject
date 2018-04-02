@@ -23,20 +23,12 @@ class Orders {
         const parent = document.body.querySelector('.content');
 		parent.innerHTML = '';
 		this.tabsContainer = createElement(parent, 'div', 'tabs');
-		new Tabs();
-		new Table(productTableFields);
-		//Table.selectAll();
-		
-		//table.renderHeader();
-		//tabs.render();
-		//tableControl.render();
-		
-		//table.renderData();
-		//page.render();
-		
-		new Sorting();
-        new Fieldsettings(productTableFields);
-		new Pagination(data);
+		tabs = new Tabs();
+		tableControl = new TableControlBlock("новый товар");
+		table = new Table(productTableFields);
+		sorting = new Sorting();
+		fieldSettings = new Fieldsettings(productTableFields);
+		page = new Pagination(data);
     }
 	
 	createElem(parent, tag, elemClass, nextSibling) {
@@ -67,4 +59,4 @@ let supplyTableFields = [
 ];
 
 
-let ordersPage = new Orders(productTableFields, supplyTableFields);
+let ordersPage = new Orders(productTableFields);

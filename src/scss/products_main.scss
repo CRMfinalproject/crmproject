@@ -16,12 +16,16 @@
     font-weight: 600;
 }
 
+.products-wrapper {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+    justify-content: center;
+}
+
 .products-main {
-  	position: absolute;
-	top: 87px;
-	left: 202px;
-  	width: 63%;
-  	margin: 0 auto 45px;
+  	width: 64%;
+  	margin-top: 80px;
   	border-radius: 5px;
   	background-color: #ffffff;
   	line-height: 24px;	
@@ -52,15 +56,16 @@
 }
 
 @media screen and (max-width: 1024px) {
-  	.tutorial-main {
-    	position: initial;
-    	width: 74.84%;
-    	margin: 13px 14px 0 auto;
+  	.products-main {
+    	// position: initial;
+    	// width: 74.84%;
+		// margin: 13px 14px 0 auto;
+		margin-top: 80px;
     	border-radius: 5px 5px 0 0;
     	font-size: 12px;
   	}
 
-  	.tutorial-main__heading {
+  	.products-main__heading {
   		width: 70%;
 		margin-bottom: 12px;
 		padding-top: 30px;
