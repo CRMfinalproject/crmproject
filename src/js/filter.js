@@ -28,19 +28,24 @@ class Filter{
         this.link2 = document.querySelector("#linkdate2");
         
         window.onload = function () {
-            const sliderSections = document.getElementsByClassName("filter_modal");
-
-            for (let x = 0; x < sliderSections.length; x++) {
-                let sliders = sliderSections[x].getElementsByTagName("input");
-                for (let y = 0; y < sliders.length; y++) {
-                    if (sliders[y].type === "range") {
-                        sliders[y].oninput = filter.getVals;
-                        sliders[y].oninput();
-                    }
-                }
-            }
+            filter.setupSliders();
         };
     }
+
+    setupSliders(){
+        const sliderSections = document.getElementsByClassName("filter_modal");
+
+        for (let x = 0; x < sliderSections.length; x++) {
+            let sliders = sliderSections[x].getElementsByTagName("input");
+            for (let y = 0; y < sliders.length; y++) {
+                if (sliders[y].type === "range") {
+                    sliders[y].oninput = filter.getVals;
+                    sliders[y].oninput();
+                }
+            }
+        }
+    }
+
     //OPEN FILTER
     open(){
         this.link1.style.visibility = "visible";

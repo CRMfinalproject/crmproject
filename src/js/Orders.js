@@ -28,6 +28,8 @@ class Orders {
 		table = new Table(this.fields);
 
         filter = new Filter();
+		filter.setupSliders();
+		
         sorting = new Sorting();
 		fieldSettings = new Fieldsettings(this.fields);
         page = new Pagination(data);
