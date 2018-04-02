@@ -64,7 +64,7 @@ class Table {
         document.querySelector(".data-table-body").innerHTML = bodyContent;
 
         // from edit-actions.js:
-        addEditActionsEvents()
+        editActions.addEditActionsEvents();
     }
 
     showColumns(){
