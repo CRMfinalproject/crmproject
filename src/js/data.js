@@ -10,7 +10,7 @@ let data = [
         "price": 299,
         "purchasePrice": 199,
         "creationDate": "2018-02-01",
-        "supplyDate": "2018-03-01",
+        "supplyDate": "2018-04-01",
         "weight": 0.3,
         "size": "1x1x5"
     },
@@ -22,7 +22,7 @@ let data = [
         "price": 359,
         "purchasePrice": 150,
         "creationDate": "2018-02-05",
-        "supplyDate": "2018-03-01",
+        "supplyDate": "2018-03-10",
         "weight": 0.6,
         "size": "40x40x30"
     },
@@ -34,7 +34,7 @@ let data = [
         "price": 300,
         "purchasePrice": 200,
         "creationDate": "2018-02-01",
-        "supplyDate": "2018-03-01",
+        "supplyDate": "2018-04-02",
         "weight": 1.1,
         "size": "40x40x50"
     },
@@ -46,7 +46,7 @@ let data = [
         "price": 999,
         "purchasePrice": 899,
         "creationDate": "2018-02-01",
-        "supplyDate": "2018-03-01",
+        "supplyDate": "2018-02-11",
         "weight": 3.8,
         "size": "35x20x18"
     },
@@ -58,7 +58,7 @@ let data = [
         "price": 55,
         "purchasePrice": 45,
         "creationDate": "2018-02-01",
-        "supplyDate": "2018-03-01",
+        "supplyDate": "2017-03-01",
         "weight": 2,
         "size": "20x15x4"
     },
@@ -70,7 +70,7 @@ let data = [
         "price": 15,
         "purchasePrice": 5,
         "creationDate": "2018-02-01",
-        "supplyDate": "2018-03-01",
+        "supplyDate": "2018-03-20",
         "weight": 0.5,
         "size": "8x4x2"
     },

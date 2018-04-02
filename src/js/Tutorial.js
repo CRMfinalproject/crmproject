@@ -3,6 +3,7 @@ class Tutorial {
         this.contentHtml = contentHtml;
         // this.sidebarHtml = document.querySelector('#js-tutorial-sidebar').textContent.trim();
         this.triggerBtn = document.querySelector('#js-menu-tutorials');
+		//this.currentBtn = this.triggerBtn.querySelector('.burger-menu__item');
         this.triggerBtn.addEventListener('click', () => this.render());
     };
     render(){

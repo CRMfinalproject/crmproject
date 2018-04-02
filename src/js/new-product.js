@@ -144,4 +144,3 @@ class AddProduct {
 }
 let productCategoryList = data.map((elem) => elem.category).sort().filter((el, i, arr) => arr.includes(el, i + 1) === false);
 let newProduct = new AddProduct(productCategoryList);
-

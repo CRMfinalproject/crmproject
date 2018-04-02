@@ -1,0 +1,77 @@
+@font-face {
+    font-family: "AvenirNext";
+    src: url("../fonts/AvenirNext/AvenirNext-Regular.ttf") format("truetype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "AvenirNext";
+    src: url("../fonts/AvenirNextCyr/AvenirNextCyr-Bold.ttf") format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "AvenirNext";
+    src: url("../fonts/AvenirNextCyr/AvenirNextCyr-DemiBold.ttf") format("truetype");
+    font-weight: 600;
+}
+
+.products-main {
+  	position: absolute;
+	top: 87px;
+	left: 202px;
+  	width: 63%;
+  	margin: 0 auto 45px;
+  	border-radius: 5px;
+  	background-color: #ffffff;
+  	line-height: 24px;	
+	font-family: "AvenirNext", sans-serif;
+	font-weight: normal;
+	font-size: 14px;
+	color: #333333;
+}
+
+.products-main__heading {
+	margin: 0 auto 25px;
+	padding-top: 43px;
+	text-align: center;
+	line-height: 2em;
+	letter-spacing: -0.5px;
+	font-weight: bold;
+	font-size: 24px;
+	color: #6fb7e9;
+	&::after {
+		content: " ";
+		display: block;
+		width: 34px;
+		height: 4px;
+		margin: 18px auto 25px;
+		border-radius: 1px;
+		background-color: #6fb7e9;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+  	.tutorial-main {
+    	position: initial;
+    	width: 74.84%;
+    	margin: 13px 14px 0 auto;
+    	border-radius: 5px 5px 0 0;
+    	font-size: 12px;
+  	}
+
+  	.tutorial-main__heading {
+  		width: 70%;
+		margin-bottom: 12px;
+		padding-top: 30px;
+		font-size: 16px;
+  		font-weight: 600;
+		line-height: 1.5em;
+  		letter-spacing: 0;
+		&::after {
+			width: 18px;
+			height: 3px;
+			margin: 12px auto;
+		}
+  	}
+}
