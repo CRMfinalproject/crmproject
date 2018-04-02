@@ -77,43 +77,57 @@ class Sorting {
 		}
 		this.prev = event.target;
 	}
+	uncheckHeader() {
+		if (document.querySelector(".data-table-header .checkbox").checked) {
+			document.querySelector(".data-table-header .checkbox").checked = false;
+		}
+	}
 	
 	sort(event) {
 		this.target = event.target.textContent;
 		switch(this.target) {
 			case "Название товара": {
+				this.uncheckHeader();
 				this.sortNames("name");
 				break;
 			}
 			case "Категория": {
+				this.uncheckHeader();
 				this.sortNames("category");
 				break;
 			}
 			case "Кол-во на складе": {
+				this.uncheckHeader();
 				this.sortNames("count");
 				break;
 			}
 			case "Цена": {
+				this.uncheckHeader();
 				this.sortNames("price");
 				break;
 			}
 			case "Закупочная цена": {
+				this.uncheckHeader();
 				this.sortNames("price");
 				break;
 			}
 			case "Дата создания": {
+				this.uncheckHeader();
 				this.sortByDate();
 				break;
 			}
 			case "Дата поставки": {
+				this.uncheckHeader();
 				this.sortByDate();
 				break;
 			}
 			case "Вес": {
+				this.uncheckHeader();
 				this.sortNames("weight");
 				break;
 			}
 			case "Размеры(ШхВхД)": {
+				this.uncheckHeader();
 				this.sortBySize();
 				break;
 			}
