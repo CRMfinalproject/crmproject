@@ -11,16 +11,16 @@ class Sorting {
 		}
 		event.target.classList.toggle("desc");
 		if(event.target.classList.contains("desc")){
-			dataFilter.sort(function(obj1, obj2) {
-				if (obj1[criteria] < obj2[criteria]) return 1;
-				if (obj1[criteria] > obj2[criteria]) return -1;
+			dataFilter.sort(function(prev, next) {
+				if (prev[criteria] < next[criteria]) return 1;
+				if (prev[criteria] > next[criteria]) return -1;
 				return 0;
 			});
 			table.renderData();
 		} else {
-			dataFilter.sort(function(obj1, obj2) {
-				if (obj1[criteria] < obj2[criteria]) return -1;
-				if (obj1[criteria] > obj2[criteria]) return 1;
+			dataFilter.sort(function(prev, next) {
+				if (prev[criteria] < next[criteria]) return -1;
+				if (prev[criteria] > next[criteria]) return 1;
 				return 0;
 			});
 			table.renderData();
@@ -28,20 +28,20 @@ class Sorting {
 		this.prev = event.target;
 	}
 	
-	sortByDate() {
+	sortByDate(criteria) {
 		if((typeof this.prev !== "undefined") && (this.prev !== event.target)){
 			this.prev.classList.remove("desc");
 		}
-		if(event.target.textContent === "Дата создания"){
+		if(event.target.textContent === "Дата создания" || "Дата поставки"){
 			event.target.classList.toggle("desc");
 			if(event.target.classList.contains("desc")){
-				dataFilter.sort(function(obj1, obj2) {
-					return (new Date(obj2.creationDate) - new Date(obj1.creationDate));
+				dataFilter.sort(function(prev, next) {
+					return (new Date(next[criteria]) - new Date(prev[criteria]));
 				});
 				table.renderData();
 			} else {
-				dataFilter.sort(function(obj1, obj2) {
-					return (new Date(obj1.creationDate) - new Date(obj2.creationDate));
+				dataFilter.sort(function(prev, next) {
+					return (new Date(prev[criteria]) - new Date(next[criteria]));
 				});
 				table.renderData();
 			}
@@ -56,21 +56,21 @@ class Sorting {
 		if(event.target.textContent === "Размеры(ШхВхД)"){
 			event.target.classList.toggle("desc");
 			if(event.target.classList.contains("desc")){
-				dataFilter.sort(function(obj1, obj2) {
-					let size1 = obj1.size.split("x");
-					let size2 = obj2.size.split("x");
-					let volume1 = size1[0] * size1[1] * size1[2];
-					let volume2 = size2[0] * size2[1] * size2[2];
-					return (volume2 - volume1);
+				dataFilter.sort(function(prev, next) {
+					let prevSize = prev.size.split("x");
+					let nextSize = next.size.split("x");
+					let prevVolume = prevSize[0] * prevSize[1] * prevSize[2];
+					let nextVolume = nextSize[0] * nextSize[1] * nextSize[2];
+					return (nextVolume - prevVolume);
 				});
 				table.renderData();
 			} else {
-				dataFilter.sort(function(obj1, obj2) {
-					let size1 = obj1.size.split("x");
-					let size2 = obj2.size.split("x");
-					let volume1 = size1[0] * size1[1] * size1[2];
-					let volume2 = size2[0] * size2[1] * size2[2];
-					return volume1 - volume2;
+				dataFilter.sort(function(prev, next) {
+					let prevSize = prev.size.split("x");
+					let nextSize = next.size.split("x");
+					let prevVolume = prevSize[0] * prevSize[1] * prevSize[2];
+					let nextVolume = nextSize[0] * nextSize[1] * nextSize[2];
+					return prevVolume - nextVolume;
 				});
 				table.renderData();
 			}
@@ -78,7 +78,7 @@ class Sorting {
 		this.prev = event.target;
 	}
 	
-	sort(event) {
+	sort() {
 		this.target = event.target.textContent;
 		switch(this.target) {
 			case "Название товара": {
@@ -102,11 +102,11 @@ class Sorting {
 				break;
 			}
 			case "Дата создания": {
-				this.sortByDate();
+				this.sortByDate("creationDate");
 				break;
 			}
 			case "Дата поставки": {
-				this.sortByDate();
+				this.sortByDate("supplyDate");
 				break;
 			}
 			case "Вес": {
