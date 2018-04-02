@@ -67,4 +67,4 @@ let supplyTableFields = [
 ];
 
 
-let ordersPage = new Orders(productTableFields, supplyTableFields);
+let ordersPage = new Orders(productTableFields);
