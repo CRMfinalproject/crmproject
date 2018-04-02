@@ -75,7 +75,7 @@ export default class {
                 </div>`;
         }
     }
-    switchPages(event) {
+    switchPages() {
         // debugger;
         event.preventDefault();
         if (event.target.innerHTML == "..." || event.target == this.container ||

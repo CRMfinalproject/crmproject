@@ -1,7 +1,7 @@
 export default class {
     constructor(selector, options) {
         this.element = document.querySelector(selector);
-        this.subitems = document.querySelectorAll(selector + ` ${options.subItemClass}`); 
+        this.subitems = document.querySelectorAll(selector + ` ${options.subItemClass}`);
         this.options = options;
         this.element.addEventListener('click', event => this.onClick(event));
         this.element.addEventListener('mouseleave', event => this.onItemMouseLeave(event));

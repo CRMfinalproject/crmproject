@@ -169,6 +169,7 @@
 .new-product__form__input__label--required {
   color: red;
 
+  
 
 }
 #js-required-field-star{
@@ -279,6 +280,8 @@
 }
 
 .new-product__form_submit-button {
+  position: relative;
+  top: -30px;
   display: block;
   width: 31.3%;
   height: 36px;

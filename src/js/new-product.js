@@ -49,19 +49,23 @@ export default class {
             }
         })
         this.form.addEventListener('input', () => this.autocompleteVolume());
+        this.nameInput.addEventListener('mouseleave', () => this.showStarInRequired());
         this.form.addEventListener('click', () => {
             if (event.target === this.nameInput) {
                 this.hideStarInRequired();
             } else if (event.target.classList.contains('new-product__form__selection__option')) {
                 this.selectCategory();
                 this.hideCategories();
-            } else if (event.target === this.categoryInput || event.target === this.categorySelectionBtn || event.target.parentNode === this.categorySelectionBtn) {
-                this.showCategories();
-                    } /*else {
-                        if (event.target === this.categorySelectionBtn || event.target.parentNode === this.categorySelectionBtn || event.target.parentNode !== this.categorySelection) {
-                            this.hideCategories();
+            } else if (event.target === this.categorySelectionBtn || event.target.parentNode === this.categorySelectionBtn) {
+                if (Array.from(this.categoryOption).every(elem => elem.hidden === true)) {
+                    this.showCategories();
+                } else {
+                this.hideCategories();
                 }
-            }*/
+            } else if (event.target === this.categoryInput) {
+                this.categoryInput.value = '';
+                this.showCategories();
+            }
         });
         this.form.addEventListener('keyup', () => this.autocompleteSelection());
         this.submitBtn.addEventListener('click', () => this.createNewProduct());
@@ -81,6 +85,12 @@ export default class {
     };
     hideStarInRequired() {
         this.container.querySelector('#js-required-field-star').setAttribute('hidden', true);
+
+    };
+    showStarInRequired() {
+        if (this.nameInput.value === '') {
+            setTimeout(() => this.container.querySelector('#js-required-field-star').removeAttribute('hidden'), 1000);
+        }
     }
     autocompleteSelection() {
         if (event.target === this.categoryInput) {
@@ -101,20 +111,38 @@ export default class {
         }
     };
     createNewProduct() {
-        let productToAdd = {
-             id: this.table.data.length + 1,
-             name: this.nameInput.value,
-             category: this.categoryInput.value,
-             description: this.descriptionInput.value,
-             price: this.priceInput.value,
-             count: this.countInput.value,
-             creationDate: `${new Date().getFullYear()}-0${new Date().getMonth() + 1}-${new Date().getDate()}`,
-             size: `${this.widthInput.value} x ${this.heightInput.value} x ${this.lengthInput.value}` ,
-             weight: this.weightInput.value,
-             volume: this.volumeInput.value
-        };
-        this.table.data.push(productToAdd);
-        // dataFilter.push(productToAdd);
+        // let productToAdd = {
+        //      id: this.table.data.length + 1,
+        //      name: this.nameInput.value,
+        //      category: this.categoryInput.value,
+        //      description: this.descriptionInput.value,
+        //      price: this.priceInput.value,
+        //      count: this.countInput.value,
+        //      creationDate: `${new Date().getFullYear()}-0${new Date().getMonth() + 1}-${new Date().getDate()}`,
+        //      size: `${this.widthInput.value} x ${this.heightInput.value} x ${this.lengthInput.value}` ,
+        //      weight: this.weightInput.value,
+        //      volume: this.volumeInput.value
+        // };
+        // this.table.data.push(productToAdd);
+        // // dataFilter.push(productToAdd);
+        if (this.nameInput.value !== '' && this.priceInput.value !== '' && this.weightInput.value !== '' && this.volumeInput.value !== '') {
+            let maxId = this.table.data.map((elem) => elem.id).reduce((accum, next) => accum > next ? accum : next);
+            let newId = maxId + 1;
+            let productToAdd = {
+                id: newId,
+                name: this.nameInput.value,
+                category: this.categoryInput.value,
+                description: this.descriptionInput.value,
+                price: this.priceInput.value,
+                count: this.countInput.value,
+                creationDate: `${new Date().getFullYear()}-0${new Date().getMonth() + 1}-${new Date().getDate()}`,
+                size: `${this.widthInput.value} x ${this.heightInput.value} x ${this.lengthInput.value}`,
+                weight: this.weightInput.value,
+                volume: this.volumeInput.value
+            };
+            this.table.data.push(productToAdd);
+            this.table.dataFilter.push(productToAdd);
+        }
     };
     showSuccessMessage() {
          if (event.target === this.form) {
@@ -131,3 +159,5 @@ export default class {
 }
 
 
+// let productCategoryList = data.map((elem) => elem.category).sort().filter((el, i, arr) => arr.includes(el, i + 1) === false);
+// let newProduct = new AddProduct(productCategoryList);

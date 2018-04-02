@@ -94,7 +94,9 @@ import Likecounter from './tutorial_likecounter';
 let tutorialLikeCounter = new Likecounter();
 
 let triggerBtn = document.querySelector('#js-menu-tutorials');
+debugger;
 triggerBtn.addEventListener('click', () => {
+    debugger;
     tutorialPage.render();
     tutorialLikeCounter.render();
 });

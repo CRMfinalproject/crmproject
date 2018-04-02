@@ -1,5 +1,3 @@
-import { debug } from "util";
-
 export default class {
     constructor(table) {
         debugger;
@@ -69,8 +67,9 @@ export default class {
     }
     //OPEN FILTER
     open() {
-        // console.log("open");
-        // debugger;
+        // this.windowLoad();
+        console.log("open");
+        debugger;
         this.link1.style.visibility = "visible";
         this.link2.style.visibility = "visible";
         this.modalFilter.style.height = "300px";

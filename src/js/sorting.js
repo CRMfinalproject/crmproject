@@ -33,11 +33,11 @@ export default class {
 		this.prev = event.target;
 	}
 	
-	sortByDate() {
+	sortByDate(criteria) {
 		if((typeof this.prev !== "undefined") && (this.prev !== event.target)){
 			this.prev.classList.remove("desc");
 		}
-		if(event.target.textContent === "Дата создания"){
+		if(event.target.textContent === "Дата создания" || "Дата поставки"){
 			event.target.classList.toggle("desc");
 			if(event.target.classList.contains("desc")){
 				// dataFilter.sort(function(obj1, obj2) {
