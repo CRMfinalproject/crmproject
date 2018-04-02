@@ -18,7 +18,7 @@ export default class {
         this.filterNameDate = [];
         this.finalResults = [];
         this.addEvents();
-        this.windowLoad();
+        // this.windowLoad();
     }
     addEvents() {
         this.openCloseFilter = document.body.querySelector("#openCloseFilter");
@@ -67,7 +67,8 @@ export default class {
     }
     //OPEN FILTER
     open() {
-        // this.windowLoad();
+        debugger;
+        this.windowLoad();
         console.log("open");
         debugger;
         this.link1.style.visibility = "visible";
