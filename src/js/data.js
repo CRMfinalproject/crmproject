@@ -11,7 +11,7 @@ let data = [
         "purchasePrice": 199,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 10,
+        "weight": 0.3,
         "size": "1x1x5"
     },
     {
@@ -23,7 +23,7 @@ let data = [
         "purchasePrice": 150,
         "creationDate": "2018-02-05",
         "supplyDate": "2018-03-01",
-        "weight": 250,
+        "weight": 0.6,
         "size": "40x40x30"
     },
     {
@@ -35,7 +35,7 @@ let data = [
         "purchasePrice": 200,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 500,
+        "weight": 1.1,
         "size": "40x40x50"
     },
     {
@@ -47,7 +47,7 @@ let data = [
         "purchasePrice": 899,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 700,
+        "weight": 3.8,
         "size": "35x20x18"
     },
     {
@@ -59,7 +59,7 @@ let data = [
         "purchasePrice": 45,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 1000,
+        "weight": 2,
         "size": "20x15x4"
     },
     {
@@ -71,7 +71,7 @@ let data = [
         "purchasePrice": 5,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 100,
+        "weight": 0.5,
         "size": "8x4x2"
     },
     {
@@ -83,7 +83,7 @@ let data = [
         "purchasePrice": 4500,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 3000,
+        "weight": 4.8,
         "size": "1000x1000x50"
     },
     {
@@ -95,7 +95,7 @@ let data = [
         "purchasePrice": 189,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 300,
+        "weight": 1.2,
         "size": "1200x40x5"
     },
     {
@@ -107,7 +107,7 @@ let data = [
         "purchasePrice": 50,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 1000,
+        "weight": 5,
         "size": "300x20x5"
     },
     {
@@ -119,19 +119,19 @@ let data = [
         "purchasePrice": 599,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 850,
+        "weight": 3.4,
         "size": "1100x700x10"
     },
     {
         "id": 11,
-        "name": "Лак",
+        "name": "Лак MK",
         "category": "Косметика",
         "count": 1000,
         "price": 99,
         "purchasePrice": 79,
         "creationDate": "2018-03-18",
         "supplyDate": "2018-03-01",
-        "weight": 10,
+        "weight": 0.4,
         "size": "1x1x5"
     },
     {
@@ -143,7 +143,7 @@ let data = [
         "purchasePrice": 399,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 10,
+        "weight": 2.8,
         "size": "5x1x1"
     },
     {
@@ -155,19 +155,19 @@ let data = [
         "purchasePrice": 69,
         "creationDate": "2018-02-05",
         "supplyDate": "2018-03-01",
-        "weight": 150,
+        "weight": 1.5,
         "size": "21x12x3"
     },
     {
         "id": 14,
-        "name": "Помада Kylie",
+        "name": "Помада Loreal",
         "category": "Косметика",
         "count": 259,
-        "price": 299,
+        "price": 210,
         "purchasePrice": 199,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 10,
+        "weight": 0.3,
         "size": "1x1x5"
     },
     {
@@ -179,7 +179,7 @@ let data = [
         "purchasePrice": 150,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 250,
+        "weight": 0.6,
         "size": "40x40x30"
     },
     {
@@ -191,7 +191,7 @@ let data = [
         "purchasePrice": 200,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 500,
+        "weight": 1.1,
         "size": "40x40x50"
     },
     {
@@ -203,7 +203,7 @@ let data = [
         "purchasePrice": 899,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 700,
+        "weight": 3.8,
         "size": "35x20x18"
     },
     {
@@ -215,7 +215,7 @@ let data = [
         "purchasePrice": 45,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 1000,
+        "weight": 2,
         "size": "20x15x4"
     },
     {
@@ -227,7 +227,7 @@ let data = [
         "purchasePrice": 5,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 100,
+        "weight": 0.5,
         "size": "8x4x2"
     },
     {
@@ -239,7 +239,7 @@ let data = [
         "purchasePrice": 4500,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 3000,
+        "weight": 4.8,
         "size": "1000x1000x50"
     },
     {
@@ -251,7 +251,7 @@ let data = [
         "purchasePrice": 189,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 300,
+        "weight": 1.2,
         "size": "1200x40x5"
     },
     {
@@ -263,7 +263,7 @@ let data = [
         "purchasePrice": 50,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 1000,
+        "weight": 5,
         "size": "300x20x5"
     },
     {
@@ -275,19 +275,19 @@ let data = [
         "purchasePrice": 599,
         "creationDate": "2018-03-18",
         "supplyDate": "2018-03-01",
-        "weight": 850,
+        "weight": 3.4,
         "size": "1100x700x10"
     },
     {
         "id": 24,
-        "name": "Лак",
+        "name": "Лак PNL",
         "category": "Косметика",
         "count": 1000,
         "price": 99,
         "purchasePrice": 79,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 10,
+        "weight": 0.2,
         "size": "1x1x5"
     },
     {
@@ -299,7 +299,7 @@ let data = [
         "purchasePrice": 399,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 10,
+        "weight": 2.8,
         "size": "5x1x1"
     },
     {
@@ -311,19 +311,19 @@ let data = [
         "purchasePrice": 69,
         "creationDate": "2018-02-05",
         "supplyDate": "2018-03-01",
-        "weight": 150,
+        "weight": 1.5,
         "size": "21x12x3"
     },
     {
         "id": 27,
-        "name": "Помада Kylie",
+        "name": "Помада Dior",
         "category": "Косметика",
         "count": 259,
-        "price": 299,
+        "price": 750,
         "purchasePrice": 199,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 10,
+        "weight": 0.3,
         "size": "1x1x5"
     },
     {
@@ -335,19 +335,19 @@ let data = [
         "purchasePrice": 150,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 250,
+        "weight": 0.6,
         "size": "40x40x30"
     },
     {
         "id": 29,
-        "name": "Кофта",
+        "name": "Кофта вязка",
         "category": "Одежда",
         "count": 52,
         "price": 300,
         "purchasePrice": 200,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 500,
+        "weight": 2.2,
         "size": "40x40x50"
     },
     {
@@ -359,7 +359,7 @@ let data = [
         "purchasePrice": 899,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 700,
+        "weight": 3.8,
         "size": "35x20x18"
     },
     {
@@ -371,7 +371,7 @@ let data = [
         "purchasePrice": 45,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 1000,
+        "weight": 2,
         "size": "20x15x4"
     },
     {
@@ -383,7 +383,7 @@ let data = [
         "purchasePrice": 5,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 100,
+        "weight": 0.5,
         "size": "8x4x2"
     },
     {
@@ -395,7 +395,7 @@ let data = [
         "purchasePrice": 4500,
         "creationDate": "2018-02-05",
         "supplyDate": "2018-03-01",
-        "weight": 3000,
+        "weight": 4.8,
         "size": "1000x1000x50"
     },
     {
@@ -407,7 +407,7 @@ let data = [
         "purchasePrice": 189,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 300,
+        "weight": 1.2,
         "size": "1200x40x5"
     },
     {
@@ -419,7 +419,7 @@ let data = [
         "purchasePrice": 50,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 1000,
+        "weight": 5,
         "size": "300x20x5"
     },
     {
@@ -431,19 +431,19 @@ let data = [
         "purchasePrice": 599,
         "creationDate": "2018-02-05",
         "supplyDate": "2018-03-01",
-        "weight": 850,
+        "weight": 3.4,
         "size": "1100x700x10"
     },
     {
         "id": 37,
-        "name": "Лак",
+        "name": "Лак PNL",
         "category": "Косметика",
         "count": 1000,
         "price": 99,
         "purchasePrice": 79,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 10,
+        "weight": 0.2,
         "size": "1x1x5"
     },
     {
@@ -455,7 +455,7 @@ let data = [
         "purchasePrice": 399,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 10,
+        "weight": 2.8,
         "size": "5x1x1"
     },
     {
@@ -467,19 +467,19 @@ let data = [
         "purchasePrice": 69,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 150,
+        "weight": 1.5,
         "size": "21x12x3"
     },
     {
         "id": 40,
-        "name": "Помада Kylie",
+        "name": "Помада Dior",
         "category": "Косметика",
         "count": 259,
-        "price": 299,
+        "price": 750,
         "purchasePrice": 199,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 10,
+        "weight": 0.3,
         "size": "1x1x5"
     },
     {
@@ -491,19 +491,19 @@ let data = [
         "purchasePrice": 150,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 250,
+        "weight": 0.6,
         "size": "40x40x30"
     },
     {
         "id": 42,
-        "name": "Кофта",
+        "name": "Кофта вязка",
         "category": "Одежда",
         "count": 52,
         "price": 300,
         "purchasePrice": 200,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 500,
+        "weight": 2.2,
         "size": "40x40x50"
     },
     {
@@ -515,7 +515,7 @@ let data = [
         "purchasePrice": 899,
         "creationDate": "2018-02-05",
         "supplyDate": "2018-03-01",
-        "weight": 700,
+        "weight": 3.8,
         "size": "35x20x18"
     },
     {
@@ -527,7 +527,7 @@ let data = [
         "purchasePrice": 45,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 1000,
+        "weight": 2,
         "size": "20x15x4"
     },
     {
@@ -539,7 +539,7 @@ let data = [
         "purchasePrice": 5,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 100,
+        "weight": 0.5,
         "size": "8x4x2"
     },
     {
@@ -551,7 +551,7 @@ let data = [
         "purchasePrice": 4500,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 3000,
+        "weight": 4.8,
         "size": "1000x1000x50"
     },
     {
@@ -563,7 +563,7 @@ let data = [
         "purchasePrice": 189,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 300,
+        "weight": 1.2,
         "size": "1200x40x5"
     },
     {
@@ -575,7 +575,7 @@ let data = [
         "purchasePrice": 50,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 1000,
+        "weight": 5,
         "size": "300x20x5"
     },
     {
@@ -587,19 +587,19 @@ let data = [
         "purchasePrice": 599,
         "creationDate": "2018-02-05",
         "supplyDate": "2018-03-01",
-        "weight": 850,
+        "weight": 3.4,
         "size": "1100x700x10"
     },
     {
         "id": 50,
-        "name": "Лак",
+        "name": "Лак Odri",
         "category": "Косметика",
         "count": 1000,
         "price": 99,
         "purchasePrice": 79,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 10,
+        "weight": 0.3,
         "size": "1x1x5"
     },
     {
@@ -611,7 +611,7 @@ let data = [
         "purchasePrice": 399,
         "creationDate": "2018-03-18",
         "supplyDate": "2018-03-01",
-        "weight": 10,
+        "weight": 2.8,
         "size": "5x1x1"
     },
     {
@@ -623,7 +623,7 @@ let data = [
         "purchasePrice": 69,
         "creationDate": "2018-02-01",
         "supplyDate": "2018-03-01",
-        "weight": 150,
+        "weight": 1.5,
         "size": "21x12x3"
     }
 ];
