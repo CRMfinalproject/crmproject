@@ -193,7 +193,7 @@ export default class {
     //SET NEW DATA AFTER FILTER
     filterData() {
 
-        // this.dataFilter = [];
+        this.table.dataFilter = [];
         for (let i = 0; i < this.table.data.length; i++) {
             for (let j = 0; j < this.finalResults.length; j++) {
                 if (this.table.data[i].id === this.finalResults[j]) {
