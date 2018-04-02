@@ -35,11 +35,7 @@ class Orders {
 		//page.render();
 		
 		new Sorting();
-        new Fieldsettings(productTableFields, supplyTableFields);
-/* 		let fs= new Fieldsettings();
-		fs.render();
-		fs.hide();
-		fs.updateField(); */
+        new Fieldsettings(productTableFields);
 		new Pagination(data);
     }
 	
