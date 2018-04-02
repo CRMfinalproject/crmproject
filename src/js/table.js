@@ -1,12 +1,12 @@
 import { createElem } from './utils';
 
 export default class {
-    constructor(productTableFields, supplyTableFields, data, dataFilter) {
+    constructor(productTableFields, supplyTableFields, data) {
         this.fields = productTableFields;
         this.productFields = productTableFields;
         this.supplyFields = supplyTableFields;
         this.data = data;
-        this.dataFilter = dataFilter;
+        this.dataFilter = [];
         this.render();
     }
     render() {
@@ -45,7 +45,7 @@ export default class {
         this.deleteSelected();
         debugger;
         let dataPage = this.data.slice(this.startRow, this.endRow);
-        if (this.dataFilter) {
+        if (this.dataFilter.length) {
             dataPage = this.dataFilter.slice(this.startRow, this.endRow);
         }
         let bodyContent = "";
@@ -118,7 +118,7 @@ export default class {
                             idsToDel.map(productToDel => {
                                 if (this.data[i].id == productToDel) {
                                     this.data.splice(i, 1);
-                                    // dataFilter.splice(i, 1);
+                                    this.dataFilter.splice(i, 1);
                                     countToDel++;
                                 }
                             })

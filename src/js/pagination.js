@@ -6,18 +6,23 @@ export default class {
         this.setSettings();
         this.renderContainer();
         this.render();
+        document.body.addEventListener('eventFilterResults', () => {
+            this.setSettings();
+            this.render()});
     }
     setSettings() {
-        this.totalPages = (this.table.data.length < 10) ? 1 : Math.ceil(this.table.data.length/10);
+        debugger;
+        this.tableLength = (this.table.dataFilter.length) ? this.table.dataFilter.length : this.table.data.length;
+        this.totalPages = (this.tableLength < 10) ? 1 : Math.ceil(this.tableLength/10);
         this.currentPage = 1;
         this.arrPages = Array.from({ length: (this.totalPages + 1) }, (v, i) => i);
         this.arrPages.splice(0, 1);
         this.mobile = (screen.width < 780) ? true : false;
-        this.arrPagesToShow = this.pagesToShow(this.table.data);
+        this.arrPagesToShow = this.pagesToShow();
     }
     pagesToShow() {
         let startPage, endPage;
-        this.totalPages = Math.ceil(this.table.data.length / 10);
+        this.totalPages = Math.ceil(this.tableLength / 10);
         if (this.mobile) {
             startPage = (this.currentPage <= 4) ? 0 : this.currentPage - 2;
             endPage = (this.currentPage <= this.totalPages - 4) ? this.currentPage + 1 : this.totalPages;

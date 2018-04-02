@@ -1,13 +1,4 @@
-// let filterNamePrice = []; +
-// let filterNameCount = []; +
-// let filterNameCategory = []; +
-// let filterNameDate = []; +
-// let result = []; +
-// let Tablefilter = {}; +
-// let filterNameChecked = []; +
-// let dataFilter = [];
-// let finalResults = [];
-// let filterNamebyName = []; +
+import { debug } from "util";
 
 export default class {
     constructor(table) {
@@ -20,37 +11,66 @@ export default class {
         this.arrowFilter = document.querySelector(".filter_btn__dropdown-arrow");
         this.inputDate2 = document.querySelector("#inputdateMax");
         this.inputDate1 = document.querySelector("#inputdateMin");
-        this.openCloseFilter = document.querySelector("#openCloseFilter");
         this.link1 = document.querySelector("#linkdate1");
         this.inputDate2.style.visibility = "hidden";
         this.inputDate1.style.visibility = "hidden";
         this.link2 = document.querySelector("#linkdate2");
         this.table = table;
         this.tableFilter = {};
-        // this.filterMimMaxDate();
-        // this.checkControl();
-        // this.inputRangePrice();
-        // this.inputRangeCount();
-        // window.onload = this.windowLoad.bind(this);
+        this.filterNameDate = [];
+        this.finalResults = [];
+        this.addEvents();
         this.windowLoad();
+    }
+    addEvents() {
+        this.openCloseFilter = document.body.querySelector("#openCloseFilter");
+        debugger;
+        this.openCloseFilter.addEventListener("click", () => {
+            if (this.openCloseFilter.textContent === "ОТКРЫТЬ") this.open()
+            else this.close();
+        });
+
+        this.list = document.body.getElementsByClassName("filter_checkboxes__input");
+        const checkboxArr = Array.from(this.list);
+        checkboxArr.map(checkbox => checkbox.addEventListener("click", () => this.checkControl()));
+
+        this.SelectByName = document.body.querySelector("#searchSelectByname");
+        this.SelectByName.addEventListener("keyup", () => {this.searchSelectByname()});
+
+        this.minRangePrice = document.body.querySelector("#minRangePrice");
+        this.maxRangePrice = document.body.querySelector("#maxRangePrice");
+        this.minRangePrice.addEventListener("keyup", () => { this.inputRangePrice() });
+        this.maxRangePrice.addEventListener("keyup", () => { this.inputRangePrice() });
+
+        this.minRangeQuantity = document.body.querySelector("#minRangeQuantity");
+        this.maxRangeQuantity = document.body.querySelector("#maxRangeQuantity");
+        this.minRangeQuantity.addEventListener("keyup", () => { this.inputRangeCount() });
+        this.maxRangeQuantity.addEventListener("keyup", () => { this.inputRangeCount() });
+
     }
     windowLoad() {
         const sliderSections = document.getElementsByClassName("filter_modal");
 
         for (let x = 0; x < sliderSections.length; x++) {
             let sliders = sliderSections[x].getElementsByTagName("input");
+            debugger;
             for (let y = 0; y < sliders.length; y++) {
-                debugger;
                 if (sliders[y].type === "range") {
-                    sliders[y].oninput = this.getVals;
-                    sliders[y].oninput();
+                    // sliders[y].addEventListener("input", () => {this.getVals()});
+                    this.getVals(sliders[y]);
+                    // sliders[y].oninput = this.getVals;
+                    // sliders[y].oninput();
                 }
             }
         }
+        this.getVals();
+        this.filterMinMaxPrice();
+        this.filterMinMaxCount();
     }
     //OPEN FILTER
     open() {
-        debugger;
+        // console.log("open");
+        // debugger;
         this.link1.style.visibility = "visible";
         this.link2.style.visibility = "visible";
         this.modalFilter.style.height = "300px";
@@ -59,7 +79,7 @@ export default class {
         this.openCloseFilter.textContent = "ЗАКРЫТЬ";
         this.arrowFilter.style.transform = "rotate(225deg)";
         this.btnFilter.style.borderColor = "white";
-        this.btnFilter.setAttribute("onclick", "filter.close()")
+        // this.btnFilter.setAttribute("onclick", "filter.close()")
     }
     //CLOSE FILTER
     close() {
@@ -72,7 +92,7 @@ export default class {
         this.link1.style.visibility = "hidden";
         this.arrowFilter.style.transform = "rotate(45deg)";
         this.openCloseFilter.textContent = "ОТКРЫТЬ";
-        this.btnFilter.setAttribute("onclick", "filter.open()")
+        // this.btnFilter.setAttribute("onclick", "filter.open()")
     }
     linkdate1() {
         this.link1.style.visibility = "hidden";
@@ -84,22 +104,23 @@ export default class {
     }
     //RESULT OF FILTER
     resultID() {
-        debugger;
+        // debugger;
         this.result = [];
         this.result[0] = this.filterNamePrice;
         this.result[1] = this.filterNameCount;
         if (this.filterNameCategory.length !== 0) {
-            result.push(this.filterNameCategory);
+            this.result.push(this.filterNameCategory);
         }
         if (this.filterNameDate.length !== 0) {
             this.result.push(this.filterNameDate);
         }
-        if (this.searchSelectByname.value.length !== 0) {
+        if (this.SelectByName.value.length !== 0) {
             this.result.push(this.filterNamebyName);
 
         }
-        finalResults = [];
+        this.finalResults = [];
         let sorted_arr = [];
+        // debugger;
         switch (this.result.length) {
             case 2:
                 sorted_arr = this.result[0].concat(this.result[1]);
@@ -108,7 +129,7 @@ export default class {
                 });
                 for (let j = 0; j < sorted_arr.length - 1; j++) {
                     if (sorted_arr[j] === sorted_arr[j + 1]) {
-                        finalResults.push(sorted_arr[j]);
+                        this.finalResults.push(sorted_arr[j]);
                     }
                 }
                 break;
@@ -119,7 +140,7 @@ export default class {
                 });
                 for (let j = 0; j < sorted_arr.length - 1; j++) {
                     if (sorted_arr[j] === sorted_arr[j + 1] && sorted_arr[j] === sorted_arr[j + 2]) {
-                        finalResults.push(sorted_arr[j]);
+                        this.finalResults.push(sorted_arr[j]);
                     }
                 }
                 this.result.splice(2, 1);
@@ -131,7 +152,7 @@ export default class {
                 });
                 for (let j = 0; j < sorted_arr.length - 1; j++) {
                     if (sorted_arr[j] === sorted_arr[j + 1] && sorted_arr[j] === sorted_arr[j + 2] && sorted_arr[j] === sorted_arr[j + 3]) {
-                        finalResults.push(sorted_arr[j]);
+                        this.finalResults.push(sorted_arr[j]);
                     }
                 }
                 this.result.splice(3, 1);
@@ -144,7 +165,7 @@ export default class {
                 });
                 for (let j = 0; j < sorted_arr.length - 1; j++) {
                     if (sorted_arr[j] === sorted_arr[j + 1] && sorted_arr[j] === sorted_arr[j + 2] && sorted_arr[j] === sorted_arr[j + 3] && sorted_arr[j] === sorted_arr[j + 4]) {
-                        finalResults.push(sorted_arr[j]);
+                        this.finalResults.push(sorted_arr[j]);
                     }
                 }
                 this.result.splice(4, 1);
@@ -153,57 +174,63 @@ export default class {
             default:
                 break;
         }
-
-        page.setSettings(finalResults);
-        startRow = 0;
-        endRow = ROWS_PER_PAGE;
-        page.render();
+        debugger;
         this.filterData();
+        console.log(this.finalResults);
+        console.log(this.table.dataFilter);
+        this.table.startRow = 0;
+        this.table.endRow = this.table.ROWS_PER_PAGE;
+        this.dispatchFilterResults();
 
+    }
+    dispatchFilterResults () {
+        // debugger;
+        const eventFilterResults = new CustomEvent('eventFilterResults', {
+            bubbles: true
+        });
+        document.body.dispatchEvent(eventFilterResults);
     }
     //SET NEW DATA AFTER FILTER
     filterData() {
 
-        dataFilter = [];
-        for (let i = 0; i < data.length; i++) {
-            for (let j = 0; j < finalResults.length; j++) {
-                if (data[i].id === finalResults[j]) {
-                    dataFilter.push(data[i]);
+        // this.dataFilter = [];
+        for (let i = 0; i < this.table.data.length; i++) {
+            for (let j = 0; j < this.finalResults.length; j++) {
+                if (this.table.data[i].id === this.finalResults[j]) {
+                    this.table.dataFilter.push(this.table.data[i]);
                 }
             }
         }
-        table.renderData();
+        this.table.renderData();
 
     }
     //CHECKBOX INPUT
     checkControl() {
-        debugger;
         this.filterNameChecked = [];
-        let list = document.getElementsByClassName("filter_checkboxes__input");
-        for (let i = 0; i < list.length; i++) {
-            if (list[i].checked === true) {
-                this.filterNameChecked[i] = list[i].value;
+        for (let i = 0; i < this.list.length; i++) {
+            if (this.list[i].checked === true) {
+                this.filterNameChecked[i] = this.list[i].value;
             }
         }
 
         this.filterNameCategory = [];
         for (let j = 0; j < this.filterNameChecked.length; j++) {
-            for (let h = 0; h < data.length; h++) {
-                if (this.filterNameChecked[j] == data[h].category) {
-                    this.filterNameCategory.push(data[h].id);
+            for (let h = 0; h < this.table.data.length; h++) {
+                if (this.filterNameChecked[j] == this.table.data[h].category) {
+                    this.filterNameCategory.push(this.table.data[h].id);
                 }
             }
         }
-
+        debugger;
         this.resultID();
     }
     //SEARCH BY NAME INPUT
     searchSelectByName() {
         this.filterNamebyName = [];
-        if (this.searchSelectByname.value != "") {
+        if (this.selectByName.value != "") {
             for (let i = 0; i < data.length; i++) {
-                data[i].name.slice(0, this.searchSelectByname.value.length);
-                if (this.searchSelectByname.value.toLowerCase().indexOf(data[i].name.slice(0, this.searchSelectByname.value.length).toLowerCase()) > -1) {
+                data[i].name.slice(0, this.selectByName.value.length);
+                if (this.selectByName.value.toLowerCase().indexOf(data[i].name.slice(0, this.selectByName.value.length).toLowerCase()) > -1) {
                     this.filterNamebyName.push(data[i].id);
                 }
             }
@@ -215,7 +242,6 @@ export default class {
     filterMimMaxDate() {
         let minDate = new Date(inputdateMin.value);
         let maxDate = new Date(inputdateMax.value);
-        this.filterNameDate = [];
         for (let i = 0; i < this.table.data.length; i++) {
             let mainDate = new Date(this.table.data[i].creationDate);
             if (inputdateMin.value === "" && inputdateMax.value !== "" && mainDate <= maxDate) {
@@ -233,13 +259,14 @@ export default class {
     }
     //RANGE INPUT MIN-MAX PRICE
     inputRangePrice() {
-        minPrice.value = minRangePrice.value;
-        maxPrice.value = maxRangePrice.value;
-        this.tableFilter.priceMin = minRangePrice.value;
-        this.tableFilter.priceMax = maxRangePrice.value;
+        minPrice.value = this.minRangePrice.value;
+        maxPrice.value = this.maxRangePrice.value;
+        this.tableFilter.priceMin = this.minRangePrice.value;
+        this.tableFilter.priceMax = this.maxRangePrice.value;
         this.filterMinMaxPrice();
     }
     filterMinMaxPrice() {
+        debugger;
         this.filterNamePrice = [];
         for (let i = 0; i < this.table.data.length; i++) {
             if (this.table.data[i].price >= this.tableFilter.priceMin && 
@@ -248,31 +275,34 @@ export default class {
             }
         }
 
-        this.resultID();
+        // this.resultID();
     }
     //RANGE INPUT MIN-MAX COUNT
     inputRangeCount() {
-        minCount.value = minRangeQuantity.value;
-        maxCount.value = maxRangeQuantity.value;
-        this.tableFilter.numberMin = minRangeQuantity.value;
-        this.tableFilter.numberMax = maxRangeQuantity.value;
+        minCount.value = this.minRangeQuantity.value;
+        maxCount.value = this.maxRangeQuantity.value;
+        this.tableFilter.numberMin = this.minRangeQuantity.value;
+        this.tableFilter.numberMax = this.maxRangeQuantity.value;
         this.filterMinMaxCount();
     }
 
     filterMinMaxCount() {
+        debugger;
         this.filterNameCount = [];
-        for (let i = 0; i < data.length; i++) {
-            if (data[i].count >= this.tableFilter.numberMin && data[i].count <= this.tableFilter.numberMax) {
-                this.filterNameCount.push(data[i].id);
+        for (let i = 0; i < this.table.data.length; i++) {
+            if (this.table.data[i].count >= this.tableFilter.numberMin && this.table.data[i].count <= this.tableFilter.numberMax) {
+                this.filterNameCount.push(this.table.data[i].id);
             }
         }
 
-        this.resultID();
+        // this.resultID();
 
     }
     //TO GET VALUES FROM RANGE INPUT
-    getVals() {
-        let parent = this.parentNode;
+    getVals(sliderElement) {
+        debugger;
+        // let parent = document.body.querySelector(".filter_priceDateBlock");
+        let parent = sliderElement.parentNode;
         let slides = parent.getElementsByTagName("input");
         let slide1 = parseFloat(slides[0].value);
         let slide2 = parseFloat(slides[1].value);
@@ -281,7 +311,6 @@ export default class {
             slide2 = slide1;
             slide1 = tmp;
         }
-        debugger;
         switch (parent.parentNode.id) {
             case 'filter-block-by-price':
                 document.getElementById("minRangePrice").value = slide1;
