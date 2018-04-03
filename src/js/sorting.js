@@ -113,12 +113,12 @@ class Sorting {
 			}
 			case "Дата создания": {
 				this.uncheckHeader();
-				this.sortByDate();
+				this.sortByDate("supplyDate");
 				break;
 			}
 			case "Дата поставки": {
 				this.uncheckHeader();
-				this.sortByDate();
+				this.sortByDate("creationDate");
 				break;
 			}
 			case "Вес": {
