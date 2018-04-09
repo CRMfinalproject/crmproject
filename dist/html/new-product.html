@@ -1,0 +1,58 @@
+<script type="text/template" id="js-add-new-product"><div class="new-product__close-button" id="js-new-product-close-btn">x</div>
+    <h2 class="new-product__form__heading">Добавить новый товар</h2>
+        <form id="js-new-product-form" action="" target="_self">
+            <div class="new-product__form">
+                <div class="new-product__form__column">
+                    <span class="new-product__form__input__label--required" id = "js-required-field-star">*</span><br>
+                    <input type="text" class="new-product__form__input--text" id="js-new-product-name" name="name" placeholder="Название товара" required>
+                    <input type="text" class="new-product__form__input--text" id="js-new-product-category" name="category" autocomplete="off" placeholder="Введите название категории">
+                    <div id = "js-form-selection-arrow"><div class="new-product__form__selection__arrow"></div></div>
+                    <ul class="new-product__form__selection" id="js-select-category"></ul>
+                <p class="new-product__form__input__label">Описание товара</p>
+                <textarea class="new-product__form__input--textarea" id="js-new-product-description" name="description" rows="5"></textarea>
+            </div>
+            <div class="new-product__form__column">
+                <div class="new-product__form__row">
+                    <div class="new-product__form__input--number__label">Стоимость<span class="new-product__form__input__label--required"> *</span><br>
+                        <input type="number" step="0.01" class="new-product__form__input--number" id="js-new-product-price" name="price" placeholder="   0" required>
+                        <div class="new-product__form__input__arrow--up"></div>
+                        <div class="new-product__form__input__arrow--down"></div>
+                    </div>
+                    <div class="new-product__form__input--number__label">Количество<br>
+                        <input type="number" class="new-product__form__input--number" id="js-new-product-count" name="count" placeholder="   0">
+                        <div class="new-product__form__input__arrow--up"></div>
+                        <div class="new-product__form__input__arrow--down"></div>
+                    </div>
+                </div>
+                <p class="new-product__form__input__group-label">Размеры</p>
+                <div class="new-product__form__input--number__label--small">Ширина<br>
+                    <input type="number" class="new-product__form__input--number" name="width" id="js-new-product-width" placeholder="   0">
+                    <div class="new-product__form__input__arrow--up"></div>
+                    <div class="new-product__form__input__arrow--down"></div>
+                </div>
+                <div class="new-product__form__input--number__label--small">Высота<br>
+                    <input type="number" class="new-product__form__input--number" name="height" id="js-new-product-height" placeholder="   0">
+                    <div class="new-product__form__input__arrow--up"></div>
+                    <div class="new-product__form__input__arrow--down"></div>
+                </div>
+                <div class="new-product__form__input--number__label--small">Длина<br>
+                    <input type="number" class="new-product__form__input--number" name="length" placeholder="   0" id="js-new-product-length">
+                    <div class="new-product__form__input__arrow--up"></div>
+                    <div class="new-product__form__input__arrow--down"></div>
+                </div>
+                <div class="new-product__form__input--number__label">Вес<span class="new-product__form__input__label--required"> *</span><br>
+                    <input type="number" step="0.01" class="new-product__form__input--number" id="js-new-product-weight" name="weight" placeholder="  0.1" required>
+                    <div class="new-product__form__input__arrow--up"></div>
+                    <div class="new-product__form__input__arrow--down"></div>
+                </div>
+                <div class="new-product__form__input--number__label">Объемный вес<span class="new-product__form__input__label--required"> *</span>
+                    <input type="number" step="0.01" class="new-product__form__input--number" name = "volume" id="js-new-product-volume" placeholder="  0.1" required>
+                    <div class="new-product__form__input__arrow--up"></div>
+                    <div class="new-product__form__input__arrow--down"></div>
+                </div>
+            </div>
+        <p class="new-product__form__reference">*Объемный вес высчитывается по формуле ШхВхД / 4000</p>
+        <p class="new-product__form__reference--red">*Обязательное поле</p>
+            </div>
+            <button class="new-product__form_submit-button" id="js-new-product-submit-btn">Создать товар</button>
+        </form></script>

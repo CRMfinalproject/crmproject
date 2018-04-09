@@ -40,5 +40,5 @@ node_modules/
 
 # dist folder files
 
-dist/
+
 package-lock.json

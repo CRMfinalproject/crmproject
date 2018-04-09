@@ -1,0 +1,203 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>Placeholder title</title><link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"><link rel="stylesheet" href="../css/main.css"></head><body><header class="header"><div class="burger"><a href="" class="burger__button"><div></div><div></div><div></div></a></div><div class="search"><img src="../images/search-icon.svg" alt="" class="search__icon"> <input type="search" class="search__input" placeholder="Введите последние 4 цифры..."></div><ul class="menu"><!--<li class="menu__item">
+                     <div class="menu__text">Help</div>
+                     <div class="menu__arrow">
+                         <div class="menu__arrow__symbol">›</div>
+                     </div>
+                     <div class="menu__submenu">
+                         <ul class="menu__sublist">
+                             <li class="menu__subitem">
+                                 <a href="" class="menu__link">1111111</a>
+                             </li>
+                             <li class="menu__subitem">
+                                 <a href="" class="menu__link">22222</a>
+                             </li>
+                         </ul>
+                     </div>
+                 </li>--><li class="menu__item"><div class="menu__text">test@test.ua</div><img src="../images/user-icon.jpg" alt="" class="menu__icon"><div class="menu__arrow"><!-- <div class="menu__arrow__symbol"></div> --></div><nav class="menu__submenu"><ul class="menu__sublist"><li class="menu__subitem"><a href="" class="menu__link">Настройка профиля</a></li><li class="menu__subitem"><a href="" class="menu__link">Выйти</a></li></ul></nav></li></ul></header><div class="wrapper"><nav class="burger-menu"><ul class="burger-menu__container"><li id="js-menu-orders"><a href="" class="burger-menu__item burger-menu__item--selected"><img src="../images/orders.svg" alt="" id="orders-img"> <span>Заказы</span></a></li><li id="js-menu-products"><a href="" class="burger-menu__item"><img src="../images/products.svg" alt="" id="products-img"> <span>Товары</span></a></li><li id="js-menu-team"><a href="" class="burger-menu__item"><img src="../images/team.svg" alt="" id="team-img"> <span>Команда</span></a></li><li id="js-menu-statistics"><a href="" class="burger-menu__item"><img src="../images/statistics.svg" alt="" id="statistics-img"> <span>Статистика</span></a></li><li id="js-menu-integration"><a href="" class="burger-menu__item"><img src="../images/integration.svg" alt="" id="integration-img"> <span>Интеграция</span></a></li><li id="js-menu-tutorials"><a href="" class="burger-menu__item"><img src="../images/tutorials.svg" alt="" id="tutorials-img"> <span>Учебные материалы</span></a></li><li id="js-menu-settings"><a href="" class="burger-menu__item"><img src="../images/settings.svg" alt="" id="settings-img"> <span>Настройки</span></a></li></ul></nav><main class="main"><div class="content"></div></main></div><script type="text/template" id="js-filter-content"><button id="btnFilter" class="filter_btn" onclick="filter.open()"><span id="openCloseFilter">ОТКРЫТЬ</span>
+     		ФИЛЬТРЫ<span class="filter_btn__dropdown-arrow"></span>
+     	</button>
+     	<div class="filter_modal" id="modalFilter">
+     		<div class="filter_block_by-status" id = "filter_block_by-status">
+     			<h6>ФИЛЬТР ПО КАТЕГОРИИ:</h6>
+     			<ul class="filter_checkboxes">
+     				<li><input type="checkbox" id = "checkbox1" class = "filter_checkboxes__input" onclick = "filter.checkControl()" name="status" value = "Обувь">
+     					<label for="checkbox1"  class="filter_checkboxes__check-item"></label><span class = "filter_checkboxes__name">Обувь</span></li>
+     				<li><input type="checkbox" id = "checkbox2"  class = "filter_checkboxes__input" onclick = "filter.checkControl()" name="status" value="Игрушки">
+     					<label for="checkbox2" class="filter_checkboxes__check-item" ></label><span class = "filter_checkboxes__name">Игрушки</span></li>
+     				<li><input type="checkbox" id = "checkbox3"  class = "filter_checkboxes__input" onclick = "filter.checkControl()" name="status" value="Ремни">
+     					<label for="checkbox3" class="filter_checkboxes__check-item" ></label><span class = "filter_checkboxes__name">Ремни</span></li>
+     				<li><input type="checkbox" id = "checkbox4"  class = "filter_checkboxes__input" onclick = "filter.checkControl()" name="status" value="Косметика">
+     					<label for="checkbox4" class="filter_checkboxes__check-item" ></label><span class = "filter_checkboxes__name">Косметика</span></li>
+     				<li><input type="checkbox" id = "checkbox5"  class = "filter_checkboxes__input" onclick = "filter.checkControl()" name="status" value="Кожа">
+     					<label for="checkbox5" class="filter_checkboxes__check-item" ></label><span class = "filter_checkboxes__name">Кожа</span></li>
+     				<li> <input type="checkbox" id = "checkbox6"   class = "filter_checkboxes__input" onclick = "filter.checkControl()"  value="Книги">
+     					<label for="checkbox6" class="filter_checkboxes__check-item"></label><span class = "filter_checkboxes__name">Книги</span></li>
+     				<li> <input type="checkbox" id = "checkbox7"  name="status" class = "filter_checkboxes__input" onclick = "filter.checkControl()"  value="Хоз.товары">
+     					<label for="checkbox7" class="filter_checkboxes__check-item"></label><span class = "filter_checkboxes__name">Хоз.товары</span></li>
+     			</ul>
+     		</div>
+     
+     		<div class="filter_priceDateBlock">
+     
+     			<div class="filter_block-by-date">
+     				<h6>ФИЛЬТР ПО ДАТЕ:</h6>
+     				<span class="filter_dateSpace filter_block-by-date__from-to">oт</span>
+     				<button id="linkdate1" onclick="filter.linkdate1()">Выбрать</button>
+     				<input id="inputdateMin"  onchange="filter.filterMimMaxDate()" type="date" value="" placeholder="Выбрать" class="">
+     				<span class="filter_block-by-date__from-to">- до </span>
+     				<button id="linkdate2" onclick="filter.linkdate2()">Выбрать</button>
+     				<input id="inputdateMax" onchange="filter.filterMimMaxDate()" type="date" value="" placeholder="Выбрать" class="">
+     			</div>
+     
+     			<div class = "filter_block-by-price" id="filter-block-by-price">
+     				<h6>ФИЛЬТР ПО ЦЕНЕ:</h6>
+     				<input id="minRangePrice" class = "minRangePrice"  type="number" onkeyup = "filter.inputRangePrice()" value = "15">
+     
+     
+     				<input id="maxRangePrice" class = "maxRangePrice" type="number" onkeyup = "filter.inputRangePrice()" value = "5005">
+     				<span class="filter_block-by-price__currency">грн</span>
+     
+     				<section class="filter_range-slider" id = "filter_range-slider">
+     					<span class="rangeValues"></span>
+     					<input class = "filter_range-slider__slide-price" id ="minPrice" value="15" min="15" max="5010" step="10" type="range" data-price = "price">
+     					<input  class = "filter_range-slider__slide-price" id ="maxPrice" value="6000" min="15" max="5010" step="10" type="range" data-price = "price">
+     				</section>
+     			</div>
+     
+     			<div class="filter_block-by-quantity" id="filter-block-by-quantity">
+     				<h6>ФИЛЬТР ПО КОЛИЧЕСТВУ:</h6>
+     				<input id="minRangeQuantity" class = "minRangeNumber"  type="number" onkeyup = "filter.inputRangeCount()" value = "5">
+     				<input id="maxRangeQuantity" class = "maxRangeNumber" type="number"  onkeyup = "filter.inputRangeCount()" value = "999">
+     				<span class="filter_block-by-price__quantity">шт.</span>
+     				<section class="filter_range-slider">
+     					<span class="rangeValues"></span>
+     					<input class = "filter_range-slider__slide-quantity" id = "minCount" value="5" min="5" max="1000" step="1" type="range">
+     					<input class = "filter_range-slider__slide-quantity" id = "maxCount" value="1000" min="10" max="1000" step="1" type="range">
+     				</section>
+     			</div>
+     		</div>
+     
+     		<div class="filter_block-by-product">
+     			<h6>ФИЛЬТР ПО НАЗВАНИЮ:</h6>
+     			<div class="filter_block-by-product__search-select-by-name">
+     				<input type="text" id = "searchSelectByname" onkeyup = "filter.searchSelectByName()"></span>
+     			</div>
+     		</div>
+     	</div></script><script type="text/template" id="js-products-content"><div class="products-wrapper">
+	 		<main class="products-main">
+	 			<h1 class="products-main__heading">Приносим свои извинения!<br/>Страница находится в разработке!</h1>
+	 		</main>
+	 	</div></script><script type="text/template" id="js-team-content"><div class="products-wrapper">	
+	 		<main class="products-main">
+	 			<h1 class="products-main__heading">Приносим свои извинения!<br/>Страница находится в разработке!</h1>
+	 		</main>
+	 	</div></script><script type="text/template" id="js-statistics-content"><div class="products-wrapper">
+	 		<main class="products-main">
+	 			<h1 class="products-main__heading">Приносим свои извинения!<br/>Страница находится в разработке!</h1>
+	 		</main>
+	 	</div></script><script type="text/template" id="js-integration-content"><div class="products-wrapper">
+	 		<main class="products-main">
+	 			<h1 class="products-main__heading">Приносим свои извинения!<br/>Страница находится в разработке!</h1>
+	 		</main>
+	 	</div></script><script type="text/template" id="js-settings-content"><div class="products-wrapper">
+	 		<main class="products-main">
+	 			<h1 class="products-main__heading">Приносим свои извинения!<br/>Страница находится в разработке!</h1>
+	 		</main>
+	 	</div></script><script type="text/template" id="js-add-new-product"><div class="new-product__close-button" id="js-new-product-close-btn">x</div>
+         <h2 class="new-product__form__heading">Добавить новый товар</h2>
+             <form id="js-new-product-form" action="" target="_self">
+                 <div class="new-product__form">
+                     <div class="new-product__form__column">
+                         <span class="new-product__form__input__label--required" id = "js-required-field-star">*</span><br>
+                         <input type="text" class="new-product__form__input--text" id="js-new-product-name" name="name" placeholder="Название товара" required>
+                         <input type="text" class="new-product__form__input--text" id="js-new-product-category" name="category" autocomplete="off" placeholder="Введите название категории">
+                         <div id = "js-form-selection-arrow"><div class="new-product__form__selection__arrow"></div></div>
+                         <ul class="new-product__form__selection" id="js-select-category"></ul>
+                     <p class="new-product__form__input__label">Описание товара</p>
+                     <textarea class="new-product__form__input--textarea" id="js-new-product-description" name="description" rows="5"></textarea>
+                 </div>
+                 <div class="new-product__form__column">
+                     <div class="new-product__form__row">
+                         <div class="new-product__form__input--number__label">Стоимость<span class="new-product__form__input__label--required"> *</span><br>
+                             <input type="number" step="0.01" class="new-product__form__input--number" id="js-new-product-price" name="price" placeholder="   0" required>
+                             <div class="new-product__form__input__arrow--up"></div>
+                             <div class="new-product__form__input__arrow--down"></div>
+                         </div>
+                         <div class="new-product__form__input--number__label">Количество<br>
+                             <input type="number" class="new-product__form__input--number" id="js-new-product-count" name="count" placeholder="   0">
+                             <div class="new-product__form__input__arrow--up"></div>
+                             <div class="new-product__form__input__arrow--down"></div>
+                         </div>
+                     </div>
+                     <p class="new-product__form__input__group-label">Размеры</p>
+                     <div class="new-product__form__input--number__label--small">Ширина<br>
+                         <input type="number" class="new-product__form__input--number" name="width" id="js-new-product-width" placeholder="   0">
+                         <div class="new-product__form__input__arrow--up"></div>
+                         <div class="new-product__form__input__arrow--down"></div>
+                     </div>
+                     <div class="new-product__form__input--number__label--small">Высота<br>
+                         <input type="number" class="new-product__form__input--number" name="height" id="js-new-product-height" placeholder="   0">
+                         <div class="new-product__form__input__arrow--up"></div>
+                         <div class="new-product__form__input__arrow--down"></div>
+                     </div>
+                     <div class="new-product__form__input--number__label--small">Длина<br>
+                         <input type="number" class="new-product__form__input--number" name="length" placeholder="   0" id="js-new-product-length">
+                         <div class="new-product__form__input__arrow--up"></div>
+                         <div class="new-product__form__input__arrow--down"></div>
+                     </div>
+                     <div class="new-product__form__input--number__label">Вес<span class="new-product__form__input__label--required"> *</span><br>
+                         <input type="number" step="0.01" class="new-product__form__input--number" id="js-new-product-weight" name="weight" placeholder="  0.1" required>
+                         <div class="new-product__form__input__arrow--up"></div>
+                         <div class="new-product__form__input__arrow--down"></div>
+                     </div>
+                     <div class="new-product__form__input--number__label">Объемный вес<span class="new-product__form__input__label--required"> *</span>
+                         <input type="number" step="0.01" class="new-product__form__input--number" name = "volume" id="js-new-product-volume" placeholder="  0.1" required>
+                         <div class="new-product__form__input__arrow--up"></div>
+                         <div class="new-product__form__input__arrow--down"></div>
+                     </div>
+                 </div>
+             <p class="new-product__form__reference">*Объемный вес высчитывается по формуле ШхВхД / 4000</p>
+             <p class="new-product__form__reference--red">*Обязательное поле</p>
+                 </div>
+                 <button class="new-product__form_submit-button" id="js-new-product-submit-btn">Создать товар</button>
+             </form></script><script type="text/template" id="js-tutorial-content"><div class="tutorial-wrapper">
+     		<main class="tutorial-main">
+     			<h1 class="tutorial-main__heading">Как подключить интеграцию с Новой Почтой?</h1>
+     			<p class="tutorial-main__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec turpis congue, cursus massa interdum, viverra purus. Vivamus bibendum imperdiet vulputate. Duis ac <a class="tutorial-main__link" href="#">accumsan eros</a>. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec consectetur tortor vel sapien sodales condimentum. </p>
+     			<iframe class="tutorial-main__video" src="https://www.youtube.com/embed/XSKdff6jLRg" allowfullscreen=“allowfullscreen” mozallowfullscreen=“mozallowfullscreen” msallowfullscreen=“msallowfullscreen” oallowfullscreen=“oallowfullscreen” webkitallowfullscreen=“webkitallowfullscreen”></iframe>
+     			<h2 class="tutorial-main__section-heading">Нам нужен ключ API...</h2>
+     			<ol class="tutorial-main__list">
+     				<li class="tutorial-main__list__item--ordered"><a class="tutorial-main__link--underlined" href="http://feathy.online/">https://feathy.online</a><span class="tutorial-main__list__item__text"> sollicitudin tortor. Vivamus vulputate facilisis aliquet. Cras vitae aliquet enim, ut fermentum massa.  Aliquam porttitor, magna sit amet consectetur gravida, turpis enim pulvinar nibh, non scelerisque nisl est ac risus.</span></li>
+     				<li class="tutorial-main__list__item--ordered"><a class="tutorial-main__link--underlined" href="http://feathy.online/">https://feathy.online</a><span class="tutorial-main__list__item__text"> sollicitudin tortor. Vivamus vulputate facilisis aliquet. Cras vitae aliquet enim, ut fermentum massa.  Aliquam porttitor, magna sit amet consectetur gravida, turpis enim pulvinar nibh, non scelerisque nisl est ac risus.</span></li>
+     				<li class="tutorial-main__list__item--ordered"><a class="tutorial-main__link--underlined" href="http://feathy.online/">https://feathy.online</a><span class="tutorial-main__list__item__text"> sollicitudin tortor. Vivamus vulputate facilisis aliquet. Cras vitae aliquet enim, ut fermentum massa.  Aliquam porttitor, magna sit amet consectetur gravida, turpis enim pulvinar nibh, non scelerisque nisl est ac risus.</span></li>
+     			</ol>
+     			<h2 class="tutorial-main__section-heading">Нам нужен ключ API...</h2>
+     			<ul class="tutorial-main__list">
+     				<li class="tutorial-main__list__item--unordered"><span class="tutorial-main__list__item__text">Duis dictum sollicitudin tortor. Vivamus vulputate facilisis aliquet. Cras vitae aliquet enim, ut fermentum massa.</span></li>
+     				<li class="tutorial-main__list__item--unordered"><span class="tutorial-main__list__item__text">Duis dictum sollicitudin tortor. Vivamus vulputate facilisis aliquet. Cras vitae aliquet enim, ut fermentum massa.</span></li>
+     				<li class="tutorial-main__list__item--unordered"><span class="tutorial-main__list__item__text">Duis dictum sollicitudin tortor. Vivamus vulputate facilisis aliquet. Cras vitae aliquet enim, ut fermentum massa.</span></li>
+     			</ul>
+     			<div class="tutorial-main__separator"></div>
+     			<div class="tutorial-main__icons-block">
+     				<div class="tutorial-main__link tutorial-main__icons-block__item" id="js-likeBtn">
+     					<span class="tutorial-main__link tutorial-main__icons-block__item__text" id="js-likeBtnCounter"></span>
+     					<img class="tutorial-main__icons-block__item__icon" id="js-likeImg">
+     				</div>
+     			</div>
+     		</main>
+     		<aside class="tutorial-sidebar">
+     			<h3 class="tutorial-sidebar__heading">Другое по теме:</h3>
+     			<div class="tutorial-sidebar__item">
+     				<img class="tutorial-sidebar__item__image" src="../images/tutorial/image_aside.jpg">
+     				<a class="tutorial-sidebar__item__link">Автоматизация отправок СМС сообщений.</a>
+     			</div>
+     			<div class="tutorial-sidebar__item">
+     				<img class="tutorial-sidebar__item__image" src="../images/tutorial/image_aside.jpg">
+     				<a class="tutorial-sidebar__item__link">Автоматизация отправок СМС сообщений.</a>
+     			</div>
+     			<div class="tutorial-sidebar__item">
+     				<img class="tutorial-sidebar__item__image" src="../images/tutorial/image_aside.jpg">
+     				<a class="tutorial-sidebar__item__link">Автоматизация отправок СМС сообщений.</a>
+     			</div>
+     		</aside>
+     	</div></script><script src="../js/index.js" defer="defer"></script></body></html>
